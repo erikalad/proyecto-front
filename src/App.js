@@ -1,6 +1,7 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 import html2pdf from 'html2pdf.js';
+import Dashboard from './Dashboard';
 
 const styles = StyleSheet.create({
   page: {
@@ -34,11 +35,11 @@ function descargarPDF() {
     
     // Crear una instancia de html2pdf con las opciones deseadas
     const opciones = {
-      margin: 0.5,
+      margin: 0,
       filename: 'mi-pagina.pdf',
-      image: { type: 'jpeg', quality: 1 },
-      html2canvas: { scale: 1 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+      image: { type: 'jpeg', quality: 1.0 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'px', format: [1500, 1500], orientation: 'portrait' },
     };
     const convertir = html2pdf().set(opciones);
     
@@ -53,12 +54,7 @@ function MyDocument() {
   return (
     <Document>
       <Page  style={styles.page}>
-        <View style={styles.container}>
-          <Text style={styles.title}>Mi Documento PDF</Text>
-          <Text style={styles.subtitle}>Creado con react-pdf</Text>
-          <Text style={styles.text}>¡Hola mundo!</Text>
-         
-        </View>
+        <Dashboard/>
         <button onClick={descargarPDF}>Descargar como PDF</button>
       </Page>
     </Document>
