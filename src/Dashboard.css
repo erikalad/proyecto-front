@@ -85,6 +85,11 @@
         
     }
 
+    .layout{
+        width: 70vh;
+      }
+      
+
      .total-area{
         display: flex;
         margin-left: 0rem;

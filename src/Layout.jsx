@@ -3,6 +3,7 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
 import Dashboard from './Dashboard'
 import logo from './logo.png'
+import './Dashboard.css'
 
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -25,13 +26,16 @@ const items = [
   getItem('Métricas', '9', <BarChartOutlined />),
 ];
 const Layouts = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
     <div>
-    <div style={{
+    <div
+    
+    
+    style={{
       width:150,
       height: 28,
       margin: 16,
@@ -57,8 +61,10 @@ const Layouts = () => {
       </Sider>
       <Layout className="site-layout">
   
-        <Content    style={{
+        <Content    
+        style={{
             margin: '0 16px',
+           
           }}>
         <Breadcrumb
             style={{
