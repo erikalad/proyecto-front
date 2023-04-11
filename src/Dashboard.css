@@ -1,7 +1,8 @@
 .conteiner-grafi{
     display: flex;
     flex-wrap: wrap;
- /*    margin-left: 15rem; */
+    margin-left:5rem;
+    margin-bottom: 1rem;
     
     
 }
@@ -13,8 +14,8 @@
  */
  .total-area{
     display: flex;
-    margin-left: 4rem;
-    margin-bottom: 2rem;
+    /* margin-left: 4rem; */
+   /*  margin-bottom: 2rem; */
     gap: 1rem;
 } 
  .stadisticas{
@@ -26,16 +27,16 @@
 .stadisticas-dashboard-component{
     display: flex;
     flex-direction: column;
-    margin-top:5rem;
+   /*  margin-top:5rem; */
     flex-wrap: wrap;
-    margin-left: 15rem;
-    margin-bottom: 4rem;
+    margin:5rem;
+  /*   margin-bottom: 4rem; */
 }
 
 .estadisticas{
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 2rem;
+/*     margin-bottom: 2rem; */
     
 }
 
@@ -46,7 +47,7 @@
 
 .tabla-componente{
     display: flex;
-    margin-left: 13rem;
+    /* margin-left: 13rem; */
 
 }
 
@@ -66,12 +67,12 @@
     text-align: center;
     align-items: center;
    justify-content: space-between;
-   padding-right: 3rem;
+   padding-right: 2rem;
    
 }
 
 .grafico{
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 
@@ -98,7 +99,7 @@
         text-align: center;
         align-items: center;
        justify-content: space-between;
-       padding-right: 1rem;
+       padding-right: 0rem !important;
        
     }
     
@@ -112,16 +113,17 @@
           
         display: flex;
         flex-direction: column;
-        margin-top:5rem;
+        margin-top:0rem !important;
         align-items: start;
         margin-left: 0px !important;
+        margin: 0px !important
     }
     
     .estadisticas{
         display: flex;
         margin-left: 0rem;
         margin-bottom: 0rem;
-        padding-left: 1rem !important;
+        padding-left: 0rem !important;
     }
     
     
@@ -138,7 +140,7 @@
     .filtro-gral{
         margin-left:0rem;
         margin-bottom: 0rem;
-        padding-left: 1rem !important;
+        padding-left: 0rem !important;
     }
 
     .grafico{
