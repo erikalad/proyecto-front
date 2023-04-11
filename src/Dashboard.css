@@ -1,8 +1,8 @@
-.dashboard-component{
+.conteiner-grafi{
     display: flex;
     flex-wrap: wrap;
-    margin-left: 15rem;
-    margin-bottom: 4rem;
+ /*    margin-left: 15rem; */
+    
     
 }
 
@@ -17,13 +17,6 @@
     margin-bottom: 2rem;
     gap: 1rem;
 } 
-
-.progress{
-    display: flex;
-    margin-top: 5rem;
-    gap: 2rem;
-}
-
  .stadisticas{
   width: 25rem;
     
@@ -34,12 +27,14 @@
     display: flex;
     flex-direction: column;
     margin-top:5rem;
-    align-items: start;
+    flex-wrap: wrap;
+    margin-left: 15rem;
+    margin-bottom: 4rem;
 }
 
 .estadisticas{
     display: flex;
-    margin-left: 15rem;
+    justify-content: flex-start;
     margin-bottom: 2rem;
     
 }
@@ -56,6 +51,100 @@
 }
 
 .filtro-gral{
-    margin-left:14.5rem;
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 2rem; 
+}
+
+
+.progress{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+   justify-content: space-between;
+   padding-right: 3rem;
+   
+}
+
+.grafico{
+    margin-bottom: 4rem;
+}
+
+
+@media (max-width: 768px) {
+    .conteiner-grafi{
+        display: block;
+        margin-left: 0rem !important;
+        margin-bottom: 0rem;
+        
+        
+    }
+
+     .total-area{
+        display: flex;
+        margin-left: 0rem;
+        margin-bottom: 0rem;
+        gap: 0.5rem;
+    } 
+    
+    .progress{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        text-align: center;
+        align-items: center;
+       justify-content: space-between;
+       padding-right: 1rem;
+       
+    }
+    
+     .stadisticas{
+      width: 25rem;
+        
+    } 
+     
+    
+    .stadisticas-dashboard-component{
+          
+        display: flex;
+        flex-direction: column;
+        margin-top:5rem;
+        align-items: start;
+        margin-left: 0px !important;
+    }
+    
+    .estadisticas{
+        display: flex;
+        margin-left: 0rem;
+        margin-bottom: 0rem;
+        padding-left: 1rem !important;
+    }
+    
+    
+    .selectores-dash{
+        width: 10rem;
+    }
+    
+    .tabla-componente{
+        display: flex;
+        margin-left: 0rem;
+    
+    }
+    
+    .filtro-gral{
+        margin-left:0rem;
+        margin-bottom: 0rem;
+        padding-left: 1rem !important;
+    }
+
+    .grafico{
+        padding-bottom:0.2rem !important;
+        padding-right: 0.2rem !important;
+    }
+
+
 }

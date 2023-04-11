@@ -307,13 +307,12 @@ const Dashboard = () => {
         </Row>
       </div>
 
-        <div className='dashboard-component'>
 
-            <div className="pie">
+      <div className='conteiner-grafi'>
+            <div className="grafico">
 
 
             <Pie
-                
                 data={chartData}
                 width={500}
                 height={300}
@@ -445,9 +444,7 @@ const Dashboard = () => {
             />
             </div>
             
-            <div>
-            
-       
+            <div className="grafico">
             <ReactApexChart
                 options={data2.options}
                 series={data2.series}
@@ -456,26 +453,29 @@ const Dashboard = () => {
                 width={500}
                 />
             </div>
-            <div className='total-area'>
+
+            </div>
 
 
-            <div className=''>
 
-            <div className='progress'>
+            <div className='conteiner-grafi'>
+            <div className="grafico progress" >
                 {data.map((item, index) => (
+                  <div className='progress'>
                     <Progress 
+                    
                     key={index} 
                     strokeColor="rgba(0, 143, 251, 0.6)" 
                     strokeLinecap="butt" 
                     type="circle" 
                     percent={item.percent}
                     />
+                    </div>
                 ))}
-                </div>
-            </div>
         
-            <div>
-       
+            </div>
+
+            <div className="grafico">
             <ReactApexChart
                 options={data2.options}
                 series={data2.series}
@@ -483,17 +483,9 @@ const Dashboard = () => {
                 height={300}
                 width={500}
                 />
-            </div>    
-
-            
-            </div>
-            
         </div>
-  
-
-    </div>
-        
-
+        </div>
+            </div>    
 
 );
 };
