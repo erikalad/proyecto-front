@@ -4,9 +4,11 @@ import { Button, Col, Row, Statistic } from 'antd';
 import CountUp from 'react-countup';
 import ReactApexChart from 'react-apexcharts';
 import { Select } from 'antd';
-import { Progress, Space } from 'antd';
+import { Progress } from 'antd';
 import "./Dashboard.css"
 import html2pdf from 'html2pdf.js';
+import emailjs from 'emailjs-com';
+
 
 
 function descargarPDF() {
@@ -29,7 +31,6 @@ function descargarPDF() {
 
 const Dashboard = () => {
 
-    
     const [chartData, setChartData] = useState([]);
     useEffect(() => {
         // Aquí puedes hacer una llamada a una API para obtener los datos
@@ -102,14 +103,44 @@ const Dashboard = () => {
       },
     },
   };
-  const colors = ['#003785', '#1465bb', '#2196f3', '#81c9fa'];
+  
   const formatter = (value) => <CountUp end={value} separator="," />;
 
 
 
-  const handleChange = (value) => {
-    console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
+  const sendEmail = (e, file) => {
+    e.preventDefault();
+  
+    // verificar si el archivo existe y no es null
+    if (file) {
+      // crear un objeto EmailJSAttachment con la información del archivo
+      const attachment = {
+        name: file.name,
+        data: file,
+        type: file.type,
+      };
+  
+      // enviar el correo electrónico con el archivo adjunto
+      emailjs.sendForm('service_50my90o', 'template_g7nhzdq', document.getElementById('myForm'), 'PmEa6BoX3zJ1n-2pa', { attachment })
+        .then((result) => {
+          console.log(result.text);
+        }, (error) => {
+          console.log(error.text);
+        });
+
+        
+    } else {
+      console.log('Archivo no seleccionado');
+    }
   };
+  
+  // función para manejar el cambio de archivo seleccionado
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    sendEmail(e, file);
+  };
+
+
 
   return (
 
@@ -129,7 +160,7 @@ const Dashboard = () => {
             </Select> 
 
             <Button onClick={descargarPDF}>Descargar PDF</Button>
-            <Button>Enviar por email</Button>
+            <Button >Enviar por email</Button>
         </div>
 
         <div className='estadisticas'>
@@ -325,7 +356,27 @@ const Dashboard = () => {
                 width={500}
                 />
             </div>    
+
+            
             </div>
+            <div>
+      <form onSubmit={sendEmail} id="myForm">
+        <label htmlFor="to_email">Correo electrónico del destinatario:</label>
+        <input type="email" name="to_email" required />
+
+        <label htmlFor="from_name">Tu nombre:</label>
+        <input type="text" name="from_name" required />
+
+        <label htmlFor="message">Mensaje:</label>
+        <textarea name="message" required />
+      
+
+     <input type="file" name="attachment" onChange={handleFileChange} />
+
+        <button type="submit">Enviar correo electrónico</button>
+      </form>
+    </div>
+
 
         </div>
     </div>
@@ -336,3 +387,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
