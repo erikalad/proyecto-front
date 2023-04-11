@@ -2,7 +2,7 @@ import { BarChartOutlined  } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
 import Dashboard from './Dashboard'
-import logo from './logo.png'
+
 import './Dashboard.css'
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -40,15 +40,7 @@ const Layouts = () => {
       height: 28,
       margin: 16,
       background: 'rgb(255, 255, 255)',
-    }} ><img style={{
-      width:150,
-      height: 28,
-      margin: 0,
-      background: 'rgb(255, 255, 255)',
-    }} 
-  src={logo} 
-    
-  /></div>
+    }} ></div>
     <Layout
       style={{
         minHeight: '100vh',
