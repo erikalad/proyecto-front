@@ -33,6 +33,8 @@
 .stadisticas-dashboard-component{
     display: flex;
     flex-direction: column;
+    margin-top:5rem;
+    align-items: start;
 }
 
 .estadisticas{

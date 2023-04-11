@@ -33,6 +33,8 @@ function descargarPDF() {
 const Dashboard = () => {
 
     const [selectedSeries, setSelectedSeries] = useState("Serie 1");
+    const [actores, setActores] = useState(350)
+    const [eventos, setEventos] = useState(32753)
     const [chartData, setChartData] = useState([]);
     const [data,setData] = useState([
             { label: 'Progreso 1', percent: 75 },
@@ -126,12 +128,11 @@ const Dashboard = () => {
               id: 'Anticipación',
               value: 3,
             },
-            {
-              id: 'Sorpresa',
-              value: 12,
-            },
+           
           ];
           setChartData(newData)
+          setActores(590)
+          setEventos(65891)
         } else if (selectedSeries === "Serie 2") {
           setData2({
             series: [
@@ -182,6 +183,8 @@ const Dashboard = () => {
             },
           ];
           setChartData(newData)
+          setActores(368)
+          setEventos(4568)
         }else if (selectedSeries === "Serie 3") {
             setData2({
               series: [
@@ -228,6 +231,8 @@ const Dashboard = () => {
               },
             ];
             setChartData(newData);
+            setActores(270)
+            setEventos(2253)
           }
         },[selectedSeries])
 
@@ -294,10 +299,10 @@ const Dashboard = () => {
         <div className='estadisticas'>
         <Row className='stadisticas' gutter={16}>
           <Col span={12}>
-            <Statistic title="Total de eventos" value={32753} formatter={formatter}  />
+            <Statistic title="Total de eventos" value={eventos} formatter={formatter}  />
           </Col>
           <Col span={12}>
-            <Statistic title="Total actores" value={230} precision={2} formatter={formatter} />
+            <Statistic title="Total actores" value={actores} precision={2} formatter={formatter} />
           </Col>
         </Row>
       </div>
