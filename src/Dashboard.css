@@ -6,11 +6,11 @@
     
 }
 
-.pie{
+/* .pie{
     margin-top: 4rem;
     margin-bottom: 2rem;
 }
-
+ */
  .total-area{
     display: flex;
     margin-left: 4rem;
@@ -51,4 +51,9 @@
     display: flex;
     margin-left: 13rem;
 
+}
+
+.filtro-gral{
+    margin-left:14.5rem;
+    margin-bottom: 2rem;
 }

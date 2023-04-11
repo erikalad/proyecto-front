@@ -1,26 +1,83 @@
-import React from 'react';
-import { Line } from '@nivo/line';
+import React, { useEffect, useState } from 'react';
 import { Pie } from '@nivo/pie';
-import { Bar } from '@nivo/bar';
-import { Col, Row, Statistic } from 'antd';
+import { Button, Col, Row, Statistic } from 'antd';
 import CountUp from 'react-countup';
 import ReactApexChart from 'react-apexcharts';
 import { Select } from 'antd';
-import { useEffect } from 'react';
 import { Progress, Space } from 'antd';
 import "./Dashboard.css"
+import html2pdf from 'html2pdf.js';
 
+
+function descargarPDF() {
+    // Obtener el contenedor que queremos descargar como PDF
+    const contenedor = document.body;
+    
+    // Crear una instancia de html2pdf con las opciones deseadas
+    const opciones = {
+      margin: 0,
+      filename: 'mi-pagina.pdf',
+      image: { type: 'jpeg', quality: 1.0 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'px', format: [1500, 1500], orientation: 'portrait' },
+    };
+    const convertir = html2pdf().set(opciones);
+    
+    // Convertir el HTML del contenedor en un archivo PDF y descargarlo
+    convertir.from(contenedor).save();
+  }
 
 const Dashboard = () => {
 
-  const data = [
-    // datos de ejemplo para los gráficos
-    { x: 'Enero', y: 10 },
-    { x: 'Febrero', y: 20 },
-    { x: 'Marzo', y: 15 },
-    { x: 'Abril', y: 25 },
-    { x: 'Mayo', y: 30 },
-  ];
+    
+    const [chartData, setChartData] = useState([]);
+    useEffect(() => {
+        // Aquí puedes hacer una llamada a una API para obtener los datos
+        // y luego actualizar la variable de estado con los nuevos datos.
+        const newData = [
+          {
+            id: 'Alegría',
+            value: 15,
+          },
+          {
+            id: 'Miedo',
+            value: 5,
+          },
+          {
+            id: 'Ira',
+            value: 20,
+          },
+          {
+            id: 'Tristeza',
+            value: 10,
+          },
+          {
+            id: 'Aversión',
+            value: 7,
+          },
+          {
+            id: 'Confianza',
+            value: 8,
+          },
+          {
+            id: 'Anticipación',
+            value: 3,
+          },
+          {
+            id: 'Sorpresa',
+            value: 12,
+          },
+        ];
+    
+        setChartData(newData);
+      }, []);
+    
+
+      const data = [
+        { label: 'Progreso 1', percent: 75 },
+        { label: 'Progreso 2', percent: 23 },
+        { label: 'Progreso 3', percent: 47 }
+      ];
 
 
   const data2 = {
@@ -62,16 +119,31 @@ const Dashboard = () => {
         
         
     <div className='stadisticas-dashboard-component'>
+        <div className='filtro-gral'>
+            <Select
+            placeholder="Serie"
+            className='selectores-dash'>
+            <Select.Option value="Serie 1">Serie 1</Select.Option>
+            <Select.Option value="Serie 2">Serie 2</Select.Option>
+            <Select.Option value="Serie 3">Serie 3</Select.Option>
+            </Select> 
+
+            <Button onClick={descargarPDF}>Descargar PDF</Button>
+            <Button>Enviar por email</Button>
+        </div>
 
         <div className='estadisticas'>
+
+     
         <Row 
         className='stadisticas'
         gutter={16}>
+            
             <Col span={12}>
-            <Statistic title="Total de ventas" value={753} formatter={formatter}  />
+            <Statistic title="Total de eventos" value={32753} formatter={formatter}  />
             </Col>
             <Col span={12}>
-            <Statistic title="Total facturado" value={34300} precision={2} formatter={formatter} />
+            <Statistic title="Total actores" value={230} precision={2} formatter={formatter} />
             </Col>
         </Row>
         </div>
@@ -80,51 +152,10 @@ const Dashboard = () => {
 
             <div className="pie">
 
-            <Select
-            placeholder="Consola"
-            className='selectores-dash'>
-            <Select.Option value="demo">PS5</Select.Option>
-            <Select.Option value="demo">PS4</Select.Option>
-            <Select.Option value="demo">PS3</Select.Option>
-            </Select>  
-
 
             <Pie
                 
-                data={[
-                {
-                    id: 'Accion',
-                    value: 10,
-                },
-                {
-                    id: 'Deportes',
-                    value: 10,
-                },
-                {
-                    id: 'Aventura',
-                    value: 10,
-                },
-                {
-                    id: 'Conduccion',
-                    value: 20,
-                },
-                {
-                    id: 'Multijugador',
-                    value: 7,
-                },
-                {
-                    id: 'Combos',
-                    value: 3,
-                },
-                {
-                    id: 'Estrategia',
-                    value: 4,
-                },
-                {
-                    id: 'Infantiles',
-                    value: 5,
-                },
-                ]}
+                data={chartData}
                 width={500}
                 height={300}
                 margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -257,14 +288,7 @@ const Dashboard = () => {
             
             <div>
             
-            <Select
-            placeholder="Filtro ejemplo 1"
-            className='selectores-dash'>
-            <Select.Option value="demo">Opcion 1</Select.Option>
-            <Select.Option value="demo">Opcion 2</Select.Option>
-            <Select.Option value="demo">Opcion 3</Select.Option>
-
-            </Select>  
+       
             <ReactApexChart
                 options={data2.options}
                 series={data2.series}
@@ -278,36 +302,21 @@ const Dashboard = () => {
 
             <div className=''>
 
-            <Select
-            placeholder="Filtro ejemlo 2"
-            className='selectores-dash'>
-                <Select.Option value="demo">Opcion 1</Select.Option>
-                <Select.Option value="demo">Opcion 2</Select.Option>
-                <Select.Option value="demo">Opcion 3</Select.Option>
-            </Select>  
-
             <div className='progress'>
-                <Progress 
-                strokeColor="rgba(0, 143, 251, 0.6)" 
-                strokeLinecap="butt" type="circle" percent={75} />
-                <Progress 
-                strokeColor="rgba(0, 143, 251, 0.6)" 
-                strokeLinecap="butt" type="circle" percent={23} />
-                <Progress
-                strokeColor="rgba(0, 143, 251, 0.6)" 
-                strokeLinecap="butt" type="circle" percent={47} />
-        
-            </div>
+                {data.map((item, index) => (
+                    <Progress 
+                    key={index} 
+                    strokeColor="rgba(0, 143, 251, 0.6)" 
+                    strokeLinecap="butt" 
+                    type="circle" 
+                    percent={item.percent} 
+                    />
+                ))}
+                </div>
             </div>
         
             <div>
-            <Select
-            placeholder="Filtro ejemplo 3"
-            className='selectores-dash'>
-                <Select.Option value="demo">Opcion 1</Select.Option>
-                <Select.Option value="demo">Opcion 2</Select.Option>
-                <Select.Option value="demo">Opcion 3</Select.Option>
-            </Select>  
+       
             <ReactApexChart
                 options={data2.options}
                 series={data2.series}
@@ -318,9 +327,6 @@ const Dashboard = () => {
             </div>    
             </div>
 
-            <Progress
-            strokeColor="rgba(0, 143, 251, 0.6)" 
-            strokeLinecap="butt" percent={62} />
         </div>
     </div>
         
