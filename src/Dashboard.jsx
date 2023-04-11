@@ -7,13 +7,14 @@ import { Select } from 'antd';
 import { Progress } from 'antd';
 import "./Dashboard.css"
 import html2pdf from 'html2pdf.js';
-import emailjs from 'emailjs-com';
+
 
 
 
 function descargarPDF() {
     // Obtener el contenedor que queremos descargar como PDF
     const contenedor = document.body;
+    
     
     // Crear una instancia de html2pdf con las opciones deseadas
     const opciones = {
@@ -31,57 +32,215 @@ function descargarPDF() {
 
 const Dashboard = () => {
 
+    const [selectedSeries, setSelectedSeries] = useState("Serie 1");
     const [chartData, setChartData] = useState([]);
-    useEffect(() => {
-        // Aquí puedes hacer una llamada a una API para obtener los datos
-        // y luego actualizar la variable de estado con los nuevos datos.
-        const newData = [
-          {
-            id: 'Alegría',
-            value: 15,
-          },
-          {
-            id: 'Miedo',
-            value: 5,
-          },
-          {
-            id: 'Ira',
-            value: 20,
-          },
-          {
-            id: 'Tristeza',
-            value: 10,
-          },
-          {
-            id: 'Aversión',
-            value: 7,
-          },
-          {
-            id: 'Confianza',
-            value: 8,
-          },
-          {
-            id: 'Anticipación',
-            value: 3,
-          },
-          {
-            id: 'Sorpresa',
-            value: 12,
-          },
-        ];
+    const [data,setData] = useState([
+            { label: 'Progreso 1', percent: 75 },
+            { label: 'Progreso 2', percent: 23 },
+            { label: 'Progreso 3', percent: 47 }
     
-        setChartData(newData);
-      }, []);
+    ])
+
+    const [data2, setData2] = useState({
+        series: [
+          {
+            name: 'Area 1',
+            data: [31, 40, 28, 51, 42, 109, 100],
+          },
+        ],
+        options: {
+          chart: {
+            with:500,
+            height: 350,
+            type: 'area',
+          },
+          xaxis: {
+            categories: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+          },
+          fill: {
+            opacity: 0.6, // Opacidad del área
+          },
+        },
+      });
+
+
     
 
-      const data = [
+
+
+      useEffect(() => {
+        let newData;
+        if (selectedSeries === "Serie 1") {
+          setData2({
+            series: [
+              {
+                name: 'Area 1',
+                data: [31, 40, 28, 51, 42, 109, 100],
+              },
+            ],
+            options: {
+              chart: {
+                with:500,
+                height: 350,
+                type: 'area',
+              },
+              xaxis: {
+                categories: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+              },
+              fill: {
+                opacity: 0.6,
+              },
+            },
+          });
+          setData([
+            { label: "Progreso 1", percent: 50 },
+            { label: "Progreso 2", percent: 70 },
+            { label: "Progreso 3", percent: 90 }
+          ]);
+          newData = [
+            {
+              id: 'Alegría',
+              value: 15,
+            },
+            {
+              id: 'Miedo',
+              value: 5,
+            },
+            {
+              id: 'Ira',
+              value: 20,
+            },
+            {
+              id: 'Tristeza',
+              value: 10,
+            },
+            {
+              id: 'Aversión',
+              value: 7,
+            },
+            {
+              id: 'Confianza',
+              value: 8,
+            },
+            {
+              id: 'Anticipación',
+              value: 3,
+            },
+            {
+              id: 'Sorpresa',
+              value: 12,
+            },
+          ];
+          setChartData(newData)
+        } else if (selectedSeries === "Serie 2") {
+          setData2({
+            series: [
+              {
+                name: 'Area 2',
+                data: [10, 20, 30, 40, 50, 60, 70],
+              },
+            ],
+            options: {
+              chart: {
+                with:500,
+                height: 350,
+                type: 'area',
+              },
+              xaxis: {
+                categories: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+              },
+              fill: {
+                opacity: 0.6,
+              },
+            },
+          });
+          setData([
+            { label: "Progreso 1", percent: 10 },
+            { label: "Progreso 2", percent: 30 },
+            { label: "Progreso 3", percent: 50 }
+          ]);
+          newData = [
+            {
+              id: 'Serie 2 - A',
+              value: 10,
+            },
+            {
+              id: 'Serie 2 - B',
+              value: 20,
+            },
+            {
+              id: 'Serie 2 - C',
+              value: 5,
+            },
+            {
+              id: 'Serie 2 - D',
+              value: 15,
+            },
+            {
+              id: 'Serie 2 - E',
+              value: 12,
+            },
+          ];
+          setChartData(newData)
+        }else if (selectedSeries === "Serie 3") {
+            setData2({
+              series: [
+                {
+                  name: 'Area 3',
+                  data: [90, 80, 70, 60, 50, 40, 30],
+                },
+              ],
+              options: {
+                chart: {
+                  with:500,
+                  height: 350,
+                  type: 'area',
+                },
+                xaxis: {
+                  categories: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+                },
+                fill: {
+                  opacity: 0.6,
+                },
+              },
+            });
+            setData([
+              { label: "Progreso 1", percent: 80 },
+              { label: "Progreso 2", percent: 20 },
+              { label: "Progreso 3", percent: 60 }
+            ]);
+            const newData = [
+              {
+                id: 'Serie 3 - X',
+                value: 25,
+              },
+              {
+                id: 'Serie 3 - Y',
+                value: 15,
+              },
+              {
+                id: 'Serie 3 - Z',
+                value: 30,
+              },
+              {
+                id: 'Serie 3 - W',
+                value: 5,
+              },
+            ];
+            setChartData(newData);
+          }
+        },[selectedSeries])
+
+          
+
+  /*     const data = [
         { label: 'Progreso 1', percent: 75 },
         { label: 'Progreso 2', percent: 23 },
         { label: 'Progreso 3', percent: 47 }
-      ];
+      ]; */
 
 
-  const data2 = {
+  /* const data2 = {
     series: [
       {
         name: 'Area 1',
@@ -102,82 +261,46 @@ const Dashboard = () => {
         opacity: 0.6, // Opacidad del área
       },
     },
-  };
+  }; */
+
+ 
   
   const formatter = (value) => <CountUp end={value} separator="," />;
 
-
-
-  const sendEmail = (e, file) => {
-    e.preventDefault();
-  
-    // verificar si el archivo existe y no es null
-    if (file) {
-      // crear un objeto EmailJSAttachment con la información del archivo
-      const attachment = {
-        name: file.name,
-        data: file,
-        type: file.type,
-      };
-  
-      // enviar el correo electrónico con el archivo adjunto
-      emailjs.sendForm('service_50my90o', 'template_g7nhzdq', document.getElementById('myForm'), 'PmEa6BoX3zJ1n-2pa', { attachment })
-        .then((result) => {
-          console.log(result.text);
-        }, (error) => {
-          console.log(error.text);
-        });
-
-        
-    } else {
-      console.log('Archivo no seleccionado');
-    }
-  };
-  
-  // función para manejar el cambio de archivo seleccionado
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    sendEmail(e, file);
+  const handleSeriesChange = (value) => {
+    setSelectedSeries(value);
   };
 
-
+  const filteredChartData = chartData.filter((item) => item.series === selectedSeries);
 
   return (
 
-
-        
-        
-        
-        
     <div className='stadisticas-dashboard-component'>
         <div className='filtro-gral'>
-            <Select
-            placeholder="Serie"
-            className='selectores-dash'>
-            <Select.Option value="Serie 1">Serie 1</Select.Option>
-            <Select.Option value="Serie 2">Serie 2</Select.Option>
-            <Select.Option value="Serie 3">Serie 3</Select.Option>
-            </Select> 
+        <Select
+          placeholder="Serie"
+          className='selectores-dash'
+          onChange={handleSeriesChange}
+          value={selectedSeries}
+        >
+          <Select.Option value="Serie 1">Serie 1</Select.Option>
+          <Select.Option value="Serie 2">Serie 2</Select.Option>
+          <Select.Option value="Serie 3">Serie 3</Select.Option>
+        </Select> 
 
             <Button onClick={descargarPDF}>Descargar PDF</Button>
-            <Button >Enviar por email</Button>
+            <Button href='/mail' disabled>Enviar por email</Button>
         </div>
-
         <div className='estadisticas'>
-
-     
-        <Row 
-        className='stadisticas'
-        gutter={16}>
-            
-            <Col span={12}>
+        <Row className='stadisticas' gutter={16}>
+          <Col span={12}>
             <Statistic title="Total de eventos" value={32753} formatter={formatter}  />
-            </Col>
-            <Col span={12}>
+          </Col>
+          <Col span={12}>
             <Statistic title="Total actores" value={230} precision={2} formatter={formatter} />
-            </Col>
+          </Col>
         </Row>
-        </div>
+      </div>
 
         <div className='dashboard-component'>
 
@@ -340,7 +463,7 @@ const Dashboard = () => {
                     strokeColor="rgba(0, 143, 251, 0.6)" 
                     strokeLinecap="butt" 
                     type="circle" 
-                    percent={item.percent} 
+                    percent={item.percent}
                     />
                 ))}
                 </div>
@@ -359,26 +482,10 @@ const Dashboard = () => {
 
             
             </div>
-            <div>
-      <form onSubmit={sendEmail} id="myForm">
-        <label htmlFor="to_email">Correo electrónico del destinatario:</label>
-        <input type="email" name="to_email" required />
-
-        <label htmlFor="from_name">Tu nombre:</label>
-        <input type="text" name="from_name" required />
-
-        <label htmlFor="message">Mensaje:</label>
-        <textarea name="message" required />
-      
-
-     <input type="file" name="attachment" onChange={handleFileChange} />
-
-        <button type="submit">Enviar correo electrónico</button>
-      </form>
-    </div>
-
-
+            
         </div>
+  
+
     </div>
         
 
