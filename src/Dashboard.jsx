@@ -234,41 +234,7 @@ const Dashboard = () => {
             setActores(270)
             setEventos(2253)
           }
-        },[selectedSeries])
-
-          
-
-  /*     const data = [
-        { label: 'Progreso 1', percent: 75 },
-        { label: 'Progreso 2', percent: 23 },
-        { label: 'Progreso 3', percent: 47 }
-      ]; */
-
-
-  /* const data2 = {
-    series: [
-      {
-        name: 'Area 1',
-        data: [31, 40, 28, 51, 42, 109, 100],
-      },
-
-    ],
-    options: {
-      chart: {
-        with:500,
-        height: 350,
-        type: 'area',
-      },
-      xaxis: {
-        categories: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
-      },
-      fill: {
-        opacity: 0.6, // Opacidad del área
-      },
-    },
-  }; */
-
- 
+        },[selectedSeries]) 
   
   const formatter = (value) => <CountUp end={value} separator="," />;
 
