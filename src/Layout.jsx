@@ -35,7 +35,7 @@ const Layouts = () => {
   
     <Layout
       style={{
-        minHeight: '100vh',
+        minHeight: '500vh',
       }}
       className='layout'
     >

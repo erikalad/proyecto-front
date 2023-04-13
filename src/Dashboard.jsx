@@ -7,7 +7,8 @@ import { Select } from 'antd';
 import { Progress } from 'antd';
 import "./Dashboard.css"
 import html2pdf from 'html2pdf.js';
-
+import ReactWordcloud from 'react-wordcloud'; 
+import HeatmapChart from './MapHead';
 
 
 
@@ -65,7 +66,18 @@ const Dashboard = () => {
         },
       });
 
-
+      const [datas, setDatas] = React.useState([
+        [2, 0, 5, 3, 1, 0, 6],
+        [1, 4, 0, 2, 6, 3, 0],
+        [0, 2, 6, 4, 0, 1, 5],
+        [4, 1, 0, 6, 5, 2, 0],
+        [3, 6, 1, 0, 2, 4, 0],
+        [0, 3, 4, 1, 0, 5, 2],
+        [5, 0, 2, 0, 4, 6, 1],
+        [0, 5, 3, 6, 1, 0, 4],
+        [6, 0, 1, 5, 0, 4, 3],
+        [0, 6, 2, 1, 3, 0, 5],
+      ]);
     
 
 
@@ -243,6 +255,30 @@ const Dashboard = () => {
   };
 
   const filteredChartData = chartData.filter((item) => item.series === selectedSeries);
+
+
+  const options = {
+    fontFamily: 'Helvetica, sans-serif',
+    fontSizes: [12, 60],
+    colors: ['#000000', '#111111', '#222222', '#333333', '#444444', '#555555'],
+    rotations: 0,
+    rotate: 90,
+  };
+
+  
+
+  
+
+  
+
+  const words = [
+    { text: 'React', value: 5 },
+    { text: 'JavaScript', value: 8 },
+    { text: 'HTML', value: 5 },
+    { text: 'CSS', value: 5 },
+    { text: 'Webpack', value: 3 },
+    { text: 'Node', value: 3 },
+  ];
 
   return (
 
@@ -451,7 +487,13 @@ const Dashboard = () => {
                 />
         </div>
         </div>
-            </div>    
+      <div style={{with:'50%'}}>
+          <ReactWordcloud words={words} options={options} />
+        </div>
+      <div style={{with:'50%'}}>
+        <HeatmapChart/>
+      </div>
+          </div>    
 
 );
 };
