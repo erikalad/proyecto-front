@@ -7,6 +7,21 @@
     
 }
 
+.graficos-pal-calor{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left:5rem;
+    margin-bottom: 1rem;
+}
+
+.diccionario{
+    width: 60rem;
+}
+
+.palabras{
+    width: 60rem;
+}
+
 /* .pie{
     margin-top: 4rem;
     margin-bottom: 2rem;
@@ -86,7 +101,7 @@
     }
 
     .layout{
-        width: 70vh;
+        width: 80vh;
       }
       
 
@@ -151,6 +166,21 @@
     .grafico{
         padding-bottom:0.2rem !important;
         padding-right: 0.2rem !important;
+    }
+
+    .graficos-pal-calor{
+        display: flex;
+        flex-wrap: wrap;
+        margin-left:0rem !important;
+        margin-bottom:0rem !important;
+    }
+    
+    .diccionario{
+        width: 30rem;
+    }
+    
+    .palabras{
+        width: 30rem;
     }
 
 

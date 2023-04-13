@@ -487,12 +487,11 @@ const Dashboard = () => {
                 />
         </div>
         </div>
-      <div style={{with:'50%'}}>
-          <ReactWordcloud words={words} options={options} />
+      <div className='graficos-pal-calor'>
+          <div className='diccionario'><HeatmapChart/></div>
+          <div className='palabras'><ReactWordcloud words={words} options={options} /></div>
         </div>
-      <div style={{with:'50%'}}>
-        <HeatmapChart/>
-      </div>
+     
           </div>    
 
 );
