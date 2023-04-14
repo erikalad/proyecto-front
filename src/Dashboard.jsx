@@ -9,6 +9,9 @@ import "./Dashboard.css"
 import html2pdf from 'html2pdf.js';
 import ReactWordcloud from 'react-wordcloud'; 
 import HeatmapChart from './MapHead';
+import Chart from './Burbujas';
+
+
 
 
 
@@ -43,6 +46,34 @@ const Dashboard = () => {
             { label: 'Progreso 3', percent: 47 }
     
     ])
+
+    const database = {
+      name: 'Parent',
+      children: [
+        {
+          name: 'Child 1',
+          value: 200,
+        },
+        {
+          name: 'Child 2',
+          value: 300,
+          children: [
+            {
+              name: 'Grandchild 1',
+              value: 100,
+            },
+            {
+              name: 'Grandchild 2',
+              value: 150,
+            },
+          ],
+        },
+        {
+          name: 'Child 3',
+          value: 150,
+        },
+      ],
+    };
 
     const [data2, setData2] = useState({
         series: [
@@ -272,12 +303,13 @@ const Dashboard = () => {
   
 
   const words = [
-    { text: 'React', value: 5 },
-    { text: 'JavaScript', value: 8 },
-    { text: 'HTML', value: 5 },
-    { text: 'CSS', value: 5 },
-    { text: 'Webpack', value: 3 },
-    { text: 'Node', value: 3 },
+    { text: "Alegria", value: 50 },
+    { text: "Enojo", value: 30 },
+    { text: "Miedo", value: 70 },
+    { text: "Desilución", value: 45 },
+    { text: "Confianza", value: 40 },
+    { text: "Interés", value: 80 },
+    
   ];
 
   return (
@@ -491,7 +523,10 @@ const Dashboard = () => {
           <div className='diccionario'><HeatmapChart/></div>
           <div className='palabras'><ReactWordcloud words={words} options={options} /></div>
         </div>
-     
+
+     <div>
+      <Chart/>
+     </div>
           </div>    
 
 );

@@ -1,0 +1,31 @@
+#chart {
+  height: 500px;
+  width: 500px;
+  position: relative;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background-color: blue;
+  opacity: 0.8;
+}
+
+.bubble-container {
+  position: absolute;
+}
+
+.bubble {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.word {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color:white;
+  top: 50%;
+  left: 50%;
+}
