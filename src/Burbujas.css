@@ -1,13 +1,13 @@
 #chart {
-  height: 500px;
-  width: 500px;
+  height: 300px;
+  width: 300px;
   position: relative;
 }
 
 .bubble {
   position: absolute;
   border-radius: 50%;
-  background-color: blue;
+  background-color: rgb(63, 63, 248);
   opacity: 0.8;
 }
 

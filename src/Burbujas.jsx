@@ -44,7 +44,9 @@ export default function Chart() {
 
     // Crear la burbuja más grande en el centro
     const biggestDatum = data[0];
+   
     const biggestBubble = createBubble(center.x, center.y, biggestDatum.value, `hsl(200, ${Math.floor(100 - biggestDatum.value)}%, ${Math.floor(50 - biggestDatum.value / 2)}%)`, biggestDatum.word);
+    biggestBubble.style.zIndex = "999";
     chart.appendChild(biggestBubble);
 
     // Iterar sobre el resto de los datos para crear las burbujas más pequeñas
@@ -55,7 +57,8 @@ export default function Chart() {
       const angle = index * angleStep; // ángulo de la burbuja
       const x = center.x + radius * Math.cos(angle); // posición x de la burbuja
       const y = center.y + radius * Math.sin(angle); // posición y de la burbuja
-      const color = `hsl(200, ${Math.floor(100 - datum.value)}%, ${Math.floor(50 - datum.value / 2)}%)`;
+      const color = `hsl(200, ${Math.floor(100 - datum.value) + 20}%, ${Math.floor(50 - datum.value / 2) + 20}%)`;
+      
 
       const bubble = createBubble(x, y, datum.value, color, datum.word);
       chart.appendChild(bubble);

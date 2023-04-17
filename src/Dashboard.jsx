@@ -488,11 +488,11 @@ const Dashboard = () => {
                 />
             </div>
 
-            </div>
+            
 
 
 
-            <div className='conteiner-grafi'>
+           
             <div className="grafico progress" >
                 {data.map((item, index) => (
                   <div className='progress'>
@@ -517,16 +517,24 @@ const Dashboard = () => {
                 height={300}
                 width={500}
                 />
-        </div>
-        </div>
-      <div className='graficos-pal-calor'>
-          <div className='diccionario'><HeatmapChart/></div>
-          <div className='palabras'><ReactWordcloud words={words} options={options} /></div>
-        </div>
+            </div>
+          
+            </div>
 
-     <div>
-      <Chart/>
+      <div className='conteiner-grafica'>
+
+          <div className="grafico"><Chart/></div>
+          <div className="grafico"><ReactWordcloud words={words} options={options} /></div>
+      
+      </div>
+     
+
+     <div >
+     <div className="grafico"><HeatmapChart/></div>
      </div>
+    
+
+     
           </div>    
 
 );

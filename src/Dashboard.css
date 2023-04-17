@@ -1,17 +1,24 @@
 .conteiner-grafi{
     display: flex;
     flex-wrap: wrap;
-    margin-left:5rem;
+   /*  margin-left:5rem; */
     margin-bottom: 1rem;
-    
-    
+    justify-content: space-around !important;
+    align-items: center;
+}
+.conteiner-grafica{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    justify-content: space-around !important;
+    align-items: center;
 }
 
 .graficos-pal-calor{
     display: flex;
-    flex-wrap: wrap;
-    margin-left:5rem;
-    margin-bottom: 1rem;
+    padding: 2rem;
+   
+   
 }
 
 .diccionario{
@@ -19,7 +26,7 @@
 }
 
 .palabras{
-    width: 60rem;
+    width: 50rem;
 }
 
 /* .pie{
