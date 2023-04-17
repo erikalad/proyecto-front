@@ -530,7 +530,7 @@ const Dashboard = () => {
      
 
      <div >
-     <div className="grafico"><HeatmapChart/></div>
+     <div className="diccionario"><HeatmapChart/></div>
      </div>
     
 

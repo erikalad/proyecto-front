@@ -22,7 +22,7 @@
 }
 
 .diccionario{
-    width: 60rem;
+    max-width: 85rem;
 }
 
 .palabras{
