@@ -328,6 +328,7 @@ const Dashboard = () => {
         </Select> 
 
             <Button onClick={descargarPDF}>Descargar PDF</Button>
+            <Button href='/informe'>Generar Informe</Button>
             <Button href='/mail' disabled>Enviar por email</Button>
         </div>
         <div className='estadisticas'>
