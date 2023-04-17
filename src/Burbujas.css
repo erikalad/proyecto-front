@@ -6,9 +6,8 @@
 
 .bubble {
   position: absolute;
-  border-radius: 50%;
-  background-color: rgb(63, 63, 248);
-  opacity: 0.8;
+  border-radius: 100%;
+ opacity: 0.7;
 }
 
 .bubble-container {
@@ -25,7 +24,28 @@
 .word {
   position: absolute;
   transform: translate(-50%, -50%);
-  color:white;
+  color:rgb(0, 0, 0);
   top: 50%;
   left: 50%;
+  z-index: 1; /* Incrementamos el índice de apilamiento del texto para que esté encima de la burbuja */
 }
+
+.bubble {
+  cursor: pointer;
+  transform: scale(0);
+  animation: formar-burbujas 1s ease-in-out forwards;
+}
+
+@keyframes formar-burbujas {
+  from {  
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.bubble:hover{
+  z-index: 10;
+}
+

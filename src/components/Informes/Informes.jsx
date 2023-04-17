@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useState } from 'react';
 import './Informes.css'
 import {SlNotebook } from 'react-icons/sl';
 import logo from './../../assest/qsocialnow.jpg'
@@ -8,9 +8,33 @@ import {AiOutlineClockCircle} from 'react-icons/ai'
 import {CiVolumeHigh} from 'react-icons/ci'
 import { Tag } from 'antd';
 import { BsFillDashCircleFill } from 'react-icons/bs'
+import ReactApexChart from 'react-apexcharts';
 
 
 export default function Informes() {
+  const [data2, setData2] = useState({
+    series: [
+      {
+        name: 'Area 1',
+        data: [31, 40, 28, 51, 42, 109, 100],
+      },
+    ],
+    options: {
+      chart: {
+        with:500,
+        height: 350,
+        type: 'area',
+      },
+      xaxis: {
+        categories: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+      },
+      fill: {
+        opacity: 0.6, // Opacidad del área
+      },
+    },
+  });
+
+
   {/*Datos solicitados*/}
   const cliente = "Hugo Passalacqua"
   const tiempo ="la ultima semana"
@@ -73,6 +97,18 @@ export default function Informes() {
       <div className='icon'><BsFillDashCircleFill/> </div>
       <div>TOTAL (VOLUMEN DE PUBLICACIONES)</div>
      
+    </div>
+
+    <div>
+    <div className="grafico">
+            <ReactApexChart
+                options={data2.options}
+                series={data2.series}
+                type="bar"
+                height={350}
+                width={500}
+                />
+            </div>
     </div>
     </Fragment>
   )

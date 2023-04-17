@@ -46,6 +46,14 @@ const Dashboard = () => {
             { label: 'Progreso 3', percent: 47 }
     
     ])
+    const [datosBurbuja,setDatosBurbuja] = useState([
+    { word: "Autoridad", value: 32, porcentaje: 719 },
+    { word: "Eficiencia", value: 64, porcentaje: 481 },
+    { word: "Responsabilidad", value: 8, porcentaje: 274 },
+    { word: "Experiencia", value: 31, porcentaje: 195 },
+    { word: "Popularidad", value: 86, porcentaje: 165 },
+    { word: "Coherencia", value: 46, porcentaje: 160 },
+    { word: "Comunicativo", value: 98, porcentaje: 81 }])
 
     const database = {
       name: 'Parent',
@@ -97,19 +105,6 @@ const Dashboard = () => {
         },
       });
 
-      const [datas, setDatas] = React.useState([
-        [2, 0, 5, 3, 1, 0, 6],
-        [1, 4, 0, 2, 6, 3, 0],
-        [0, 2, 6, 4, 0, 1, 5],
-        [4, 1, 0, 6, 5, 2, 0],
-        [3, 6, 1, 0, 2, 4, 0],
-        [0, 3, 4, 1, 0, 5, 2],
-        [5, 0, 2, 0, 4, 6, 1],
-        [0, 5, 3, 6, 1, 0, 4],
-        [6, 0, 1, 5, 0, 4, 3],
-        [0, 6, 2, 1, 3, 0, 5],
-      ]);
-    
 
 
 
@@ -228,6 +223,16 @@ const Dashboard = () => {
           setChartData(newData)
           setActores(368)
           setEventos(4568)
+          setDatosBurbuja([
+            { word: "Innovación", value: 40, porcentaje: 690 },
+            { word: "Compromiso", value: 52, porcentaje: 568 },
+            { word: "Liderazgo", value: 21, porcentaje: 346 },
+            { word: "Productividad", value: 73, porcentaje: 268 },
+            { word: "Colaboración", value: 65, porcentaje: 198 },
+            { word: "Creatividad", value: 85, porcentaje: 178 },
+            { word: "Eficiencia", value: 44, porcentaje: 154 }
+          ])
+          console.log(datosBurbuja)
         }else if (selectedSeries === "Serie 3") {
             setData2({
               series: [
@@ -276,6 +281,15 @@ const Dashboard = () => {
             setChartData(newData);
             setActores(270)
             setEventos(2253)
+            setDatosBurbuja([
+              { word: "Innovación", value: 56, porcentaje: 620 },
+              { word: "Sostenibilidad", value: 73, porcentaje: 480 },
+              { word: "Calidad", value: 38, porcentaje: 372 },
+              { word: "Crecimiento", value: 26, porcentaje: 240 },
+              { word: "Rentabilidad", value: 87, porcentaje: 186 },
+              { word: "Equipo", value: 51, porcentaje: 170 },
+              { word: "Comunidad", value: 68, porcentaje: 134 }
+            ])
           }
         },[selectedSeries]) 
   
@@ -524,7 +538,7 @@ const Dashboard = () => {
 
       <div className='conteiner-grafica'>
 
-          <div className="grafico"><Chart/></div>
+          <div className="grafico"><Chart data={datosBurbuja}/></div>
           <div className="grafico"><ReactWordcloud words={words} options={options} /></div>
       
       </div>
