@@ -602,7 +602,7 @@ export default function Informes() {
 
         </div> 
       
-        <hr color="#0083CA" size="5"/>
+        <hr className="hr-estilos"/>
 
 
         <div className='contenedor-dos-analisis'>
@@ -631,7 +631,7 @@ export default function Informes() {
         </div> 
        
       </div>
-      <hr color="#0083CA" size="5"/>
+      <hr className="hr-estilos"/>
 
         <div className='contenedor-dos-analisis'>
         
@@ -657,7 +657,7 @@ export default function Informes() {
         </div> 
        
         </div> 
-        <hr color="#0083CA" size="5"/>
+        <hr className="hr-estilos"/>
 
 
       </div>
