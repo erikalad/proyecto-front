@@ -11,6 +11,8 @@ import { BsFillDashCircleFill } from 'react-icons/bs'
 import ReactApexChart from 'react-apexcharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import { TbTargetArrow} from 'react-icons/tb'
+import clave from './../../assest/clave.jpg'
+import hashtags from './../../assest/hashtags.jpg'
 
 
 
@@ -474,10 +476,32 @@ export default function Informes() {
     <div>ANILLO EXTERNO: Período Actual</div> 
     </div>
 
-
-    <div>
+   
+    <div className='contenedor-principales'>
+    <div >
+    <div className='principales-hashtags'>
     <div>PRINCIPALES</div>
-    <div className='titulo2'>HASHTAGS</div>
+    <div className='titulo3'>HASHTAGS</div>
+    <img src={hashtags} className='hashtags'/>
+    </div>
+    <div>
+                  
+
+    </div>
+    </div>
+
+    <div >
+    <div className='principales-hashtags'>
+    <div>PALABRAS</div>
+    <div className='titulo3'>CLAVE</div>
+    <img src={clave} className='hashtags'/>
+    </div>
+    <div>
+
+
+    </div>
+
+    </div>
     </div>
    
 

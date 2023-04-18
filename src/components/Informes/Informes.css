@@ -212,3 +212,27 @@
     text-align: center;
     gap: 1rem;
 }
+
+.hashtags{
+    width: 20%;
+    
+}
+
+.principales-hashtags{
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo3{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight:400;
+    color: #0083CA
+}
+
+.contenedor-principales{
+    display: flex;
+    margin-top: 1rem;
+}
