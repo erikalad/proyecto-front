@@ -246,7 +246,20 @@
    
 }
 
-.grafico-palabras{
-    
+.contenedor-analisis{
+    display: flex;
+    margin: 2rem;
+}
+
+.contenedor-texto-analisis{
+    display: flex;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    gap:2rem
+}
+
+.icono-analisis{
+    font-size: 2rem;
+    color:#0083CA;
 }
 

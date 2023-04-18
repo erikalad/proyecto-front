@@ -14,6 +14,8 @@ import { TbTargetArrow} from 'react-icons/tb'
 import clave from './../../assest/clave.jpg'
 import hashtags from './../../assest/hashtags.jpg'
 import ReactWordcloud from 'react-wordcloud'; 
+import {BiConversation} from 'react-icons/bi'
+import { MdOutlineContactSupport }from 'react-icons/md'
 
 
 export default function Informes() {
@@ -541,7 +543,99 @@ export default function Informes() {
    
 
 
+      {/*Nav*/}
+      <div className='contenedor-extremo'>
+      <div className='nav'>
+            <div className='reporte'>
+            <SlNotebook/>
+            <p>REPORTE DE SÍNTESIS</p>
+            </div>
 
+          
+            <img src={logo} className='img'></img>
+            
+      </div>
+      </div>
+
+    <div className='cuerpo'>
+    <div className='titulo2'><BiConversation/></div>
+   
+    <div className='titulo2'>ANÁLISIS</div>
+    </div>
+
+    <div className='contenedor-analisis'>
+      <div>
+        <div className='contenedor-texto-analisis'>
+         <div className='icono-analisis'><MdOutlineContactSupport/></div> 
+         <div>El candidato a gobernador para Misiones recibe una
+        connotación ampliamente positiva, y se destaca el atributo de
+        Eficiencia que le otorga la comunidad digital. No se detectan
+        contenidos negativos.
+        </div>   
+        </div> 
+        <hr></hr> 
+
+
+          <div className='contenedor-texto-analisis'>
+         <div className='icono-analisis'><MdOutlineContactSupport/></div> 
+         <div>El candidato a gobernador para Misiones recibe una
+        connotación ampliamente positiva, y se destaca el atributo de
+        Eficiencia que le otorga la comunidad digital. No se detectan
+        contenidos negativos.
+        </div>   
+        </div> 
+        <hr></hr> 
+
+
+          <div className='contenedor-texto-analisis'>
+         <div className='icono-analisis'><MdOutlineContactSupport/></div> 
+         <div>El candidato a gobernador para Misiones recibe una
+        connotación ampliamente positiva, y se destaca el atributo de
+        Eficiencia que le otorga la comunidad digital. No se detectan
+        contenidos negativos.
+        </div>   
+        </div> 
+        <hr></hr> 
+
+
+      </div> 
+
+      <div>
+         <div className='contenedor-texto-analisis'>
+         <div className='icono-analisis'><MdOutlineContactSupport /></div> 
+         <div>El candidato a gobernador para Misiones recibe una
+        connotación ampliamente positiva, y se destaca el atributo de
+        Eficiencia que le otorga la comunidad digital. No se detectan
+        contenidos negativos.
+        </div>   
+        </div> 
+        <hr></hr> 
+
+
+           <div className='contenedor-texto-analisis'>
+         <div className='icono-analisis'><MdOutlineContactSupport/></div> 
+         <div>El candidato a gobernador para Misiones recibe una
+        connotación ampliamente positiva, y se destaca el atributo de
+        Eficiencia que le otorga la comunidad digital. No se detectan
+        contenidos negativos.
+        </div>   
+        </div> 
+        <hr></hr> 
+
+
+        <div className='contenedor-texto-analisis'>
+         <div className='icono-analisis'><MdOutlineContactSupport/></div> 
+         <div>El candidato a gobernador para Misiones recibe una
+        connotación ampliamente positiva, y se destaca el atributo de
+        Eficiencia que le otorga la comunidad digital. No se detectan
+        contenidos negativos.
+        </div>   
+        </div> 
+        <hr></hr> 
+
+
+      </div>
+    </div> 
 
     </div>
     </Fragment>
