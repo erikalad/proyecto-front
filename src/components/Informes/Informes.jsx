@@ -6,7 +6,7 @@ import fb from './../../assest/fb.png'
 import tw from './../../assest/tw.jpg'
 import {AiOutlineClockCircle} from 'react-icons/ai'
 import {CiVolumeHigh} from 'react-icons/ci'
-import { Tag } from 'antd';
+import { Table, Tag } from 'antd';
 import { BsFillDashCircleFill } from 'react-icons/bs'
 import ReactApexChart from 'react-apexcharts';
 import { PieChart, Pie, Cell } from 'recharts';
@@ -27,6 +27,8 @@ export default function Informes() {
     rotations: 0,
     rotate: 90,
   };
+
+  
 
 
   const [data2, setData2] = useState({
@@ -193,6 +195,17 @@ export default function Informes() {
     { text: "hugo", value: 20 },
     { text: "fuerzas", value: 57 },
   ];
+
+  const analisis=[
+    {text:"El candidato a gobernador para Misiones recibe una connotacion"},
+    {text:"El candidato a gobernador para Misiones recibe una connotacion"},
+    {text:"El candidato a gobernador para Misiones recibe una connotacion"},
+    {text:"El candidato a gobernador para Misiones recibe una connotacion"}
+
+
+  ]
+
+  
 
 
   return (
@@ -564,7 +577,7 @@ export default function Informes() {
     </div>
 
     <div className='contenedor-analisis'>
-      <div>
+      <div className='contenedor-dos-analisis'>
         <div className='contenedor-texto-analisis'>
          <div className='icono-analisis'><MdOutlineContactSupport/></div> 
          <div>El candidato a gobernador para Misiones recibe una
@@ -573,71 +586,84 @@ export default function Informes() {
         contenidos negativos.
         </div>   
         </div> 
-        <hr></hr> 
+       
 
 
           <div className='contenedor-texto-analisis'>
          <div className='icono-analisis'><MdOutlineContactSupport/></div> 
-         <div>El candidato a gobernador para Misiones recibe una
-        connotación ampliamente positiva, y se destaca el atributo de
-        Eficiencia que le otorga la comunidad digital. No se detectan
-        contenidos negativos.
+         <div>Impacta a favor su posteo sobre la visita al barrio Don Daniel
+          de Alem y la charla con voluntarios y voluntarias del
+          merendero que lleva adelante la vecina Yanina Báez con el
+          acompañamiento de la agrupación Manos Unidas.
+
         </div>   
         </div> 
-        <hr></hr> 
+       
+
+        </div> 
+      
+        <hr color="#0083CA" size="5"/>
 
 
+        <div className='contenedor-dos-analisis'>
           <div className='contenedor-texto-analisis'>
          <div className='icono-analisis'><MdOutlineContactSupport/></div> 
-         <div>El candidato a gobernador para Misiones recibe una
-        connotación ampliamente positiva, y se destaca el atributo de
-        Eficiencia que le otorga la comunidad digital. No se detectan
-        contenidos negativos.
+         <div>El candidato pone de relieve la reunión que mantuvo con la
+        concejala Gabriela Bastarrechea, de Puerto Rico, y su equipo,
+        donde conversaron sobre ideas y e iniciativas que quieren
+        llevar a cabo en la comunidad.
+
         </div>   
         </div> 
-        <hr></hr> 
+      
 
 
-      </div> 
+      
 
-      <div>
+     
          <div className='contenedor-texto-analisis'>
          <div className='icono-analisis'><MdOutlineContactSupport /></div> 
-         <div>El candidato a gobernador para Misiones recibe una
-        connotación ampliamente positiva, y se destaca el atributo de
-        Eficiencia que le otorga la comunidad digital. No se detectan
-        contenidos negativos.
+         <div>Repercute la publicación de la cuenta del Frente Renovador de
+        la Concordia, que subraya las palabras del candidato: "Al
+        futuro lo tenemos que construir nosotros".
+
         </div>   
         </div> 
-        <hr></hr> 
+       
+      </div>
+      <hr color="#0083CA" size="5"/>
 
-
+        <div className='contenedor-dos-analisis'>
+        
            <div className='contenedor-texto-analisis'>
          <div className='icono-analisis'><MdOutlineContactSupport/></div> 
-         <div>El candidato a gobernador para Misiones recibe una
-        connotación ampliamente positiva, y se destaca el atributo de
-        Eficiencia que le otorga la comunidad digital. No se detectan
-        contenidos negativos.
+         <div>Los medios difunden que el diputado provincial se acercó a
+          Colonia Gisela para visitar dos establecimientos educativos y
+          charlar con el cuerpo docente que se desempeña en este
+          paraje ubicado entre los municipios de Colonia Polana y
+          General Urquiza.
+
         </div>   
         </div> 
-        <hr></hr> 
+      
 
 
         <div className='contenedor-texto-analisis'>
          <div className='icono-analisis'><MdOutlineContactSupport/></div> 
-         <div>El candidato a gobernador para Misiones recibe una
-        connotación ampliamente positiva, y se destaca el atributo de
-        Eficiencia que le otorga la comunidad digital. No se detectan
-        contenidos negativos.
+         <div>Passalacqua logra importante engagement en su saludo a “la
+        querida” comunidad de Alba Posse en su 88° aniversario.
+
         </div>   
         </div> 
-        <hr></hr> 
+       
+        </div> 
+        <hr color="#0083CA" size="5"/>
 
 
       </div>
     </div> 
 
-    </div>
+
     </Fragment>
   )
 }

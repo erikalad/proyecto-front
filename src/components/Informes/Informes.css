@@ -248,14 +248,22 @@
 
 .contenedor-analisis{
     display: flex;
+    flex-direction: column;
     margin: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .contenedor-texto-analisis{
     display: flex;
     margin-bottom: 3rem;
     margin-top: 2rem;
-    gap:2rem
+    gap:2rem;
+    justify-content: center;
+    align-items: center;
+    width: 35rem;
 }
 
 .icono-analisis{
@@ -263,3 +271,17 @@
     color:#0083CA;
 }
 
+.contenedor-dos-analisis{
+    display: flex;
+    align-items: center;
+}
+
+hr {
+    width: 100%;
+    display: block;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: none;
+  
+  }
