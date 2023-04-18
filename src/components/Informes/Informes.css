@@ -142,7 +142,7 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    width: 70rem;
+
 }
 
 .numeros{
@@ -187,7 +187,7 @@
 .pie{
     display: flex;
     flex-direction: column;
-   
+    margin-right: 3.5rem;
 } 
 
 .texto{
@@ -214,7 +214,7 @@
 }
 
 .hashtags{
-    width: 20%;
+    width: 50%;
     
 }
 
@@ -234,5 +234,19 @@
 
 .contenedor-principales{
     display: flex;
-    margin-top: 1rem;
+   
 }
+
+.contenedor-img-words{
+    height: 15rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+   
+}
+
+.grafico-palabras{
+    
+}
+

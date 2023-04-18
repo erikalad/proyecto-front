@@ -13,10 +13,18 @@ import { PieChart, Pie, Cell } from 'recharts';
 import { TbTargetArrow} from 'react-icons/tb'
 import clave from './../../assest/clave.jpg'
 import hashtags from './../../assest/hashtags.jpg'
-
+import ReactWordcloud from 'react-wordcloud'; 
 
 
 export default function Informes() {
+
+  const opciones = {
+    fontFamily: 'Helvetica, sans-serif',
+    fontSizes: [8, 30],
+    colors: ['#0083CA'],
+    rotations: 0,
+    rotate: 90,
+  };
 
 
   const [data2, setData2] = useState({
@@ -157,7 +165,7 @@ export default function Informes() {
 
 
   {/*Datos solicitados*/}
-  const cliente = "Titulo"
+  const cliente = "HUGO PASSALACQUA"
   const tiempo ="la ultima semana"
   const clienteUp = cliente.toUpperCase()
   const desdeDiaHora="16:27 hs del 20/03/2023"
@@ -165,6 +173,24 @@ export default function Informes() {
   const tendencia= "predominante"
   const indicadorImpacto = "POSITIVIDAD"
   const porcentajeImpacto = "32%"
+  const principalesHashtags = [
+    { text: "#posadas", value: 50 },
+    { text: "#ahora", value: 50 },
+    { text: "#buensabado", value: 50 },
+    { text: "#puertorico", value: 50 },
+  ];
+  const palabrasClaves = [
+    { text: "compomiso", value: 50 },
+    { text: "esfuerzo", value: 20 },
+    { text: "futuro", value: 20 },
+    { text: "construir", value: 15 },
+    { text: "alba", value: 12 },
+    { text: "comunidad", value: 25 },
+    { text: "deporte", value: 45 },
+    { text: "abrazo", value: 36 },
+    { text: "hugo", value: 20 },
+    { text: "fuerzas", value: 57 },
+  ];
 
 
   return (
@@ -328,7 +354,19 @@ export default function Informes() {
     </div>
 
   
+      {/*Nav*/}
+      <div className='contenedor-extremo'>
+      <div className='nav'>
+            <div className='reporte'>
+            <SlNotebook/>
+            <p>REPORTE DE SÍNTESIS</p>
+            </div>
 
+          
+            <img src={logo} className='img'></img>
+            
+      </div>
+      </div>
 
     <div className='cuerpo'>
     <div className='titulo2'><TbTargetArrow/></div>
@@ -478,32 +516,32 @@ export default function Informes() {
 
    
     <div className='contenedor-principales'>
-    <div >
+
+
+    <div className='contenedor-img-words' >
     <div className='principales-hashtags'>
     <div>PRINCIPALES</div>
     <div className='titulo3'>HASHTAGS</div>
     <img src={hashtags} className='hashtags'/>
     </div>
-    <div>
-                  
-
-    </div>
+    <div className='grafico-palabras'><ReactWordcloud words={principalesHashtags} options={opciones} /></div>    
     </div>
 
-    <div >
+
+    <div className='contenedor-img-words'>
     <div className='principales-hashtags'>
     <div>PALABRAS</div>
     <div className='titulo3'>CLAVE</div>
     <img src={clave} className='hashtags'/>
     </div>
-    <div>
-
-
+    <div className='grafico-palabras'><ReactWordcloud words={palabrasClaves} options={opciones} /></div>
     </div>
 
-    </div>
     </div>
    
+
+
+
 
     </div>
     </Fragment>
