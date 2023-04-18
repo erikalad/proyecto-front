@@ -385,18 +385,7 @@ export default function Informes() {
     { name: 'Negativo', value: 10, fill: '#ff4c4cd7' },
   ];
   
-  
-
-  const CustomLabel = ({ viewBox, value }) => {
-    const { cx, cy } = viewBox;
-    return (
-      <text x={cx} y={cy} textAnchor="middle" fontSize="20">
-        {value}%
-      </text>
-    );
-  }
-  
-
+ 
 
   {/*Datos solicitados*/}
   const cliente = "HUGO PASSALACQUA"
@@ -442,6 +431,7 @@ export default function Informes() {
     <Fragment >
       <div className="contenedor">
       <div className='contenedor-extremo'>
+
       {/*Nav*/}
       <div className='nav'>
       <div className='reporte'>
@@ -543,10 +533,10 @@ export default function Informes() {
     <div className='contenedor-totales'>
 
       <div className='box'>
-      <div className='numeros frases-total'>111</div> 
-      <div className='frase'>
-      <div className='frases-total'>PUBLICACIONES</div>
-      <div className='frases-total'>TOTALES</div>
+        <div className='numeros frases-total'>111</div> 
+        <div className='frase'>
+        <div className='frases-total'>PUBLICACIONES</div>
+        <div className='frases-total'>TOTALES</div>
       </div>
       <hr/>
       </div>
@@ -554,44 +544,44 @@ export default function Informes() {
      
 
       <div className='box'>
-      <div className='numeros frases-total'>1</div>
-      <div className='frase'>
-      <div className='frases-total'>POR HORA </div>
-      <div className='frases-total'>TOTALES</div>
+        <div className='numeros frases-total'>1</div>
+        <div className='frase'>
+        <div className='frases-total'>POR HORA </div>
+        <div className='frases-total'>TOTALES</div>
       </div>
       <hr/>
       </div>
 
       
 
-      <div className='box'>
-      <div className='numeros frases-total'>36</div>
-      <div className='frase'>
-      <div className='frases-total'>PICO MÁXIMO </div>
-      <div className='frases-total'>DE PUBLICACIONES</div>
+        <div className='box'>
+        <div className='numeros frases-total'>36</div>
+        <div className='frase'>
+        <div className='frases-total'>PICO MÁXIMO </div>
+        <div className='frases-total'>DE PUBLICACIONES</div>
       </div>
       </div>
 
-      </div>
+    </div>
 
       <div className='contenedor-totales'>
 
-      <div className='box'>
-      <div className='numeros frases-total'>DESCENDENTE</div>
-      <div className='frase'>
-      <div className='frases-total'>TENDENCIA </div>
-      <div className='frases-total'>DE PUBLICACIONES</div>
+        <div className='box'>
+        <div className='numeros frases-total'>DESCENDENTE</div>
+        <div className='frase'>
+        <div className='frases-total'>TENDENCIA </div>
+        <div className='frases-total'>DE PUBLICACIONES</div>
       </div>
       <hr/>
       </div>
 
       
 
-      <div className='box'>
-      <div className='numeros frases-total'>124.524</div>
-      <div className='frase'>
-      <div className='frases-total'>ALCANCE</div>
-      <div className='frases-total'>IMPRESIONES</div>
+        <div className='box'>
+        <div className='numeros frases-total'>124.524</div>
+        <div className='frase'>
+        <div className='frases-total'>ALCANCE</div>
+        <div className='frases-total'>IMPRESIONES</div>
       </div>
       </div>
       </div>
@@ -599,9 +589,9 @@ export default function Informes() {
     </div>
 
   
-      {/*Nav*/}
-      <div className='contenedor-extremo'>
-      <div className='nav'>
+  {/*Nav*/}
+  <div className='contenedor-extremo'>
+    <div className='nav'>
             <div className='reporte'>
             <SlNotebook/>
             <p>REPORTE DE SÍNTESIS</p>
@@ -610,8 +600,8 @@ export default function Informes() {
           
             <img src={logo} className='img'></img>
             
-      </div>
-      </div>
+    </div>
+  </div>
 
     <div className='cuerpo'>
     <div className='titulo2'><TbTargetArrow/></div>

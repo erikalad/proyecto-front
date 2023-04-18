@@ -101,6 +101,7 @@
     padding-left: 2rem;
     border:none;
     width: 100%;
+    font-style: oblique;
 }
 
 .margen-boton{
@@ -155,6 +156,7 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+    background-color: #F2F2F2;
 
 }
 
@@ -167,7 +169,7 @@
 .numeros{
     font-size: 2rem;
     color: #0083CA ;
-    font-weight: 400; 
+    font-weight: 600; 
 }
 
 .box{
