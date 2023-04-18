@@ -6,7 +6,7 @@ import fb from './../../assest/fb.png'
 import tw from './../../assest/tw.jpg'
 import {AiOutlineClockCircle} from 'react-icons/ai'
 import {CiVolumeHigh} from 'react-icons/ci'
-import { Table, Tag } from 'antd';
+import { Table, Tag ,Card, Col, Row} from 'antd';
 import { BsFillDashCircleFill } from 'react-icons/bs'
 import ReactApexChart from 'react-apexcharts';
 import { PieChart, Pie, Cell } from 'recharts';
@@ -16,9 +16,238 @@ import hashtags from './../../assest/hashtags.jpg'
 import ReactWordcloud from 'react-wordcloud'; 
 import {BiConversation} from 'react-icons/bi'
 import { MdOutlineContactSupport }from 'react-icons/md'
+import {RiUserStarLine, RiFileUserLine} from 'react-icons/ri'
+import { IoAlert } from 'react-icons/io5'
+import { TiHeartOutline } from 'react-icons/ti'
+
+
 
 
 export default function Informes() {
+
+  //COMPONENTE TABLE  DE ANTD
+  
+  const columns = [
+    {
+      title: 'N°',
+      dataIndex: 'key',
+      rowScope: 'row',
+      headerStyle: { backgroundColor: "#0083CA" },
+    },
+    {
+      title: 'Influenciador',
+      dataIndex: 'influenciador',
+      render: (text) => <div>{text}</div>,
+      headerStyle: { backgroundColor: "#0083CA" },
+    },
+    {
+      title: 'Impresiones',
+      dataIndex: 'impresiones',
+    },
+  ];
+  
+  const data = [
+    {
+      key: '1',
+      influenciador: 'passalacquaok',
+      impresiones: 38691,
+    },
+    {
+      key: '2',
+      influenciador: 'PabbloZapata',
+      impresiones: 6292,
+    },
+    {
+      key: '3',
+      influenciador: 'noticiasen3ok',
+      impresiones: 3495,
+    },
+    {
+      key: '4',
+      influenciador: 'NHoughan',
+      impresiones: 65,
+    },
+    {
+      key: '5',
+      influenciador: 'alejavier68',
+      impresiones: 64,
+    },
+  ];
+  
+  const data2ant = [
+    {
+      key: '6',
+      influenciador: '',
+      impresiones: '',
+    },
+    {
+      key: '7',
+      influenciador: '',
+      impresiones: '',
+    },
+    {
+      key: '8',
+      influenciador: '',
+      impresiones: '',
+    },
+    {
+      key: '9',
+      influenciador: '',
+      impresiones: '',
+    },
+    {
+      key: '10',
+      influenciador: '',
+      impresiones: '',
+    },
+  ];
+  
+  const rowClassName = (record, index) => {
+    if (index % 2 === 0) {
+      return 'odd-row';
+    } else {
+     
+      return 'even-row';
+    }
+  };
+  //FIN COMPONENTE DE ANTD
+
+  
+  const columnsPreocupacionesTotal = [
+    {
+      title: (
+        <div className='title-total icon-nombre-columnas'>
+        <div className='icon-nombre-columnas'><BsFillDashCircleFill/> </div>
+      TOTAL
+      </div>
+      ),
+      dataIndex: 'total',
+      className: 'hover-black'
+    },
+  ];
+
+  const columnsPreocupacionesTw = [
+    {
+      title: (
+        <div className='icon-nombre-columnas'>
+          <img className="tw" src={tw}/>
+          TWITTER
+        </div>
+      ),
+      dataIndex: 'twitter',
+      className: 'hover-black'
+    }
+  ];
+
+  const columnsPreocupacionesFb = [
+    {
+      title: ( 
+      <div className='icon-nombre-columnas'>
+      <img className="fb" src={fb}/>
+        FACEBOOK
+        </div>
+        ),
+      dataIndex: 'facebook',
+      className: 'hover-black'
+    },
+  ];
+ 
+  
+  const dataPreocupaciones = [
+    {
+      total: (
+      <div className='totalizador-preocupaciones'>
+      <div>TRABAJO </div>
+      <div>44.83%</div>
+      </div>
+      ),
+    },
+    {
+      total: 
+      (
+        <div className='totalizador-preocupaciones'>
+        <div>VIVIENDA </div>
+        <div>24.14%</div>
+        </div>
+        )
+    },
+    {
+      total:(
+        <div className='totalizador-preocupaciones'>
+        <div>EDUCACIÓN </div>
+        <div>10.34%</div>
+        </div>
+        ) 
+    },
+  ];
+
+  const dataPreocupacionesTw = [
+    {
+      twitter: (
+      <div className='totalizador-preocupaciones'>
+      <div>TRABAJO </div>
+      <div>36.84%</div>
+      </div>
+      ),
+    },
+    {
+      twitter: 
+      (
+        <div className='totalizador-preocupaciones'>
+        <div>VIVIENDA </div>
+        <div>36.84%</div>
+        </div>
+        )
+    },
+    {
+      twitter:(
+        <div className='totalizador-preocupaciones'>
+        <div>EDUCACIÓN </div>
+        <div>15.79%</div>
+        </div>
+        ) 
+    },
+  ];
+
+  const dataPreocupacionesFb = [
+    {
+      facebook: (
+      <div className='totalizador-preocupaciones'>
+      <div>TRABAJO </div>
+      <div>60.00%</div>
+      </div>
+      ),
+    },
+    {
+      facebook: 
+      (
+        <div className='totalizador-preocupaciones'>
+        <div>VIVIENDA </div>
+        <div>20.00%</div>
+        </div>
+        )
+    },
+    {
+      facebook:(
+        <div className='totalizador-preocupaciones'>
+        <div>EDUCACIÓN </div>
+        <div>10.00%</div>
+        </div>
+        ) 
+    }
+  ];
+
+
+  const rowClassNameTotal = (name) => {
+    if (name === "TOTAL") {
+      return 'preocupaciones-total';
+    } else if (name === "TWITTER") {
+      return 'preocupaciones-twitter';
+    } else{
+      return 'preocupaciones-facebook'
+    }
+  };
+
 
   const opciones = {
     fontFamily: 'Helvetica, sans-serif',
@@ -27,6 +256,7 @@ export default function Informes() {
     rotations: 0,
     rotate: 90,
   };
+ 
 
   
 
@@ -661,9 +891,284 @@ export default function Informes() {
 
 
       </div>
+
+
+
+
+
+  {/*Nav*/}
+  <div className='contenedor-extremo'>
+      <div className='nav'>
+            <div className='reporte'>
+            <SlNotebook/>
+            <p>REPORTE DE SÍNTESIS</p>
+            </div>
+
+          
+            <img src={logo} className='img'></img>
+            
+      </div>
+      </div>
+
+    <div className='cuerpo'>
+    <div className='titulo2'><RiUserStarLine/></div>
+   
+    <div className='titulo2'>INFLUENCIADORES</div>
+    </div>
+    <Tag className='tag'>Top 10 principales</Tag>
+
+  <div className="container-table">
+  <div className="table">
+    <Table
+      columns={columns}
+      dataSource={[...data]}
+      pagination={false}
+      rowClassName={rowClassName}
+      style={{ width: '100%' }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th
+              {...props}
+              style={{ backgroundColor: "#0083CA", color: 'white', fontWeight: 'bold' }}
+            />
+          ),
+        },
+      }}
+    />
+      <Table
+      columns={columns}
+      dataSource={data2ant}
+      pagination={false}
+      rowClassName={rowClassName}
+      style={{ width:"100%" }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th
+              {...props}
+              style={{ backgroundColor: "#0083CA", color: 'white', fontWeight: 'bold' }}
+            />
+          ),
+        },
+      }}
+    />
+  </div>
+  </div>
+
+
+  <div className='cuerpo'>
+    <div className='titulo2'><IoAlert/></div>
+   
+    <div className='titulo2'>PREOCUPACIONES</div>
+    </div>
+    <Tag className='tag'>Top 3 principales</Tag>
+
+    <div className="container-table">
+  <div className="table">
+    <Table
+      columns={columnsPreocupacionesTotal}
+      dataSource={[...dataPreocupaciones]}
+      pagination={false}
+      rowClassName={rowClassNameTotal("TOTAL")}
+      style={{ width: '100%',margin:"3px" }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th
+              {...props}
+              style={{ backgroundColor: "white", color: 'black' }}
+            />
+          ),
+        },
+      }}
+    />
+      <Table
+      columns={columnsPreocupacionesTw}
+      dataSource={[...dataPreocupacionesTw]}
+      pagination={false}
+      rowClassName={rowClassNameTotal("TWITTER")}
+      style={{ width:"100%",margin:"3px" }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th
+              {...props}
+              style={{ backgroundColor: "white", color: 'black' }}
+            />
+          ),
+        },
+      }}
+    />
+
+      <Table
+        columns={columnsPreocupacionesFb}
+        dataSource={[...dataPreocupacionesFb]}
+        pagination={false}
+        rowClassName={rowClassNameTotal("FACEBOOK")}
+        style={{ width: "100%", margin: "3px"}} 
+        components={{
+          header: {
+            cell: (props) => (
+              <th
+                {...props}
+                style={{ backgroundColor: "white", color: "black" }}
+              />
+            ),
+          },
+        }}  
+      />
+  </div>
+  </div>
+
+    {/*Nav*/}
+    <div className='contenedor-extremo'>
+          <div className='nav'>
+                <div className='reporte'>
+                <SlNotebook/>
+                <p>REPORTE DE SÍNTESIS</p>
+                </div>
+
+              
+                <img src={logo} className='img'></img>
+                
+      </div>
+      </div>
+
+
+
+      <div className='cuerpo'>
+    <div className='titulo2'><TiHeartOutline/></div>
+   
+    <div className='titulo2'>EMOCIONES</div>
+    </div>
+    <Tag className='tag'>Top 3 principales</Tag>
+
+    <div className="container-table">
+  <div className="table">
+    <Table
+      columns={columnsPreocupacionesTotal}
+      dataSource={[...dataPreocupaciones]}
+      pagination={false}
+      rowClassName={rowClassNameTotal("TOTAL")}
+      style={{ width: '100%',margin:"3px" }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th
+              {...props}
+              style={{ backgroundColor: "white", color: 'black' }}
+            />
+          ),
+        },
+      }}
+    />
+      <Table
+      columns={columnsPreocupacionesTw}
+      dataSource={[...dataPreocupacionesTw]}
+      pagination={false}
+      rowClassName={rowClassNameTotal("TWITTER")}
+      style={{ width:"100%",margin:"3px" }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th
+              {...props}
+              style={{ backgroundColor: "white", color: 'black' }}
+            />
+          ),
+        },
+      }}
+    />
+
+      <Table
+        columns={columnsPreocupacionesFb}
+        dataSource={[...dataPreocupacionesFb]}
+        pagination={false}
+        rowClassName={rowClassNameTotal("FACEBOOK")}
+        style={{ width: "100%", margin: "3px"}} 
+        components={{
+          header: {
+            cell: (props) => (
+              <th
+                {...props}
+                style={{ backgroundColor: "white", color: "black" }}
+              />
+            ),
+          },
+        }}  
+      />
+  </div>
+  </div>
+
+
+  <div className='cuerpo'>
+    <div className='titulo2'><RiFileUserLine/></div>
+   
+    <div className='titulo2'>IMAGEN</div>
+    </div>
+    <Tag className='tag'>Top 3 principales</Tag>
+
+    <div className="container-table">
+  <div className="table">
+    <Table
+      columns={columnsPreocupacionesTotal}
+      dataSource={[...dataPreocupaciones]}
+      pagination={false}
+      rowClassName={rowClassNameTotal("TOTAL")}
+      style={{ width: '100%',margin:"3px" }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th
+              {...props}
+              style={{ backgroundColor: "white", color: 'black' }}
+            />
+          ),
+        },
+      }}
+    />
+      <Table
+      columns={columnsPreocupacionesTw}
+      dataSource={[...dataPreocupacionesTw]}
+      pagination={false}
+      rowClassName={rowClassNameTotal("TWITTER")}
+      style={{ width:"100%",margin:"3px" }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th
+              {...props}
+              style={{ backgroundColor: "white", color: 'black' }}
+            />
+          ),
+        },
+      }}
+    />
+
+      <Table
+        columns={columnsPreocupacionesFb}
+        dataSource={[...dataPreocupacionesFb]}
+        pagination={false}
+        rowClassName={rowClassNameTotal("FACEBOOK")}
+        style={{ width: "100%", margin: "3px"}} 
+        components={{
+          header: {
+            cell: (props) => (
+              <th
+                {...props}
+                style={{ backgroundColor: "white", color: "black" }}
+              />
+            ),
+          },
+        }}  
+      />
+  </div>
+  </div>   
+
+
+
     </div> 
-
-
     </Fragment>
   )
 }

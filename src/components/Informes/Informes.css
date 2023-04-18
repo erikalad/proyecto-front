@@ -131,6 +131,19 @@
     display: flex;
     gap:0.5rem;
     justify-content: center;
+  
+}
+
+.icon-nombre-columnas{
+    display: flex;
+    gap:0.5rem;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    text-align: center;
+    color: #0083CA;
+    margin-left: 1rem;
 }
 
 .totalizador-1{
@@ -143,6 +156,12 @@
     align-items: center;
     justify-content: center;
 
+}
+
+.title-total{
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .numeros{
@@ -284,4 +303,69 @@
     padding: 0;
     border: none;
     border-top: 1px solid #0083CA;
+  }
+  
+  .table{
+    display: flex;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+
+  }
+
+  .table {
+    border-radius: 0;
+  }
+  
+
+
+  .ant-table-wrapper .ant-table-container table>thead>tr:first-child >*:last-child {
+    border-start-end-radius: 0px !important;
+    }
+ 
+   .ant-table-wrapper .ant-table-container table>thead>tr:first-child >*:first-child {
+        border-start-start-radius: 0px !important;
+    }
+
+  .container {
+    height: 100vh;
+  }
+
+  .even-row {
+    background-color: #f7f7f7;
+  }
+  
+  .odd-row {
+    background-color: #ffffff;
+  }
+
+  .preocupaciones-total{
+    background-color: #0083CA; 
+    color:white;
+    font-weight: bold;
+  }
+
+  .preocupaciones-twitter{
+    background-color: #00acee; 
+    color:white;
+    font-weight: bold;
+  }
+
+  .preocupaciones-facebook{
+    background-color: #3b5998; 
+    color:white;
+    font-weight: bold;
+  }
+
+  .hover-black:hover {
+    color: black;
+  }
+
+  .totalizador-preocupaciones{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .container-table{
+    margin-bottom: 2rem;
   }
