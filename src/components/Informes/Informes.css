@@ -92,7 +92,7 @@
     margin-top: 1.5rem;
     align-items: center;
     font-size: 30px;
-    font-weight:400;
+    font-weight:600;
     color: #0083CA
 }
 
@@ -370,4 +370,60 @@
 
   .container-table{
     margin-bottom: 2rem;
+  }
+
+  .contenedor9cartas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    gap:1rem
+  }
+
+  .contenedor3cartas{
+    display: flex;
+    gap:1rem;
+    
+    
+  }
+
+  .contenedor1carta{
+    display: flex;
+    gap:1rem;
+    width: 80%;
+    padding: 1rem;
+  }
+
+  .color{
+    background-color:  #F2F2F2;
+  }
+
+  .final{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10rem;
+   
+   
+  }
+
+  .logo-final{
+    width: 50%;
+    margin-bottom: 10rem;
+  }
+
+  .contenedor-footer{
+    display: flex;
+    width: 87%;
+    text-align: start;
+    justify-content: space-around;
+    gap:8rem;
+    background-color: #F2F2F2;
+    padding:5rem
   }

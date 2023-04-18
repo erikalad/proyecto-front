@@ -4,6 +4,7 @@ import React, { Fragment, useState } from "react";
 import "./Informes.css";
 import { SlNotebook } from "react-icons/sl";
 import logo from "./../../assest/qsocialnow.jpg";
+import logo2 from "./../../assest/qsocialnow2.jpg";
 import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -1300,6 +1301,169 @@ export default function Informes() {
             CLAVES PARA INTERPRETAR PREOCUPACIONES, EMOCIONES E IMAGENES
           </div>
         </div>
+
+
+      <div className="contenedor9cartas"> {/*contenedor de 9*/}
+
+        <div className="contenedor3cartas color"> {/*contenedor de 3*/}
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+            <div className="titulo2">01.</div>
+            <div>El trabajo (13%) como preocupación
+            presente en las audiencias da lugar a un
+            clima negativo y a las emociones de
+            desaliento e incertidumbre. Están
+            presentes el temor a la exclusión social, la
+            precarización y la ruptura de los lazos
+            sociales. Según este análisis, en lo personal
+            hay sentimientos de culpabilidad, fracaso y
+            vergüenza.
+            </div>
+          </div>
+
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+          <div className="titulo2">02.</div>
+            <div>Ante la preocupación registrada en las
+            audiencias por la vivienda (7%), se revelan
+            emociones ansiedad, incertidumbre y
+            desesperanza. Según este análisis, hay
+            enojo y sensación de injusticia, y en lo
+            personal se vive con culpa, vergüenza y
+            sensación de fracaso. Quienes viven en
+            villas y realizan ocupaciones ilegales, son
+            estigmatizados y rechazados.
+            </div>
+          </div>
+
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+          <div className="titulo2">03.</div>
+            <div>La preocupación por la educación (3%)
+            registrada en las audiencias muestra una
+            percepción de crisis del sistema e
+            incertidumbre e inseguridad sobre los
+            aprendizajes y las condiciones edilicias. En
+            este clima negativo hay desconfianza en
+            lo público y estrés por el costo de la
+            escuela privada. Hay pesimismo y temor
+            por niñes y adolescentes.</div>
+          </div>
+
+        </div>
+
+        <div className="contenedor3cartas"> {/*contenedor de 3*/}
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+          <div className="titulo2">04.</div>
+            <div>La presencia de un clima negativo,
+              asociado a la emoción de la anticipación
+              (21%), incluye en las audiencias, según el
+              presente análisis, una predisposición a
+              realizar suposiciones y valoraciones
+              prejuiciosas sobre situaciones y
+              personas. La anticipación puede darse
+              junto con la tristeza y generar una visión
+              pesimista y desmovilizante.
+
+            </div>
+         
+          </div>
+
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+            <div className="titulo2">05.</div>
+            <div>La alegría (3%) como emoción presente
+            en las audiencias contribuye a crear un
+            clima positivo que incluye, según el
+            presente análisis, la presencia de una
+            mirada optimista. Hay un espacio
+            favorable a la escucha y la empatía, junto
+            a una predisposición a la solidaridad.
+            </div>
+          </div>
+
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+          <div className="titulo2">06.</div>
+            <div>Hay configurado un cuadro que incluye la
+            emoción positiva de confianza (2%),
+            reforzando en las audiencias un estado de
+            expectativas favorables sobre las que se
+            tiene un considerable grado de certeza.
+            Se refuerza la empatía, la seguridad, la
+            tranquilidad y el optimismo,
+            conformando un terreno favorable a la
+            participación.
+            </div>
+          </div>
+        </div>
+
+        <div className="contenedor3cartas color"> {/*contenedor de 3*/}
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+          <div className="titulo2">07.</div>
+            <div>Se refleja en las audiencias la percepción
+            de frialdad (2%) como un componente
+            negativo de la imagen de los
+            protagonistas. Según el presente análisis
+            también aparecen como percepciones
+            negativas asociadas las siguientes:
+            distancia, soberbia, desesperanza,
+            insensibilidad e incapacidad para
+            escuchar.</div>
+          </div>
+        
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+          <div className="titulo2">08.</div>
+            <div>Se refleja en las audiencias un cuadro
+            positivo a partir de la percepción del
+            atributo conocimiento (2%), destacando
+            también los elementos de poder,
+            eficiencia, éxito, orden y credibilidad.
+            Se observa la presencia de una disposición
+            favorable hacia quienes protagonizan el
+            tema analizado.
+            </div>
+            
+          </div>
+
+          <div className="contenedor1carta"> {/*contenedor de 1*/}
+            <div className="titulo2">09.</div>
+            <div>Se refleja en las audiencias un cuadro
+            positivo a partir de la percepción del
+            atributo laboriosidad (2%), destacando
+            también los elementos de acción,
+            compromiso, éxito, esfuerzo,
+            honestidad y eficiencia. Hay una
+            disposición favorable hacia quienes
+            protagonizan el tema analizado, percibidos
+            también como trabajadores
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/*ULTIMA DIAPOSITIVA */}        
+       <div className="final">
+       <img className="logo-final" src={logo2}/>
+       <div className="contenedor-footer"> {/*contenedor footer */}
+          <div className="contenedor-pais"> {/*contenedor argentina */}
+              <div><strong>Argentina</strong></div>
+              <div>Juncal 1311 7 Piso</div>
+              <div>C1062ABO. Buenos Aires.</div>
+              <div>info@qsocialnow.com</div>
+          </div>
+          <div className="contenedor-pais"> {/*contenedor argentina */}
+          <div><strong>España</strong></div>
+              <div>Parque Empresarial Cortijo del Conde</div>
+              <div>C/ Pago de Cambea 14, Nave 7</div>
+              <div>CP 18015. Granada España.</div>
+          </div>
+          <div className="contenedor-pais"> {/*contenedor argentina */}
+          <div><strong>Estados Unidos</strong></div>
+              <div>Latin Insights | Partner local</div>
+              <div>111 West 33rd St.</div>
+              <div>NY 10001, Nueva York.</div>
+              <div>Tel.: +1 646 717 3131</div>
+          </div>
+       </div>
+      </div>       
+     
       </div>
     </Fragment>
   );
