@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
@@ -40,7 +42,6 @@ const HeatmapChart = () => {
           { x: "21", y: 2 },
           { x: "22", y: 10 },
           { x: "23", y: 1 },
-
         ],
       },
       {
@@ -225,7 +226,12 @@ const HeatmapChart = () => {
 
   return (
     <div>
-      <ReactApexChart options={options} series={options.series} type="heatmap" height={300} />
+      <ReactApexChart
+        options={options}
+        series={options.series}
+        type="heatmap"
+        height={300}
+      />
     </div>
   );
 };
