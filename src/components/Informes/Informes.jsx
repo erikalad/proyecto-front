@@ -1,13 +1,13 @@
 /** @format */
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./Informes.css";
 import { SlNotebook } from "react-icons/sl";
 import logo from "./../../assest/qsocialnow.jpg";
 import logo2 from "./../../assest/qsocialnow2.jpg";
 import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
-import { AiOutlineClockCircle } from "react-icons/ai";
+import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { CiVolumeHigh } from "react-icons/ci";
 import { Table, Tag, Card, Col, Row } from "antd";
 import { BsFillDashCircleFill } from "react-icons/bs";
@@ -17,11 +17,14 @@ import { TbTargetArrow } from "react-icons/tb";
 import clave from "./../../assest/clave.jpg";
 import hashtags from "./../../assest/hashtags.jpg";
 import ReactWordcloud from "react-wordcloud";
+import WordCloud from "react-wordcloud";
 import { BiConversation } from "react-icons/bi";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { RiUserStarLine, RiFileUserLine, RiPushpinLine } from "react-icons/ri";
 import { IoAlert } from "react-icons/io5";
 import { TiHeartOutline } from "react-icons/ti";
+
+
 
 export default function Informes() {
   //COMPONENTE TABLE  DE ANTD
@@ -557,12 +560,39 @@ export default function Informes() {
     { text: "fuerzas", value: 57 },
   ];
 
-  const analisis = [
-    { text: "El candidato a gobernador para Misiones recibe una connotacion" },
-    { text: "El candidato a gobernador para Misiones recibe una connotacion" },
-    { text: "El candidato a gobernador para Misiones recibe una connotacion" },
-    { text: "El candidato a gobernador para Misiones recibe una connotacion" },
+  
+
+  const mapaPercepciones = [
+    { text: "insensibilidad", value: 50, color:"#ff4c4cd7" },
+    { text: "anticipación", value: 20, color:"#53b253bd" },
+    { text: "decisión", value: 20, color:"#53b253bd" },
+    { text: "mejora", value: 15, color:"#53b253bd" },
+    { text: "optimismo", value: 12, color:"#53b253bd" },
+    { text: "euforia", value: 25, color:"#53b253bd" },
+    { text: "consciente", value: 45, color:"#53b253bd" },
+    { text: "bienestar", value: 36, color:"#53b253bd" },
+    { text: "eficiencia", value: 20, color:"#53b253bd" },
+    { text: "frialdad", value: 60, color:"#ff4c4cd7" },
+    { text: "indiferencia", value: 57, color:"#ff4c4cd7" },
+    { text: "desatención", value:58, color:"#ff4c4cd7" },
+    { text: "experto", value: 57, color:"#53b253bd" },
+    { text: "laboriosidad", value: 57, color:"#53b253bd" },
+    { text: "conocimiento", value: 57, color:"#53b253bd" },
+    { text: "educación", value: 57, color:"#53b253bd" },
+    { text: "confianza", value: 21, color:"#53b253bd" },
+    { text: "distante", value: 60, color:"#ff4c4cd7" },
   ];
+
+  const opcionesPercepciones = {
+    fontFamily: "Helvetica, sans-serif",
+    fontSizes: [10, 50],
+    rotations: 0,
+    rotate: 90,
+    colors: mapaPercepciones.map(object=> object.color)
+  };
+
+
+
 
   return (
     <Fragment>
@@ -1438,23 +1468,161 @@ export default function Informes() {
 
       </div>
 
+
+      
+        {/*Nav*/}
+        <div className="contenedor-extremo">
+          <div className="nav">
+            <div className="reporte">
+              <SlNotebook />
+              <p>REPORTE DE SÍNTESIS</p>
+            </div>
+
+            <img src={logo} className="img"></img>
+          </div>
+        </div>
+
+
+      <div className="cuerpo">
+          <div className="titulo2">
+            <RiPushpinLine />
+          </div>
+
+          <div className="titulo2">
+            MAPA DE PERCEPCIONES
+          </div>
+        </div>
+        <Tag className="tag">Síntesis de términos y vocablos que connotan las valoraciones positivas y negativas de las audiencias en el marco del presente análisis</Tag>
+
+        <div className="subtitulo">
+        <div className="titulo0 subtitulo">LO QUE SE DESTACADA DE LAS PERCEPCIONES POSITIVAS Y NEGATIVAS</div>
+        </div>
+
+        <div>
+      <WordCloud
+        words={mapaPercepciones}
+        options={opcionesPercepciones}
+      />
+    </div>
+
+    {/*Nav*/}
+    <div className="contenedor-extremo">
+          <div className="nav">
+            <div className="reporte">
+              <SlNotebook />
+              <p>REPORTE DE SÍNTESIS</p>
+            </div>
+
+            <img src={logo} className="img"></img>
+          </div>
+        </div>
+
+        <div className="cuerpo">
+          <div className="titulo2">
+            <AiOutlineStar />
+          </div>
+
+          <div className="titulo2">RECOMENDACIONES PARA LA COMUNICACIÓN</div>
+        </div>
+        <Tag className="tag">
+        Temas, emociones y atributos que en el marco del presente análisis se recomiendan trabajar a través de las acciones comunicacionales.
+        </Tag>
+
+
+        <div className="contenedorGralEmociones"> {/*CONTENEDOR GRAL */}
+          <div className="contenedorSugerencia"> {/*CONTENEDOR SEGURENCIA 1 */}
+          <div className="titulo2"> {/* Titulo*/}
+          SUGERENCIA 1
+          </div>
+          <div className="contenedorTextoTerminos"> {/*Contenedor textoTerminos */}
+          <div> {/* texto*/}
+          Desarrollar acciones que se centren en la
+          problemática del TRABAJO de manera
+          propositiva con iniciativas que demuestren
+          algunos de los siguientes objetivos: la vocación de
+          favorecer la creación de empleo, la mejora en
+          las condiciones laborales, la dignificación de la
+          persona a través del trabajo, la lucha contra el
+          desempleo, el combate a la informalidad o la
+          educación como herramienta para la futura
+          inserción laboral.
+          </div>
+          <div> {/* terminos*/}
+          Términos que se recomiendan utilizar en los
+          textos: obras, esfuerzo, cumplimiento,
+          metas, trabajo, futuro, retos,
+          compromiso, dignidad, diálogo,
+          innovación, acción.
+          </div>
+          </div>
+
+          </div>
+
+          <div className="contenedorEmocionesAtributos"> {/*CONTENEDOR EMOCIONES Y ATRIBUTOS */}
+          <div className="emocionesAtributos"> {/*nav */}
+            EMOCIONES Y ATRIBUTOS PARA INCLUIR EN EL MENSAJE*
+            </div>
+            <div className="contenedorTablas"> {/*Contenedor tablas */}
+            <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
+            <div> {/*tabla */}
+              TABLA
+            </div>
+            <div> {/*subtitulo */}
+            VOCABLOS SUGERIDOS
+
+            </div>
+            <div> {/*nube palabras */}
+              NUBE PALABRAS
+            </div>
+            </div>
+            <div> {/*CONTENEDOR atributos */}
+            <div> {/*tabla */}
+              TABLA
+            </div>
+            <div> {/*subtitulo */}
+            VOCABLOS SUGERIDOS
+
+            </div>
+            <div> {/*nube palabras */}
+              NUBE PALABRAS
+            </div>
+            </div>
+            </div>
+
+          </div>
+        
+
+        </div>
+        <Tag className="tag"> {/*pie de pag */}
+          *Ver documento de QSocialNow "Criterios y técnicas para la producción de contenidos"
+          </Tag>
+    
+
+
+
+
+
+
+
+
+
       {/*ULTIMA DIAPOSITIVA */}        
        <div className="final">
        <img className="logo-final" src={logo2}/>
        <div className="contenedor-footer"> {/*contenedor footer */}
-          <div className="contenedor-pais"> {/*contenedor argentina */}
+          <div className="contenedor-pais"> {/*contenedor pais */}
               <div><strong>Argentina</strong></div>
               <div>Juncal 1311 7 Piso</div>
               <div>C1062ABO. Buenos Aires.</div>
               <div>info@qsocialnow.com</div>
           </div>
-          <div className="contenedor-pais"> {/*contenedor argentina */}
+          <div className="contenedor-pais"> {/*contenedor pais */}
           <div><strong>España</strong></div>
               <div>Parque Empresarial Cortijo del Conde</div>
               <div>C/ Pago de Cambea 14, Nave 7</div>
               <div>CP 18015. Granada España.</div>
           </div>
-          <div className="contenedor-pais"> {/*contenedor argentina */}
+          <div className="contenedor-pais"> {/*contenedor pais */}
           <div><strong>Estados Unidos</strong></div>
               <div>Latin Insights | Partner local</div>
               <div>111 West 33rd St.</div>
@@ -1462,7 +1630,9 @@ export default function Informes() {
               <div>Tel.: +1 646 717 3131</div>
           </div>
        </div>
-      </div>       
+      </div>  
+
+
      
       </div>
     </Fragment>

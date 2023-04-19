@@ -222,7 +222,7 @@
     color:#14AE5C
 }
 .negativo{
-    color: rgba(255, 34, 34, 0.423);
+    color: #ff22226c;
 
 }
 
@@ -378,9 +378,7 @@
     justify-content: center;
     align-items: center;
     text-align: start;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-top: 2rem;
+    margin:2rem;
     gap:1rem
   }
 
@@ -426,4 +424,53 @@
     gap:8rem;
     background-color: #F2F2F2;
     padding:5rem
+  }
+
+  .subtitulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top:1rem;
+    font-size: 15px;
+  }
+
+  .emocionesAtributos{
+    background-color:#F2F2F2; 
+    font-size: 18px;
+    padding: 1.5rem;
+  }
+
+  .contenedorGralEmociones{
+    display: flex;
+    margin:2rem;
+    gap:3rem;
+    justify-content: space-between;
+
+  }
+
+  .contenedorEmocionesAtributos{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contenedorEmociones{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contenedorSugerencia{
+    width: 45%;
+
+  }
+
+  .contenedorTablas{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .contenedorTextoTerminos{
+    display: flex;
+    flex-direction: column;
+    gap:2rem
   }
