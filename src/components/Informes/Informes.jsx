@@ -9,7 +9,7 @@ import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { CiVolumeHigh } from "react-icons/ci";
-import { Table, Tag, Button } from "antd";
+import { Table, Tag, Button, Input } from "antd";
 import { BsFillDashCircleFill } from "react-icons/bs";
 import ReactApexChart from "react-apexcharts";
 import { PieChart, Pie, Cell } from "recharts";
@@ -24,6 +24,8 @@ import { RiUserStarLine, RiFileUserLine, RiPushpinLine } from "react-icons/ri";
 import { IoAlert } from "react-icons/io5";
 import { TiHeartOutline } from "react-icons/ti";
 import html2pdf from "html2pdf.js";
+
+
 
 
 export default function Informes() {
@@ -52,15 +54,12 @@ export default function Informes() {
   convertir.from(contenedor).save();
   } 
 
-  
-
-
- 
-
-
-
-
-
+  const dataPieNivo = [
+    { name: "Sección 1", value: 10, fill: "#8884d8" },
+    { name: "Sección 2", value: 20, fill: "#83a6ed" },
+    { name: "Sección 3", value: 30, fill: "#8dd1e1" },
+    { name: "Sección 4", value: 40, fill: "#82ca9d" },
+  ];
 
   //COMPONENTE TABLE  DE ANTD
 
@@ -482,9 +481,6 @@ export default function Informes() {
     },
   ];
 
-
-
-
   const rowClassNameTotal = (name) => {
     if (name === "TOTAL") {
       return "preocupaciones-total";
@@ -621,9 +617,7 @@ export default function Informes() {
     { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
   ];
 
-  {
-    /*Datos solicitados*/
-  }
+  {/*Datos solicitados*/}
   const cliente = "HUGO PASSALACQUA";
   const tiempo = "la ultima semana";
   const clienteUp = cliente.toUpperCase();
@@ -668,9 +662,6 @@ export default function Informes() {
     rotate: 90,
   };
 
-
-  
-
   const mapaPercepciones = [
     { text: "insensibilidad", value: 50, color:"#ff4c4cd7" },
     { text: "anticipación", value: 20, color:"#53b253bd" },
@@ -700,13 +691,22 @@ export default function Informes() {
     colors: mapaPercepciones.map(object=> object.color)
   };
 
+  const [editable,setEditable] = useState(false)
 
+  function editar(){
+    console.log(editable)
+    setEditable(!editable)
+  }
+  const [valor, setValor] = useState(111);
 
+  const manejarCambio = (evento) => {
+    setValor(evento.target.value);
+  }
 
   return (
     <Fragment>
       <Button onClick={descargarPDF}>Descargar PDF</Button>
-      
+      <Button onClick={editar}>Editar</Button>
       <div className="contenedor" id="contenedor">
         <div className="contenedor-extremo">
           {/*Nav*/}
@@ -805,7 +805,17 @@ export default function Informes() {
         <div className="totalizador-1">
           <div className="contenedor-totales">
             <div className="box">
-              <div className="numeros frases-total">111</div>
+            {editable ? (
+              <Input
+                type="text"
+                value={valor}
+                onChange={manejarCambio}
+                className="numeros frases-total"
+              />
+            ) : (
+              <div className="numeros frases-total">{valor}</div>
+            )}
+             {/*  <div className="numeros frases-total">111</div> */}
               <div className="frase">
                 <div className="frases-total">PUBLICACIONES</div>
                 <div className="frases-total">TOTALES</div>
@@ -814,6 +824,7 @@ export default function Informes() {
             </div>
 
             <div className="box">
+              
               <div className="numeros frases-total">1</div>
               <div className="frase">
                 <div className="frases-total">POR HORA </div>
@@ -1198,27 +1209,35 @@ export default function Informes() {
                 },
               }}
             />
-            <Table
-              columns={columns}
-              dataSource={data2ant}
-              pagination={false}
-              rowClassName={rowClassName}
-              style={{ width: "100%" }}
-              components={{
-                header: {
-                  cell: (props) => (
-                    <th
-                      {...props}
-                      style={{
-                        backgroundColor: "#0083CA",
-                        color: "white",
-                        fontWeight: "bold",
-                      }}
-                    />
-                  ),
-                },
-              }}
-            />
+         
+         {data2ant && data2ant[0].influenciador !== "" && (
+        <Table
+          columns={columns}
+          dataSource={data2ant}
+          pagination={false}
+          rowClassName={rowClassName}
+          style={{ width: "100%" }}
+          components={{
+            header: {
+              cell: (props) => (
+                <th
+                  {...props}
+                  style={{
+                    backgroundColor: "#0083CA",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                />
+              ),
+            },
+          }}
+        />
+      )}
+      {(!data2ant || data2ant[0].influenciador === "") && (
+        <div style={{ display: 'none' }}>
+          {/* Aquí puede agregar cualquier contenido que desee que se oculte cuando no hay datos */}
+        </div>
+      )}
           </div>
         </div>
 
@@ -1888,8 +1907,6 @@ export default function Informes() {
           *Ver documento de QSocialNow "Criterios y técnicas para la producción de contenidos"
         </Tag>
         </div>
-
-
 
 
 
