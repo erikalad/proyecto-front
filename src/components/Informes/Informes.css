@@ -3,6 +3,7 @@
     margin-left: 11rem;
     margin-right: 6rem; 
     margin-top: 2rem;
+    margin-bottom: 2rem;
     border:1px solid rgba(0, 0, 0, 0.226);
     width: 78%;
    
@@ -407,7 +408,8 @@
     align-items: center;
     text-align: center;
     margin-top: 10rem;
-   
+    padding-left: 1rem;
+    padding-right: 1rem;
    
   }
 
@@ -418,12 +420,12 @@
 
   .contenedor-footer{
     display: flex;
-    width: 87%;
     text-align: start;
     justify-content: space-around;
     gap:8rem;
     background-color: #F2F2F2;
-    padding:5rem
+    padding:5rem;   
+    width: 88%;
   }
 
   .subtitulo{
@@ -467,10 +469,22 @@
   .contenedorTablas{
     display: flex;
     justify-content: space-between;
+    gap:1rem
   }
 
   .contenedorTextoTerminos{
     display: flex;
     flex-direction: column;
     gap:2rem
+  }
+
+  .emociones-color{
+
+    background-color: #1a8f1abd;
+    color:white;
+    font-weight: bold;
+  }
+
+  .piepagina{
+    margin-bottom: 2rem;
   }

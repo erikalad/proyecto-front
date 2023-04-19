@@ -397,12 +397,68 @@ export default function Informes() {
     },
   ];
 
+  const columnsEmociones = [
+    {
+      title: (
+        <div className="title-total icon-nombre-columnas">
+          <div className="icon-nombre-columnas">
+          <TiHeartOutline/>
+          </div>
+          EMOCIONES
+        </div>
+      ),
+      dataIndex: "emociones",
+      className: "hover-black",
+    },
+  ];
+
+  const dataEmocionesComunicacion = [
+    {
+      emociones: (
+        <div className="totalizador-preocupaciones">
+          <div>DESEO </div>
+        
+        </div>
+      ),
+    },
+    {
+      emociones: (
+        <div className="totalizador-preocupaciones">
+          <div>CALMA </div>
+          
+        </div>
+      ),
+    },
+    {
+      emociones: (
+        <div className="totalizador-preocupaciones">
+          <div>AGRADO </div>
+          
+        </div>
+      ),
+    },
+    {
+      emociones: (
+        <div className="totalizador-preocupaciones">
+          <div>AMOR </div>
+          
+        </div>
+      ),
+    },
+  ];
+
+
+
+
   const rowClassNameTotal = (name) => {
     if (name === "TOTAL") {
       return "preocupaciones-total";
     } else if (name === "TWITTER") {
       return "preocupaciones-twitter";
-    } else {
+    } else if (name === "EMOCIONES") {
+      return "emociones-color";
+    }
+    else {
       return "preocupaciones-facebook";
     }
   };
@@ -559,6 +615,24 @@ export default function Informes() {
     { text: "hugo", value: 20 },
     { text: "fuerzas", value: 57 },
   ];
+
+  const palabrasRecomendadas = [
+    { text: "satisfacción", value: 30 },
+    { text: "disfrute", value: 30 },
+    { text: "bienestar", value: 30 },
+    { text: "admiración", value: 30 },
+    { text: "optimismo", value: 30 },
+    { text: "animación", value: 30 },
+  ];
+
+  const opcionesRecomendadas = {
+    fontFamily: "Helvetica, sans-serif",
+    fontSizes: [8, 40],
+    colors: ["#1a8f1abd"],
+    rotations: 0,
+    rotate: 90,
+  };
+
 
   
 
@@ -1565,26 +1639,58 @@ export default function Informes() {
             <div className="contenedorTablas"> {/*Contenedor tablas */}
             <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
             <div> {/*tabla */}
-              TABLA
+            <Table
+              columns={columnsEmociones}
+              dataSource={[...dataEmocionesComunicacion]}
+              pagination={false}
+              rowClassName={rowClassNameTotal("EMOCIONES")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
             </div>
-            <div> {/*subtitulo */}
+            <div className="subtitulo"> {/*subtitulo */}
             VOCABLOS SUGERIDOS
 
             </div>
             <div> {/*nube palabras */}
-              NUBE PALABRAS
+            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
             <div> {/*CONTENEDOR atributos */}
             <div> {/*tabla */}
-              TABLA
+            <Table
+              columns={columnsEmociones}
+              dataSource={[...dataEmocionesComunicacion]}
+              pagination={false}
+              rowClassName={rowClassNameTotal("EMOCIONES")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
             </div>
-            <div> {/*subtitulo */}
+            <div className="subtitulo"> {/*subtitulo */}
             VOCABLOS SUGERIDOS
 
             </div>
             <div> {/*nube palabras */}
-              NUBE PALABRAS
+            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
             </div>
@@ -1593,9 +1699,136 @@ export default function Informes() {
         
 
         </div>
-        <Tag className="tag"> {/*pie de pag */}
+        <Tag className="tag piepagina"> {/*pie de pag */}
           *Ver documento de QSocialNow "Criterios y técnicas para la producción de contenidos"
-          </Tag>
+        </Tag>
+
+
+
+
+        {/*Nav*/}
+    <div className="contenedor-extremo">
+          <div className="nav">
+            <div className="reporte">
+              <SlNotebook />
+              <p>REPORTE DE SÍNTESIS</p>
+            </div>
+
+            <img src={logo} className="img"></img>
+          </div>
+        </div>
+
+        <div className="cuerpo">
+          <div className="titulo2">
+            <AiOutlineStar />
+          </div>
+
+          <div className="titulo2">RECOMENDACIONES PARA LA COMUNICACIÓN</div>
+        </div>
+        <Tag className="tag">
+        Temas, emociones y atributos que en el marco del presente análisis se recomiendan trabajar a través de las acciones comunicacionales.
+        </Tag>
+
+
+        <div className="contenedorGralEmociones"> {/*CONTENEDOR GRAL */}
+          <div className="contenedorSugerencia"> {/*CONTENEDOR SEGURENCIA 1 */}
+          <div className="titulo2"> {/* Titulo*/}
+          SUGERENCIA 2
+          </div>
+          <div className="contenedorTextoTerminos"> {/*Contenedor textoTerminos */}
+          <div> {/* texto*/}
+          Informar con asertividad sobre las acciones
+          emprendidas para atender la problemática de la
+          VIVIENDA, incluyendo las gestiones para
+          aumentar la oferta de unidades
+          habitacionales, morigerar los costos de los
+          alquileres y promover la construcción y el
+          crédito, con los objetivos de llevar tranquilidad
+          a las familias y aportar estabilidad, proyección
+          y seguridad.
+
+          </div>
+          <div> {/* terminos*/}
+          Términos que se recomiendan utilizar en los
+          textos: vivienda, hábitat, seguridad,
+          estabilidad, tranquilidad, oferta,
+          políticas activas, construcción, crédito,
+          urbanización, servicios, habitabilidad. 
+          </div>
+          </div>
+
+          </div>
+
+          <div className="contenedorEmocionesAtributos"> {/*CONTENEDOR EMOCIONES Y ATRIBUTOS */}
+          <div className="emocionesAtributos"> {/*nav */}
+            EMOCIONES Y ATRIBUTOS PARA INCLUIR EN EL MENSAJE*
+            </div>
+            <div className="contenedorTablas"> {/*Contenedor tablas */}
+            <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
+            <div> {/*tabla */}
+            <Table
+              columns={columnsEmociones}
+              dataSource={[...dataEmocionesComunicacion]}
+              pagination={false}
+              rowClassName={rowClassNameTotal("EMOCIONES")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+            </div>
+            <div className="subtitulo"> {/*subtitulo */}
+            VOCABLOS SUGERIDOS
+
+            </div>
+            <div> {/*nube palabras */}
+            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
+            </div>
+            </div>
+            <div> {/*CONTENEDOR atributos */}
+            <div> {/*tabla */}
+            <Table
+              columns={columnsEmociones}
+              dataSource={[...dataEmocionesComunicacion]}
+              pagination={false}
+              rowClassName={rowClassNameTotal("EMOCIONES")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+            </div>
+            <div className="subtitulo"> {/*subtitulo */}
+            VOCABLOS SUGERIDOS
+
+            </div>
+            <div> {/*nube palabras */}
+            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
+            </div>
+            </div>
+            </div>
+
+          </div>
+        
+
+        </div>
+        <Tag className="tag piepagina"> {/*pie de pag */}
+          *Ver documento de QSocialNow "Criterios y técnicas para la producción de contenidos"
+        </Tag>
     
 
 
