@@ -24,6 +24,7 @@ import { RiUserStarLine, RiFileUserLine, RiPushpinLine } from "react-icons/ri";
 import { IoAlert } from "react-icons/io5";
 import { TiHeartOutline } from "react-icons/ti";
 import html2pdf from "html2pdf.js";
+import TextArea from "antd/es/input/TextArea";
 
 
 
@@ -113,7 +114,7 @@ export default function Informes() {
   const data2ant = [
     {
       key: "6",
-      influenciador: "",
+      influenciador: "Erika",
       impresiones: "",
     },
     {
@@ -698,9 +699,17 @@ export default function Informes() {
     setEditable(!editable)
   }
   const [valor, setValor] = useState(111);
+  const [texto, setTexto] = useState("El candidato a gobernador para Misiones recibe una connotación ampliamente positiva, y se destaca el atributo de Eficiencia que le otorga la comunidad digital. No se detectan contenidos negativos.");
+  const [texto2, setTexto2] = useState(" Impacta a favor su posteo sobre la visita al barrio Don Daniel de Alem y la charla con voluntarios y voluntarias del merendero que lleva adelante la vecina Yanina Báez con el acompañamiento de la agrupación Manos Unidas.");
 
   const manejarCambio = (evento) => {
     setValor(evento.target.value);
+  }
+  const manejarCambioTexto = (evento) => {
+    setTexto(evento.target.value);
+  }
+  const manejarCambioTexto2 = (evento) => {
+    setTexto2(evento.target.value);
   }
 
   return (
@@ -807,6 +816,7 @@ export default function Informes() {
             <div className="box">
             {editable ? (
               <Input
+              style={{ width: '70px' , height:'70px'}}
                 type="text"
                 value={valor}
                 onChange={manejarCambio}
@@ -1085,24 +1095,42 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
+              {editable ? (
+              <TextArea
+                style={{ height: '100px' }}
+                type="text"
+                value={texto}
+                onChange={manejarCambioTexto}
+              />
+            ) : (
               <div>
-                El candidato a gobernador para Misiones recibe una connotación
-                ampliamente positiva, y se destaca el atributo de Eficiencia que
-                le otorga la comunidad digital. No se detectan contenidos
-                negativos.
+                {texto}
               </div>
+            )}
             </div>
 
             <div className="contenedor-texto-analisis">
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
+              {editable ? (
+              <TextArea
+                style={{ height: '100px' }}
+                type="text"
+                value={texto2}
+                onChange={manejarCambioTexto2}
+              />
+            ) : (
               <div>
+                {texto2}
+              </div>
+            )}
+         {/*      <div>
                 Impacta a favor su posteo sobre la visita al barrio Don Daniel
                 de Alem y la charla con voluntarios y voluntarias del merendero
                 que lleva adelante la vecina Yanina Báez con el acompañamiento
                 de la agrupación Manos Unidas.
-              </div>
+              </div> */}
             </div>
           </div>
 
