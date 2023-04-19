@@ -9,7 +9,7 @@ import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { CiVolumeHigh } from "react-icons/ci";
-import { Table, Tag, Card, Col, Row } from "antd";
+import { Table, Tag, Button } from "antd";
 import { BsFillDashCircleFill } from "react-icons/bs";
 import ReactApexChart from "react-apexcharts";
 import { PieChart, Pie, Cell } from "recharts";
@@ -23,10 +23,45 @@ import { MdOutlineContactSupport } from "react-icons/md";
 import { RiUserStarLine, RiFileUserLine, RiPushpinLine } from "react-icons/ri";
 import { IoAlert } from "react-icons/io5";
 import { TiHeartOutline } from "react-icons/ti";
-
+import html2pdf from "html2pdf.js";
 
 
 export default function Informes() {
+
+   function descargarPDF() {
+    // Obtener el contenedor que queremos descargar como PDF
+    const contenedor = document.getElementById("contenedor");
+  
+   // Crear una instancia de html2pdf con las opciones deseadas
+   const opciones = {
+    margin: [0, 0, 0, 0], // reducir los márgenes a 0
+    filename: "mi-pagina.pdf",
+    image: { type: "jpeg", quality: 1.0 },
+    html2canvas: { scale: 2 },
+    jsPDF: {
+      unit: "mm",
+      format: "a4",
+      orientation: "landscape",
+      compressPDF: true
+    },
+    pagebreak: { before: ".page-break" } // agregar saltos de página antes de elementos con clase .saltopagina
+  };
+  const convertir = html2pdf().set(opciones);
+
+  // Convertir el HTML del contenedor en un archivo PDF y descargarlo
+  convertir.from(contenedor).save();
+  } 
+
+  
+
+
+ 
+
+
+
+
+
+
   //COMPONENTE TABLE  DE ANTD
 
   const columns = [
@@ -670,10 +705,12 @@ export default function Informes() {
 
   return (
     <Fragment>
-      <div className="contenedor">
+      <Button onClick={descargarPDF}>Descargar PDF</Button>
+      
+      <div className="contenedor" id="contenedor">
         <div className="contenedor-extremo">
           {/*Nav*/}
-          <div className="nav">
+         <div className="nav">
             <div className="reporte">
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
@@ -685,9 +722,8 @@ export default function Informes() {
           {/*Titulo*/}
           <div>
             <div className="titulo">{clienteUp}</div>
-            <p className="subtitulo margen-boton">
-              Se mide el impacto de las conversaciones sobre {cliente} durante{" "}
-              {tiempo}.
+            <p className="subtitulo-principal">
+              Se mide el impacto de las conversaciones sobre {cliente} durante {tiempo}.
             </p>
           </div>
         </div>
@@ -746,7 +782,7 @@ export default function Informes() {
                 options={datafb.options}
                 series={datafb.series}
                 type="bar"
-                height={300}
+                height={250}
                 width={200}
               />
             </div>
@@ -759,7 +795,7 @@ export default function Informes() {
                 options={datatw.options}
                 series={datatw.series}
                 type="bar"
-                height={300}
+                height={250}
                 width={200}
               />
             </div>
@@ -815,6 +851,9 @@ export default function Informes() {
           </div>
         </div>
 
+
+        <div class="page-break" data-html2pdf-pagebreak>
+
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -824,7 +863,7 @@ export default function Informes() {
             </div>
 
             <img src={logo} className="img"></img>
-          </div>
+          </div> 
         </div>
 
         <div className="cuerpo">
@@ -1004,6 +1043,10 @@ export default function Informes() {
           </div>
         </div>
 
+        </div>
+
+
+        <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -1014,6 +1057,7 @@ export default function Informes() {
 
             <img src={logo} className="img"></img>
           </div>
+
         </div>
 
         <div className="cuerpo">
@@ -1106,6 +1150,10 @@ export default function Informes() {
           <hr className="hr-estilos" />
         </div>
 
+        </div>
+
+
+        <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -1240,6 +1288,10 @@ export default function Informes() {
           </div>
         </div>
 
+        </div>
+
+
+        <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -1383,7 +1435,10 @@ export default function Informes() {
             />
           </div>
         </div>
+        </div>
 
+
+        <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -1541,12 +1596,12 @@ export default function Informes() {
         </div>
 
       </div>
+      </div>
 
-
-      
+      <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
-          <div className="nav">
+         <div className="nav">
             <div className="reporte">
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
@@ -1578,10 +1633,12 @@ export default function Informes() {
         options={opcionesPercepciones}
       />
     </div>
+    </div>
 
+    <div class="page-break" data-html2pdf-pagebreak>
     {/*Nav*/}
     <div className="contenedor-extremo">
-          <div className="nav">
+         <div className="nav">
             <div className="reporte">
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
@@ -1661,7 +1718,7 @@ export default function Informes() {
             VOCABLOS SUGERIDOS
 
             </div>
-            <div> {/*nube palabras */}
+            <div className="nube-palabras"> {/*nube palabras */}
             <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
@@ -1689,8 +1746,8 @@ export default function Informes() {
             VOCABLOS SUGERIDOS
 
             </div>
-            <div> {/*nube palabras */}
-            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
+            <div className="nube-palabras"> {/*nube palabras */}
+            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} width="200" height="200" />
             </div>
             </div>
             </div>
@@ -1702,10 +1759,11 @@ export default function Informes() {
         <Tag className="tag piepagina"> {/*pie de pag */}
           *Ver documento de QSocialNow "Criterios y técnicas para la producción de contenidos"
         </Tag>
+        </div>
+        
 
 
-
-
+        <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
     <div className="contenedor-extremo">
           <div className="nav">
@@ -1788,7 +1846,7 @@ export default function Informes() {
             VOCABLOS SUGERIDOS
 
             </div>
-            <div> {/*nube palabras */}
+            <div className="nube-palabras"> {/*nube palabras */}
             <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
@@ -1816,7 +1874,7 @@ export default function Informes() {
             VOCABLOS SUGERIDOS
 
             </div>
-            <div> {/*nube palabras */}
+            <div className="nube-palabras"> {/*nube palabras */}
             <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
@@ -1829,7 +1887,7 @@ export default function Informes() {
         <Tag className="tag piepagina"> {/*pie de pag */}
           *Ver documento de QSocialNow "Criterios y técnicas para la producción de contenidos"
         </Tag>
-    
+        </div>
 
 
 
@@ -1838,7 +1896,7 @@ export default function Informes() {
 
 
 
-
+      <div class="page-break" data-html2pdf-pagebreak>
       {/*ULTIMA DIAPOSITIVA */}        
        <div className="final">
        <img className="logo-final" src={logo2}/>
@@ -1864,9 +1922,7 @@ export default function Informes() {
           </div>
        </div>
       </div>  
-
-
-     
+      </div>
       </div>
     </Fragment>
   );

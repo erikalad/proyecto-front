@@ -1,12 +1,17 @@
 .contenedor{
-   
+   /* 
     margin-left: 11rem;
-    margin-right: 6rem; 
-    margin-top: 2rem;
+    margin-right: 6rem;  */
+   /*  margin-top: 2rem;*/
     margin-bottom: 2rem;
     border:1px solid rgba(0, 0, 0, 0.226);
-    width: 78%;
-   
+    width: 1100px; /* establece un ancho fijo para el contenedor */
+    margin: 0 auto; /* centra el contenedor horizontalmente */
+   max-height: max-content;
+}
+
+#contenedor{
+  width: 1100px;
 }
 
 .contenedor-extremo{
@@ -16,6 +21,7 @@
     
 }
 
+
 .img{
     display: flex;
     align-items: center;
@@ -23,8 +29,9 @@
     margin-top: 1rem;
 }
 
-.subtitulo{
+.subtitulo-principal{
     font-size: 14px;
+    padding-bottom: 1rem;
 }
 
 .cuerpo{
@@ -41,7 +48,7 @@
     padding-right: 2rem;
     display: flex;
     flex-wrap: wrap;
-    width: 70rem;
+   height: 285px;
 }
 
 .nav{
@@ -150,7 +157,6 @@
 
 .totalizador-1{
     border: 1px solid rgba(0, 0, 0, 0.166);
-    margin: 1rem;
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -158,7 +164,9 @@
     align-items: center;
     justify-content: center;
     background-color: #F2F2F2;
-
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 .title-total{
@@ -285,7 +293,7 @@
     gap:2rem;
     justify-content: center;
     align-items: center;
-    width: 35rem;
+    width: 30rem;
 }
 
 .icono-analisis{
@@ -296,6 +304,7 @@
 .contenedor-dos-analisis{
     display: flex;
     align-items: center;
+
 }
 
 .hr-estilos {
@@ -369,9 +378,7 @@
     justify-content: space-between;
   }
 
-  .container-table{
-    margin-bottom: 2rem;
-  }
+  
 
   .contenedor9cartas{
     display: flex;
@@ -379,8 +386,11 @@
     justify-content: center;
     align-items: center;
     text-align: start;
-    margin:2rem;
-    gap:1rem
+    gap:1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .contenedor3cartas{
@@ -389,12 +399,17 @@
     
     
   }
+  .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center, .apexcharts-legend.apx-legend-position-top.apexcharts-align-center {
+    justify-content: center;
+    display: none;
+}
 
   .contenedor1carta{
     display: flex;
     gap:1rem;
     width: 80%;
     padding: 1rem;
+    font-size: 0.8rem;
   }
 
   .color{
@@ -404,13 +419,12 @@
   .final{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     text-align: center;
-    margin-top: 10rem;
     padding-left: 1rem;
     padding-right: 1rem;
-   
+    height: 210mm;
   }
 
   .logo-final{
@@ -445,7 +459,9 @@
 
   .contenedorGralEmociones{
     display: flex;
-    margin:2rem;
+    margin-top:2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     gap:3rem;
     justify-content: space-between;
 
@@ -486,5 +502,10 @@
   }
 
   .piepagina{
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .nube-palabras{
+    width: 200px !important;
+    height: 200px !important;
   }
