@@ -71,12 +71,18 @@ margin-bottom: 2rem;
 .grafico{
   display: flex;
   gap:1rem;
-  border: 1px solid rgba(0, 0, 0, 0.304);
-  border-radius: 10px;
+  /* border: 1px solid rgba(0, 0, 0, 0.304);
+  border-radius: 10px; */
   padding: 1rem;
   margin-top: 1rem;
-  height: auto;
+  height: 10rem;
 }
+
+.editarfacebook{
+  display: flex;
+  
+}
+
 
 
 
@@ -159,9 +165,15 @@ margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 1rem;
-    gap:5rem
+    margin-top: 1rem; 
+    /* gap:5rem  */
+   /*  width: 60%; */
 }
+
+.apexcharts-xaxis-texts-g{
+  display: none;
+}
+
 
 .twitter-grafico-bar{
     margin-left: 3rem;

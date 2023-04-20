@@ -1346,32 +1346,83 @@ export default function Informes() {
            )}
           
           <div className="periodosfbtw">
-            <div className="facebook-grafico-bar">
-              <div className="icon-nombre">
-                <img className="fb" src={fb} />
-                FACEBOOK
-              </div>
-              <ReactApexChart
-                options={datafb.options}
-                series={datafb.series}
-                type="bar"
-                height={250}
-                width={200}
-              />
+          {editable.diapositiva1 ? ( 
+        <div className="editarfacebook facebook-grafico-bar">
+          
+          <div className="icon-nombre">
+            <img className="fb" src={fb} />
+            FACEBOOK
+          </div>
+          <div style={{display:'flex'}}>
+          <ReactApexChart
+            options={datafb.options}
+            series={datafb.series}
+            type="bar"
+            height={250}
+            width={200}
+          />
+          <Button onClick={eliminarGrafico}>x</Button>
+          </div>
+            {cambios.displayTotalVolumen === 'none' && editable.diapositiva1 === true 
+            ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={mostrarGrafico}>+</Button> 
+            : <Button id="mostrarGrafico" style={{display:'none'}} onClick={mostrarGrafico}>+</Button> 
+            }  
+          </div>
+          ) : (
+          <div className="facebook-grafico-bar">
+          <div className="icon-nombre">
+            <img className="fb" src={fb} />
+            FACEBOOK
+          </div>
+          <ReactApexChart
+            options={datafb.options}
+            series={datafb.series}
+            type="bar"
+            height={250}
+            width={200}
+          />
+        </div>
+                 
+           )}
+          {editable.diapositiva1 ? ( 
+      <div className="editarfacebook twitter-grafico-bar">
+  
+            <div className="icon-nombre">
+              <img className="tw" src={tw} />
+              TWITTER
             </div>
+            <div style={{display:'flex'}}>
+            <ReactApexChart
+              options={datatw.options}
+              series={datatw.series}
+              type="bar"
+              height={250}
+              width={200}
+            />
+     <Button onClick={eliminarGrafico}>x</Button>
+     </div>
+       {cambios.displayTotalVolumen === 'none' && editable.diapositiva1 === true 
+       ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={mostrarGrafico}>+</Button> 
+       : <Button id="mostrarGrafico" style={{display:'none'}} onClick={mostrarGrafico}>+</Button> 
+       }  
+     </div>
+          ) : (
             <div className="twitter-grafico-bar">
-              <div className="icon-nombre">
-                <img className="tw" src={tw} />
-                TWITTER
-              </div>
-              <ReactApexChart
-                options={datatw.options}
-                series={datatw.series}
-                type="bar"
-                height={250}
-                width={200}
-              />
+            <div className="icon-nombre">
+              <img className="tw" src={tw} />
+              TWITTER
             </div>
+            <ReactApexChart
+              options={datatw.options}
+              series={datatw.series}
+              type="bar"
+              height={250}
+              width={200}
+            />
+          </div>
+                 
+           )} 
+      
           </div>
         </div>
 
