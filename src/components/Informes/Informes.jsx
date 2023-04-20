@@ -1191,8 +1191,10 @@ export default function Informes() {
       <Collapse defaultActiveKey={['1']} className="contenedor-botones">
         <Panel /* header="Botones" */ key="1">
           <Space direction="vertical" >
+            <div>
             <Button type="primary" onClick={descargarPDF} className="boton-primary">Descargar PDF</Button>
             <Button onClick={editar}>{editable.general ? 'Dejar de Editar' : 'Editar'}</Button>
+            </div>
           </Space>
         </Panel>
       </Collapse>
