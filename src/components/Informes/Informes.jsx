@@ -769,23 +769,21 @@ export default function Informes() {
     })
 
     function editar() {
-      console.log(editable)
-      setEditable((prevState) => ({
-        ...prevState,
-        general: !prevState.general,
-        diapositiva1: !prevState.diapositiva1,
-        diapositiva2:!prevState.diapositiva2,
-        diapositiva3: !prevState.diapositiva3,
-        diapositiva4: !prevState.diapositiva4,
-        diapositiva5: !prevState.diapositiva5,
-        diapositiva6: !prevState.diapositiva6,
-        diapositiva7: !prevState.diapositiva7,
-        diapositiva8: !prevState.diapositiva8,
-        diapositiva9: !prevState.diapositiva9,
-        diapositiva10: !prevState.diapositiva10,
-      }));
+      const newEditableValue = !editable.general;
+      setEditable({
+        general: newEditableValue,
+        diapositiva1: newEditableValue,
+        diapositiva2: newEditableValue,
+        diapositiva3: newEditableValue,
+        diapositiva4: newEditableValue,
+        diapositiva5: newEditableValue,
+        diapositiva6: newEditableValue,
+        diapositiva7: newEditableValue,
+        diapositiva8: newEditableValue,
+        diapositiva9: newEditableValue,
+        diapositiva10: newEditableValue,
+      });
     }
-
  
 
   
