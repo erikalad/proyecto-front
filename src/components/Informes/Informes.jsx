@@ -59,13 +59,16 @@ export default function Informes() {
   }
   {/*FIN DESCARGAR PDF*/}
 
-
+  const [display,setDisplay] = useState({
+    totalVolumenPublicaciones:'flex'
+  })
 
    {/*MODAL*/}
   const [messageApi, contextHolder] = message.useMessage();
   const key = 'updatable';
   const openMessage = (diapositivaName) => {
-    if (!editable[diapositivaName]) {
+   
+      if (!editable[diapositivaName]) {
       messageApi.error('Primero debes editar la diapositiva');
       return;
     }
@@ -105,6 +108,7 @@ export default function Informes() {
   const resetValues = () => {
     setCambios(defaultValues);
     setShowModal(false);
+    setDefaultValues(prevState => ({ ...prevState, displayTotalVolumen: 'flex' }));
     messageApi.open({
       key,
       type: 'success',
@@ -513,6 +517,7 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
   const [cambios, setCambios] = useState({
+    displayTotalVolumen:'flex',
     valor1: 111,
     valor2:1,
     valor3:36,
@@ -844,6 +849,7 @@ export default function Informes() {
 
     {/*VALORES POR DEFECTO*/}
   const [defaultValues, setDefaultValues] = useState({
+    displayTotalVolumen:'flex',
     valor1: 111,
     valor2:1,
     valor3:36,
@@ -1182,7 +1188,19 @@ export default function Informes() {
   };
 
 
+  function eliminarGrafico() {
+    const botonMostrar = document.getElementById("mostrarGrafico");
+    setCambios(prevState => ({ ...prevState, displayTotalVolumen: 'none' }));
+    botonMostrar.style.display = "flex"; 
+  }
 
+  function mostrarGrafico() {
+    const botonMostrar = document.getElementById("mostrarGrafico");
+    setCambios(prevState => ({ ...prevState, displayTotalVolumen: 'flex' }));
+    botonMostrar.style.display = "none"; 
+  }
+
+  
 
 
 
@@ -1296,7 +1314,9 @@ export default function Informes() {
         </div>
 
         <div className="graficos-cuerpo">
-          <div className="grafico">
+        {editable.diapositiva1 ? ( 
+        <div className="grafico" >
+            <div id="totalVolumenPublicaciones"style={{display:cambios.displayTotalVolumen}} >
             <ReactApexChart
               options={data2.options}
               series={data2.series}
@@ -1304,8 +1324,27 @@ export default function Informes() {
               height={150}
               width={400}
             />
+            <Button onClick={eliminarGrafico}>x</Button>
+            </div>
+            {cambios.displayTotalVolumen === 'none' && editable.diapositiva1 === true 
+            ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={mostrarGrafico}>+</Button> 
+            : <Button id="mostrarGrafico" style={{display:'none'}} onClick={mostrarGrafico}>+</Button> 
+            }  
           </div>
-          <hr></hr>
+          ) : (
+          <div style={{display:cambios.displayTotalVolumen, gap:'5rem', height:'250px'}}>
+            <ReactApexChart
+              options={data2.options}
+              series={data2.series}
+              type="bar"
+              height={150}
+              width={400}
+            />
+             <hr></hr>
+          </div>
+                 
+           )}
+          
           <div className="periodosfbtw">
             <div className="facebook-grafico-bar">
               <div className="icon-nombre">
