@@ -509,3 +509,12 @@
     width: 200px !important;
     height: 200px !important;
   }
+
+  .boton-confirmar{
+    display: flex;
+    margin: 1rem;
+  }
+
+  .boton-primary{
+    margin-right: 1rem;
+  }

@@ -9,7 +9,7 @@ import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { CiVolumeHigh } from "react-icons/ci";
-import { Table, Tag, Button, Input } from "antd";
+import { Table, Tag, Button, Input,Switch,message,Modal   } from "antd";
 import { BsFillDashCircleFill } from "react-icons/bs";
 import ReactApexChart from "react-apexcharts";
 import { PieChart, Pie, Cell } from "recharts";
@@ -54,6 +54,63 @@ export default function Informes() {
   // Convertir el HTML del contenedor en un archivo PDF y descargarlo
   convertir.from(contenedor).save();
   } 
+
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = 'updatable';
+  const openMessage = (diapositivaName) => {
+    if (!editable[diapositivaName]) {
+      messageApi.error('Primero debes editar la diapositiva');
+      return;
+    }
+  
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Cargando...',
+    });
+  
+    setEditable((prevState) => ({
+      ...prevState,
+      [diapositivaName]: !prevState[diapositivaName],
+    }));
+  
+    setTimeout(() => {
+      messageApi.open({
+        key,
+        type: 'success',
+        content: 'Guardado!',
+        duration: 2,
+      });
+    }, 1000);
+  };
+
+  const openMessageEdit = (diapositivaName) => {
+ 
+    setEditable((prevState) => ({
+      ...prevState,
+      [diapositivaName]: !prevState[diapositivaName],
+    }));
+
+  };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const resetValues = () => {
+    setCambios(defaultValues);
+    setShowModal(false);
+  };
+
+  const handleDiscardChanges = () => {
+    setShowModal(true);
+
+  }
+
+
+
+
+
+
+
 
   const dataPieNivo = [
     { name: "Sección 1", value: 10, fill: "#8884d8" },
@@ -697,12 +754,41 @@ export default function Informes() {
 
 
 
-  const [editable,setEditable] = useState(false)
+  const [editable,setEditable] = useState({
+    general: false,
+    diapositiva1: false,
+    diapositiva2:true,
+    diapositiva3: true,
+    diapositiva4: true,
+    diapositiva5: true,
+    diapositiva6: true,
+    diapositiva7: true,
+    diapositiva8: true,
+    diapositiva9: true,
+    diapositiva10: true,
+    })
 
-  function editar(){
-   
-    setEditable(!editable)
-  }
+    function editar() {
+      console.log(editable)
+      setEditable((prevState) => ({
+        ...prevState,
+        general: !prevState.general,
+        diapositiva1: !prevState.diapositiva1,
+        diapositiva2:!prevState.diapositiva2,
+        diapositiva3: !prevState.diapositiva3,
+        diapositiva4: !prevState.diapositiva4,
+        diapositiva5: !prevState.diapositiva5,
+        diapositiva6: !prevState.diapositiva6,
+        diapositiva7: !prevState.diapositiva7,
+        diapositiva8: !prevState.diapositiva8,
+        diapositiva9: !prevState.diapositiva9,
+        diapositiva10: !prevState.diapositiva10,
+      }));
+    }
+
+ 
+
+  
   
 
   const [cambios, setCambios] = useState({
@@ -721,6 +807,345 @@ export default function Informes() {
     texto8: 'Ante la preocupación registrada en las audiencias por la vivienda (7%), se revelan emociones ansiedad, incertidumbre y desesperanza. Según este análisis, hay enojo y sensación de injusticia, y en lo personal se vive con culpa, vergüenza y sensación de fracaso. Quienes viven en villas y realizan ocupaciones ilegales, son estigmatizados y rechazados.',
     texto9: 'La preocupación por la educación (3%) registrada en las audiencias muestra una percepción de crisis del sistema e incertidumbre e inseguridad sobre los aprendizajes y las condiciones edilicias. En este clima negativo hay desconfianza en lo público y estrés por el costo de la escuela privada. Hay pesimismo y temor por niñes y adolescentes.',
     texto10: 'La presencia de un clima negativo, asociado a la emoción de la anticipación (21%), incluye en las audiencias, según el presente análisis, una predisposición a realizar suposiciones y valoraciones prejuiciosas sobre situaciones y personas. La anticipación puede darse junto con la tristeza y generar una visión pesimista y desmovilizante.',
+    texto11:'La alegría (3%) como emoción presente en las audiencias contribuye a crear un clima positivo que incluye, según el presente análisis, la presencia de una mirada optimista. Hay un espacio favorable a la escucha y la empatía, junto a una predisposición a la solidaridad.',
+    texto12:'Hay configurado un cuadro que incluye la emoción positiva de confianza (2%), reforzando en las audiencias un estado de expectativas favorables sobre las que se tiene un considerable grado de certeza. Se refuerza la empatía, la seguridad, la tranquilidad y el optimismo, conformando un terreno favorable a la participación.',
+    texto13:'Se refleja en las audiencias la percepción de frialdad (2%) como un componente negativo de la imagen de los protagonistas. Según el presente análisis también aparecen como percepciones negativas asociadas las siguientes: distancia, soberbia, desesperanza, insensibilidad e incapacidad para escuchar.',
+    texto14:'Se refleja en las audiencias un cuadro positivo a partir de la percepción del atributo conocimiento (2%), destacando también los elementos de poder, eficiencia, éxito, orden y credibilidad. Se observa la presencia de una disposición favorable hacia quienes protagonizan el tema analizado.',
+    texto15:'Se refleja en las audiencias un cuadro positivo a partir de la percepción del atributo laboriosidad (2%), destacando también los elementos de acción, compromiso, éxito, esfuerzo, honestidad y eficiencia. Hay una disposición favorable hacia quienes protagonizan el tema analizado, percibidos también como trabajadores',
+    texto16:'',
+    sugerencia1:'Desarrollar acciones que se centren en la problemática del TRABAJO de manera propositiva con iniciativas que demuestren algunos de los siguientes objetivos: la vocación de favorecer la creación de empleo, la mejora en las condiciones laborales, la dignificación de la persona a través del trabajo, la lucha contra el desempleo, el combate a la informalidad o la educación como herramienta para la futura inserción laboral.',
+    sugerencia2:'Desarrollar acciones que se centren en la problemática del TRABAJO de manera propositiva con iniciativas que demuestren algunos de los siguientes objetivos: la vocación de favorecer la creación de empleo, la mejora en las condiciones laborales, la dignificación de la persona a través del trabajo, la lucha contra el desempleo, el combate a la informalidad o la educación como herramienta para la futura inserción laboral.',
+    terminos1:'Términos que se recomiendan utilizar en los textos: obras, esfuerzo, cumplimiento, metas, trabajo, futuro, retos, compromiso, dignidad, diálogo innovación, acción.',
+    terminos2:'Términos que se recomiendan utilizar en los textos: obras, esfuerzo, cumplimiento, metas, trabajo, futuro, retos, compromiso, dignidad, diálogo innovación, acción.',
+    cliente:"HUGO PASSALACQUA",
+    tiempo:"la ultima semana",
+    desdeDiaHora: "16:27 hs del 20/03/2023",
+    hastaDiaHora: "16:27 hs del 27/03/2023",
+    tendencia: "predominante",
+    indicadorImpacto:"POSITIVIDAD",
+    porcentajeImpacto:"32%",
+    principalesHashtags: [
+      { text: "#posadas", value: 50 },
+      { text: "#ahora", value: 50 },
+      { text: "#buensabado", value: 50 },
+      { text: "#puertorico", value: 50 },
+    ],
+    data: [
+      {
+        key: "1",
+        influenciador: "passalacquaok",
+        impresiones: 38691,
+      },
+      {
+        key: "2",
+        influenciador: "PabbloZapata",
+        impresiones: 6292,
+      },
+      {
+        key: "3",
+        influenciador: "noticiasen3ok",
+        impresiones: 3495,
+      },
+      {
+        key: "4",
+        influenciador: "NHoughan",
+        impresiones: 65,
+      },
+      {
+        key: "5",
+        influenciador: "alejavier68",
+        impresiones: 64,
+      },
+    ],
+    data2ant:[
+      {
+        key: "6",
+        influenciador: "",
+        impresiones: "",
+      },
+      {
+        key: "7",
+        influenciador: "",
+        impresiones: "",
+      },
+      {
+        key: "8",
+        influenciador: "",
+        impresiones: "",
+      },
+      {
+        key: "9",
+        influenciador: "",
+        impresiones: "",
+      },
+      {
+        key: "10",
+        influenciador: "",
+        impresiones: "",
+      },
+    ],
+    dataPreocupaciones:[
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>TRABAJO </div>
+            <div>44.83%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>VIVIENDA </div>
+            <div>24.14%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>EDUCACIÓN </div>
+            <div>10.34%</div>
+          </div>
+        ),
+      },
+    ],
+    dataPreocupacionesTw:[
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>TRABAJO </div>
+            <div>36.84%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>VIVIENDA </div>
+            <div>36.84%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>EDUCACIÓN </div>
+            <div>15.79%</div>
+          </div>
+        ),
+      },
+    ],
+    dataPreocupacionesFb:[
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>TRABAJO </div>
+            <div>60.00%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>VIVIENDA </div>
+            <div>20.00%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>EDUCACIÓN </div>
+            <div>10.00%</div>
+          </div>
+        ),
+      },
+    ],
+    dataEmociones:[
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>ANTICIPACIÓN </div>
+            <div>65.63%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>ALEGRÍA </div>
+            <div>9.38%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>CONFIANZA </div>
+            <div>6.25%</div>
+          </div>
+        ),
+      },
+    ],
+    dataEmocionesTw:[
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>ANTICIPACIÓN </div>
+            <div>91.30%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>INSATISFACCIÓN </div>
+            <div>4.35%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>DESEO </div>
+            <div>4.35%</div>
+          </div>
+        ),
+      },
+    ],
+    dataEmocionesFb:[
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>ALEGRÍA </div>
+            <div>33.33%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>CONFIANZA </div>
+            <div>22.22%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>AGRADO </div>
+            <div>11.11%</div>
+          </div>
+        ),
+      },
+    ],
+    dataImagenes:[
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>FRIALDAD </div>
+            <div>22.22%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>CONOCIMIENTO </div>
+            <div>222.224%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>LABORASIDAD </div>
+            <div>22.22%</div>
+          </div>
+        ),
+      },
+    ],
+    dataImagenesTw:[
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>FRIALDAD </div>
+            <div>66.67%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>EFICIENCIA </div>
+            <div>33.33%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div></div>
+            <div></div>
+          </div>
+        ),
+      },
+    ],
+    dataImagenesFb:[
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>CONOCIMIENTO </div>
+            <div>33.33%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>LABORISIDAD </div>
+            <div>33.33%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>OPTIMISMO </div>
+            <div>16.67%</div>
+          </div>
+        ),
+      },
+    ],
+  });
+
+  const [defaultValues, setDefaultValues] = useState({
+    valor1: 111,
+    valor2:1,
+    valor3:36,
+    valor4:"DESCENDENTE",
+    valor5:124.524,
+    texto1: 'El candidato a gobernador para Misiones recibe una connotación ampliamente positiva, y se destaca el atributo de Eficiencia que le otorga la comunidad digital. No se detectan contenidos negativos.',
+    texto2: 'Impacta a favor su posteo sobre la visita al barrio Don Daniel de Alem y la charla con voluntarios y voluntarias del merendero que lleva adelante la vecina Yanina Báez con el acompañamiento de la agrupación Manos Unidas.',
+    texto3: ' El candidato pone de relieve la reunión que mantuvo con la concejala Gabriela Bastarrechea, de Puerto Rico, y su equipo, donde conversaron sobre ideas y e iniciativas que quieren llevar a cabo en la comunidad.',
+    texto4: 'Repercute la publicación de la cuenta del Frente Renovador de la Concordia, que subraya las palabras del candidato: "Al futuro lo tenemos que construir nosotros".',
+    texto5: 'Los medios difunden que el diputado provincial se acercó a Colonia Gisela para visitar dos establecimientos educativos y charlar con el cuerpo docente que se desempeña en este paraje ubicado entre los municipios de Colonia Polana y General Urquiza.',
+    texto6: 'Passalacqua logra importante engagement en su saludo a “la querida” comunidad de Alba Posse en su 88° aniversario.',
+    texto7: 'El trabajo (13%) como preocupación presente en las audiencias da lugar a un clima negativo y a las emociones de desaliento e incertidumbre. Están presentes el temor a la exclusión social, la precarización y la ruptura de los lazos sociales. Según este análisis, en lo personal hay sentimientos de culpabilidad, fracaso vergüenza.',
+    texto8: 'Ante la preocupación registrada en las audiencias por la vivienda (7%), se revelan emociones ansiedad, incertidumbre y desesperanza. Según este análisis, hay enojo y sensación de injusticia, y en lo personal se vive con culpa, vergüenza y sensación de fracaso. Quienes viven en villas y realizan ocupaciones ilegales, son estigmatizados y rechazados.',
+    texto9: 'La preocupación por la educación (3%) registrada en las audiencias muestra una percepción de crisis del sistema e incertidumbre e inseguridad sobre los aprendizajes y las condiciones edilicias. En este clima negativo hay desconfianza en lo público y estrés por el costo de la escuela privada. Hay pesimismo y temor por niñes y adolescentes.',
+    texto10: 'La presencia de un clima negativo, asociado a la emoción de la anticipación (21%), incluye en las audiencias, según el presente análisis, una predisposición a realizar suposiciones y valoraciones prejuiciosas sobre situaciones y personas. La anticipación puede darse junto con la tristeza y generar una visión pesimista y desmovilizante.',
+    texto11:'La alegría (3%) como emoción presente en las audiencias contribuye a crear un clima positivo que incluye, según el presente análisis, la presencia de una mirada optimista. Hay un espacio favorable a la escucha y la empatía, junto a una predisposición a la solidaridad.',
+    texto12:'Hay configurado un cuadro que incluye la emoción positiva de confianza (2%), reforzando en las audiencias un estado de expectativas favorables sobre las que se tiene un considerable grado de certeza. Se refuerza la empatía, la seguridad, la tranquilidad y el optimismo, conformando un terreno favorable a la participación.',
+    texto13:'Se refleja en las audiencias la percepción de frialdad (2%) como un componente negativo de la imagen de los protagonistas. Según el presente análisis también aparecen como percepciones negativas asociadas las siguientes: distancia, soberbia, desesperanza, insensibilidad e incapacidad para escuchar.',
+    texto14:'Se refleja en las audiencias un cuadro positivo a partir de la percepción del atributo conocimiento (2%), destacando también los elementos de poder, eficiencia, éxito, orden y credibilidad. Se observa la presencia de una disposición favorable hacia quienes protagonizan el tema analizado.',
+    texto15:'Se refleja en las audiencias un cuadro positivo a partir de la percepción del atributo laboriosidad (2%), destacando también los elementos de acción, compromiso, éxito, esfuerzo, honestidad y eficiencia. Hay una disposición favorable hacia quienes protagonizan el tema analizado, percibidos también como trabajadores',
+    texto16:'',
+    sugerencia1:'Desarrollar acciones que se centren en la problemática del TRABAJO de manera propositiva con iniciativas que demuestren algunos de los siguientes objetivos: la vocación de favorecer la creación de empleo, la mejora en las condiciones laborales, la dignificación de la persona a través del trabajo, la lucha contra el desempleo, el combate a la informalidad o la educación como herramienta para la futura inserción laboral.',
+    sugerencia2:'Desarrollar acciones que se centren en la problemática del TRABAJO de manera propositiva con iniciativas que demuestren algunos de los siguientes objetivos: la vocación de favorecer la creación de empleo, la mejora en las condiciones laborales, la dignificación de la persona a través del trabajo, la lucha contra el desempleo, el combate a la informalidad o la educación como herramienta para la futura inserción laboral.',
+    terminos1:'Términos que se recomiendan utilizar en los textos: obras, esfuerzo, cumplimiento, metas, trabajo, futuro, retos, compromiso, dignidad, diálogo innovación, acción.',
+    terminos2:'Términos que se recomiendan utilizar en los textos: obras, esfuerzo, cumplimiento, metas, trabajo, futuro, retos, compromiso, dignidad, diálogo innovación, acción.',
     cliente:"HUGO PASSALACQUA",
     tiempo:"la ultima semana",
     desdeDiaHora: "16:27 hs del 20/03/2023",
@@ -1134,7 +1559,7 @@ export default function Informes() {
         <div className="totalizador-1">
           <div className="contenedor-totales">
             <div className="box">
-            {editable ? (
+            {editable.diapositiva1 ? (
               <Input
               style={{ width: '70px' , height:'70px'}}
                 type="text"
@@ -1155,7 +1580,7 @@ export default function Informes() {
             </div>
 
             <div className="box">
-            {editable ? (
+            {editable.diapositiva1  ? (
               <Input
               style={{ width: '70px' , height:'70px'}}
                 type="text"
@@ -1176,7 +1601,7 @@ export default function Informes() {
             </div>
 
             <div className="box">
-            {editable ? (
+            {editable.diapositiva1  ? (
               <Input
               style={{ width: '70px' , height:'70px'}}
                 type="text"
@@ -1198,7 +1623,7 @@ export default function Informes() {
 
           <div className="contenedor-totales">
             <div className="box">   
-            {editable ? (
+            {editable.diapositiva1 ? (
               <Input
               style={{ width: '300px' , height:'70px'}}
                 type="text"
@@ -1218,7 +1643,7 @@ export default function Informes() {
             </div>
 
             <div className="box">
-            {editable ? (
+            {editable.diapositiva1 ? (
               <Input
               style={{ width: '70px' , height:'70px'}}
                 type="text"
@@ -1237,7 +1662,35 @@ export default function Informes() {
             </div>
           </div>
         </div>
-
+        {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva1')} disabled={editable.diapositiva1}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva1')} disabled={!editable.diapositiva1}>
+            Guardar cambio
+          </Button>
+          <Button onClick={handleDiscardChanges} disabled={!editable.diapositiva1}>Descartar cambios</Button>
+          <Modal
+          visible={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva1: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
 
         <div class="page-break" data-html2pdf-pagebreak>
 
@@ -1462,7 +1915,7 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
-              {editable ? (
+              {editable.general  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -1482,7 +1935,7 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
-              {editable ? (
+              {editable.general  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -1507,7 +1960,7 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
-              {editable ? (
+              {editable.general  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -1528,7 +1981,7 @@ export default function Informes() {
                 <MdOutlineContactSupport />
               </div>
              
-              {editable ? (
+              {editable.general  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -1553,7 +2006,7 @@ export default function Informes() {
                 <MdOutlineContactSupport />
               </div>
             
-              {editable ? (
+              {editable.general  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -1574,7 +2027,7 @@ export default function Informes() {
                 <MdOutlineContactSupport />
               </div>
            
-              {editable ? (
+              {editable.general  ? (
               <TextArea
               style={{ height: '100px' }}
               type="text"
@@ -1919,7 +2372,7 @@ export default function Informes() {
         <div className="contenedor3cartas color"> {/*contenedor de 3*/}
           <div className="contenedor1carta"> {/*contenedor de 1*/}
             <div className="titulo2">01.</div>
-            {editable ? (
+            {editable.general  ? (
               <TextArea
               style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -1937,7 +2390,7 @@ export default function Informes() {
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">02.</div>
-          {editable ? (
+          {editable.general  ? (
               <TextArea
               style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -1956,7 +2409,7 @@ export default function Informes() {
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">03.</div>
-          {editable ? (
+          {editable.general  ? (
               <TextArea
               style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -1978,7 +2431,7 @@ export default function Informes() {
         <div className="contenedor3cartas"> {/*contenedor de 3*/}
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">04.</div>
-          {editable ? (
+          {editable.general  ? (
               <TextArea
                 style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -1997,71 +2450,94 @@ export default function Informes() {
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
             <div className="titulo2">05.</div>
-            <div>La alegría (3%) como emoción presente
-            en las audiencias contribuye a crear un
-            clima positivo que incluye, según el
-            presente análisis, la presencia de una
-            mirada optimista. Hay un espacio
-            favorable a la escucha y la empatía, junto
-            a una predisposición a la solidaridad.
-            </div>
+            {editable.general  ? (
+              <TextArea
+                style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto11"
+                value={cambios.texto11}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto11}
+              </div>
+            )}
           </div>
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">06.</div>
-            <div>Hay configurado un cuadro que incluye la
-            emoción positiva de confianza (2%),
-            reforzando en las audiencias un estado de
-            expectativas favorables sobre las que se
-            tiene un considerable grado de certeza.
-            Se refuerza la empatía, la seguridad, la
-            tranquilidad y el optimismo,
-            conformando un terreno favorable a la
-            participación.
-            </div>
+          {editable.general  ? (
+              <TextArea
+                style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto12"
+                value={cambios.texto12}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto12}
+              </div>
+            )}
           </div>
         </div>
 
         <div className="contenedor3cartas color"> {/*contenedor de 3*/}
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">07.</div>
-            <div>Se refleja en las audiencias la percepción
-            de frialdad (2%) como un componente
-            negativo de la imagen de los
-            protagonistas. Según el presente análisis
-            también aparecen como percepciones
-            negativas asociadas las siguientes:
-            distancia, soberbia, desesperanza,
-            insensibilidad e incapacidad para
-            escuchar.</div>
+          {editable.general  ? (
+              <TextArea
+                style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto13"
+                value={cambios.texto13}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto13}
+              </div>
+            )}
           </div>
         
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">08.</div>
-            <div>Se refleja en las audiencias un cuadro
-            positivo a partir de la percepción del
-            atributo conocimiento (2%), destacando
-            también los elementos de poder,
-            eficiencia, éxito, orden y credibilidad.
-            Se observa la presencia de una disposición
-            favorable hacia quienes protagonizan el
-            tema analizado.
-            </div>
-            
+          {editable.general  ? (
+              <TextArea
+                style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto14"
+                value={cambios.texto14}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto14}
+              </div>
+            )}            
           </div>
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
             <div className="titulo2">09.</div>
-            <div>Se refleja en las audiencias un cuadro
-            positivo a partir de la percepción del
-            atributo laboriosidad (2%), destacando
-            también los elementos de acción,
-            compromiso, éxito, esfuerzo,
-            honestidad y eficiencia. Hay una
-            disposición favorable hacia quienes
-            protagonizan el tema analizado, percibidos
-            también como trabajadores
-            </div>
+            {editable.general  ? (
+              <TextArea
+                style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto15"
+                value={cambios.texto15}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto15}
+              </div>
+            )}       
           </div>
         </div>
 
@@ -2136,25 +2612,35 @@ export default function Informes() {
           SUGERENCIA 1
           </div>
           <div className="contenedorTextoTerminos"> {/*Contenedor textoTerminos */}
-          <div> {/* texto*/}
-          Desarrollar acciones que se centren en la
-          problemática del TRABAJO de manera
-          propositiva con iniciativas que demuestren
-          algunos de los siguientes objetivos: la vocación de
-          favorecer la creación de empleo, la mejora en
-          las condiciones laborales, la dignificación de la
-          persona a través del trabajo, la lucha contra el
-          desempleo, el combate a la informalidad o la
-          educación como herramienta para la futura
-          inserción laboral.
-          </div>
-          <div> {/* terminos*/}
-          Términos que se recomiendan utilizar en los
-          textos: obras, esfuerzo, cumplimiento,
-          metas, trabajo, futuro, retos,
-          compromiso, dignidad, diálogo,
-          innovación, acción.
-          </div>
+          {editable.general  ? (  
+              <TextArea
+                style={{ height: '300px', width: '400px' }}
+                type="text"
+                name="sugerencia1"
+                value={cambios.sugerencia1}
+                onChange={handleChange}
+                maxLength={600}
+              />
+            ) : (
+              <div>
+                {cambios.sugerencia1}
+              </div>
+            )}   {/* texto*/}
+
+          {editable.general  ? (  
+              <TextArea
+                style={{ height: '100px', width: '400px' }}
+                type="text"
+                name="terminos1"
+                value={cambios.terminos1}
+                onChange={handleChange}
+                maxLength={300}
+              />
+            ) : (
+              <div>
+                {cambios.terminos1}
+              </div>
+            )}  {/* terminos*/}
           </div>
 
           </div>
@@ -2264,27 +2750,36 @@ export default function Informes() {
           SUGERENCIA 2
           </div>
           <div className="contenedorTextoTerminos"> {/*Contenedor textoTerminos */}
-          <div> {/* texto*/}
-          Informar con asertividad sobre las acciones
-          emprendidas para atender la problemática de la
-          VIVIENDA, incluyendo las gestiones para
-          aumentar la oferta de unidades
-          habitacionales, morigerar los costos de los
-          alquileres y promover la construcción y el
-          crédito, con los objetivos de llevar tranquilidad
-          a las familias y aportar estabilidad, proyección
-          y seguridad.
+          {editable.general  ? (  
+              <TextArea
+                style={{ height: '300px', width: '400px' }}
+                type="text"
+                name="sugerencia2"
+                value={cambios.sugerencia2}
+                onChange={handleChange}
+                maxLength={600}
+              />
+            ) : (
+              <div>
+                {cambios.sugerencia2}
+              </div>
+            )}   {/* texto*/}
 
+          {editable.general  ? (  
+              <TextArea
+                style={{ height: '100px', width: '400px' }}
+                type="text"
+                name="terminos2"
+                value={cambios.terminos2}
+                onChange={handleChange}
+                maxLength={300}
+              />
+            ) : (
+              <div>
+                {cambios.terminos2}
+              </div>
+            )}  {/* terminos*/}
           </div>
-          <div> {/* terminos*/}
-          Términos que se recomiendan utilizar en los
-          textos: vivienda, hábitat, seguridad,
-          estabilidad, tranquilidad, oferta,
-          políticas activas, construcción, crédito,
-          urbanización, servicios, habitabilidad. 
-          </div>
-          </div>
-
           </div>
 
           <div className="contenedorEmocionesAtributos"> {/*CONTENEDOR EMOCIONES Y ATRIBUTOS */}
