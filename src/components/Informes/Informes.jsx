@@ -1188,7 +1188,7 @@ export default function Informes() {
 
   return (
     <Fragment>
-      <Collapse defaultActiveKey={['1']} className="contenedor-botones">
+      <Collapse /* defaultActiveKey={['1']} */ className="contenedor-botones">
         <Panel /* header="Botones" */ key="1">
           <Space direction="vertical" >
             <div>
