@@ -9,7 +9,8 @@ import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { CiVolumeHigh } from "react-icons/ci";
-import { Table, Tag, Button, Input,Switch,message,Modal,Collapse, Space} from "antd";
+import { Table, Tag, Input,message,Collapse, Space} from "antd";
+import { Button, Modal } from 'antd';
 import { BsFillDashCircleFill } from "react-icons/bs";
 import ReactApexChart from "react-apexcharts";
 import { PieChart, Pie, Cell } from "recharts";
@@ -1215,14 +1216,39 @@ export default function Informes() {
 
           {/*Titulo*/}
           <div>
-            <div className="titulo">{cambios.cliente}</div>
+          {editable.diapositiva1 ? (
+              <Input
+              style={{ width: '500px' , height:'70px'}}
+                type="text"
+                name="cliente"
+                value={cambios.cliente}
+                onChange={handleChange}
+                className="titulo"
+              />
+            ) : (
+              <div className="titulo">{cambios.cliente}</div>
+            )}
+              {editable.diapositiva1 ? (
+                            
+              <Input
+              style={{ width: '1000px' , height:'30px', marginTop:'1rem', marginBottom:'1rem', paddingTop:'1rem'}}
+                type="text"
+                name="valor1"
+                value={`Se mide el impacto de las conversaciones sobre ${cambios.cliente} durante ${cambios.tiempo}.`}
+                onChange={handleChange}
+                className="subtitulo-principal"
+              />
+          
+            ) : (
             <p className="subtitulo-principal">
               Se mide el impacto de las conversaciones sobre {cambios.cliente} durante {cambios.tiempo}.
             </p>
+            )}
+            
           </div>
         </div>
 
-        <div className="cuerpo  ">
+        <div className="cuerpo">
           <div className="titulo0">MONITOREO Y ANÁLISIS DE:</div>
           <img className="fb" src={fb}></img>
           <img className="tw" src={tw}></img>|
@@ -1231,9 +1257,23 @@ export default function Informes() {
             <div className="titulo1">
               <AiOutlineClockCircle />
             </div>
+            {editable.diapositiva1 ? (
+                            
+              <Input
+              style={{ width: '450px' , height:'20px', paddingTop:'0.8rem'}}
+              type="text"
+              name="valor1"
+              value={`Desde ${cambios.desdeDiaHora} - Hasta ${cambios.hastaDiaHora}`}
+              onChange={handleChange}
+              className="subtitulo-principal"
+              />
+                        
+              ) : (
             <div className="titulo1">
-              Desde {cambios.desdeDiaHora} - Hasta {cambios.hastaDiaHora}
+            Desde {cambios.desdeDiaHora} - Hasta {cambios.hastaDiaHora}
             </div>
+            )}
+      
           </div>
         </div>
 

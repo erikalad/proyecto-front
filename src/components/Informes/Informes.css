@@ -10,6 +10,25 @@
 
 }
 
+body > div[style*="position: fixed"][tabindex="-1"] {
+  background-color: rgba(0,0,0,0.0) !important;
+}
+
+.ant-modal-wrap {
+  background-color: rgba(0,0,0,0) !important;
+}
+
+.css-dev-only-do-not-override-htwhyh.ant-modal-root .ant-modal-mask {
+  position: fixed;
+  top: 0;
+  inset-inline-end: 0;
+  bottom: 0;
+  inset-inline-start: 0;
+  z-index: 1000;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.173) !important;
+}
+
 .contenedor-margin{
 margin-top: 5rem;
 margin-bottom: 2rem;

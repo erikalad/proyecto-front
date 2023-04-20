@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body > div[style*="position: fixed"][tabindex="-1"] {
+  background-color: rgba(0,0,0,0.0) !important;
+}
