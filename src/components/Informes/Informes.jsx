@@ -114,7 +114,7 @@ export default function Informes() {
   const data2ant = [
     {
       key: "6",
-      influenciador: "Erika",
+      influenciador: "",
       impresiones: "",
     },
     {
@@ -619,20 +619,7 @@ export default function Informes() {
   ];
 
   {/*Datos solicitados*/}
-  const cliente = "HUGO PASSALACQUA";
-  const tiempo = "la ultima semana";
-  const clienteUp = cliente.toUpperCase();
-  const desdeDiaHora = "16:27 hs del 20/03/2023";
-  const hastaDiaHora = "16:27 hs del 27/03/2023";
-  const tendencia = "predominante";
-  const indicadorImpacto = "POSITIVIDAD";
-  const porcentajeImpacto = "32%";
-  const principalesHashtags = [
-    { text: "#posadas", value: 50 },
-    { text: "#ahora", value: 50 },
-    { text: "#buensabado", value: 50 },
-    { text: "#puertorico", value: 50 },
-  ];
+  
   const palabrasClaves = [
     { text: "compomiso", value: 50 },
     { text: "esfuerzo", value: 20 },
@@ -664,8 +651,9 @@ export default function Informes() {
   };
 
   const mapaPercepciones = [
-    { text: "insensibilidad", value: 50, color:"#ff4c4cd7" },
+  
     { text: "anticipación", value: 20, color:"#53b253bd" },
+    { text: "insensibilidad", value: 50, color:"#ff4c4cd7" },
     { text: "decisión", value: 20, color:"#53b253bd" },
     { text: "mejora", value: 15, color:"#53b253bd" },
     { text: "optimismo", value: 12, color:"#53b253bd" },
@@ -682,35 +670,367 @@ export default function Informes() {
     { text: "educación", value: 57, color:"#53b253bd" },
     { text: "confianza", value: 21, color:"#53b253bd" },
     { text: "distante", value: 60, color:"#ff4c4cd7" },
+    
   ];
+
+
+
+
+ 
+    function obtenerColores(mapaPercepciones) {
+     
+      const colores = mapaPercepciones.map((percepcion) => percepcion.color);
+      return colores;
+    }
+
+ 
+
 
   const opcionesPercepciones = {
     fontFamily: "Helvetica, sans-serif",
     fontSizes: [10, 50],
     rotations: 0,
     rotate: 90,
-    colors: mapaPercepciones.map(object=> object.color)
-  };
+    colors: obtenerColores(mapaPercepciones)
+
+  } 
+
+
 
   const [editable,setEditable] = useState(false)
 
   function editar(){
-    console.log(editable)
+   
     setEditable(!editable)
   }
-  const [valor, setValor] = useState(111);
-  const [texto, setTexto] = useState("El candidato a gobernador para Misiones recibe una connotación ampliamente positiva, y se destaca el atributo de Eficiencia que le otorga la comunidad digital. No se detectan contenidos negativos.");
-  const [texto2, setTexto2] = useState(" Impacta a favor su posteo sobre la visita al barrio Don Daniel de Alem y la charla con voluntarios y voluntarias del merendero que lleva adelante la vecina Yanina Báez con el acompañamiento de la agrupación Manos Unidas.");
+  
 
-  const manejarCambio = (evento) => {
-    setValor(evento.target.value);
-  }
-  const manejarCambioTexto = (evento) => {
-    setTexto(evento.target.value);
-  }
-  const manejarCambioTexto2 = (evento) => {
-    setTexto2(evento.target.value);
-  }
+  const [cambios, setCambios] = useState({
+    valor1: 111,
+    valor2:1,
+    valor3:36,
+    valor4:"DESCENDENTE",
+    valor5:124.524,
+    texto1: 'El candidato a gobernador para Misiones recibe una connotación ampliamente positiva, y se destaca el atributo de Eficiencia que le otorga la comunidad digital. No se detectan contenidos negativos.',
+    texto2: 'Impacta a favor su posteo sobre la visita al barrio Don Daniel de Alem y la charla con voluntarios y voluntarias del merendero que lleva adelante la vecina Yanina Báez con el acompañamiento de la agrupación Manos Unidas.',
+    texto3: ' El candidato pone de relieve la reunión que mantuvo con la concejala Gabriela Bastarrechea, de Puerto Rico, y su equipo, donde conversaron sobre ideas y e iniciativas que quieren llevar a cabo en la comunidad.',
+    texto4: 'Repercute la publicación de la cuenta del Frente Renovador de la Concordia, que subraya las palabras del candidato: "Al futuro lo tenemos que construir nosotros".',
+    texto5: 'Los medios difunden que el diputado provincial se acercó a Colonia Gisela para visitar dos establecimientos educativos y charlar con el cuerpo docente que se desempeña en este paraje ubicado entre los municipios de Colonia Polana y General Urquiza.',
+    texto6: 'Passalacqua logra importante engagement en su saludo a “la querida” comunidad de Alba Posse en su 88° aniversario.',
+    texto7: 'El trabajo (13%) como preocupación presente en las audiencias da lugar a un clima negativo y a las emociones de desaliento e incertidumbre. Están presentes el temor a la exclusión social, la precarización y la ruptura de los lazos sociales. Según este análisis, en lo personal hay sentimientos de culpabilidad, fracaso vergüenza.',
+    texto8: 'Ante la preocupación registrada en las audiencias por la vivienda (7%), se revelan emociones ansiedad, incertidumbre y desesperanza. Según este análisis, hay enojo y sensación de injusticia, y en lo personal se vive con culpa, vergüenza y sensación de fracaso. Quienes viven en villas y realizan ocupaciones ilegales, son estigmatizados y rechazados.',
+    texto9: 'La preocupación por la educación (3%) registrada en las audiencias muestra una percepción de crisis del sistema e incertidumbre e inseguridad sobre los aprendizajes y las condiciones edilicias. En este clima negativo hay desconfianza en lo público y estrés por el costo de la escuela privada. Hay pesimismo y temor por niñes y adolescentes.',
+    texto10: 'La presencia de un clima negativo, asociado a la emoción de la anticipación (21%), incluye en las audiencias, según el presente análisis, una predisposición a realizar suposiciones y valoraciones prejuiciosas sobre situaciones y personas. La anticipación puede darse junto con la tristeza y generar una visión pesimista y desmovilizante.',
+    cliente:"HUGO PASSALACQUA",
+    tiempo:"la ultima semana",
+    desdeDiaHora: "16:27 hs del 20/03/2023",
+    hastaDiaHora: "16:27 hs del 27/03/2023",
+    tendencia: "predominante",
+    indicadorImpacto:"POSITIVIDAD",
+    porcentajeImpacto:"32%",
+    principalesHashtags: [
+      { text: "#posadas", value: 50 },
+      { text: "#ahora", value: 50 },
+      { text: "#buensabado", value: 50 },
+      { text: "#puertorico", value: 50 },
+    ],
+    data: [
+      {
+        key: "1",
+        influenciador: "passalacquaok",
+        impresiones: 38691,
+      },
+      {
+        key: "2",
+        influenciador: "PabbloZapata",
+        impresiones: 6292,
+      },
+      {
+        key: "3",
+        influenciador: "noticiasen3ok",
+        impresiones: 3495,
+      },
+      {
+        key: "4",
+        influenciador: "NHoughan",
+        impresiones: 65,
+      },
+      {
+        key: "5",
+        influenciador: "alejavier68",
+        impresiones: 64,
+      },
+    ],
+    data2ant:[
+      {
+        key: "6",
+        influenciador: "",
+        impresiones: "",
+      },
+      {
+        key: "7",
+        influenciador: "",
+        impresiones: "",
+      },
+      {
+        key: "8",
+        influenciador: "",
+        impresiones: "",
+      },
+      {
+        key: "9",
+        influenciador: "",
+        impresiones: "",
+      },
+      {
+        key: "10",
+        influenciador: "",
+        impresiones: "",
+      },
+    ],
+    dataPreocupaciones:[
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>TRABAJO </div>
+            <div>44.83%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>VIVIENDA </div>
+            <div>24.14%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>EDUCACIÓN </div>
+            <div>10.34%</div>
+          </div>
+        ),
+      },
+    ],
+    dataPreocupacionesTw:[
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>TRABAJO </div>
+            <div>36.84%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>VIVIENDA </div>
+            <div>36.84%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>EDUCACIÓN </div>
+            <div>15.79%</div>
+          </div>
+        ),
+      },
+    ],
+    dataPreocupacionesFb:[
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>TRABAJO </div>
+            <div>60.00%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>VIVIENDA </div>
+            <div>20.00%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>EDUCACIÓN </div>
+            <div>10.00%</div>
+          </div>
+        ),
+      },
+    ],
+    dataEmociones:[
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>ANTICIPACIÓN </div>
+            <div>65.63%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>ALEGRÍA </div>
+            <div>9.38%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>CONFIANZA </div>
+            <div>6.25%</div>
+          </div>
+        ),
+      },
+    ],
+    dataEmocionesTw:[
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>ANTICIPACIÓN </div>
+            <div>91.30%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>INSATISFACCIÓN </div>
+            <div>4.35%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>DESEO </div>
+            <div>4.35%</div>
+          </div>
+        ),
+      },
+    ],
+    dataEmocionesFb:[
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>ALEGRÍA </div>
+            <div>33.33%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>CONFIANZA </div>
+            <div>22.22%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>AGRADO </div>
+            <div>11.11%</div>
+          </div>
+        ),
+      },
+    ],
+    dataImagenes:[
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>FRIALDAD </div>
+            <div>22.22%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>CONOCIMIENTO </div>
+            <div>222.224%</div>
+          </div>
+        ),
+      },
+      {
+        total: (
+          <div className="totalizador-preocupaciones">
+            <div>LABORASIDAD </div>
+            <div>22.22%</div>
+          </div>
+        ),
+      },
+    ],
+    dataImagenesTw:[
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>FRIALDAD </div>
+            <div>66.67%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div>EFICIENCIA </div>
+            <div>33.33%</div>
+          </div>
+        ),
+      },
+      {
+        twitter: (
+          <div className="totalizador-preocupaciones">
+            <div></div>
+            <div></div>
+          </div>
+        ),
+      },
+    ],
+    dataImagenesFb:[
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>CONOCIMIENTO </div>
+            <div>33.33%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>LABORISIDAD </div>
+            <div>33.33%</div>
+          </div>
+        ),
+      },
+      {
+        facebook: (
+          <div className="totalizador-preocupaciones">
+            <div>OPTIMISMO </div>
+            <div>16.67%</div>
+          </div>
+        ),
+      },
+    ],
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCambios((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   return (
     <Fragment>
@@ -730,9 +1050,9 @@ export default function Informes() {
 
           {/*Titulo*/}
           <div>
-            <div className="titulo">{clienteUp}</div>
+            <div className="titulo">{cambios.cliente}</div>
             <p className="subtitulo-principal">
-              Se mide el impacto de las conversaciones sobre {cliente} durante {tiempo}.
+              Se mide el impacto de las conversaciones sobre {cambios.cliente} durante {cambios.tiempo}.
             </p>
           </div>
         </div>
@@ -747,7 +1067,7 @@ export default function Informes() {
               <AiOutlineClockCircle />
             </div>
             <div className="titulo1">
-              Desde {desdeDiaHora} - Hasta {hastaDiaHora}
+              Desde {cambios.desdeDiaHora} - Hasta {cambios.hastaDiaHora}
             </div>
           </div>
         </div>
@@ -818,14 +1138,15 @@ export default function Informes() {
               <Input
               style={{ width: '70px' , height:'70px'}}
                 type="text"
-                value={valor}
-                onChange={manejarCambio}
+                name="valor1"
+                value={cambios.valor1}
+                onChange={handleChange}
                 className="numeros frases-total"
               />
             ) : (
-              <div className="numeros frases-total">{valor}</div>
+              <div className="numeros frases-total">{cambios.valor1}</div>
             )}
-             {/*  <div className="numeros frases-total">111</div> */}
+            
               <div className="frase">
                 <div className="frases-total">PUBLICACIONES</div>
                 <div className="frases-total">TOTALES</div>
@@ -834,8 +1155,19 @@ export default function Informes() {
             </div>
 
             <div className="box">
-              
-              <div className="numeros frases-total">1</div>
+            {editable ? (
+              <Input
+              style={{ width: '70px' , height:'70px'}}
+                type="text"
+                name="valor2"
+                value={cambios.valor2}
+                onChange={handleChange}
+                className="numeros frases-total"
+              />
+            ) : (
+              <div className="numeros frases-total">{cambios.valor2}</div>
+            )}
+      
               <div className="frase">
                 <div className="frases-total">POR HORA </div>
                 <div className="frases-total">TOTALES</div>
@@ -844,7 +1176,19 @@ export default function Informes() {
             </div>
 
             <div className="box">
-              <div className="numeros frases-total">36</div>
+            {editable ? (
+              <Input
+              style={{ width: '70px' , height:'70px'}}
+                type="text"
+                name="valor3"
+                value={cambios.valor3}
+                onChange={handleChange}
+                className="numeros frases-total"
+              />
+            ) : (
+              <div className="numeros frases-total">{cambios.valor3}</div>
+            )}
+           
               <div className="frase">
                 <div className="frases-total">PICO MÁXIMO </div>
                 <div className="frases-total">DE PUBLICACIONES</div>
@@ -853,8 +1197,19 @@ export default function Informes() {
           </div>
 
           <div className="contenedor-totales">
-            <div className="box">
-              <div className="numeros frases-total">DESCENDENTE</div>
+            <div className="box">   
+            {editable ? (
+              <Input
+              style={{ width: '300px' , height:'70px'}}
+                type="text"
+                name="valor4"
+                value={cambios.valor4}
+                onChange={handleChange}
+                className="numeros frases-total"
+              />
+            ) : (
+              <div className="numeros frases-total">{cambios.valor4}</div>
+            )}
               <div className="frase">
                 <div className="frases-total">TENDENCIA </div>
                 <div className="frases-total">DE PUBLICACIONES</div>
@@ -863,7 +1218,18 @@ export default function Informes() {
             </div>
 
             <div className="box">
-              <div className="numeros frases-total">124.524</div>
+            {editable ? (
+              <Input
+              style={{ width: '70px' , height:'70px'}}
+                type="text"
+                name="valor5"
+                value={cambios.valor5}
+                onChange={handleChange}
+                className="numeros frases-total"
+              />
+            ) : (
+              <div className="numeros frases-total">{cambios.valor5}</div>
+            )}
               <div className="frase">
                 <div className="frases-total">ALCANCE</div>
                 <div className="frases-total">IMPRESIONES</div>
@@ -941,19 +1307,19 @@ export default function Informes() {
           </div>
 
           <div className="texto">
-            <div>Tendencia {tendencia}</div>
+            <div>Tendencia {cambios.tendencia}</div>
             <div> en relación al mismo período anterior:</div>
             <div
               className={
-                indicadorImpacto === "POSITIVIDAD" ? "positivo" : "negativo"
+                cambios.indicadorImpacto === "POSITIVIDAD" ? "positivo" : "negativo"
               }>
-              {indicadorImpacto}
+              {cambios.indicadorImpacto}
             </div>
             <div
               className={
-                indicadorImpacto === "POSITIVIDAD" ? "positivo" : "negativo"
+                cambios.indicadorImpacto === "POSITIVIDAD" ? "positivo" : "negativo"
               }>
-              {porcentajeImpacto}
+              {cambios.porcentajeImpacto}
             </div>
           </div>
 
@@ -1048,7 +1414,8 @@ export default function Informes() {
               <img src={hashtags} className="hashtags" />
             </div>
             <div className="grafico-palabras">
-              <ReactWordcloud words={principalesHashtags} options={opciones} />
+    
+            <ReactWordcloud words={cambios.principalesHashtags} options={opciones} />
             </div>
           </div>
 
@@ -1099,12 +1466,14 @@ export default function Informes() {
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
-                value={texto}
-                onChange={manejarCambioTexto}
+                name="texto1"
+                value={cambios.texto1}
+                onChange={handleChange}
+                maxLength={250}
               />
             ) : (
               <div>
-                {texto}
+                {cambios.texto1}
               </div>
             )}
             </div>
@@ -1117,20 +1486,17 @@ export default function Informes() {
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
-                value={texto2}
-                onChange={manejarCambioTexto2}
+                name="texto2"
+                value={cambios.texto2}
+                onChange={handleChange}
+                maxLength={250}
               />
             ) : (
               <div>
-                {texto2}
+                {cambios.texto2}
+
               </div>
             )}
-         {/*      <div>
-                Impacta a favor su posteo sobre la visita al barrio Don Daniel
-                de Alem y la charla con voluntarios y voluntarias del merendero
-                que lleva adelante la vecina Yanina Báez con el acompañamiento
-                de la agrupación Manos Unidas.
-              </div> */}
             </div>
           </div>
 
@@ -1141,23 +1507,42 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
+              {editable ? (
+              <TextArea
+                style={{ height: '100px' }}
+                type="text"
+                name="texto3"
+                value={cambios.texto3}
+                onChange={handleChange}
+                maxLength={250}
+              />
+            ) : (
               <div>
-                El candidato pone de relieve la reunión que mantuvo con la
-                concejala Gabriela Bastarrechea, de Puerto Rico, y su equipo,
-                donde conversaron sobre ideas y e iniciativas que quieren llevar
-                a cabo en la comunidad.
+                {cambios.texto3}
               </div>
+            )}
             </div>
 
             <div className="contenedor-texto-analisis">
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
+             
+              {editable ? (
+              <TextArea
+                style={{ height: '100px' }}
+                type="text"
+                name="texto4"
+                value={cambios.texto4}
+                onChange={handleChange}
+                maxLength={250}
+              />
+            ) : (
               <div>
-                Repercute la publicación de la cuenta del Frente Renovador de la
-                Concordia, que subraya las palabras del candidato: "Al futuro lo
-                tenemos que construir nosotros".
+                {cambios.texto4}
               </div>
+            )}
+            
             </div>
           </div>
           <hr className="hr-estilos" />
@@ -1167,23 +1552,43 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
+            
+              {editable ? (
+              <TextArea
+                style={{ height: '100px' }}
+                type="text"
+                name="texto5"
+                value={cambios.texto5}
+                onChange={handleChange}
+                maxLength={250}
+              />
+            ) : (
               <div>
-                Los medios difunden que el diputado provincial se acercó a
-                Colonia Gisela para visitar dos establecimientos educativos y
-                charlar con el cuerpo docente que se desempeña en este paraje
-                ubicado entre los municipios de Colonia Polana y General
-                Urquiza.
+                {cambios.texto5}
               </div>
+            )}
             </div>
 
             <div className="contenedor-texto-analisis">
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
+           
+              {editable ? (
+              <TextArea
+              style={{ height: '100px' }}
+              type="text"
+              name="texto6"
+              value={cambios.texto6}
+              onChange={handleChange}
+              maxLength={250}
+            />
+            ) : (
               <div>
-                Passalacqua logra importante engagement en su saludo a “la
-                querida” comunidad de Alba Posse en su 88° aniversario.
+                {cambios.texto6}
               </div>
+            )}
+    
             </div>
           </div>
           <hr className="hr-estilos" />
@@ -1218,7 +1623,7 @@ export default function Informes() {
           <div className="table">
             <Table
               columns={columns}
-              dataSource={[...data]}
+              dataSource={cambios.data}
               pagination={false}
               rowClassName={rowClassName}
               style={{ width: "100%" }}
@@ -1241,7 +1646,7 @@ export default function Informes() {
          {data2ant && data2ant[0].influenciador !== "" && (
         <Table
           columns={columns}
-          dataSource={data2ant}
+          dataSource={cambios.data2ant}
           pagination={false}
           rowClassName={rowClassName}
           style={{ width: "100%" }}
@@ -1282,7 +1687,7 @@ export default function Informes() {
           <div className="table">
             <Table
               columns={columnsPreocupacionesTotal}
-              dataSource={[...dataPreocupaciones]}
+              dataSource={cambios.dataPreocupaciones}
               pagination={false}
               rowClassName={rowClassNameTotal("TOTAL")}
               style={{ width: "100%", margin: "3px" }}
@@ -1299,7 +1704,7 @@ export default function Informes() {
             />
             <Table
               columns={columnsPreocupacionesTw}
-              dataSource={[...dataPreocupacionesTw]}
+              dataSource={cambios.dataPreocupacionesTw}
               pagination={false}
               rowClassName={rowClassNameTotal("TWITTER")}
               style={{ width: "100%", margin: "3px" }}
@@ -1317,7 +1722,7 @@ export default function Informes() {
 
             <Table
               columns={columnsPreocupacionesFb}
-              dataSource={[...dataPreocupacionesFb]}
+              dataSource={cambios.dataPreocupacionesFb}
               pagination={false}
               rowClassName={rowClassNameTotal("FACEBOOK")}
               style={{ width: "100%", margin: "3px" }}
@@ -1364,7 +1769,7 @@ export default function Informes() {
           <div className="table">
             <Table
               columns={columnsPreocupacionesTotal}
-              dataSource={[...dataEmociones]}
+              dataSource={cambios.dataEmociones}
               pagination={false}
               rowClassName={rowClassNameTotal("TOTAL")}
               style={{ width: "100%", margin: "3px" }}
@@ -1381,7 +1786,7 @@ export default function Informes() {
             />
             <Table
               columns={columnsPreocupacionesTw}
-              dataSource={[...dataEmocionesTw]}
+              dataSource={cambios.dataEmocionesTw}
               pagination={false}
               rowClassName={rowClassNameTotal("TWITTER")}
               style={{ width: "100%", margin: "3px" }}
@@ -1399,7 +1804,7 @@ export default function Informes() {
 
             <Table
               columns={columnsPreocupacionesFb}
-              dataSource={[...dataEmocionesFb]}
+              dataSource={cambios.dataEmocionesFb}
               pagination={false}
               rowClassName={rowClassNameTotal("FACEBOOK")}
               style={{ width: "100%", margin: "3px" }}
@@ -1430,7 +1835,7 @@ export default function Informes() {
           <div className="table">
             <Table
               columns={columnsPreocupacionesTotal}
-              dataSource={[...dataImagenes]}
+              dataSource={cambios.dataImagenes}
               pagination={false}
               rowClassName={rowClassNameTotal("TOTAL")}
               style={{ width: "100%", margin: "3px" }}
@@ -1447,7 +1852,7 @@ export default function Informes() {
             />
             <Table
               columns={columnsPreocupacionesTw}
-              dataSource={[...dataImagenesTw]}
+              dataSource={cambios.dataImagenesTw}
               pagination={false}
               rowClassName={rowClassNameTotal("TWITTER")}
               style={{ width: "100%", margin: "3px" }}
@@ -1465,7 +1870,7 @@ export default function Informes() {
 
             <Table
               columns={columnsPreocupacionesFb}
-              dataSource={[...dataImagenesFb]}
+              dataSource={cambios.dataImagenesFb}
               pagination={false}
               rowClassName={rowClassNameTotal("FACEBOOK")}
               style={{ width: "100%", margin: "3px" }}
@@ -1514,43 +1919,58 @@ export default function Informes() {
         <div className="contenedor3cartas color"> {/*contenedor de 3*/}
           <div className="contenedor1carta"> {/*contenedor de 1*/}
             <div className="titulo2">01.</div>
-            <div>El trabajo (13%) como preocupación
-            presente en las audiencias da lugar a un
-            clima negativo y a las emociones de
-            desaliento e incertidumbre. Están
-            presentes el temor a la exclusión social, la
-            precarización y la ruptura de los lazos
-            sociales. Según este análisis, en lo personal
-            hay sentimientos de culpabilidad, fracaso y
-            vergüenza.
-            </div>
+            {editable ? (
+              <TextArea
+              style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto7"
+                value={cambios.texto7}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto7}
+              </div>
+            )}
           </div>
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">02.</div>
-            <div>Ante la preocupación registrada en las
-            audiencias por la vivienda (7%), se revelan
-            emociones ansiedad, incertidumbre y
-            desesperanza. Según este análisis, hay
-            enojo y sensación de injusticia, y en lo
-            personal se vive con culpa, vergüenza y
-            sensación de fracaso. Quienes viven en
-            villas y realizan ocupaciones ilegales, son
-            estigmatizados y rechazados.
-            </div>
+          {editable ? (
+              <TextArea
+              style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto8"
+                value={cambios.texto8}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto8}
+              </div>
+            )}
+           
           </div>
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">03.</div>
-            <div>La preocupación por la educación (3%)
-            registrada en las audiencias muestra una
-            percepción de crisis del sistema e
-            incertidumbre e inseguridad sobre los
-            aprendizajes y las condiciones edilicias. En
-            este clima negativo hay desconfianza en
-            lo público y estrés por el costo de la
-            escuela privada. Hay pesimismo y temor
-            por niñes y adolescentes.</div>
+          {editable ? (
+              <TextArea
+              style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto9"
+                value={cambios.texto9}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto9}
+              </div>
+            )}
+            
           </div>
 
         </div>
@@ -1558,18 +1978,21 @@ export default function Informes() {
         <div className="contenedor3cartas"> {/*contenedor de 3*/}
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">04.</div>
-            <div>La presencia de un clima negativo,
-              asociado a la emoción de la anticipación
-              (21%), incluye en las audiencias, según el
-              presente análisis, una predisposición a
-              realizar suposiciones y valoraciones
-              prejuiciosas sobre situaciones y
-              personas. La anticipación puede darse
-              junto con la tristeza y generar una visión
-              pesimista y desmovilizante.
-
-            </div>
-         
+          {editable ? (
+              <TextArea
+                style={{ height: '100px', width: '250px' }}
+                type="text"
+                name="texto10"
+                value={cambios.texto10}
+                onChange={handleChange}
+                maxLength={350}
+              />
+            ) : (
+              <div>
+                {cambios.texto10}
+              </div>
+            )}
+       
           </div>
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
