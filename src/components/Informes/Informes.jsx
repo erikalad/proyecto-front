@@ -32,36 +32,50 @@ import TextArea from "antd/es/input/TextArea";
 
 export default function Informes() {
   const { Panel } = Collapse;
+  const [editable,setEditable] = useState({
+    general: false,
+    diapositiva1: false,
+    diapositiva2:false,
+    diapositiva3: false,
+    diapositiva4: false,
+    diapositiva5: false,
+    diapositiva6: false,
+    diapositiva7: false,
+    diapositiva8: false,
+    diapositiva9: false,
+    diapositiva10: false,
+    })
 
   {/*DESCARGAR PDF*/}
-   function descargarPDF() {
-    // Obtener el contenedor que queremos descargar como PDF
-    const contenedor = document.getElementById("contenedor");
+  function descargarPDF() {
+    if (editable.general) {
+      messageApi.error('Guardá tu edición!');
+    } else {
+      // Obtener el contenedor que queremos descargar como PDF
+      const contenedor = document.getElementById("contenedor");
   
-   // Crear una instancia de html2pdf con las opciones deseadas
-   const opciones = {
-    margin: [0, 0, 0, 0], // reducir los márgenes a 0
-    filename: "mi-pagina.pdf",
-    image: { type: "jpeg", quality: 1.0 },
-    html2canvas: { scale: 2 },
-    jsPDF: {
-      unit: "mm",
-      format: "a4",
-      orientation: "landscape",
-      compressPDF: true
-    },
-    pagebreak: { before: ".page-break" } // agregar saltos de página antes de elementos con clase .saltopagina
-  };
-  const convertir = html2pdf().set(opciones);
-
-  // Convertir el HTML del contenedor en un archivo PDF y descargarlo
-  convertir.from(contenedor).save();
+      // Crear una instancia de html2pdf con las opciones deseadas
+      const opciones = {
+        margin: [0, 0, 0, 0], // reducir los márgenes a 0
+        filename: "mi-pagina.pdf",
+        image: { type: "jpeg", quality: 1.0 },
+        html2canvas: { scale: 2 },
+        jsPDF: {
+          unit: "mm",
+          format: "a4",
+          orientation: "landscape",
+          compressPDF: true
+        },
+        pagebreak: { before: ".page-break" } // agregar saltos de página antes de elementos con clase .saltopagina
+      };
+      const convertir = html2pdf().set(opciones);
+  
+      // Convertir el HTML del contenedor en un archivo PDF y descargarlo
+      convertir.from(contenedor).save();
+    }
   }
+  
   {/*FIN DESCARGAR PDF*/}
-
-  const [display,setDisplay] = useState({
-    totalVolumenPublicaciones:'flex'
-  })
 
    {/*MODAL*/}
   const [messageApi, contextHolder] = message.useMessage();
@@ -483,19 +497,7 @@ export default function Informes() {
 
   } 
 
-  const [editable,setEditable] = useState({
-    general: false,
-    diapositiva1: false,
-    diapositiva2:false,
-    diapositiva3: false,
-    diapositiva4: false,
-    diapositiva5: false,
-    diapositiva6: false,
-    diapositiva7: false,
-    diapositiva8: false,
-    diapositiva9: false,
-    diapositiva10: false,
-    })
+ 
 
     function editar() {
       const newEditableValue = !editable.general;
