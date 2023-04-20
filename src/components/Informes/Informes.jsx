@@ -98,11 +98,20 @@ export default function Informes() {
   const resetValues = () => {
     setCambios(defaultValues);
     setShowModal(false);
+    messageApi.open({
+      key,
+      type: 'success',
+      content: 'Cambios descartados!',
+      duration: 2,
+    });
   };
 
-  const handleDiscardChanges = () => {
+  const handleDiscardChanges = (diapositivaName) => {
     setShowModal(true);
-
+    setEditable((prevState) => ({
+      ...prevState,
+      [diapositivaName]: !prevState[diapositivaName],
+    }));
   }
 
 
@@ -757,15 +766,15 @@ export default function Informes() {
   const [editable,setEditable] = useState({
     general: false,
     diapositiva1: false,
-    diapositiva2:true,
-    diapositiva3: true,
-    diapositiva4: true,
-    diapositiva5: true,
-    diapositiva6: true,
-    diapositiva7: true,
-    diapositiva8: true,
-    diapositiva9: true,
-    diapositiva10: true,
+    diapositiva2:false,
+    diapositiva3: false,
+    diapositiva4: false,
+    diapositiva5: false,
+    diapositiva6: false,
+    diapositiva7: false,
+    diapositiva8: false,
+    diapositiva9: false,
+    diapositiva10: false,
     })
 
     function editar() {
@@ -1669,9 +1678,9 @@ export default function Informes() {
           <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva1')} disabled={!editable.diapositiva1}>
             Guardar cambio
           </Button>
-          <Button onClick={handleDiscardChanges} disabled={!editable.diapositiva1}>Descartar cambios</Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva1')} disabled={!editable.diapositiva1}>Descartar cambios</Button>
           <Modal
-          visible={showModal}
+          open={showModal}
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -1882,6 +1891,36 @@ export default function Informes() {
           </div>
         </div>
 
+        {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva2')} disabled={editable.diapositiva2}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva2')} disabled={!editable.diapositiva2}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva2')} disabled={!editable.diapositiva2}>Descartar cambios</Button>
+          <Modal
+          open={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva2: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
         </div>
 
 
@@ -1913,7 +1952,7 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
-              {editable.general  ? (
+              {editable.diapositiva3  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -1933,7 +1972,7 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
-              {editable.general  ? (
+              {editable.diapositiva3  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -1958,7 +1997,7 @@ export default function Informes() {
               <div className="icono-analisis">
                 <MdOutlineContactSupport />
               </div>
-              {editable.general  ? (
+              {editable.diapositiva3  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -1979,7 +2018,7 @@ export default function Informes() {
                 <MdOutlineContactSupport />
               </div>
              
-              {editable.general  ? (
+              {editable.diapositiva3  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -2004,7 +2043,7 @@ export default function Informes() {
                 <MdOutlineContactSupport />
               </div>
             
-              {editable.general  ? (
+              {editable.diapositiva3  ? (
               <TextArea
                 style={{ height: '100px' }}
                 type="text"
@@ -2025,7 +2064,7 @@ export default function Informes() {
                 <MdOutlineContactSupport />
               </div>
            
-              {editable.general  ? (
+              {editable.diapositiva3  ? (
               <TextArea
               style={{ height: '100px' }}
               type="text"
@@ -2044,6 +2083,38 @@ export default function Informes() {
           </div>
           <hr className="hr-estilos" />
         </div>
+
+
+        {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva3')} disabled={editable.diapositiva3}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva3')} disabled={!editable.diapositiva3}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva3')} disabled={!editable.diapositiva3}>Descartar cambios</Button>
+          <Modal
+          open={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva3: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
 
         </div>
 
@@ -2190,6 +2261,37 @@ export default function Informes() {
             />
           </div>
         </div>
+
+        {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva4')} disabled={editable.diapositiva4}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva4')} disabled={!editable.diapositiva4}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva4')} disabled={!editable.diapositiva4}>Descartar cambios</Button>
+          <Modal
+          open={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva4: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
 
         </div>
 
@@ -2338,6 +2440,37 @@ export default function Informes() {
             />
           </div>
         </div>
+
+        {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva5')} disabled={editable.diapositiva5}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva5')} disabled={!editable.diapositiva5}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva5')} disabled={!editable.diapositiva5}>Descartar cambios</Button>
+          <Modal
+          open={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva5: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
         </div>
 
 
@@ -2370,7 +2503,7 @@ export default function Informes() {
         <div className="contenedor3cartas color"> {/*contenedor de 3*/}
           <div className="contenedor1carta"> {/*contenedor de 1*/}
             <div className="titulo2">01.</div>
-            {editable.general  ? (
+            {editable.diapositiva6  ? (
               <TextArea
               style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2388,7 +2521,7 @@ export default function Informes() {
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">02.</div>
-          {editable.general  ? (
+          {editable.diapositiva6  ? (
               <TextArea
               style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2407,7 +2540,7 @@ export default function Informes() {
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">03.</div>
-          {editable.general  ? (
+          {editable.diapositiva6  ? (
               <TextArea
               style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2429,7 +2562,7 @@ export default function Informes() {
         <div className="contenedor3cartas"> {/*contenedor de 3*/}
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">04.</div>
-          {editable.general  ? (
+          {editable.diapositiva6  ? (
               <TextArea
                 style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2448,7 +2581,7 @@ export default function Informes() {
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
             <div className="titulo2">05.</div>
-            {editable.general  ? (
+            {editable.diapositiva6  ? (
               <TextArea
                 style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2466,7 +2599,7 @@ export default function Informes() {
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">06.</div>
-          {editable.general  ? (
+          {editable.diapositiva6  ? (
               <TextArea
                 style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2486,7 +2619,7 @@ export default function Informes() {
         <div className="contenedor3cartas color"> {/*contenedor de 3*/}
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">07.</div>
-          {editable.general  ? (
+          {editable.diapositiva6  ? (
               <TextArea
                 style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2504,7 +2637,7 @@ export default function Informes() {
         
           <div className="contenedor1carta"> {/*contenedor de 1*/}
           <div className="titulo2">08.</div>
-          {editable.general  ? (
+          {editable.diapositiva6  ? (
               <TextArea
                 style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2522,7 +2655,7 @@ export default function Informes() {
 
           <div className="contenedor1carta"> {/*contenedor de 1*/}
             <div className="titulo2">09.</div>
-            {editable.general  ? (
+            {editable.diapositiva6  ? (
               <TextArea
                 style={{ height: '100px', width: '250px' }}
                 type="text"
@@ -2540,6 +2673,38 @@ export default function Informes() {
         </div>
 
       </div>
+
+      {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva6')} disabled={editable.diapositiva6}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva6')} disabled={!editable.diapositiva6}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva6')} disabled={!editable.diapositiva6}>Descartar cambios</Button>
+          <Modal
+          open={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva6: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
+
       </div>
 
       <div class="page-break" data-html2pdf-pagebreak>
@@ -2577,6 +2742,37 @@ export default function Informes() {
         options={opcionesPercepciones}
       />
     </div>
+    
+    {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva7')} disabled={editable.diapositiva7}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva7')} disabled={!editable.diapositiva7}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva7')} disabled={!editable.diapositiva7}>Descartar cambios</Button>
+          <Modal
+          open={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva7: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
     </div>
 
     <div class="page-break" data-html2pdf-pagebreak>
@@ -2610,7 +2806,7 @@ export default function Informes() {
           SUGERENCIA 1
           </div>
           <div className="contenedorTextoTerminos"> {/*Contenedor textoTerminos */}
-          {editable.general  ? (  
+          {editable.diapositiva8  ? (  
               <TextArea
                 style={{ height: '300px', width: '400px' }}
                 type="text"
@@ -2625,7 +2821,7 @@ export default function Informes() {
               </div>
             )}   {/* texto*/}
 
-          {editable.general  ? (  
+          {editable.diapositiva8  ? (  
               <TextArea
                 style={{ height: '100px', width: '400px' }}
                 type="text"
@@ -2713,6 +2909,37 @@ export default function Informes() {
         <Tag className="tag piepagina"> {/*pie de pag */}
           *Ver documento de QSocialNow "Criterios y técnicas para la producción de contenidos"
         </Tag>
+        {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva8')} disabled={editable.diapositiva8}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva8')} disabled={!editable.diapositiva8}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva8')} disabled={!editable.diapositiva8}>Descartar cambios</Button>
+          <Modal
+          open={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva8: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
+
         </div>
         
 
@@ -2748,7 +2975,7 @@ export default function Informes() {
           SUGERENCIA 2
           </div>
           <div className="contenedorTextoTerminos"> {/*Contenedor textoTerminos */}
-          {editable.general  ? (  
+          {editable.diapositiva9  ? (  
               <TextArea
                 style={{ height: '300px', width: '400px' }}
                 type="text"
@@ -2763,7 +2990,7 @@ export default function Informes() {
               </div>
             )}   {/* texto*/}
 
-          {editable.general  ? (  
+          {editable.diapositiva9  ? (  
               <TextArea
                 style={{ height: '100px', width: '400px' }}
                 type="text"
@@ -2850,6 +3077,39 @@ export default function Informes() {
         <Tag className="tag piepagina"> {/*pie de pag */}
           *Ver documento de QSocialNow "Criterios y técnicas para la producción de contenidos"
         </Tag>
+
+        {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva9')} disabled={editable.diapositiva9}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva9')} disabled={!editable.diapositiva9}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva9')} disabled={!editable.diapositiva9}>Descartar cambios</Button>
+          <Modal
+          open={showModal}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva9: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues()
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
+
+
         </div>
 
 
