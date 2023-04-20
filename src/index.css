@@ -12,6 +12,3 @@ code {
     monospace;
 }
 
-body > div[style*="position: fixed"][tabindex="-1"] {
-  background-color: rgba(0,0,0,0.0) !important;
-}

@@ -1315,7 +1315,7 @@ export default function Informes() {
 
         <div className="graficos-cuerpo">
         {editable.diapositiva1 ? ( 
-        <div className="grafico" >
+        <div className="graficoInforme" >
             <div id="totalVolumenPublicaciones"style={{display:cambios.displayTotalVolumen}} >
             <ReactApexChart
               options={data2.options}
