@@ -518,6 +518,8 @@ export default function Informes() {
     {/*CAMBIOS*/}
   const [cambios, setCambios] = useState({
     displayTotalVolumen:'flex',
+    displayTotalFacebook:'flex',
+    displayTotalTwitter:'flex',
     valor1: 111,
     valor2:1,
     valor3:36,
@@ -850,6 +852,8 @@ export default function Informes() {
     {/*VALORES POR DEFECTO*/}
   const [defaultValues, setDefaultValues] = useState({
     displayTotalVolumen:'flex',
+    displayTotalFacebook:'flex',
+    displayTotalTwitter:'flex',
     valor1: 111,
     valor2:1,
     valor3:36,
@@ -1188,15 +1192,15 @@ export default function Informes() {
   };
 
 
-  function eliminarGrafico() {
+  function eliminarGrafico(graficoState) {
     const botonMostrar = document.getElementById("mostrarGrafico");
-    setCambios(prevState => ({ ...prevState, displayTotalVolumen: 'none' }));
-    botonMostrar.style.display = "flex"; 
+    setCambios(prevState => ({ ...prevState, [graficoState]: 'none' }));
+  
   }
 
-  function mostrarGrafico() {
+  function mostrarGrafico(graficoState) {
     const botonMostrar = document.getElementById("mostrarGrafico");
-    setCambios(prevState => ({ ...prevState, displayTotalVolumen: 'flex' }));
+    setCambios(prevState => ({ ...prevState, [graficoState]: 'flex' }));
     botonMostrar.style.display = "none"; 
   }
 
@@ -1324,11 +1328,11 @@ export default function Informes() {
               height={150}
               width={400}
             />
-            <Button onClick={eliminarGrafico}>x</Button>
+            <Button onClick={()=>eliminarGrafico('displayTotalVolumen')}>x</Button>
             </div>
             {cambios.displayTotalVolumen === 'none' && editable.diapositiva1 === true 
-            ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={mostrarGrafico}>+</Button> 
-            : <Button id="mostrarGrafico" style={{display:'none'}} onClick={mostrarGrafico}>+</Button> 
+            ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={()=>mostrarGrafico('displayTotalVolumen')}>+</Button> 
+            : <Button id="mostrarGrafico" style={{display:'none'}} onClick={()=>mostrarGrafico('displayTotalVolumen')}>+</Button> 
             }  
           </div>
           ) : (
@@ -1348,8 +1352,8 @@ export default function Informes() {
           <div className="periodosfbtw">
           {editable.diapositiva1 ? ( 
         <div className="editarfacebook facebook-grafico-bar">
-          
-          <div className="icon-nombre">
+          <div style={{display:cambios.displayTotalFacebook, flexDirection:'column'}}>
+          <div className="icon-nombre" >
             <img className="fb" src={fb} />
             FACEBOOK
           </div>
@@ -1361,11 +1365,12 @@ export default function Informes() {
             height={250}
             width={200}
           />
-          <Button onClick={eliminarGrafico}>x</Button>
+          <Button onClick={()=>eliminarGrafico('displayTotalFacebook')}>x</Button>
           </div>
-            {cambios.displayTotalVolumen === 'none' && editable.diapositiva1 === true 
-            ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={mostrarGrafico}>+</Button> 
-            : <Button id="mostrarGrafico" style={{display:'none'}} onClick={mostrarGrafico}>+</Button> 
+          </div>
+            {cambios.displayTotalFacebook === 'none' && editable.diapositiva1 === true 
+            ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={()=>mostrarGrafico('displayTotalFacebook')}>+</Button> 
+            : <Button id="mostrarGrafico" style={{display:'none'}} onClick={()=>mostrarGrafico('displayTotalFacebook')}>+</Button> 
             }  
           </div>
           ) : (
@@ -1374,6 +1379,7 @@ export default function Informes() {
             <img className="fb" src={fb} />
             FACEBOOK
           </div>
+          <div style={{display:cambios.displayTotalFacebook}}>
           <ReactApexChart
             options={datafb.options}
             series={datafb.series}
@@ -1381,12 +1387,13 @@ export default function Informes() {
             height={250}
             width={200}
           />
+          </div>
         </div>
                  
            )}
           {editable.diapositiva1 ? ( 
-      <div className="editarfacebook twitter-grafico-bar">
-  
+          <div className="editarfacebook twitter-grafico-bar">
+          <div style={{display:cambios.displayTotalTwitter, flexDirection:'column'}}>
             <div className="icon-nombre">
               <img className="tw" src={tw} />
               TWITTER
@@ -1399,19 +1406,21 @@ export default function Informes() {
               height={250}
               width={200}
             />
-     <Button onClick={eliminarGrafico}>x</Button>
-     </div>
-       {cambios.displayTotalVolumen === 'none' && editable.diapositiva1 === true 
-       ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={mostrarGrafico}>+</Button> 
-       : <Button id="mostrarGrafico" style={{display:'none'}} onClick={mostrarGrafico}>+</Button> 
-       }  
-     </div>
+          <Button onClick={()=>eliminarGrafico('displayTotalTwitter')}>x</Button>
+          </div>
+          </div>
+            {cambios.displayTotalTwitter === 'none' && editable.diapositiva1 === true 
+            ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={()=>mostrarGrafico('displayTotalTwitter')}>+</Button> 
+            : <Button id="mostrarGrafico" style={{display:'none'}} onClick={()=>mostrarGrafico('displayTotalTwitter')}>+</Button> 
+            }  
+          </div>
           ) : (
-            <div className="twitter-grafico-bar">
+            <div className="twitter-grafico-bar" style={{display:cambios.displayTotalTwitter}}>
             <div className="icon-nombre">
               <img className="tw" src={tw} />
               TWITTER
             </div>
+         
             <ReactApexChart
               options={datatw.options}
               series={datatw.series}
@@ -1419,6 +1428,7 @@ export default function Informes() {
               height={250}
               width={200}
             />
+         
           </div>
                  
            )} 
