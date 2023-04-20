@@ -1344,14 +1344,16 @@ export default function Informes() {
               height={150}
               width={400}
             />
-             <hr></hr>
+         {(cambios.displayTotalFacebook == 'flex' || cambios.displayTotalTwitter == 'flex') && <hr/>}
+
+         
           </div>
                  
            )}
           
           <div className="periodosfbtw">
           {editable.diapositiva1 ? ( 
-        <div className="editarfacebook facebook-grafico-bar">
+          <div className="editarfacebook facebook-grafico-bar">
           <div style={{display:cambios.displayTotalFacebook, flexDirection:'column'}}>
           <div className="icon-nombre" >
             <img className="fb" src={fb} />
@@ -1375,11 +1377,12 @@ export default function Informes() {
           </div>
           ) : (
           <div className="facebook-grafico-bar">
+            <div style={{display:cambios.displayTotalFacebook, flexDirection:'column'}} >
           <div className="icon-nombre">
             <img className="fb" src={fb} />
             FACEBOOK
           </div>
-          <div style={{display:cambios.displayTotalFacebook}}>
+          <div style={{display:'flex'}}>
           <ReactApexChart
             options={datafb.options}
             series={datafb.series}
@@ -1387,6 +1390,7 @@ export default function Informes() {
             height={250}
             width={200}
           />
+            </div>
           </div>
         </div>
                  
