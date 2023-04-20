@@ -9,7 +9,7 @@ import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { CiVolumeHigh } from "react-icons/ci";
-import { Table, Tag, Button, Input,Switch,message,Modal   } from "antd";
+import { Table, Tag, Button, Input,Switch,message,Modal,Collapse, Space} from "antd";
 import { BsFillDashCircleFill } from "react-icons/bs";
 import ReactApexChart from "react-apexcharts";
 import { PieChart, Pie, Cell } from "recharts";
@@ -30,7 +30,9 @@ import TextArea from "antd/es/input/TextArea";
 
 
 export default function Informes() {
+  const { Panel } = Collapse;
 
+  {/*DESCARGAR PDF*/}
    function descargarPDF() {
     // Obtener el contenedor que queremos descargar como PDF
     const contenedor = document.getElementById("contenedor");
@@ -53,8 +55,12 @@ export default function Informes() {
 
   // Convertir el HTML del contenedor en un archivo PDF y descargarlo
   convertir.from(contenedor).save();
-  } 
+  }
+  {/*FIN DESCARGAR PDF*/}
 
+
+
+   {/*MODAL*/}
   const [messageApi, contextHolder] = message.useMessage();
   const key = 'updatable';
   const openMessage = (diapositivaName) => {
@@ -113,22 +119,10 @@ export default function Informes() {
       [diapositivaName]: !prevState[diapositivaName],
     }));
   }
+   {/*FIN MODAL*/}
 
+  
 
-
-
-
-
-
-
-  const dataPieNivo = [
-    { name: "Sección 1", value: 10, fill: "#8884d8" },
-    { name: "Sección 2", value: 20, fill: "#83a6ed" },
-    { name: "Sección 3", value: 30, fill: "#8dd1e1" },
-    { name: "Sección 4", value: 40, fill: "#82ca9d" },
-  ];
-
-  //COMPONENTE TABLE  DE ANTD
 
   const columns = [
     {
@@ -146,34 +140,6 @@ export default function Informes() {
     {
       title: "Impresiones",
       dataIndex: "impresiones",
-    },
-  ];
-
-  const data = [
-    {
-      key: "1",
-      influenciador: "passalacquaok",
-      impresiones: 38691,
-    },
-    {
-      key: "2",
-      influenciador: "PabbloZapata",
-      impresiones: 6292,
-    },
-    {
-      key: "3",
-      influenciador: "noticiasen3ok",
-      impresiones: 3495,
-    },
-    {
-      key: "4",
-      influenciador: "NHoughan",
-      impresiones: 65,
-    },
-    {
-      key: "5",
-      influenciador: "alejavier68",
-      impresiones: 64,
     },
   ];
 
@@ -212,7 +178,7 @@ export default function Informes() {
       return "even-row";
     }
   };
-  //FIN COMPONENTE DE ANTD
+
 
   const columnsPreocupacionesTotal = [
     {
@@ -255,248 +221,6 @@ export default function Informes() {
     },
   ];
 
-  const dataPreocupaciones = [
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>TRABAJO </div>
-          <div>44.83%</div>
-        </div>
-      ),
-    },
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>VIVIENDA </div>
-          <div>24.14%</div>
-        </div>
-      ),
-    },
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>EDUCACIÓN </div>
-          <div>10.34%</div>
-        </div>
-      ),
-    },
-  ];
-
-  const dataPreocupacionesTw = [
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div>TRABAJO </div>
-          <div>36.84%</div>
-        </div>
-      ),
-    },
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div>VIVIENDA </div>
-          <div>36.84%</div>
-        </div>
-      ),
-    },
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div>EDUCACIÓN </div>
-          <div>15.79%</div>
-        </div>
-      ),
-    },
-  ];
-
-  const dataPreocupacionesFb = [
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>TRABAJO </div>
-          <div>60.00%</div>
-        </div>
-      ),
-    },
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>VIVIENDA </div>
-          <div>20.00%</div>
-        </div>
-      ),
-    },
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>EDUCACIÓN </div>
-          <div>10.00%</div>
-        </div>
-      ),
-    },
-  ];
-
-  const dataEmociones = [
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>ANTICIPACIÓN </div>
-          <div>65.63%</div>
-        </div>
-      ),
-    },
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>ALEGRÍA </div>
-          <div>9.38%</div>
-        </div>
-      ),
-    },
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>CONFIANZA </div>
-          <div>6.25%</div>
-        </div>
-      ),
-    },
-  ];
-
-  const dataEmocionesTw = [
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div>ANTICIPACIÓN </div>
-          <div>91.30%</div>
-        </div>
-      ),
-    },
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div>INSATISFACCIÓN </div>
-          <div>4.35%</div>
-        </div>
-      ),
-    },
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div>DESEO </div>
-          <div>4.35%</div>
-        </div>
-      ),
-    },
-  ];
-
-  const dataEmocionesFb = [
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>ALEGRÍA </div>
-          <div>33.33%</div>
-        </div>
-      ),
-    },
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>CONFIANZA </div>
-          <div>22.22%</div>
-        </div>
-      ),
-    },
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>AGRADO </div>
-          <div>11.11%</div>
-        </div>
-      ),
-    },
-  ];
-
-  const dataImagenes = [
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>FRIALDAD </div>
-          <div>22.22%</div>
-        </div>
-      ),
-    },
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>CONOCIMIENTO </div>
-          <div>222.224%</div>
-        </div>
-      ),
-    },
-    {
-      total: (
-        <div className="totalizador-preocupaciones">
-          <div>LABORASIDAD </div>
-          <div>22.22%</div>
-        </div>
-      ),
-    },
-  ];
-
-  const dataImagenesTw = [
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div>FRIALDAD </div>
-          <div>66.67%</div>
-        </div>
-      ),
-    },
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div>EFICIENCIA </div>
-          <div>33.33%</div>
-        </div>
-      ),
-    },
-    {
-      twitter: (
-        <div className="totalizador-preocupaciones">
-          <div></div>
-          <div></div>
-        </div>
-      ),
-    },
-  ];
-
-  const dataImagenesFb = [
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>CONOCIMIENTO </div>
-          <div>33.33%</div>
-        </div>
-      ),
-    },
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>LABORISIDAD </div>
-          <div>33.33%</div>
-        </div>
-      ),
-    },
-    {
-      facebook: (
-        <div className="totalizador-preocupaciones">
-          <div>OPTIMISMO </div>
-          <div>16.67%</div>
-        </div>
-      ),
-    },
-  ];
 
   const columnsEmociones = [
     {
@@ -684,7 +408,6 @@ export default function Informes() {
     { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
   ];
 
-  {/*Datos solicitados*/}
   
   const palabrasClaves = [
     { text: "compomiso", value: 50 },
@@ -740,17 +463,11 @@ export default function Informes() {
   ];
 
 
-
-
- 
     function obtenerColores(mapaPercepciones) {
      
       const colores = mapaPercepciones.map((percepcion) => percepcion.color);
       return colores;
     }
-
- 
-
 
   const opcionesPercepciones = {
     fontFamily: "Helvetica, sans-serif",
@@ -760,8 +477,6 @@ export default function Informes() {
     colors: obtenerColores(mapaPercepciones)
 
   } 
-
-
 
   const [editable,setEditable] = useState({
     general: false,
@@ -794,10 +509,8 @@ export default function Informes() {
       });
     }
  
-
-  
-  
-
+ 
+    {/*CAMBIOS*/}
   const [cambios, setCambios] = useState({
     valor1: 111,
     valor2:1,
@@ -1126,7 +839,9 @@ export default function Informes() {
       },
     ],
   });
+   {/*FIN CAMBIOS*/}
 
+    {/*VALORES POR DEFECTO*/}
   const [defaultValues, setDefaultValues] = useState({
     valor1: 111,
     valor2:1,
@@ -1455,6 +1170,7 @@ export default function Informes() {
       },
     ],
   });
+  {/*FIN VALORES POR DEFECTO*/}
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -1464,11 +1180,26 @@ export default function Informes() {
     }));
   };
 
+
+
+
+
+
+
   return (
     <Fragment>
-      <Button onClick={descargarPDF}>Descargar PDF</Button>
-      <Button onClick={editar}>Editar</Button>
+      <Collapse defaultActiveKey={['1']} className="contenedor-botones">
+        <Panel /* header="Botones" */ key="1">
+          <Space direction="vertical" >
+            <Button type="primary" onClick={descargarPDF} className="boton-primary">Descargar PDF</Button>
+            <Button onClick={editar}>{editable.general ? 'Dejar de Editar' : 'Editar'}</Button>
+          </Space>
+        </Panel>
+      </Collapse>
+      <div className="contenedor-margin">
       <div className="contenedor" id="contenedor">
+        {/*DIAPOSITIVA INICIO*/}
+        <div>
         <div className="contenedor-extremo">
           {/*Nav*/}
          <div className="nav">
@@ -1698,7 +1429,9 @@ export default function Informes() {
         </Modal>
           </div>
           )}
-
+        </div>
+        {/*FIN DIAPOSITIVA INICIO*/}
+        {/*DIAPOSITIVA 1*/}
         <div class="page-break" data-html2pdf-pagebreak>
 
         {/*Nav*/}
@@ -1922,8 +1655,8 @@ export default function Informes() {
           )}
 
         </div>
-
-
+        {/*FIN DIAPOSITIVA 1*/}
+        {/*DIAPOSITIVA 2*/}
         <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
@@ -2117,8 +1850,8 @@ export default function Informes() {
 
 
         </div>
-
-
+        {/*FIN DIAPOSITIVA 2*/}
+        {/*DIAPOSITIVA 3*/}
         <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
@@ -2294,8 +2027,8 @@ export default function Informes() {
 
 
         </div>
-
-
+        {/*FIN DIAPOSITIVA 3*/}
+        {/*DIAPOSITIVA 4*/}
         <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
@@ -2472,8 +2205,8 @@ export default function Informes() {
           )}
 
         </div>
-
-
+        {/*FIN DIAPOSITIVA 4*/}
+        {/*DIAPOSITIVA 5*/}
         <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
         <div className="contenedor-extremo">
@@ -2705,77 +2438,79 @@ export default function Informes() {
           )}
 
 
-      </div>
+        </div>
+        {/*FIN DIAPOSITIVA 5*/}
+        {/*DIAPOSITIVA 6*/}
+        <div class="page-break" data-html2pdf-pagebreak>
+          {/*Nav*/}
+          <div className="contenedor-extremo">
+          <div className="nav">
+              <div className="reporte">
+                <SlNotebook />
+                <p>REPORTE DE SÍNTESIS</p>
+              </div>
 
-      <div class="page-break" data-html2pdf-pagebreak>
-        {/*Nav*/}
-        <div className="contenedor-extremo">
-         <div className="nav">
-            <div className="reporte">
-              <SlNotebook />
-              <p>REPORTE DE SÍNTESIS</p>
+              <img src={logo} className="img"></img>
+            </div>
+          </div>
+
+
+        <div className="cuerpo">
+            <div className="titulo2">
+              <RiPushpinLine />
             </div>
 
-            <img src={logo} className="img"></img>
+            <div className="titulo2">
+              MAPA DE PERCEPCIONES
+            </div>
           </div>
+          <Tag className="tag">Síntesis de términos y vocablos que connotan las valoraciones positivas y negativas de las audiencias en el marco del presente análisis</Tag>
+
+          <div className="subtitulo">
+          <div className="titulo0 subtitulo">LO QUE SE DESTACADA DE LAS PERCEPCIONES POSITIVAS Y NEGATIVAS</div>
+          </div>
+
+          <div>
+        <WordCloud
+          words={mapaPercepciones}
+          options={opcionesPercepciones}
+        />
+      </div>
+      
+      {editable.general && (
+            <div className="boton-confirmar">
+              {contextHolder}
+            <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva7')} disabled={editable.diapositiva7}>
+              Editar
+            </Button>
+            <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva7')} disabled={!editable.diapositiva7}>
+              Guardar cambio
+            </Button>
+            <Button onClick={()=>handleDiscardChanges('diapositiva7')} disabled={!editable.diapositiva7}>Descartar cambios</Button>
+            <Modal
+            open={showModal}
+            title="¿Está seguro de que desea descartar los cambios?"
+            okText="Sí"
+            cancelText="No"
+            onOk={() => {
+              setEditable((prevState) => ({
+                ...prevState,
+                diapositiva7: false // Cambiar la diapositiva correspondiente a false
+              }));
+              resetValues()
+              setShowModal(false);
+            }}
+            onCancel={() => setShowModal(false)}
+          >
+            <p>Los cambios realizados se perderán permanentemente.</p>
+          </Modal>
+            </div>
+            )}
+
         </div>
-
-
-      <div className="cuerpo">
-          <div className="titulo2">
-            <RiPushpinLine />
-          </div>
-
-          <div className="titulo2">
-            MAPA DE PERCEPCIONES
-          </div>
-        </div>
-        <Tag className="tag">Síntesis de términos y vocablos que connotan las valoraciones positivas y negativas de las audiencias en el marco del presente análisis</Tag>
-
-        <div className="subtitulo">
-        <div className="titulo0 subtitulo">LO QUE SE DESTACADA DE LAS PERCEPCIONES POSITIVAS Y NEGATIVAS</div>
-        </div>
-
-        <div>
-      <WordCloud
-        words={mapaPercepciones}
-        options={opcionesPercepciones}
-      />
-    </div>
-    
-    {editable.general && (
-          <div className="boton-confirmar">
-            {contextHolder}
-          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva7')} disabled={editable.diapositiva7}>
-            Editar
-          </Button>
-          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva7')} disabled={!editable.diapositiva7}>
-            Guardar cambio
-          </Button>
-          <Button onClick={()=>handleDiscardChanges('diapositiva7')} disabled={!editable.diapositiva7}>Descartar cambios</Button>
-          <Modal
-          open={showModal}
-          title="¿Está seguro de que desea descartar los cambios?"
-          okText="Sí"
-          cancelText="No"
-          onOk={() => {
-            setEditable((prevState) => ({
-              ...prevState,
-              diapositiva7: false // Cambiar la diapositiva correspondiente a false
-            }));
-            resetValues()
-            setShowModal(false);
-          }}
-          onCancel={() => setShowModal(false)}
-        >
-          <p>Los cambios realizados se perderán permanentemente.</p>
-        </Modal>
-          </div>
-          )}
-
-    </div>
-
-    <div class="page-break" data-html2pdf-pagebreak>
+        {/*FIN DIAPOSITIVA 6*/}
+        {/*DIAPOSITIVA 7*/}
+        <div class="page-break" data-html2pdf-pagebreak>
     {/*Nav*/}
     <div className="contenedor-extremo">
          <div className="nav">
@@ -2941,9 +2676,8 @@ export default function Informes() {
 
 
         </div>
-        
-
-
+        {/*FIN DIAPOSITIVA 7*/}
+        {/*DIAPOSITIVA 8*/}        
         <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
     <div className="contenedor-extremo">
@@ -3111,38 +2845,37 @@ export default function Informes() {
 
 
         </div>
+        {/*FIN DIAPOSITIVA 8*/} 
+        {/*DIAPOSITIVA 9*/}
+        <div class="page-break" data-html2pdf-pagebreak>
+        {/*ULTIMA DIAPOSITIVA */}        
+        <div className="final">
+        <img className="logo-final" src={logo2}/>
+        <div className="contenedor-footer"> {/*contenedor footer */}
+            <div className="contenedor-pais"> {/*contenedor pais */}
+                <div><strong>Argentina</strong></div>
+                <div>Juncal 1311 7 Piso</div>
+                <div>C1062ABO. Buenos Aires.</div>
+                <div>info@qsocialnow.com</div>
+            </div>
+            <div className="contenedor-pais"> {/*contenedor pais */}
+            <div><strong>España</strong></div>
+                <div>Parque Empresarial Cortijo del Conde</div>
+                <div>C/ Pago de Cambea 14, Nave 7</div>
+                <div>CP 18015. Granada España.</div>
+            </div>
+            <div className="contenedor-pais"> {/*contenedor pais */}
+            <div><strong>Estados Unidos</strong></div>
+                <div>Latin Insights | Partner local</div>
+                <div>111 West 33rd St.</div>
+                <div>NY 10001, Nueva York.</div>
+                <div>Tel.: +1 646 717 3131</div>
+            </div>
+        </div>
+        </div>  
+        </div>
+        {/*FIN DIAPOSITIVA 9*/}
 
-
-
-
-
-
-      <div class="page-break" data-html2pdf-pagebreak>
-      {/*ULTIMA DIAPOSITIVA */}        
-       <div className="final">
-       <img className="logo-final" src={logo2}/>
-       <div className="contenedor-footer"> {/*contenedor footer */}
-          <div className="contenedor-pais"> {/*contenedor pais */}
-              <div><strong>Argentina</strong></div>
-              <div>Juncal 1311 7 Piso</div>
-              <div>C1062ABO. Buenos Aires.</div>
-              <div>info@qsocialnow.com</div>
-          </div>
-          <div className="contenedor-pais"> {/*contenedor pais */}
-          <div><strong>España</strong></div>
-              <div>Parque Empresarial Cortijo del Conde</div>
-              <div>C/ Pago de Cambea 14, Nave 7</div>
-              <div>CP 18015. Granada España.</div>
-          </div>
-          <div className="contenedor-pais"> {/*contenedor pais */}
-          <div><strong>Estados Unidos</strong></div>
-              <div>Latin Insights | Partner local</div>
-              <div>111 West 33rd St.</div>
-              <div>NY 10001, Nueva York.</div>
-              <div>Tel.: +1 646 717 3131</div>
-          </div>
-       </div>
-      </div>  
       </div>
       </div>
     </Fragment>
