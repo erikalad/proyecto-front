@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState ,useRef} from "react";
 import "./Informes.css";
 import { SlNotebook } from "react-icons/sl";
 import logo from "./../../assest/qsocialnow.jpg";
@@ -9,7 +9,7 @@ import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { CiVolumeHigh } from "react-icons/ci";
-import { Table, Tag, Input,message,Collapse, Space} from "antd";
+import { Table, Tag, Input,message,Collapse, Space, Divider, Tour} from "antd";
 import { Button, Modal } from 'antd';
 import { BsFillDashCircleFill } from "react-icons/bs";
 import ReactApexChart from "react-apexcharts";
@@ -26,6 +26,9 @@ import { IoAlert } from "react-icons/io5";
 import { TiHeartOutline } from "react-icons/ti";
 import html2pdf from "html2pdf.js";
 import TextArea from "antd/es/input/TextArea";
+import editando from './../../assest/editando.png'
+import editarpdf from './../../assest/editar.png'
+import pdfdescargado from './../../assest/pdf.png'
 
 
 
@@ -141,7 +144,55 @@ export default function Informes() {
    {/*FIN MODAL*/}
 
   
-
+  {/*TOUR*/}
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const [open, setOpen] = useState(false);
+  const steps = [
+    {
+      title: 'Descargar PDF sin editar',
+      description: 'Podes descargar directamente el PDF acá sin editarlo o después de editarlo.',
+      cover: (
+        <img
+          alt="tour.png"
+          src={pdfdescargado}
+        />
+      ),
+      target: () => ref1.current,
+    },
+    {
+      title: 'Editar el PDF',
+      description: 'Apretando acá vas a poder habilitar las opciones de editar el PDF diapositiva por diapositiva.',
+      cover: (
+        <img
+          alt="tour.png"
+          src={editando}
+        />
+      ),
+      target: () => ref2.current,
+      locale: {
+        nextText: 'Siguiente',
+        prevText: 'Anterior',
+      },
+    },
+    {
+      title: 'Editar, guardar o descartar',
+      description: 'Cuando hayas apretado "Editar" vas a poder habilitar un menu debajo de las diapositivas para editar,guardar o descartar cambios.',
+      cover: (
+        <img
+          alt="tour.png"
+          src={editarpdf}
+        />
+      ),
+      target: () => ref3.current,
+      locale: {
+        nextText: 'Finalizar',
+        prevText: 'Anterior',
+      },
+    },
+    
+  ];
 
   const columns = [
     {
@@ -1207,7 +1258,12 @@ export default function Informes() {
   }
 
   
-
+  const customLocale = {
+    nextText: 'Siguiente',
+    prevText: 'Anterior',
+    
+  };
+  
 
 
 
@@ -1217,8 +1273,13 @@ export default function Informes() {
         <Panel /* header="Botones" */ key="1">
           <Space direction="vertical" >
             <div>
-            <Button type="primary" onClick={descargarPDF} className="boton-primary">Descargar PDF</Button>
-            <Button onClick={editar}>{editable.general ? 'Dejar de Editar' : 'Editar'}</Button>
+            <Button type="primary" onClick={descargarPDF} className="boton-primary" ref={ref1}>Descargar PDF</Button>
+            <Button onClick={editar} ref={ref2}>{editable.general ? 'Dejar de Editar' : 'Editar'}  </Button>
+            <Button type="primary" style={{marginLeft:'1rem'}} onClick={() => setOpen(true)}>
+              Pasos
+            </Button>
+            <Tour open={open} onClose={() => setOpen(false)} steps={steps} 
+             locale={customLocale}/>
             </div>
           </Space>
         </Panel>
@@ -1551,6 +1612,7 @@ export default function Informes() {
         {editable.general && (
           <div className="boton-confirmar">
             {contextHolder}
+          <div ref={ref3}>
           <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva1')} disabled={editable.diapositiva1}>
             Editar
           </Button>
@@ -1558,6 +1620,7 @@ export default function Informes() {
             Guardar cambio
           </Button>
           <Button onClick={()=>handleDiscardChanges('diapositiva1')} disabled={!editable.diapositiva1}>Descartar cambios</Button>
+          </div>
           <Modal
           open={showModal}
           title="¿Está seguro de que desea descartar los cambios?"
