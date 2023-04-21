@@ -160,6 +160,13 @@ export default function Informes() {
         />
       ),
       target: () => ref1.current,
+      nextButtonProps: {
+        children:'Siguiente',
+      },
+      prevButtonProps:{
+        children:'Anterior'
+      }
+    
     },
     {
       title: 'Editar el PDF',
@@ -171,10 +178,12 @@ export default function Informes() {
         />
       ),
       target: () => ref2.current,
-      locale: {
-        nextText: 'Siguiente',
-        prevText: 'Anterior',
+      nextButtonProps: {
+        children:'Siguiente',
       },
+      prevButtonProps:{
+        children:'Anterior'
+      }
     },
     {
       title: 'Editar, guardar o descartar',
@@ -186,10 +195,13 @@ export default function Informes() {
         />
       ),
       target: () => ref3.current,
-      locale: {
-        nextText: 'Finalizar',
-        prevText: 'Anterior',
+      nextButtonProps: {
+        children:'Finalizar',
+
       },
+      prevButtonProps:{
+        children:'Anterior'
+      }
     },
     
   ];
