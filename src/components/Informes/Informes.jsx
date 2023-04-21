@@ -205,6 +205,7 @@ export default function Informes() {
     },
     
   ];
+  {/*FIN TOUR*/}
 
   const columns = [
     {
@@ -1285,11 +1286,12 @@ export default function Informes() {
         <Panel /* header="Botones" */ key="1">
           <Space direction="vertical" >
             <div>
-            <Button type="primary" onClick={descargarPDF} className="boton-primary" ref={ref1}>Descargar PDF</Button>
-            <Button onClick={editar} ref={ref2}>{editable.general ? 'Dejar de Editar' : 'Editar'}  </Button>
-            <Button type="primary" style={{marginLeft:'1rem'}} onClick={() => setOpen(true)}>
+            <Button  style={{marginRight:'1rem'}} onClick={() => setOpen(true)}>
               Pasos
             </Button>
+            <Button style={{marginRight:'1rem'}} onClick={editar} ref={ref2}>{editable.general ? 'Dejar de Editar' : 'Editar'}  </Button>
+            <Button type="primary" onClick={descargarPDF}  ref={ref1}>Descargar PDF</Button>
+            
             <Tour open={open} onClose={() => setOpen(false)} steps={steps} 
              locale={customLocale}/>
             </div>
