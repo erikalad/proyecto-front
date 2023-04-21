@@ -325,11 +325,11 @@ const Dashboard = () => {
           <Select.Option value="Serie 3">Serie 3</Select.Option>
         </Select>
 
-        <Button onClick={descargarPDF}>Descargar PDF</Button>
+        {/* <Button onClick={descargarPDF}>Descargar PDF</Button>
         <Button href="/informe">Generar Informe</Button>
         <Button href="/mail" disabled>
           Enviar por email
-        </Button>
+        </Button> */}
       </div>
       <div className="estadisticas">
         <Row className="stadisticas" gutter={16}>
