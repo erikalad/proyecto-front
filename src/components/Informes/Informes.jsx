@@ -553,10 +553,6 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
-      dataOuter0: 70,
-      dataOuter1: 30,
-      dataInner0: 70,
-      dataInner1: 30,
       dataOuter:[
         { name: "Positivo", value: 70, fill: "#53b253bd" },
         { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
@@ -564,6 +560,22 @@ export default function Informes() {
       dataInner:[
         { name: "Positivo", value: 70, fill: "#53b253bd" },
         { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
+      ],
+      dataOuterFb:[
+        { name: "Positivo", value: 90, fill: "#53b253bd" },
+        { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
+      ],
+      dataInnerFb:[
+        { name: "Positivo", value: 50, fill: "#53b253bd" },
+        { name: "Negativo", value: 50, fill: "#ff4c4cd7" },
+      ],
+      dataOuterTw:[
+        { name: "Positivo", value: 60, fill: "#53b253bd" },
+        { name: "Negativo", value: 40, fill: "#ff4c4cd7" },
+      ],
+      dataInnerTw:[
+        { name: "Positivo", value: 80, fill: "#53b253bd" },
+        { name: "Negativo", value: 20, fill: "#ff4c4cd7" },
       ],
       displayTotalVolumen:'flex',
       displayTotalFacebook:'flex',
@@ -908,6 +920,22 @@ export default function Informes() {
     dataInner:[
       { name: "Positivo", value: 70, fill: "#53b253bd" },
       { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
+    ],
+    dataOuterFb:[
+      { name: "Positivo", value: 90, fill: "#53b253bd" },
+      { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
+    ],
+    dataInnerFb:[
+      { name: "Positivo", value: 50, fill: "#53b253bd" },
+      { name: "Negativo", value: 50, fill: "#ff4c4cd7" },
+    ],
+    dataOuterTw:[
+      { name: "Positivo", value: 60, fill: "#53b253bd" },
+      { name: "Negativo", value: 40, fill: "#ff4c4cd7" },
+    ],
+    dataInnerTw:[
+      { name: "Positivo", value: 80, fill: "#53b253bd" },
+      { name: "Negativo", value: 20, fill: "#ff4c4cd7" },
     ],
     displayTotalVolumen:'flex',
     displayTotalFacebook:'flex',
@@ -1273,37 +1301,42 @@ export default function Informes() {
 
 
    {/*MODAL EDITAR GRAFICO TORTA */}
-  const [openModal, setOpenModal] = useState(false);
 
-  const showModalTorta = () => {
-    setOpenModal(true);
+  const showModalTorta = (modals) => {
+    setShowModal((prevState) => ({
+      ...prevState,
+      [modals]: !prevState[modals],
+    }));
   };
   const handleOk = () => {
-    setOpenModal(false);
+    setShowModal(false);
   };
   const handleCancel = () => {
-    setOpenModal(false);
+    setShowModal(false);
   };
   
-  const handleInputNumberChange = (index, isOuter, newValue) => {
-    const newData = isOuter ? [...cambios.dataOuter] : [...cambios.dataInner];
+  const handleInputNumberChange = (index, isOuter, newValue, key) => {
+    const newData = isOuter ? [...cambios[key]] : [...cambios[key.replace('Outer', 'Inner')]];
     newData[index].value = newValue;
-
+  
     if (isOuter) {
       setCambios({
         ...cambios,
-        dataOuter: newData,
+        [key]: newData,
       });
     } else {
       setCambios({
         ...cambios,
-        dataInner: newData,
+        [key.replace('Outer', 'Inner')]: newData,
       });
     }
   };
 
   const [modals, setShowModal] = useState([
     { showModal1: false },
+    { dataTorta:false },
+    { dataTortaFb:false },
+    { dataTortaTw:false },
     { showModal2: false },
     { showModal3: false },
     { showModal4: false },
@@ -1783,12 +1816,12 @@ export default function Informes() {
             {editable.general == true ? 
             <div>
               <>
-              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={showModalTorta} disabled={!editable.diapositiva2}>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataTorta')} disabled={!editable.diapositiva2}>
                 Editar valores
               </Button>
               <Modal
                 title="Total - Volumen de publicaciones"
-                open={openModal}
+                open={modals.dataTorta}
                 onOk={handleOk}
                 okText="Guardar"
                 cancelText="Cancelar"
@@ -1796,11 +1829,11 @@ export default function Informes() {
               >
               <div className="modalTorta">
                 <div className="">Período Anterior</div>
-                <InputNumber value={cambios.dataOuter[0].value} name='dataOuter0' onChange={(value) => handleInputNumberChange(0, true, value)}></InputNumber>
-                <InputNumber value={cambios.dataOuter[1].value} name='dataOuter1'  onChange={(value) => handleInputNumberChange(1, true, value)}></InputNumber>
+                <InputNumber value={cambios.dataOuter[0].value} name='dataOuter0' className="input-positivo" onChange={(value) => handleInputNumberChange(0, true, value,'dataOuter')}></InputNumber>
+                <InputNumber value={cambios.dataOuter[1].value} name='dataOuter1' className="input-negativo" onChange={(value) => handleInputNumberChange(1, true, value,'dataOuter')}></InputNumber>
                 <div>Período Actual</div>
-                <InputNumber value={cambios.dataInner[0].value} name='dataInner0' onChange={(value) => handleInputNumberChange(0, false, value)}></InputNumber>
-                <InputNumber value={cambios.dataInner[1].value} name='dataInner1' onChange={(value) => handleInputNumberChange(1, false, value)}></InputNumber>
+                <InputNumber value={cambios.dataInner[0].value} name='dataInner0' className="input-positivo" onChange={(value) => handleInputNumberChange(0, false, value,'dataInner')}></InputNumber>
+                <InputNumber value={cambios.dataInner[1].value} name='dataInner1' className="input-negativo" onChange={(value) => handleInputNumberChange(1, false, value,'dataInner')}></InputNumber>
               </div>
               </Modal>
             </>
@@ -1893,9 +1926,33 @@ export default function Informes() {
               <img className="fb" src={fb} />
               FACEBOOK
             </div>
+            {editable.general == true ? 
+            <div>
+              <>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataTortaFb')} disabled={!editable.diapositiva2}>
+                Editar valores
+              </Button>
+              <Modal
+                title="Total - Volumen de publicaciones"
+                open={modals.dataTortaFb}
+                onOk={handleOk}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+              >
+              <div className="modalTorta">
+                <div className="">Período Anterior</div>
+                <InputNumber value={cambios.dataOuterFb[0].value} name='dataOuterFb0' className="input-positivo" onChange={(value) => handleInputNumberChange(0, true, value, 'dataOuterFb')}></InputNumber>
+                <InputNumber value={cambios.dataOuterFb[1].value} name='dataOuterFb1' className="input-negativo" onChange={(value) => handleInputNumberChange(1, true, value, 'dataOuterFb')}></InputNumber>
+                <div>Período Actual</div>
+                <InputNumber value={cambios.dataInnerFb[0].value} name='dataInnerFb0' className="input-positivo" onChange={(value) => handleInputNumberChange(0, false, value, 'dataInnerFb')}></InputNumber>
+                <InputNumber value={cambios.dataInnerFb[1].value} name='dataInnerFb1' className="input-negativo" onChange={(value) => handleInputNumberChange(1, false, value, 'dataInnerFb')}></InputNumber>
+              </div>
+              </Modal>
+            </>
             <PieChart width={200} height={200}>
               <Pie
-                data={cambios.dataOuter}
+                data={cambios.dataOuterFb}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1904,12 +1961,12 @@ export default function Informes() {
                 innerRadius={30}
                 outerRadius={60}
                 paddingAngle={1}>
-                {cambios.dataOuter.map((entry, index) => (
+                {cambios.dataOuterFb.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
               <Pie
-                data={cambios.dataInner}
+                data={cambios.dataInnerFb}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1918,21 +1975,82 @@ export default function Informes() {
                 innerRadius={10}
                 outerRadius={30}
                 paddingAngle={1}>
-                {cambios.dataInner.map((entry, index) => (
+                {cambios.dataInnerFb.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
             </PieChart>
-          </div>
+            </div>
+           : 
+        
+            <PieChart width={200} height={200}>
+            <Pie
+              data={cambios.dataOuterFb}
+              dataKey="value"
+              cx={100}
+              cy={100}
+              startAngle={-90}
+              endAngle={270}
+              innerRadius={30}
+              outerRadius={60}
+              paddingAngle={1}>
+              {cambios.dataOuterFb.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
+            <Pie
+              data={cambios.dataInnerFb}
+              dataKey="value"
+              cx={100}
+              cy={100}
+              startAngle={-90}
+              endAngle={270}
+              innerRadius={10}
+              outerRadius={30}
+              paddingAngle={1}>
+              {cambios.dataInnerFb.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
+            </PieChart>
+             }
+           </div>
+
+
+
 
           <div className="pie">
             <div className="icon-nombre">
               <img className="tw" src={tw} />
               TWITTER
             </div>
+            {editable.general == true ? 
+            <div>
+              <>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataTortaTw')}  disabled={!editable.diapositiva2}>
+                Editar valores
+              </Button>
+              <Modal
+                title="Total - Volumen de publicaciones"
+                open={modals.dataTortaTw}
+                onOk={handleOk}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+              >
+              <div className="modalTorta">
+                <div className="">Período Anterior</div>
+                <InputNumber value={cambios.dataOuterTw[0].value} name='dataOuterTw0' className="input-positivo" onChange={(value) => handleInputNumberChange(0, true, value, 'dataOuterTw')}></InputNumber>
+                <InputNumber value={cambios.dataOuterTw[1].value} name='dataOuterTw1' className="input-negativo" onChange={(value) => handleInputNumberChange(1, true, value, 'dataOuterTw')}></InputNumber>
+                <div>Período Actual</div>
+                <InputNumber value={cambios.dataInnerTw[0].value} name='dataInnerTw0' className="input-positivo" onChange={(value) => handleInputNumberChange(0, false, value, 'dataOuterTw')}></InputNumber>
+                <InputNumber value={cambios.dataInnerTw[1].value} name='dataInnerTw1' className="input-negativo" onChange={(value) => handleInputNumberChange(1, false, value, 'dataOuterTw')}></InputNumber>
+              </div>
+              </Modal>
+            </>
             <PieChart width={200} height={200}>
               <Pie
-                data={cambios.dataOuter}
+                data={cambios.dataOuterTw}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1941,12 +2059,12 @@ export default function Informes() {
                 innerRadius={30}
                 outerRadius={60}
                 paddingAngle={1}>
-                {cambios.dataOuter.map((entry, index) => (
+                {cambios.dataOuterTw.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
               <Pie
-                data={cambios.dataInner}
+                data={cambios.dataInnerTw}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1955,12 +2073,47 @@ export default function Informes() {
                 innerRadius={10}
                 outerRadius={30}
                 paddingAngle={1}>
-                {cambios.dataInner.map((entry, index) => (
+                {cambios.dataInnerTw.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
             </PieChart>
-          </div>
+            </div>
+           : 
+        
+            <PieChart width={200} height={200}>
+            <Pie
+              data={cambios.dataOuterTw}
+              dataKey="value"
+              cx={100}
+              cy={100}
+              startAngle={-90}
+              endAngle={270}
+              innerRadius={30}
+              outerRadius={60}
+              paddingAngle={1}>
+              {cambios.dataOuterTw.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
+            <Pie
+              data={cambios.dataInnerTw}
+              dataKey="value"
+              cx={100}
+              cy={100}
+              startAngle={-90}
+              endAngle={270}
+              innerRadius={10}
+              outerRadius={30}
+              paddingAngle={1}>
+              {cambios.dataInnerTw.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
+            </PieChart>
+             }
+           </div>
+        
         </div>
 
         <div className="subtitulo-anillos">
@@ -2016,6 +2169,10 @@ export default function Informes() {
             }));
             resetValues("dataInner")
             resetValues("dataOuter")
+            resetValues("dataInnerTw")
+            resetValues("dataOuterTw")
+            resetValues("dataInnerFb")
+            resetValues("dataOuterFb")
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}

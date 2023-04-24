@@ -19,6 +19,12 @@
   margin-left:1rem
 }
 
+.input-positivo{
+  background-color: #3aff5855;
+}
+.input-negativo{
+  background-color: rgba(255, 0, 0, 0.16);
+}
 
 .ant-modal-root .ant-modal-mask {
   position: fixed;
