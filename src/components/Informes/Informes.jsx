@@ -356,6 +356,8 @@ export default function Informes() {
     colors: ["#0083CA"],
     rotations: 0,
     rotate: 90,
+    width: 200,
+    height: 200
   };
 
   const [data2, setData2] = useState({
@@ -613,6 +615,18 @@ export default function Informes() {
       tendencia: "predominante",
       indicadorImpacto:"POSITIVIDAD",
       porcentajeImpacto:"32%",
+      palabrasClaves: [
+        { text: "compomiso", value: 50 },
+        { text: "esfuerzo", value: 20 },
+        { text: "futuro", value: 20 },
+        { text: "construir", value: 15 },
+        { text: "alba", value: 12 },
+        { text: "comunidad", value: 25 },
+        { text: "deporte", value: 45 },
+        { text: "abrazo", value: 36 },
+        { text: "hugo", value: 20 },
+        { text: "fuerzas", value: 57 },
+      ],
       principalesHashtags: [
         { text: "#posadas", value: 50 },
         { text: "#ahora", value: 50 },
@@ -910,9 +924,43 @@ export default function Informes() {
     });
     {/*FIN VALORES POR DEFECTO*/}
  
+
+    const handleHashtagChange = (index, field, value) => {
+      setCambios(prevCambios => {
+        const newHashtags = [...prevCambios.principalesHashtags];
+        newHashtags[index][field] = value;
+        return { ...prevCambios, principalesHashtags: newHashtags };
+      });
+    };
+
+    const handleHashtagChangeClave = (index, field, value) => {
+      setCambios(prevCambios => {
+        const newHashtags = [...prevCambios.palabrasClaves];
+        newHashtags[index][field] = value;
+        return { ...prevCambios, palabrasClaves: newHashtags };
+      });
+    };
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
+      palabrasClaves: [
+        { text: "compomiso", value: 50 },
+        { text: "esfuerzo", value: 20 },
+        { text: "futuro", value: 20 },
+        { text: "construir", value: 15 },
+        { text: "alba", value: 12 },
+        { text: "comunidad", value: 25 },
+        { text: "deporte", value: 45 },
+        { text: "abrazo", value: 36 },
+        { text: "hugo", value: 20 },
+        { text: "fuerzas", value: 57 },
+      ],
+      principalesHashtags: [
+        { text: "#posadas", value: 50 },
+        { text: "#ahora", value: 50 },
+        { text: "#buensabado", value: 50 },
+        { text: "#puertorico", value: 50 },
+      ],
    dataOuter:[
       { name: "Positivo", value: 70, fill: "#53b253bd" },
       { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
@@ -973,12 +1021,6 @@ export default function Informes() {
     tendencia: "predominante",
     indicadorImpacto:"POSITIVIDAD",
     porcentajeImpacto:"32%",
-    principalesHashtags: [
-      { text: "#posadas", value: 50 },
-      { text: "#ahora", value: 50 },
-      { text: "#buensabado", value: 50 },
-      { text: "#puertorico", value: 50 },
-    ],
     data: [
       {
         key: "1",
@@ -1337,6 +1379,8 @@ export default function Informes() {
     { dataTorta:false },
     { dataTortaFb:false },
     { dataTortaTw:false },
+    { dataNubeHashtags: false },
+    { dataNubeClave: false },
     { showModal2: false },
     { showModal3: false },
     { showModal4: false },
@@ -2129,10 +2173,65 @@ export default function Informes() {
               <div className="titulo3">HASHTAGS</div>
               <img src={hashtags} className="hashtags" />
             </div>
+
+
+            {editable.general ?
+              <div>
+                  <>
+                  <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataNubeHashtags')}  disabled={!editable.diapositiva2}>
+                    Editar valores
+                  </Button>
+                  <Modal
+                    title="Principales Hashtags"
+                    open={modals.dataNubeHashtags}
+                    onOk={handleOk}
+                    okText="Guardar"
+                    cancelText="Cancelar"
+                    onCancel={handleCancel}
+                  >
+                  <div className="modalTorta">
+                  {cambios.principalesHashtags && cambios.principalesHashtags.length > 0 && cambios.principalesHashtags.map((hashtag, index) => (
+                  <div className="modificarnube" key={index}>
+                    <Input
+                      className="input-nubepalabras"
+                      type="text"
+                      value={hashtag.text}
+                      onChange={(e) =>
+                        handleHashtagChange(index, "text", e.target.value)
+                      }
+                    />
+                    <InputNumber
+                      value={hashtag.value}
+                      onChange={(value) =>
+                        handleHashtagChange(index, "value", value)
+                      }
+                    />
+                  </div>
+                ))}
+                </div>
+                  </Modal>
+                  </>
+            
             <div className="grafico-palabras">
-    
-            <ReactWordcloud words={cambios.principalesHashtags} options={opciones} />
+            <ReactWordcloud
+              words={cambios.principalesHashtags}
+              options={opciones}
+              style={{ width: 200, height: 200 }}
+            />
+           
             </div>
+            </div>
+          :
+          
+          <div className="grafico-palabras">
+          <ReactWordcloud
+              words={cambios.principalesHashtags}
+              options={opciones}
+              style={{ width: 200, height: 200 }}
+            />
+           
+          </div>
+                }
           </div>
 
           <div className="contenedor-img-words">
@@ -2141,9 +2240,64 @@ export default function Informes() {
               <div className="titulo3">CLAVE</div>
               <img src={clave} className="hashtags" />
             </div>
+
+            {editable.general ?
+              <div>
+                  <>
+                  <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('palabrasClaves')}  disabled={!editable.diapositiva2}>
+                    Editar valores
+                  </Button>
+                  <Modal
+                    title="Palabras Clave"
+                    open={modals.palabrasClaves}
+                    onOk={handleOk}
+                    okText="Guardar"
+                    cancelText="Cancelar"
+                    onCancel={handleCancel}
+                  >
+                  <div className="modalTorta">
+                  {cambios.palabrasClaves && cambios.palabrasClaves.length > 0 && cambios.palabrasClaves.map((hashtag, index) => (
+                  <div className="modificarnube" key={index}>
+                    <Input
+                      className="input-nubepalabras"
+                      type="text"
+                      value={hashtag.text}
+                      onChange={(e) =>
+                        handleHashtagChangeClave(index, "text", e.target.value)
+                      }
+                    />
+                    <InputNumber
+                      value={hashtag.value}
+                      onChange={(value) =>
+                        handleHashtagChangeClave(index, "value", value)
+                      }
+                    />
+                  </div>
+                ))}
+                </div>
+                  </Modal>
+                  </>
+            
             <div className="grafico-palabras">
-              <ReactWordcloud words={palabrasClaves} options={opciones} />
+            <ReactWordcloud
+              words={cambios.palabrasClaves}
+              options={opciones}
+              style={{ width: 200, height: 200 }}
+            />
+           
             </div>
+            </div>
+          :
+          
+          <div className="grafico-palabras">
+          <ReactWordcloud
+            words={cambios.palabrasClaves}
+            options={opciones}
+            style={{ width: 200, height: 200 }}
+          />
+         
+          </div>
+                }
           </div>
         </div>
 
@@ -2173,6 +2327,8 @@ export default function Informes() {
             resetValues("dataOuterTw")
             resetValues("dataInnerFb")
             resetValues("dataOuterFb")
+            resetValues("principalesHashtags")
+            resetValues("palabrasClaves")
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}

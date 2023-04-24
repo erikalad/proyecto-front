@@ -26,6 +26,16 @@
   background-color: rgba(255, 0, 0, 0.16);
 }
 
+.input-nubepalabras{
+  width: 40%;
+}
+
+.modificarnube{
+  display: flex;
+  gap:1rem;
+  margin-top: 1rem;
+}
+
 .ant-modal-root .ant-modal-mask {
   position: fixed;
   top: 0;
