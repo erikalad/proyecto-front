@@ -9,7 +9,7 @@ import fb from "./../../assest/fb.png";
 import tw from "./../../assest/tw.jpg";
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { CiVolumeHigh } from "react-icons/ci";
-import { Table, Tag, Input,message,Collapse, Space, Divider, Tour} from "antd";
+import { Table, Tag, Input,message,Collapse, Space, Divider, Tour, InputNumber} from "antd";
 import { Button, Modal } from 'antd';
 import { BsFillDashCircleFill } from "react-icons/bs";
 import ReactApexChart from "react-apexcharts";
@@ -120,27 +120,9 @@ export default function Informes() {
 
   };
 
-  const [showModal, setShowModal] = useState(false);
+  
 
-  const resetValues = () => {
-    setCambios(defaultValues);
-    setShowModal(false);
-    setDefaultValues(prevState => ({ ...prevState, displayTotalVolumen: 'flex' }));
-    messageApi.open({
-      key,
-      type: 'success',
-      content: 'Cambios descartados!',
-      duration: 2,
-    });
-  };
 
-  const handleDiscardChanges = (diapositivaName) => {
-    setShowModal(true);
-    setEditable((prevState) => ({
-      ...prevState,
-      [diapositivaName]: !prevState[diapositivaName],
-    }));
-  }
    {/*FIN MODAL*/}
 
   
@@ -481,16 +463,6 @@ export default function Informes() {
     },
   });
 
-  const dataOuter = [
-    { name: "Positivo", value: 70, fill: "#53b253bd" },
-    { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
-  ];
-
-  const dataInner = [
-    { name: "Positivo", value: 70, fill: "#53b253bd" },
-    { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
-  ];
-
   
   const palabrasClaves = [
     { text: "compomiso", value: 50 },
@@ -579,13 +551,364 @@ export default function Informes() {
         diapositiva10: newEditableValue,
       });
     }
+
+    const [defaultValues, setDefaultValues] = useState({
+      dataOuter:[
+        { name: "Positivo", value: 70, fill: "#53b253bd" },
+        { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
+      ],
+      dataInner:[
+        { name: "Positivo", value: 70, fill: "#53b253bd" },
+        { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
+      ],
+      displayTotalVolumen:'flex',
+      displayTotalFacebook:'flex',
+      displayTotalTwitter:'flex',
+      fecha: 'Desde 16:27 hs del 20/03/2023 - Hasta 16:27 hs del 27/03/2023',
+      valor1: 111,
+      valor2:1,
+      valor3:36,
+      valor4:"DESCENDENTE",
+      valor5:124.524,
+      texto1: 'El candidato a gobernador para Misiones recibe una connotación ampliamente positiva, y se destaca el atributo de Eficiencia que le otorga la comunidad digital. No se detectan contenidos negativos.',
+      texto2: 'Impacta a favor su posteo sobre la visita al barrio Don Daniel de Alem y la charla con voluntarios y voluntarias del merendero que lleva adelante la vecina Yanina Báez con el acompañamiento de la agrupación Manos Unidas.',
+      texto3: ' El candidato pone de relieve la reunión que mantuvo con la concejala Gabriela Bastarrechea, de Puerto Rico, y su equipo, donde conversaron sobre ideas y e iniciativas que quieren llevar a cabo en la comunidad.',
+      texto4: 'Repercute la publicación de la cuenta del Frente Renovador de la Concordia, que subraya las palabras del candidato: "Al futuro lo tenemos que construir nosotros".',
+      texto5: 'Los medios difunden que el diputado provincial se acercó a Colonia Gisela para visitar dos establecimientos educativos y charlar con el cuerpo docente que se desempeña en este paraje ubicado entre los municipios de Colonia Polana y General Urquiza.',
+      texto6: 'Passalacqua logra importante engagement en su saludo a “la querida” comunidad de Alba Posse en su 88° aniversario.',
+      texto7: 'El trabajo (13%) como preocupación presente en las audiencias da lugar a un clima negativo y a las emociones de desaliento e incertidumbre. Están presentes el temor a la exclusión social, la precarización y la ruptura de los lazos sociales. Según este análisis, en lo personal hay sentimientos de culpabilidad, fracaso vergüenza.',
+      texto8: 'Ante la preocupación registrada en las audiencias por la vivienda (7%), se revelan emociones ansiedad, incertidumbre y desesperanza. Según este análisis, hay enojo y sensación de injusticia, y en lo personal se vive con culpa, vergüenza y sensación de fracaso. Quienes viven en villas y realizan ocupaciones ilegales, son estigmatizados y rechazados.',
+      texto9: 'La preocupación por la educación (3%) registrada en las audiencias muestra una percepción de crisis del sistema e incertidumbre e inseguridad sobre los aprendizajes y las condiciones edilicias. En este clima negativo hay desconfianza en lo público y estrés por el costo de la escuela privada. Hay pesimismo y temor por niñes y adolescentes.',
+      texto10: 'La presencia de un clima negativo, asociado a la emoción de la anticipación (21%), incluye en las audiencias, según el presente análisis, una predisposición a realizar suposiciones y valoraciones prejuiciosas sobre situaciones y personas. La anticipación puede darse junto con la tristeza y generar una visión pesimista y desmovilizante.',
+      texto11:'La alegría (3%) como emoción presente en las audiencias contribuye a crear un clima positivo que incluye, según el presente análisis, la presencia de una mirada optimista. Hay un espacio favorable a la escucha y la empatía, junto a una predisposición a la solidaridad.',
+      texto12:'Hay configurado un cuadro que incluye la emoción positiva de confianza (2%), reforzando en las audiencias un estado de expectativas favorables sobre las que se tiene un considerable grado de certeza. Se refuerza la empatía, la seguridad, la tranquilidad y el optimismo, conformando un terreno favorable a la participación.',
+      texto13:'Se refleja en las audiencias la percepción de frialdad (2%) como un componente negativo de la imagen de los protagonistas. Según el presente análisis también aparecen como percepciones negativas asociadas las siguientes: distancia, soberbia, desesperanza, insensibilidad e incapacidad para escuchar.',
+      texto14:'Se refleja en las audiencias un cuadro positivo a partir de la percepción del atributo conocimiento (2%), destacando también los elementos de poder, eficiencia, éxito, orden y credibilidad. Se observa la presencia de una disposición favorable hacia quienes protagonizan el tema analizado.',
+      texto15:'Se refleja en las audiencias un cuadro positivo a partir de la percepción del atributo laboriosidad (2%), destacando también los elementos de acción, compromiso, éxito, esfuerzo, honestidad y eficiencia. Hay una disposición favorable hacia quienes protagonizan el tema analizado, percibidos también como trabajadores',
+      texto16:'',
+      sugerencia1:'Desarrollar acciones que se centren en la problemática del TRABAJO de manera propositiva con iniciativas que demuestren algunos de los siguientes objetivos: la vocación de favorecer la creación de empleo, la mejora en las condiciones laborales, la dignificación de la persona a través del trabajo, la lucha contra el desempleo, el combate a la informalidad o la educación como herramienta para la futura inserción laboral.',
+      sugerencia2:'Desarrollar acciones que se centren en la problemática del TRABAJO de manera propositiva con iniciativas que demuestren algunos de los siguientes objetivos: la vocación de favorecer la creación de empleo, la mejora en las condiciones laborales, la dignificación de la persona a través del trabajo, la lucha contra el desempleo, el combate a la informalidad o la educación como herramienta para la futura inserción laboral.',
+      terminos1:'Términos que se recomiendan utilizar en los textos: obras, esfuerzo, cumplimiento, metas, trabajo, futuro, retos, compromiso, dignidad, diálogo innovación, acción.',
+      terminos2:'Términos que se recomiendan utilizar en los textos: obras, esfuerzo, cumplimiento, metas, trabajo, futuro, retos, compromiso, dignidad, diálogo innovación, acción.',
+      cliente:"HUGO PASSALACQUA",
+      tiempo:"la ultima semana",
+      desdeDiaHora: "16:27 hs del 20/03/2023",
+      hastaDiaHora: "16:27 hs del 27/03/2023",
+      tendencia: "predominante",
+      indicadorImpacto:"POSITIVIDAD",
+      porcentajeImpacto:"32%",
+      principalesHashtags: [
+        { text: "#posadas", value: 50 },
+        { text: "#ahora", value: 50 },
+        { text: "#buensabado", value: 50 },
+        { text: "#puertorico", value: 50 },
+      ],
+      data: [
+        {
+          key: "1",
+          influenciador: "passalacquaok",
+          impresiones: 38691,
+        },
+        {
+          key: "2",
+          influenciador: "PabbloZapata",
+          impresiones: 6292,
+        },
+        {
+          key: "3",
+          influenciador: "noticiasen3ok",
+          impresiones: 3495,
+        },
+        {
+          key: "4",
+          influenciador: "NHoughan",
+          impresiones: 65,
+        },
+        {
+          key: "5",
+          influenciador: "alejavier68",
+          impresiones: 64,
+        },
+      ],
+      data2ant:[
+        {
+          key: "6",
+          influenciador: "",
+          impresiones: "",
+        },
+        {
+          key: "7",
+          influenciador: "",
+          impresiones: "",
+        },
+        {
+          key: "8",
+          influenciador: "",
+          impresiones: "",
+        },
+        {
+          key: "9",
+          influenciador: "",
+          impresiones: "",
+        },
+        {
+          key: "10",
+          influenciador: "",
+          impresiones: "",
+        },
+      ],
+      dataPreocupaciones:[
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO </div>
+              <div>44.83%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>24.14%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>10.34%</div>
+            </div>
+          ),
+        },
+      ],
+      dataPreocupacionesTw:[
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO </div>
+              <div>36.84%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>36.84%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>15.79%</div>
+            </div>
+          ),
+        },
+      ],
+      dataPreocupacionesFb:[
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO </div>
+              <div>60.00%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>20.00%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>10.00%</div>
+            </div>
+          ),
+        },
+      ],
+      dataEmociones:[
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>ANTICIPACIÓN </div>
+              <div>65.63%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>ALEGRÍA </div>
+              <div>9.38%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>CONFIANZA </div>
+              <div>6.25%</div>
+            </div>
+          ),
+        },
+      ],
+      dataEmocionesTw:[
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>ANTICIPACIÓN </div>
+              <div>91.30%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>INSATISFACCIÓN </div>
+              <div>4.35%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>DESEO </div>
+              <div>4.35%</div>
+            </div>
+          ),
+        },
+      ],
+      dataEmocionesFb:[
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>ALEGRÍA </div>
+              <div>33.33%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>CONFIANZA </div>
+              <div>22.22%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>AGRADO </div>
+              <div>11.11%</div>
+            </div>
+          ),
+        },
+      ],
+      dataImagenes:[
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>FRIALDAD </div>
+              <div>22.22%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>CONOCIMIENTO </div>
+              <div>222.224%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>LABORASIDAD </div>
+              <div>22.22%</div>
+            </div>
+          ),
+        },
+      ],
+      dataImagenesTw:[
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>FRIALDAD </div>
+              <div>66.67%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>EFICIENCIA </div>
+              <div>33.33%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div></div>
+              <div></div>
+            </div>
+          ),
+        },
+      ],
+      dataImagenesFb:[
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>CONOCIMIENTO </div>
+              <div>33.33%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>LABORISIDAD </div>
+              <div>33.33%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>OPTIMISMO </div>
+              <div>16.67%</div>
+            </div>
+          ),
+        },
+      ],
+    });
+    {/*FIN VALORES POR DEFECTO*/}
  
  
     {/*CAMBIOS*/}
-  const [cambios, setCambios] = useState({
+    const [cambios, setCambios] = useState({...defaultValues});
+   /*  dataOuter:[
+      { name: "Positivo", value: 70, fill: "#53b253bd" },
+      { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
+    ],
+    dataInner:[
+      { name: "Positivo", value: 70, fill: "#53b253bd" },
+      { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
+    ],
     displayTotalVolumen:'flex',
     displayTotalFacebook:'flex',
     displayTotalTwitter:'flex',
+    fecha: 'Desde 16:27 hs del 20/03/2023 - Hasta 16:27 hs del 27/03/2023',
     valor1: 111,
     valor2:1,
     valor3:36,
@@ -912,352 +1235,19 @@ export default function Informes() {
         ),
       },
     ],
-  });
+  }); */
    {/*FIN CAMBIOS*/}
 
-    {/*VALORES POR DEFECTO*/}
-  const [defaultValues, setDefaultValues] = useState({
-    displayTotalVolumen:'flex',
-    displayTotalFacebook:'flex',
-    displayTotalTwitter:'flex',
-    valor1: 111,
-    valor2:1,
-    valor3:36,
-    valor4:"DESCENDENTE",
-    valor5:124.524,
-    texto1: 'El candidato a gobernador para Misiones recibe una connotación ampliamente positiva, y se destaca el atributo de Eficiencia que le otorga la comunidad digital. No se detectan contenidos negativos.',
-    texto2: 'Impacta a favor su posteo sobre la visita al barrio Don Daniel de Alem y la charla con voluntarios y voluntarias del merendero que lleva adelante la vecina Yanina Báez con el acompañamiento de la agrupación Manos Unidas.',
-    texto3: ' El candidato pone de relieve la reunión que mantuvo con la concejala Gabriela Bastarrechea, de Puerto Rico, y su equipo, donde conversaron sobre ideas y e iniciativas que quieren llevar a cabo en la comunidad.',
-    texto4: 'Repercute la publicación de la cuenta del Frente Renovador de la Concordia, que subraya las palabras del candidato: "Al futuro lo tenemos que construir nosotros".',
-    texto5: 'Los medios difunden que el diputado provincial se acercó a Colonia Gisela para visitar dos establecimientos educativos y charlar con el cuerpo docente que se desempeña en este paraje ubicado entre los municipios de Colonia Polana y General Urquiza.',
-    texto6: 'Passalacqua logra importante engagement en su saludo a “la querida” comunidad de Alba Posse en su 88° aniversario.',
-    texto7: 'El trabajo (13%) como preocupación presente en las audiencias da lugar a un clima negativo y a las emociones de desaliento e incertidumbre. Están presentes el temor a la exclusión social, la precarización y la ruptura de los lazos sociales. Según este análisis, en lo personal hay sentimientos de culpabilidad, fracaso vergüenza.',
-    texto8: 'Ante la preocupación registrada en las audiencias por la vivienda (7%), se revelan emociones ansiedad, incertidumbre y desesperanza. Según este análisis, hay enojo y sensación de injusticia, y en lo personal se vive con culpa, vergüenza y sensación de fracaso. Quienes viven en villas y realizan ocupaciones ilegales, son estigmatizados y rechazados.',
-    texto9: 'La preocupación por la educación (3%) registrada en las audiencias muestra una percepción de crisis del sistema e incertidumbre e inseguridad sobre los aprendizajes y las condiciones edilicias. En este clima negativo hay desconfianza en lo público y estrés por el costo de la escuela privada. Hay pesimismo y temor por niñes y adolescentes.',
-    texto10: 'La presencia de un clima negativo, asociado a la emoción de la anticipación (21%), incluye en las audiencias, según el presente análisis, una predisposición a realizar suposiciones y valoraciones prejuiciosas sobre situaciones y personas. La anticipación puede darse junto con la tristeza y generar una visión pesimista y desmovilizante.',
-    texto11:'La alegría (3%) como emoción presente en las audiencias contribuye a crear un clima positivo que incluye, según el presente análisis, la presencia de una mirada optimista. Hay un espacio favorable a la escucha y la empatía, junto a una predisposición a la solidaridad.',
-    texto12:'Hay configurado un cuadro que incluye la emoción positiva de confianza (2%), reforzando en las audiencias un estado de expectativas favorables sobre las que se tiene un considerable grado de certeza. Se refuerza la empatía, la seguridad, la tranquilidad y el optimismo, conformando un terreno favorable a la participación.',
-    texto13:'Se refleja en las audiencias la percepción de frialdad (2%) como un componente negativo de la imagen de los protagonistas. Según el presente análisis también aparecen como percepciones negativas asociadas las siguientes: distancia, soberbia, desesperanza, insensibilidad e incapacidad para escuchar.',
-    texto14:'Se refleja en las audiencias un cuadro positivo a partir de la percepción del atributo conocimiento (2%), destacando también los elementos de poder, eficiencia, éxito, orden y credibilidad. Se observa la presencia de una disposición favorable hacia quienes protagonizan el tema analizado.',
-    texto15:'Se refleja en las audiencias un cuadro positivo a partir de la percepción del atributo laboriosidad (2%), destacando también los elementos de acción, compromiso, éxito, esfuerzo, honestidad y eficiencia. Hay una disposición favorable hacia quienes protagonizan el tema analizado, percibidos también como trabajadores',
-    texto16:'',
-    sugerencia1:'Desarrollar acciones que se centren en la problemática del TRABAJO de manera propositiva con iniciativas que demuestren algunos de los siguientes objetivos: la vocación de favorecer la creación de empleo, la mejora en las condiciones laborales, la dignificación de la persona a través del trabajo, la lucha contra el desempleo, el combate a la informalidad o la educación como herramienta para la futura inserción laboral.',
-    sugerencia2:'Desarrollar acciones que se centren en la problemática del TRABAJO de manera propositiva con iniciativas que demuestren algunos de los siguientes objetivos: la vocación de favorecer la creación de empleo, la mejora en las condiciones laborales, la dignificación de la persona a través del trabajo, la lucha contra el desempleo, el combate a la informalidad o la educación como herramienta para la futura inserción laboral.',
-    terminos1:'Términos que se recomiendan utilizar en los textos: obras, esfuerzo, cumplimiento, metas, trabajo, futuro, retos, compromiso, dignidad, diálogo innovación, acción.',
-    terminos2:'Términos que se recomiendan utilizar en los textos: obras, esfuerzo, cumplimiento, metas, trabajo, futuro, retos, compromiso, dignidad, diálogo innovación, acción.',
-    cliente:"HUGO PASSALACQUA",
-    tiempo:"la ultima semana",
-    desdeDiaHora: "16:27 hs del 20/03/2023",
-    hastaDiaHora: "16:27 hs del 27/03/2023",
-    tendencia: "predominante",
-    indicadorImpacto:"POSITIVIDAD",
-    porcentajeImpacto:"32%",
-    principalesHashtags: [
-      { text: "#posadas", value: 50 },
-      { text: "#ahora", value: 50 },
-      { text: "#buensabado", value: 50 },
-      { text: "#puertorico", value: 50 },
-    ],
-    data: [
-      {
-        key: "1",
-        influenciador: "passalacquaok",
-        impresiones: 38691,
-      },
-      {
-        key: "2",
-        influenciador: "PabbloZapata",
-        impresiones: 6292,
-      },
-      {
-        key: "3",
-        influenciador: "noticiasen3ok",
-        impresiones: 3495,
-      },
-      {
-        key: "4",
-        influenciador: "NHoughan",
-        impresiones: 65,
-      },
-      {
-        key: "5",
-        influenciador: "alejavier68",
-        impresiones: 64,
-      },
-    ],
-    data2ant:[
-      {
-        key: "6",
-        influenciador: "",
-        impresiones: "",
-      },
-      {
-        key: "7",
-        influenciador: "",
-        impresiones: "",
-      },
-      {
-        key: "8",
-        influenciador: "",
-        impresiones: "",
-      },
-      {
-        key: "9",
-        influenciador: "",
-        impresiones: "",
-      },
-      {
-        key: "10",
-        influenciador: "",
-        impresiones: "",
-      },
-    ],
-    dataPreocupaciones:[
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>TRABAJO </div>
-            <div>44.83%</div>
-          </div>
-        ),
-      },
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>VIVIENDA </div>
-            <div>24.14%</div>
-          </div>
-        ),
-      },
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>EDUCACIÓN </div>
-            <div>10.34%</div>
-          </div>
-        ),
-      },
-    ],
-    dataPreocupacionesTw:[
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>TRABAJO </div>
-            <div>36.84%</div>
-          </div>
-        ),
-      },
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>VIVIENDA </div>
-            <div>36.84%</div>
-          </div>
-        ),
-      },
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>EDUCACIÓN </div>
-            <div>15.79%</div>
-          </div>
-        ),
-      },
-    ],
-    dataPreocupacionesFb:[
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>TRABAJO </div>
-            <div>60.00%</div>
-          </div>
-        ),
-      },
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>VIVIENDA </div>
-            <div>20.00%</div>
-          </div>
-        ),
-      },
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>EDUCACIÓN </div>
-            <div>10.00%</div>
-          </div>
-        ),
-      },
-    ],
-    dataEmociones:[
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>ANTICIPACIÓN </div>
-            <div>65.63%</div>
-          </div>
-        ),
-      },
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>ALEGRÍA </div>
-            <div>9.38%</div>
-          </div>
-        ),
-      },
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>CONFIANZA </div>
-            <div>6.25%</div>
-          </div>
-        ),
-      },
-    ],
-    dataEmocionesTw:[
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>ANTICIPACIÓN </div>
-            <div>91.30%</div>
-          </div>
-        ),
-      },
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>INSATISFACCIÓN </div>
-            <div>4.35%</div>
-          </div>
-        ),
-      },
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>DESEO </div>
-            <div>4.35%</div>
-          </div>
-        ),
-      },
-    ],
-    dataEmocionesFb:[
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>ALEGRÍA </div>
-            <div>33.33%</div>
-          </div>
-        ),
-      },
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>CONFIANZA </div>
-            <div>22.22%</div>
-          </div>
-        ),
-      },
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>AGRADO </div>
-            <div>11.11%</div>
-          </div>
-        ),
-      },
-    ],
-    dataImagenes:[
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>FRIALDAD </div>
-            <div>22.22%</div>
-          </div>
-        ),
-      },
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>CONOCIMIENTO </div>
-            <div>222.224%</div>
-          </div>
-        ),
-      },
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>LABORASIDAD </div>
-            <div>22.22%</div>
-          </div>
-        ),
-      },
-    ],
-    dataImagenesTw:[
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>FRIALDAD </div>
-            <div>66.67%</div>
-          </div>
-        ),
-      },
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>EFICIENCIA </div>
-            <div>33.33%</div>
-          </div>
-        ),
-      },
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div></div>
-            <div></div>
-          </div>
-        ),
-      },
-    ],
-    dataImagenesFb:[
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>CONOCIMIENTO </div>
-            <div>33.33%</div>
-          </div>
-        ),
-      },
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>LABORISIDAD </div>
-            <div>33.33%</div>
-          </div>
-        ),
-      },
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>OPTIMISMO </div>
-            <div>16.67%</div>
-          </div>
-        ),
-      },
-    ],
-  });
-  {/*FIN VALORES POR DEFECTO*/}
+ 
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCambios((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setCambios((prevState) => ({
+        ...prevState,
+        [name]: value
+      }));
+    };
+ 
   function eliminarGrafico(graficoState) {
     const botonMostrar = document.getElementById("mostrarGrafico");
     setCambios(prevState => ({ ...prevState, [graficoState]: 'none' }));
@@ -1276,7 +1266,78 @@ export default function Informes() {
     prevText: 'Anterior',
     
   };
+
+
+   {/*MODAL EDITAR GRAFICO TORTA */}
+  const [openModal, setOpenModal] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const showModalTorta = () => {
+    setOpenModal(true);
+  };
+  const handleOk = () => {
+    setConfirmLoading(true);
+  };
+  const handleCancel = () => {
+    setOpenModal(false);
+  };
   
+  const handleInputNumberChange = (index, isOuter, newValue) => {
+    const newData = isOuter ? [...cambios.dataOuter] : [...cambios.dataInner];
+    newData[index].value = newValue;
+
+    if (isOuter) {
+      setCambios({
+        ...cambios,
+        dataOuter: newData,
+      });
+    } else {
+      setCambios({
+        ...cambios,
+        dataInner: newData,
+      });
+    }
+  };
+
+  const [modals, setShowModal] = useState([
+    { showModal1: false },
+    { showModal2: false },
+    { showModal3: false },
+    { showModal4: false },
+    { showModal5: false },
+    { showModal6: false },
+    { showModal7: false },
+    { showModal8: false },
+    { showModal9: false },
+    { showModal10: false }
+  ]);
+
+  function resetValues(valor) {
+    console.log(valor)
+    setCambios(prevState => ({
+      ...prevState,
+      [valor]: defaultValues[valor],
+    }));
+    setShowModal(false);
+    messageApi.open({
+      key,
+      type: 'success',
+      content: 'Cambios descartados!',
+      duration: 2,
+    });
+   
+    
+  };
+
+  const handleDiscardChanges = (diapositivaName, showModal) => {
+    setShowModal((prevState) => ({
+      ...prevState,
+      [showModal]: !prevState[showModal],
+    }));
+    setEditable((prevState) => ({
+      ...prevState,
+      [diapositivaName]: !prevState[diapositivaName],
+    }));
+  }
 
 
 
@@ -1332,7 +1393,7 @@ export default function Informes() {
               <Input
               style={{ width: '1000px' , height:'30px', marginTop:'1rem', marginBottom:'1rem', paddingTop:'1rem'}}
                 type="text"
-                name="valor1"
+                name="fecha"
                 value={`Se mide el impacto de las conversaciones sobre ${cambios.cliente} durante ${cambios.tiempo}.`}
                 onChange={handleChange}
                 className="subtitulo-principal"
@@ -1361,15 +1422,15 @@ export default function Informes() {
               <Input
               style={{ width: '450px' , height:'20px', paddingTop:'0.8rem'}}
               type="text"
-              name="valor1"
-              value={`Desde ${cambios.desdeDiaHora} - Hasta ${cambios.hastaDiaHora}`}
+              name="fecha"
+              value={cambios.fecha}
               onChange={handleChange}
               className="subtitulo-principal"
               />
                         
               ) : (
             <div className="titulo1">
-            Desde {cambios.desdeDiaHora} - Hasta {cambios.hastaDiaHora}
+           {cambios.fecha}
             </div>
             )}
       
@@ -1633,10 +1694,10 @@ export default function Informes() {
           <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva1')} disabled={!editable.diapositiva1}>
             Guardar cambio
           </Button>
-          <Button onClick={()=>handleDiscardChanges('diapositiva1')} disabled={!editable.diapositiva1}>Descartar cambios</Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva1','showModal1')} disabled={!editable.diapositiva1}>Descartar cambios</Button>
           </div>
           <Modal
-          open={showModal}
+          open={modals.showModal1}
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -1645,10 +1706,25 @@ export default function Informes() {
               ...prevState,
               diapositiva1: false // Cambiar la diapositiva correspondiente a false
             }));
-            resetValues()
-            setShowModal(false);
+            resetValues('displayTotalVolumen')
+            resetValues('fecha')
+            resetValues('displayTotalFacebook')
+            resetValues('displayTotalTwitter')
+            resetValues("cliente") 
+            resetValues("valor1") 
+            resetValues("valor2") 
+            resetValues("valor3") 
+            resetValues("valor4") 
+            resetValues("valor5") 
+            setShowModal((prevState) => ({
+              ...prevState,
+              showModal1: false // Cambiar la diapositiva correspondiente a false
+            }));
           }}
-          onCancel={() => setShowModal(false)}
+          onCancel={() => setShowModal((prevState) => ({
+            ...prevState,
+            showModal1: false // Cambiar la diapositiva correspondiente a false
+          }))}
         >
           <p>Los cambios realizados se perderán permanentemente.</p>
         </Modal>
@@ -1692,9 +1768,34 @@ export default function Informes() {
 
         <div className="contenedor-pie-texto">
           <div className="pie">
+            {editable.general == true ? 
+            <div>
+              <>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={showModalTorta} disabled={!editable.diapositiva2}>
+                Editar valores
+              </Button>
+              <Modal
+                title="Total - Volumen de publicaciones"
+                open={openModal}
+                onOk={handleOk}
+                confirmLoading={confirmLoading}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+              >
+              <div className="modalTorta">
+                <div className="">Período Anterior</div>
+                <InputNumber value={cambios.dataOuter[0].value} onChange={(value) => handleInputNumberChange(0, true, value)}></InputNumber>
+                <InputNumber value={cambios.dataOuter[1].value} onChange={(value) => handleInputNumberChange(1, true, value)}></InputNumber>
+                <div>Período Actual</div>
+                <InputNumber value={cambios.dataInner[0].value} onChange={(value) => handleInputNumberChange(0, false, value)}></InputNumber>
+                <InputNumber value={cambios.dataInner[1].value} onChange={(value) => handleInputNumberChange(1, false, value)}></InputNumber>
+              </div>
+              </Modal>
+            </>
             <PieChart width={200} height={200}>
               <Pie
-                data={dataOuter}
+                data={cambios.dataOuter}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1703,12 +1804,12 @@ export default function Informes() {
                 innerRadius={30}
                 outerRadius={60}
                 paddingAngle={1}>
-                {dataOuter.map((entry, index) => (
+                {cambios.dataOuter.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
               <Pie
-                data={dataInner}
+                data={cambios.dataInner}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1717,11 +1818,44 @@ export default function Informes() {
                 innerRadius={10}
                 outerRadius={30}
                 paddingAngle={1}>
-                {dataInner.map((entry, index) => (
+                {cambios.dataInner.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
-            </PieChart>
+            </PieChart> 
+            </div>
+            :
+            <PieChart width={200} height={200}>
+            <Pie
+              data={cambios.dataOuter}
+              dataKey="value"
+              cx={100}
+              cy={100}
+              startAngle={-90}
+              endAngle={270}
+              innerRadius={30}
+              outerRadius={60}
+              paddingAngle={1}>
+              {cambios.dataOuter.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
+            <Pie
+              data={cambios.dataInner}
+              dataKey="value"
+              cx={100}
+              cy={100}
+              startAngle={-90}
+              endAngle={270}
+              innerRadius={10}
+              outerRadius={30}
+              paddingAngle={1}>
+              {cambios.dataInner.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
+          </PieChart>}
+            
           </div>
 
           <div className="texto">
@@ -1750,7 +1884,7 @@ export default function Informes() {
             </div>
             <PieChart width={200} height={200}>
               <Pie
-                data={dataOuter}
+                data={cambios.dataOuter}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1759,12 +1893,12 @@ export default function Informes() {
                 innerRadius={30}
                 outerRadius={60}
                 paddingAngle={1}>
-                {dataOuter.map((entry, index) => (
+                {cambios.dataOuter.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
               <Pie
-                data={dataInner}
+                data={cambios.dataInner}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1773,7 +1907,7 @@ export default function Informes() {
                 innerRadius={10}
                 outerRadius={30}
                 paddingAngle={1}>
-                {dataInner.map((entry, index) => (
+                {cambios.dataInner.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
@@ -1787,7 +1921,7 @@ export default function Informes() {
             </div>
             <PieChart width={200} height={200}>
               <Pie
-                data={dataOuter}
+                data={cambios.dataOuter}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1796,12 +1930,12 @@ export default function Informes() {
                 innerRadius={30}
                 outerRadius={60}
                 paddingAngle={1}>
-                {dataOuter.map((entry, index) => (
+                {cambios.dataOuter.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
               <Pie
-                data={dataInner}
+                data={cambios.dataInner}
                 dataKey="value"
                 cx={100}
                 cy={100}
@@ -1810,7 +1944,7 @@ export default function Informes() {
                 innerRadius={10}
                 outerRadius={30}
                 paddingAngle={1}>
-                {dataInner.map((entry, index) => (
+                {cambios.dataInner.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
@@ -1858,10 +1992,10 @@ export default function Informes() {
           <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva2')} disabled={!editable.diapositiva2}>
             Guardar cambio
           </Button>
-          <Button onClick={()=>handleDiscardChanges('diapositiva2')} disabled={!editable.diapositiva2}>Descartar cambios</Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva2','showModal2')} disabled={!editable.diapositiva2}>Descartar cambios</Button>
           <Modal
-          open={showModal}
-          title="¿Está seguro de que desea descartar los cambios?"
+          open={modals.showModal2}
+          title="¿Está seguro?"
           okText="Sí"
           cancelText="No"
           onOk={() => {
@@ -1869,7 +2003,8 @@ export default function Informes() {
               ...prevState,
               diapositiva2: false // Cambiar la diapositiva correspondiente a false
             }));
-            resetValues()
+            resetValues("dataInner")
+            resetValues("dataOuter")
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
@@ -2054,7 +2189,7 @@ export default function Informes() {
           </Button>
           <Button onClick={()=>handleDiscardChanges('diapositiva3')} disabled={!editable.diapositiva3}>Descartar cambios</Button>
           <Modal
-          open={showModal}
+        /*   open={modals.showModal3} */
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -2063,7 +2198,7 @@ export default function Informes() {
               ...prevState,
               diapositiva3: false // Cambiar la diapositiva correspondiente a false
             }));
-            resetValues()
+            /* resetValues() */
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
@@ -2231,7 +2366,7 @@ export default function Informes() {
           </Button>
           <Button onClick={()=>handleDiscardChanges('diapositiva4')} disabled={!editable.diapositiva4}>Descartar cambios</Button>
           <Modal
-          open={showModal}
+        /*   open={modals.showModal4} */
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -2240,7 +2375,7 @@ export default function Informes() {
               ...prevState,
               diapositiva4: false // Cambiar la diapositiva correspondiente a false
             }));
-            resetValues()
+        /*     resetValues() */
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
@@ -2410,7 +2545,7 @@ export default function Informes() {
           </Button>
           <Button onClick={()=>handleDiscardChanges('diapositiva5')} disabled={!editable.diapositiva5}>Descartar cambios</Button>
           <Modal
-          open={showModal}
+      /*     open={modals.showModal5} */
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -2419,7 +2554,7 @@ export default function Informes() {
               ...prevState,
               diapositiva5: false // Cambiar la diapositiva correspondiente a false
             }));
-            resetValues()
+            /* resetValues() */
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
@@ -2643,7 +2778,7 @@ export default function Informes() {
           </Button>
           <Button onClick={()=>handleDiscardChanges('diapositiva6')} disabled={!editable.diapositiva6}>Descartar cambios</Button>
           <Modal
-          open={showModal}
+        /*   open={modals.showModal6} */
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -2652,7 +2787,7 @@ export default function Informes() {
               ...prevState,
               diapositiva6: false // Cambiar la diapositiva correspondiente a false
             }));
-            resetValues()
+            /* resetValues() */
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
@@ -2713,7 +2848,7 @@ export default function Informes() {
             </Button>
             <Button onClick={()=>handleDiscardChanges('diapositiva7')} disabled={!editable.diapositiva7}>Descartar cambios</Button>
             <Modal
-            open={showModal}
+            /* open={modals.showModal7} */
             title="¿Está seguro de que desea descartar los cambios?"
             okText="Sí"
             cancelText="No"
@@ -2722,7 +2857,7 @@ export default function Informes() {
                 ...prevState,
                 diapositiva7: false // Cambiar la diapositiva correspondiente a false
               }));
-              resetValues()
+              /* resetValues() */
               setShowModal(false);
             }}
             onCancel={() => setShowModal(false)}
@@ -2880,7 +3015,7 @@ export default function Informes() {
           </Button>
           <Button onClick={()=>handleDiscardChanges('diapositiva8')} disabled={!editable.diapositiva8}>Descartar cambios</Button>
           <Modal
-          open={showModal}
+          /* open={modals.showModal8} */
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -2889,7 +3024,7 @@ export default function Informes() {
               ...prevState,
               diapositiva8: false // Cambiar la diapositiva correspondiente a false
             }));
-            resetValues()
+            /* resetValues() */
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
@@ -3048,7 +3183,7 @@ export default function Informes() {
           </Button>
           <Button onClick={()=>handleDiscardChanges('diapositiva9')} disabled={!editable.diapositiva9}>Descartar cambios</Button>
           <Modal
-          open={showModal}
+          /* open={modals.showModal9} */
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -3057,7 +3192,7 @@ export default function Informes() {
               ...prevState,
               diapositiva9: false // Cambiar la diapositiva correspondiente a false
             }));
-            resetValues()
+            /* resetValues() */
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}

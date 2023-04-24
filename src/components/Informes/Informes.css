@@ -10,6 +10,11 @@
 
 }
 
+.modalTorta{
+  margin:2rem;
+  
+}
+
 
 .ant-modal-root .ant-modal-mask {
   position: fixed;
