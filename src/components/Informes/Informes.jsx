@@ -553,13 +553,17 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
+      dataOuter0: 70,
+      dataOuter1: 30,
+      dataInner0: 70,
+      dataInner1: 30,
       dataOuter:[
         { name: "Positivo", value: 70, fill: "#53b253bd" },
         { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
       ],
       dataInner:[
         { name: "Positivo", value: 70, fill: "#53b253bd" },
-        { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
+        { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
       ],
       displayTotalVolumen:'flex',
       displayTotalFacebook:'flex',
@@ -896,14 +900,14 @@ export default function Informes() {
  
  
     {/*CAMBIOS*/}
-    const [cambios, setCambios] = useState({...defaultValues});
-   /*  dataOuter:[
+    const [cambios, setCambios] = useState({
+   dataOuter:[
       { name: "Positivo", value: 70, fill: "#53b253bd" },
       { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
     ],
     dataInner:[
       { name: "Positivo", value: 70, fill: "#53b253bd" },
-      { name: "Negativo", value: 10, fill: "#ff4c4cd7" },
+      { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
     ],
     displayTotalVolumen:'flex',
     displayTotalFacebook:'flex',
@@ -1235,7 +1239,7 @@ export default function Informes() {
         ),
       },
     ],
-  }); */
+  });
    {/*FIN CAMBIOS*/}
 
  
@@ -1270,7 +1274,7 @@ export default function Informes() {
 
    {/*MODAL EDITAR GRAFICO TORTA */}
   const [openModal, setOpenModal] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
+
   const showModalTorta = () => {
     setOpenModal(true);
   };
@@ -1312,11 +1316,19 @@ export default function Informes() {
   ]);
 
   function resetValues(valor) {
-    console.log(valor)
-    setCambios(prevState => ({
-      ...prevState,
-      [valor]: defaultValues[valor],
-    }));
+    console.log(defaultValues[valor])
+    if (Array.isArray(defaultValues[valor])) {
+      setCambios(prevState => ({
+        ...prevState,
+        [valor]: [...defaultValues[valor]],
+      }));
+    } else {
+      setCambios(prevState => ({
+        ...prevState,
+        [valor]: defaultValues[valor],
+      }));
+    }
+     
     setShowModal(false);
     messageApi.open({
       key,
@@ -1778,18 +1790,17 @@ export default function Informes() {
                 title="Total - Volumen de publicaciones"
                 open={openModal}
                 onOk={handleOk}
-                /* confirmLoading={confirmLoading} */
                 okText="Guardar"
                 cancelText="Cancelar"
                 onCancel={handleCancel}
               >
               <div className="modalTorta">
                 <div className="">Período Anterior</div>
-                <InputNumber value={cambios.dataOuter[0].value} onChange={(value) => handleInputNumberChange(0, true, value)}></InputNumber>
-                <InputNumber value={cambios.dataOuter[1].value} onChange={(value) => handleInputNumberChange(1, true, value)}></InputNumber>
+                <InputNumber value={cambios.dataOuter[0].value} name='dataOuter0' onChange={(value) => handleInputNumberChange(0, true, value)}></InputNumber>
+                <InputNumber value={cambios.dataOuter[1].value} name='dataOuter1'  onChange={(value) => handleInputNumberChange(1, true, value)}></InputNumber>
                 <div>Período Actual</div>
-                <InputNumber value={cambios.dataInner[0].value} onChange={(value) => handleInputNumberChange(0, false, value)}></InputNumber>
-                <InputNumber value={cambios.dataInner[1].value} onChange={(value) => handleInputNumberChange(1, false, value)}></InputNumber>
+                <InputNumber value={cambios.dataInner[0].value} name='dataInner0' onChange={(value) => handleInputNumberChange(0, false, value)}></InputNumber>
+                <InputNumber value={cambios.dataInner[1].value} name='dataInner1' onChange={(value) => handleInputNumberChange(1, false, value)}></InputNumber>
               </div>
               </Modal>
             </>
@@ -2187,9 +2198,9 @@ export default function Informes() {
           <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva3')} disabled={!editable.diapositiva3}>
             Guardar cambio
           </Button>
-          <Button onClick={()=>handleDiscardChanges('diapositiva3')} disabled={!editable.diapositiva3}>Descartar cambios</Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva3',)} disabled={!editable.diapositiva3}>Descartar cambios</Button>
           <Modal
-        /*   open={modals.showModal3} */
+          open={modals.showModal3}
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
@@ -2198,7 +2209,13 @@ export default function Informes() {
               ...prevState,
               diapositiva3: false // Cambiar la diapositiva correspondiente a false
             }));
-            /* resetValues() */
+            resetValues('texto1')
+            resetValues('texto2')
+            resetValues('texto3')
+            resetValues('texto4')
+            resetValues('texto5')
+            resetValues('texto6')
+            
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
