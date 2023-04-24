@@ -1275,7 +1275,7 @@ export default function Informes() {
     setOpenModal(true);
   };
   const handleOk = () => {
-    setConfirmLoading(true);
+    setOpenModal(false);
   };
   const handleCancel = () => {
     setOpenModal(false);
@@ -1778,7 +1778,7 @@ export default function Informes() {
                 title="Total - Volumen de publicaciones"
                 open={openModal}
                 onOk={handleOk}
-                confirmLoading={confirmLoading}
+                /* confirmLoading={confirmLoading} */
                 okText="Guardar"
                 cancelText="Cancelar"
                 onCancel={handleCancel}
