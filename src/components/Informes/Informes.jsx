@@ -538,6 +538,84 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
+      dataPreocupaciones:[
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO</div>
+              <div>44.83%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>24.14%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>10.34%</div>
+            </div>
+          ),
+        },
+      ],
+      dataPreocupacionesTw:[
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO </div>
+              <div>36.84%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>36.84%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>15.79%</div>
+            </div>
+          ),
+        },
+      ],
+      dataPreocupacionesFb:[
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO </div>
+              <div>60.00%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>20.00%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>10.00%</div>
+            </div>
+          ),
+        },
+      ],
       dataOuter:[
         { name: "Positivo", value: 70, fill: "#53b253bd" },
         { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
@@ -926,6 +1004,84 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
+      dataPreocupaciones:[
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO</div>
+              <div>44.83%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>24.14%</div>
+            </div>
+          ),
+        },
+        {
+          total: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>10.34%</div>
+            </div>
+          ),
+        },
+      ],
+      dataPreocupacionesTw:[
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO </div>
+              <div>36.84%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>36.84%</div>
+            </div>
+          ),
+        },
+        {
+          twitter: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>15.79%</div>
+            </div>
+          ),
+        },
+      ],
+      dataPreocupacionesFb:[
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>TRABAJO </div>
+              <div>60.00%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>VIVIENDA </div>
+              <div>20.00%</div>
+            </div>
+          ),
+        },
+        {
+          facebook: (
+            <div className="totalizador-preocupaciones">
+              <div>EDUCACIÓN </div>
+              <div>10.00%</div>
+            </div>
+          ),
+        },
+      ],
       data: [
         {
           key: "1",
@@ -1058,85 +1214,6 @@ export default function Informes() {
     tendencia: "predominante",
     indicadorImpacto:"POSITIVIDAD",
     porcentajeImpacto:"32%",
-    
-    dataPreocupaciones:[
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>TRABAJO </div>
-            <div>44.83%</div>
-          </div>
-        ),
-      },
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>VIVIENDA </div>
-            <div>24.14%</div>
-          </div>
-        ),
-      },
-      {
-        total: (
-          <div className="totalizador-preocupaciones">
-            <div>EDUCACIÓN </div>
-            <div>10.34%</div>
-          </div>
-        ),
-      },
-    ],
-    dataPreocupacionesTw:[
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>TRABAJO </div>
-            <div>36.84%</div>
-          </div>
-        ),
-      },
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>VIVIENDA </div>
-            <div>36.84%</div>
-          </div>
-        ),
-      },
-      {
-        twitter: (
-          <div className="totalizador-preocupaciones">
-            <div>EDUCACIÓN </div>
-            <div>15.79%</div>
-          </div>
-        ),
-      },
-    ],
-    dataPreocupacionesFb:[
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>TRABAJO </div>
-            <div>60.00%</div>
-          </div>
-        ),
-      },
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>VIVIENDA </div>
-            <div>20.00%</div>
-          </div>
-        ),
-      },
-      {
-        facebook: (
-          <div className="totalizador-preocupaciones">
-            <div>EDUCACIÓN </div>
-            <div>10.00%</div>
-          </div>
-        ),
-      },
-    ],
     dataEmociones:[
       {
         total: (
@@ -1366,6 +1443,7 @@ export default function Informes() {
     { dataNubeHashtags: false },
     { dataNubeClave: false },
     { dataInfluenciadores: false},
+    { dataPreocupaciones: false},
     { showModal2: false },
     { showModal3: false },
     { showModal4: false },
@@ -2555,7 +2633,7 @@ export default function Informes() {
 
             <div>
               <>
-              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataInfluenciadores')} disabled={!editable.diapositiva2}>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataInfluenciadores')} disabled={!editable.diapositiva4}>
                 Editar valores
               </Button>
               <Modal
@@ -2746,14 +2824,13 @@ export default function Informes() {
     )}
     {(!cambios.data2ant || cambios.data2ant[0].influenciador === "") && (
       <div style={{ display: 'none' }}>
-        {/* Aquí puede agregar cualquier contenido que desee que se oculte cuando no hay datos */}
       </div>
     )}
         </div>
         }
-
-
         </div>
+
+
 
         <div className="cuerpo">
           <div className="titulo2">
@@ -2765,6 +2842,89 @@ export default function Informes() {
         <Tag className="tag">Top 3 principales</Tag>
 
         <div className="container-table">
+
+          {editable.general ? 
+          <div>
+             <>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataPreocupaciones')} disabled={!editable.diapositiva4}>
+                Editar valores
+              </Button>
+              <Modal
+                title="Influenciadores - Top 10"
+                open={modals.dataPreocupaciones}
+                onOk={handleOk}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+              >
+              <div className="Influenciadores-modal">
+              {cambios.dataPreocupaciones.map((objeto, indice) => (
+                <div key={indice} className="Influenciadores-modal">
+                 
+                 <Input
+                  className="input-influenciadores"
+                  type="text"
+                  value={objeto.total?.props?.children[0]?.props?.children}
+                  onChange={(e) => {
+                    const nuevosDatos = [...cambios.dataPreocupaciones];
+                    nuevosDatos[indice].total = (
+                      <div className="totalizador-preocupaciones">
+                        <div>{e.target.value}</div>
+                        <div>{objeto.total.props.children[1].props.children}</div>
+                      </div>
+                    );
+                    setCambios(prevState => ({
+                      ...prevState,
+                      dataPreocupaciones: [
+                        ...prevState.dataPreocupaciones.slice(0, indice),
+                        {
+                          total: (
+                            <div className="totalizador-preocupaciones">
+                              <div>{e.target.id === "input-0" ? e.target.value : objeto.total.props.children[0].props.children}</div>
+                              <div>{e.target.id === "input-1" ? e.target.value : objeto.total.props.children[1].props.children}</div>
+                            </div>
+                          ),
+                        },
+                        ...prevState.dataPreocupaciones.slice(indice + 1)
+                      ]
+                    }));
+                  }}
+                />
+                <Input
+                  className="input-influenciadores"
+                  type="text"
+                  value={objeto.total?.props?.children[1]?.props?.children}
+                  onChange={(e) => {
+                    const nuevosDatos = [...cambios.dataPreocupaciones];
+                    nuevosDatos[indice].total = (
+                      <div className="totalizador-preocupaciones">
+                        <div>{objeto.total.props.children[0].props.children}</div>
+                        <div>{e.target.value}</div>
+                      </div>
+                    );
+                    setCambios(prevState => ({
+                      ...prevState,
+                      dataPreocupaciones: [
+                        ...prevState.dataPreocupaciones.slice(0, indice),
+                        {
+                          total: (
+                            <div className="totalizador-preocupaciones">
+                              <div>{e.target.id === "input-0" ? e.target.value : objeto.total.props.children[0].props.children}</div>
+                              <div>{e.target.id === "input-1" ? e.target.value : objeto.total.props.children[1].props.children}</div>
+                            </div>
+                          ),
+                        },
+                        ...prevState.dataPreocupaciones.slice(indice + 1)
+                      ]
+                    }));
+                  }}
+                />
+                </div>
+              ))}
+              </div>
+              </Modal>
+              </>
+         
           <div className="table">
             <Table
               columns={columnsPreocupacionesTotal}
@@ -2819,6 +2979,64 @@ export default function Informes() {
               }}
             />
           </div>
+          </div>
+          : 
+           <div className="table">
+            <Table
+              columns={columnsPreocupacionesTotal}
+              dataSource={cambios.dataPreocupaciones}
+              pagination={false}
+              rowClassName={rowClassNameTotal("TOTAL")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+            <Table
+              columns={columnsPreocupacionesTw}
+              dataSource={cambios.dataPreocupacionesTw}
+              pagination={false}
+              rowClassName={rowClassNameTotal("TWITTER")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+
+            <Table
+              columns={columnsPreocupacionesFb}
+              dataSource={cambios.dataPreocupacionesFb}
+              pagination={false}
+              rowClassName={rowClassNameTotal("FACEBOOK")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+          </div>
+          }
+
         </div>
 
         {editable.general && (
@@ -2830,10 +3048,10 @@ export default function Informes() {
           <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva4')} disabled={!editable.diapositiva4}>
             Guardar cambio
           </Button>
-          <Button onClick={()=>handleDiscardChanges('diapositiva4')} disabled={!editable.diapositiva4}>Descartar cambios</Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva4','showModal4')} disabled={!editable.diapositiva4}>Descartar cambios</Button>
           <Modal
-        /*   open={modals.showModal4} */
-          title="¿Está seguro de que desea descartar los cambios?"
+          open={modals.showModal4}
+          title="¿Está seguro de que desea descartar los cambios? 1"
           okText="Sí"
           cancelText="No"
           onOk={() => {
@@ -2841,7 +3059,10 @@ export default function Informes() {
               ...prevState,
               diapositiva4: false // Cambiar la diapositiva correspondiente a false
             }));
-        /*     resetValues() */
+            resetValues('data')
+            resetValues('data2ant')
+            resetValues('dataPreocupaciones')
+            resetValues('dataPreocupaciones')
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
