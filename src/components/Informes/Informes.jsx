@@ -926,6 +926,60 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
+      data: [
+        {
+          key: "1",
+          influenciador: "passalacquaok",
+          impresiones: 38691,
+        },
+        {
+          key: "2",
+          influenciador: "PabbloZapata",
+          impresiones: 6292,
+        },
+        {
+          key: "3",
+          influenciador: "noticiasen3ok",
+          impresiones: 3495,
+        },
+        {
+          key: "4",
+          influenciador: "NHoughan",
+          impresiones: 65,
+        },
+        {
+          key: "5",
+          influenciador: "alejavier68",
+          impresiones: 64,
+        },
+      ],
+      data2ant:[
+        {
+          key: "6",
+          influenciador: "",
+          impresiones: "",
+        },
+        {
+          key: "7",
+          influenciador: "",
+          impresiones: "",
+        },
+        {
+          key: "8",
+          influenciador: "",
+          impresiones: "",
+        },
+        {
+          key: "9",
+          influenciador: "",
+          impresiones: "",
+        },
+        {
+          key: "10",
+          influenciador: "",
+          impresiones: "",
+        },
+      ],
       palabrasClaves: [
         { text: "compomiso", value: 50 },
         { text: "esfuerzo", value: 20 },
@@ -1004,60 +1058,7 @@ export default function Informes() {
     tendencia: "predominante",
     indicadorImpacto:"POSITIVIDAD",
     porcentajeImpacto:"32%",
-    data: [
-      {
-        key: "1",
-        influenciador: "passalacquaok",
-        impresiones: 38691,
-      },
-      {
-        key: "2",
-        influenciador: "PabbloZapata",
-        impresiones: 6292,
-      },
-      {
-        key: "3",
-        influenciador: "noticiasen3ok",
-        impresiones: 3495,
-      },
-      {
-        key: "4",
-        influenciador: "NHoughan",
-        impresiones: 65,
-      },
-      {
-        key: "5",
-        influenciador: "alejavier68",
-        impresiones: 64,
-      },
-    ],
-    data2ant:[
-      {
-        key: "6",
-        influenciador: "",
-        impresiones: "",
-      },
-      {
-        key: "7",
-        influenciador: "",
-        impresiones: "",
-      },
-      {
-        key: "8",
-        influenciador: "",
-        impresiones: "",
-      },
-      {
-        key: "9",
-        influenciador: "",
-        impresiones: "",
-      },
-      {
-        key: "10",
-        influenciador: "",
-        impresiones: "",
-      },
-    ],
+    
     dataPreocupaciones:[
       {
         total: (
@@ -1364,6 +1365,7 @@ export default function Informes() {
     { dataTortaTw:false },
     { dataNubeHashtags: false },
     { dataNubeClave: false },
+    { dataInfluenciadores: false},
     { showModal2: false },
     { showModal3: false },
     { showModal4: false },
@@ -2551,6 +2553,95 @@ export default function Informes() {
 
           {editable.general ?
 
+            <div>
+              <>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataInfluenciadores')} disabled={!editable.diapositiva2}>
+                Editar valores
+              </Button>
+              <Modal
+                title="Influenciadores - Top 10"
+                open={modals.dataInfluenciadores}
+                onOk={handleOk}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+              >
+              <div className="Influenciadores-modal">
+              {cambios.data.map((objeto, indice) => (
+                <div key={objeto.key || ''} className="Influenciadores-modal">
+                  <Input
+                   type="number"
+                   className="inputnumber"
+                     value={objeto.key} onChange={(e) => {
+                    const nuevosDatos = [...cambios.data];
+                    nuevosDatos[indice].key = e.target.value;
+                    setCambios({ ...cambios, data: nuevosDatos });
+                  }} />
+                  <Input className="input-influenciadores" type="text" value={objeto.influenciador || ''} onChange={(e) => {
+                    const nuevosDatos = [...cambios.data];
+                    nuevosDatos[indice].influenciador = e.target.value;
+                    setCambios({ ...cambios, data: nuevosDatos });
+                  }} />
+                  <Input
+                   type="number"
+                   className="inputnumber" 
+                     value={objeto.impresiones || ''}
+                     onChange={(e) => {
+                    const nuevosDatos = [...cambios.data];
+                    nuevosDatos[indice].impresiones = e.target.value;
+                    setCambios({ ...cambios, data: nuevosDatos });
+                  }} />
+                </div>
+              ))}
+
+                {cambios.data2ant.map((objeto, indice) => (
+                   <div key={objeto.key} className="Influenciadores-modal">
+                    <Input
+                    type="number"
+                    className="inputnumber"
+                      value={objeto.key || ''} 
+                      onChange={(e) => {
+                        const nuevosDatos = [...cambios.data2ant];
+                        nuevosDatos[indice] = {
+                          ...nuevosDatos[indice],
+                          key: e.target.value
+                        };
+                        setCambios({ ...cambios, data2ant: nuevosDatos });
+                      }} 
+                    />
+                    <Input 
+                    className="input-influenciadores" 
+                      value={objeto.influenciador || ''} 
+                      onChange={(e) => {
+                        const nuevosDatos = [...cambios.data2ant];
+                        nuevosDatos[indice] = {
+                          ...nuevosDatos[indice],
+                          influenciador: e.target.value
+                        };
+                        setCambios({ ...cambios, data2ant: nuevosDatos });
+                      }} 
+                    />
+                    <Input
+                     type="number"
+                     className="inputnumber"
+                      value={objeto.impresiones || ''}
+                      onChange={(e) => {
+                        const nuevosDatos = [...cambios.data2ant];
+                        nuevosDatos[indice] = {
+                          ...nuevosDatos[indice],
+                          impresiones: e.target.value
+                        };
+                        setCambios({ ...cambios, data2ant: nuevosDatos });
+                      }} 
+                    /> 
+
+                   
+                  </div>
+                ))}
+              </div>
+              </Modal>
+              </>
+
           <div className="table">
             <Table
               columns={columns}
@@ -2574,7 +2665,7 @@ export default function Informes() {
               }}
             />
          
-         {data2ant && data2ant[0].influenciador !== "" && (
+         {cambios.data2ant && cambios.data2ant[0].influenciador !== "" && (
         <Table
           columns={columns}
           dataSource={cambios.data2ant}
@@ -2597,13 +2688,13 @@ export default function Informes() {
           }}
         />
       )}
-      {(!data2ant || data2ant[0].influenciador === "") && (
+      {(!cambios.data2ant || cambios.data2ant[0].influenciador === "") && (
         <div style={{ display: 'none' }}>
           {/* Aquí puede agregar cualquier contenido que desee que se oculte cuando no hay datos */}
         </div>
       )}
           </div>
-
+          </div>
           :
           
           
@@ -2630,7 +2721,7 @@ export default function Informes() {
             }}
           />
        
-       {data2ant && data2ant[0].influenciador !== "" && (
+       {cambios.data2ant && cambios.data2ant[0].influenciador !== "" && (
       <Table
         columns={columns}
         dataSource={cambios.data2ant}
@@ -2653,7 +2744,7 @@ export default function Informes() {
         }}
       />
     )}
-    {(!data2ant || data2ant[0].influenciador === "") && (
+    {(!cambios.data2ant || cambios.data2ant[0].influenciador === "") && (
       <div style={{ display: 'none' }}>
         {/* Aquí puede agregar cualquier contenido que desee que se oculte cuando no hay datos */}
       </div>

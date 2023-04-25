@@ -36,6 +36,23 @@
   margin-top: 1rem;
 }
 
+.Influenciadores-modal{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap:0.5rem
+}
+
+.inputnumber{
+  width: 18%;
+}
+
+.input-influenciadores{
+  width: 40%;
+}
+
 .ant-modal-root .ant-modal-mask {
   position: fixed;
   top: 0;
