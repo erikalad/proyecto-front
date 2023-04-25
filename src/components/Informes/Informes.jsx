@@ -77,7 +77,6 @@ export default function Informes() {
       convertir.from(contenedor).save();
     }
   }
-  
   {/*FIN DESCARGAR PDF*/}
 
    {/*MODAL*/}
@@ -119,11 +118,7 @@ export default function Informes() {
     }));
 
   };
-
-  
-
-
-   {/*FIN MODAL*/}
+  {/*FIN MODAL*/}
 
   
   {/*TOUR*/}
@@ -465,19 +460,7 @@ export default function Informes() {
     },
   });
 
-  
-  const palabrasClaves = [
-    { text: "compomiso", value: 50 },
-    { text: "esfuerzo", value: 20 },
-    { text: "futuro", value: 20 },
-    { text: "construir", value: 15 },
-    { text: "alba", value: 12 },
-    { text: "comunidad", value: 25 },
-    { text: "deporte", value: 45 },
-    { text: "abrazo", value: 36 },
-    { text: "hugo", value: 20 },
-    { text: "fuerzas", value: 57 },
-  ];
+
 
   const palabrasRecomendadas = [
     { text: "satisfacción", value: 30 },
@@ -2565,6 +2548,9 @@ export default function Informes() {
         <Tag className="tag">Top 10 principales</Tag>
 
         <div className="container-table">
+
+          {editable.general ?
+
           <div className="table">
             <Table
               columns={columns}
@@ -2617,6 +2603,65 @@ export default function Informes() {
         </div>
       )}
           </div>
+
+          :
+          
+          
+          <div className="table">
+          <Table
+            columns={columns}
+            dataSource={cambios.data}
+            pagination={false}
+            rowClassName={rowClassName}
+            style={{ width: "100%" }}
+            components={{
+              header: {
+                cell: (props) => (
+                  <th
+                    {...props}
+                    style={{
+                      backgroundColor: "#0083CA",
+                      color: "white",
+                      fontWeight: "bold",
+                    }}
+                  />
+                ),
+              },
+            }}
+          />
+       
+       {data2ant && data2ant[0].influenciador !== "" && (
+      <Table
+        columns={columns}
+        dataSource={cambios.data2ant}
+        pagination={false}
+        rowClassName={rowClassName}
+        style={{ width: "100%" }}
+        components={{
+          header: {
+            cell: (props) => (
+              <th
+                {...props}
+                style={{
+                  backgroundColor: "#0083CA",
+                  color: "white",
+                  fontWeight: "bold",
+                }}
+              />
+            ),
+          },
+        }}
+      />
+    )}
+    {(!data2ant || data2ant[0].influenciador === "") && (
+      <div style={{ display: 'none' }}>
+        {/* Aquí puede agregar cualquier contenido que desee que se oculte cuando no hay datos */}
+      </div>
+    )}
+        </div>
+        }
+
+
         </div>
 
         <div className="cuerpo">
