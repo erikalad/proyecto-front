@@ -52,7 +52,7 @@ export default function Informes() {
   {/*DESCARGAR PDF*/}
   function descargarPDF() {
     if (editable.general) {
-      messageApi.error('Guardá tu edición!');
+      messageApi.error('No podes descargar en modo editable!');
     } else {
       // Obtener el contenedor que queremos descargar como PDF
       const contenedor = document.getElementById("contenedor");
