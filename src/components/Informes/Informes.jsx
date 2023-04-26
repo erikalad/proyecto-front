@@ -1445,6 +1445,7 @@ export default function Informes() {
     { dataInfluenciadores: false},
     { dataPreocupaciones: false},
     { dataEmociones: false },
+    { dataImagenes: false },
     { showModal2: false },
     { showModal3: false },
     { showModal4: false },
@@ -3585,6 +3586,227 @@ export default function Informes() {
         <Tag className="tag">Top 3 principales</Tag>
 
         <div className="container-table">
+       
+        {editable.general ? 
+          <div> {/*CONTENEDOR MODAL */}
+
+                <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataImagenes')} disabled={!editable.diapositiva5}>
+                Editar valores
+                </Button>
+                <Modal
+                title="Imagenes -Top 3"
+                open={modals.dataImagenes}
+                onOk={handleOk}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+                >
+                <div className="Influenciadores-modal">
+
+                <div className="contenedor-modal-preocupaciones" >
+                <div>Total</div>
+                {cambios.dataImagenes.map((objeto, indice) => (
+                <div key={indice} className="Influenciadores-modal">
+                
+                <Input
+                  className="input-influenciadores"
+                  type="text"
+                  value={objeto.total?.props?.children[0]?.props?.children}
+                  onChange={(e) => {
+                    const nuevosDatos = [...cambios.dataImagenes];
+                    nuevosDatos[indice].total = (
+                      <div className="totalizador-preocupaciones">
+                        <div>{e.target.value}</div>
+                        <div>{objeto.total.props.children[1].props.children}</div>
+                      </div>
+                    );
+                    setCambios(prevState => ({
+                      ...prevState,
+                      dataImagenes: [
+                        ...prevState.dataImagenes.slice(0, indice),
+                        {
+                          total: (
+                            <div className="totalizador-preocupaciones">
+                              <div>{e.target.id === "input-0" ? e.target.value : objeto.total.props.children[0].props.children}</div>
+                              <div>{e.target.id === "input-1" ? e.target.value : objeto.total.props.children[1].props.children}</div>
+                            </div>
+                          ),
+                        },
+                        ...prevState.dataImagenes.slice(indice + 1)
+                      ]
+                    }));
+                  }}
+                />
+                <Input
+                  className="input-influenciadores"
+                  type="text"
+                  value={objeto.total?.props?.children[1]?.props?.children}
+                  onChange={(e) => {
+                    const nuevosDatos = [...cambios.dataImagenes];
+                    nuevosDatos[indice].total = (
+                      <div className="totalizador-preocupaciones">
+                        <div>{objeto.total.props.children[0].props.children}</div>
+                        <div>{e.target.value}</div>
+                      </div>
+                    );
+                    setCambios(prevState => ({
+                      ...prevState,
+                      dataImagenes: [
+                        ...prevState.dataImagenes.slice(0, indice),
+                        {
+                          total: (
+                            <div className="totalizador-preocupaciones">
+                              <div>{e.target.id === "input-0" ? e.target.value : objeto.total.props.children[0].props.children}</div>
+                              <div>{e.target.id === "input-1" ? e.target.value : objeto.total.props.children[1].props.children}</div>
+                            </div>
+                          ),
+                        },
+                        ...prevState.dataImagenes.slice(indice + 1)
+                      ]
+                    }));
+                  }}
+                />
+                </div>
+                ))}
+                </div>
+
+
+                <div >
+                <div>Twitter</div>
+                {cambios.dataImagenesTw.map((objeto, indice) => (
+                <div key={indice} className="Influenciadores-modal">
+                
+                <Input
+                  className="input-influenciadores"
+                  type="text"
+                  value={objeto.twitter?.props?.children[0]?.props?.children}
+                  onChange={(e) => {
+                    const nuevosDatos = [...cambios.dataImagenesTw];
+                    nuevosDatos[indice].twitter = (
+                      <div className="totalizador-preocupaciones">
+                        <div>{e.target.value}</div>
+                        <div>{objeto.twitter.props.children[1].props.children}</div>
+                      </div>
+                    );
+                    setCambios(prevState => ({
+                      ...prevState,
+                      dataImagenesTw: [
+                        ...prevState.dataImagenesTw.slice(0, indice),
+                        {
+                          twitter: (
+                            <div className="totalizador-preocupaciones">
+                              <div>{e.target.id === "input-0" ? e.target.value : objeto.twitter.props.children[0].props.children}</div>
+                              <div>{e.target.id === "input-1" ? e.target.value : objeto.twitter.props.children[1].props.children}</div>
+                            </div>
+                          ),
+                        },
+                        ...prevState.dataImagenesTw.slice(indice + 1)
+                      ]
+                    }));
+                  }}
+                />
+                <Input
+                  className="input-influenciadores"
+                  type="text"
+                  value={objeto.twitter?.props?.children[1]?.props?.children}
+                  onChange={(e) => {
+                    const nuevosDatos = [...cambios.dataImagenesTw];
+                    nuevosDatos[indice].twitter = (
+                      <div className="totalizador-preocupaciones">
+                        <div>{objeto.twitter.props.children[0].props.children}</div>
+                        <div>{e.target.value}</div>
+                      </div>
+                    );
+                    setCambios(prevState => ({
+                      ...prevState,
+                      dataImagenesTw: [
+                        ...prevState.dataImagenesTw.slice(0, indice),
+                        {
+                          twitter: (
+                            <div className="totalizador-preocupaciones">
+                              <div>{e.target.id === "input-0" ? e.target.value : objeto.twitter.props.children[0].props.children}</div>
+                              <div>{e.target.id === "input-1" ? e.target.value : objeto.twitter.props.children[1].props.children}</div>
+                            </div>
+                          ),
+                        },
+                        ...prevState.dataImagenesTw.slice(indice + 1)
+                      ]
+                    }));
+                  }}
+                />
+                </div>
+                ))}
+                </div>
+
+                <div >
+                <div>Facebook</div>
+                {cambios.dataImagenesFb.map((objeto, indice) => (
+                <div key={indice} className="Influenciadores-modal">
+                
+                <Input
+                  className="input-influenciadores"
+                  type="text"
+                  value={objeto.facebook?.props?.children[0]?.props?.children}
+                  onChange={(e) => {
+                    const nuevosDatos = [...cambios.dataImagenesFb];
+                    nuevosDatos[indice].facebook = (
+                      <div className="totalizador-preocupaciones">
+                        <div>{e.target.value}</div>
+                        <div>{objeto.facebook.props.children[1].props.children}</div>
+                      </div>
+                    );
+                    setCambios(prevState => ({
+                      ...prevState,
+                      dataImagenesFb: [
+                        ...prevState.dataImagenesFb.slice(0, indice),
+                        {
+                          facebook: (
+                            <div className="totalizador-preocupaciones">
+                              <div>{e.target.id === "input-0" ? e.target.value : objeto.facebook.props.children[0].props.children}</div>
+                              <div>{e.target.id === "input-1" ? e.target.value : objeto.facebook.props.children[1].props.children}</div>
+                            </div>
+                          ),
+                        },
+                        ...prevState.dataImagenesFb.slice(indice + 1)
+                      ]
+                    }));
+                  }}
+                />
+                <Input
+                  className="input-influenciadores"
+                  type="text"
+                  value={objeto.facebook?.props?.children[1]?.props?.children}
+                  onChange={(e) => {
+                    const nuevosDatos = [...cambios.dataImagenesFb];
+                    nuevosDatos[indice].facebook = (
+                      <div className="totalizador-preocupaciones">
+                        <div>{objeto.facebook.props.children[0].props.children}</div>
+                        <div>{e.target.value}</div>
+                      </div>
+                    );
+                    setCambios(prevState => ({
+                      ...prevState,
+                      dataImagenesFb: [
+                        ...prevState.dataImagenesFb.slice(0, indice),
+                        {
+                          facebook: (
+                            <div className="totalizador-preocupaciones">
+                              <div>{e.target.id === "input-0" ? e.target.value : objeto.facebook.props.children[0].props.children}</div>
+                              <div>{e.target.id === "input-1" ? e.target.value : objeto.facebook.props.children[1].props.children}</div>
+                            </div>
+                          ),
+                        },
+                        ...prevState.dataImagenesFb.slice(indice + 1)
+                      ]
+                    }));
+                  }}
+                />
+                </div>
+                ))}
+                </div>
+                </div>
+                </Modal>
+
           <div className="table">
             <Table
               columns={columnsPreocupacionesTotal}
@@ -3639,7 +3861,66 @@ export default function Informes() {
               }}
             />
           </div>
-        </div>
+          </div>
+          :
+
+          <div className="table">
+            <Table
+              columns={columnsPreocupacionesTotal}
+              dataSource={cambios.dataImagenes}
+              pagination={false}
+              rowClassName={rowClassNameTotal("TOTAL")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+            <Table
+              columns={columnsPreocupacionesTw}
+              dataSource={cambios.dataImagenesTw}
+              pagination={false}
+              rowClassName={rowClassNameTotal("TWITTER")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+
+            <Table
+              columns={columnsPreocupacionesFb}
+              dataSource={cambios.dataImagenesFb}
+              pagination={false}
+              rowClassName={rowClassNameTotal("FACEBOOK")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+          </div>
+        }
+          </div>
+      
 
         {editable.general && (
           <div className="boton-confirmar">
@@ -3664,6 +3945,10 @@ export default function Informes() {
             resetValues('dataEmocionesTw')
             resetValues('dataEmocionesFb')
             resetValues('dataEmociones')
+            resetValues('dataImagenes')
+            resetValues('dataImagenesFb')
+            resetValues('dataImagenesTw')
+            
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
