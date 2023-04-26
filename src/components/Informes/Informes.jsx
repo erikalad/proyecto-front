@@ -374,7 +374,7 @@ export default function Informes() {
         {
           title: (
             <div className="icon-nombre-columnas">
-              <img className="tw" src={tw} />
+              <img className="tw" src={tw} alt="logo"/>
               TWITTER
             </div>
           ),
@@ -387,7 +387,7 @@ export default function Informes() {
         {
           title: (
             <div className="icon-nombre-columnas">
-              <img className="fb" src={fb} />
+              <img className="fb" src={fb} alt="logo"/>
               FACEBOOK
             </div>
           ),
@@ -1000,7 +1000,7 @@ export default function Informes() {
         {
           title: (
             <div className="icon-nombre-columnas">
-              <img className="tw" src={tw} />
+              <img className="tw" src={tw} alt="logo"/>
               TWITTER
             </div>
           ),
@@ -1013,7 +1013,7 @@ export default function Informes() {
         {
           title: (
             <div className="icon-nombre-columnas">
-              <img className="fb" src={fb} />
+              <img className="fb" src={fb} alt="logo"/>
               FACEBOOK
             </div>
           ),
@@ -1653,7 +1653,7 @@ export default function Informes() {
               <p>REPORTE DE SÍNTESIS</p>
             </div>
 
-            <img src={logo} className="img"></img>
+            <img src={logo} className="img" alt="logo"></img>
           </div>
 
           {/*Titulo*/}
@@ -1692,8 +1692,8 @@ export default function Informes() {
 
         <div className="cuerpo">
           <div className="titulo0">MONITOREO Y ANÁLISIS DE:</div>
-          <img className="fb" src={fb}></img>
-          <img className="tw" src={tw}></img>|
+          <img className="fb" src={fb} alt="logo"></img>
+          <img className="tw" src={tw} alt="logo"></img>|
           <div className="titulo1">PERíODO</div>
           <div className="cuerpo">
             <div className="titulo1">
@@ -1764,7 +1764,7 @@ export default function Informes() {
               height={150}
               width={400}
             />
-         {(cambios.displayTotalFacebook == 'flex' || cambios.displayTotalTwitter == 'flex') && <hr/>}
+         {(cambios.displayTotalFacebook === 'flex' || cambios.displayTotalTwitter === 'flex') && <hr/>}
 
          
           </div>
@@ -1776,7 +1776,7 @@ export default function Informes() {
           <div className="editarfacebook facebook-grafico-bar">
           <div style={{display:cambios.displayTotalFacebook, flexDirection:'column'}}>
           <div className="icon-nombre" >
-            <img className="fb" src={fb} />
+            <img className="fb" src={fb} alt="logo"/>
             FACEBOOK
           </div>
           <div style={{display:'flex'}}>
@@ -1799,7 +1799,7 @@ export default function Informes() {
           <div className="facebook-grafico-bar">
             <div style={{display:cambios.displayTotalFacebook, flexDirection:'column'}} >
           <div className="icon-nombre">
-            <img className="fb" src={fb} />
+            <img className="fb" src={fb} alt="logo" />
             FACEBOOK
           </div>
           <div style={{display:'flex'}}>
@@ -1819,7 +1819,7 @@ export default function Informes() {
           <div className="editarfacebook twitter-grafico-bar">
           <div style={{display:cambios.displayTotalTwitter, flexDirection:'column'}}>
             <div className="icon-nombre">
-              <img className="tw" src={tw} />
+              <img className="tw" src={tw} alt="logo"/>
               TWITTER
             </div>
             <div style={{display:'flex'}}>
@@ -1841,7 +1841,7 @@ export default function Informes() {
           ) : (
             <div className="twitter-grafico-bar" style={{display:cambios.displayTotalTwitter}}>
             <div className="icon-nombre">
-              <img className="tw" src={tw} />
+              <img className="tw" src={tw} alt="logo"/>
               TWITTER
             </div>
          
@@ -2025,7 +2025,7 @@ export default function Informes() {
               <p>REPORTE DE SÍNTESIS</p>
             </div>
 
-            <img src={logo} className="img"></img>
+            <img src={logo} className="img" alt="logo"></img>
           </div> 
         </div>
 
@@ -2050,7 +2050,7 @@ export default function Informes() {
 
         <div className="contenedor-pie-texto">
           <div className="pie">
-            {editable.general == true ? 
+            {editable.general === true ? 
             <div>
               <>
               <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataTorta')} disabled={!editable.diapositiva2}>
@@ -2160,10 +2160,10 @@ export default function Informes() {
 
           <div className="pie">
             <div className="icon-nombre">
-              <img className="fb" src={fb} />
+              <img className="fb" src={fb} alt="logo"/>
               FACEBOOK
             </div>
-            {editable.general == true ? 
+            {editable.general  ? 
             <div>
               <>
               <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataTortaFb')} disabled={!editable.diapositiva2}>
@@ -2258,10 +2258,10 @@ export default function Informes() {
 
           <div className="pie">
             <div className="icon-nombre">
-              <img className="tw" src={tw} />
+              <img className="tw" src={tw} alt="logo"/>
               TWITTER
             </div>
-            {editable.general == true ? 
+            {editable.general ? 
             <div>
               <>
               <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataTortaTw')}  disabled={!editable.diapositiva2}>
@@ -2364,7 +2364,7 @@ export default function Informes() {
             <div className="principales-hashtags">
               <div>PRINCIPALES</div>
               <div className="titulo3">HASHTAGS</div>
-              <img src={hashtags} className="hashtags" />
+              <img src={hashtags} className="hashtags"alt="logo" />
             </div>
 
 
@@ -2431,7 +2431,7 @@ export default function Informes() {
             <div className="principales-hashtags">
               <div>PALABRAS</div>
               <div className="titulo3">CLAVE</div>
-              <img src={clave} className="hashtags" />
+              <img src={clave} className="hashtags" alt="logo"/>
             </div>
 
             {editable.general ?
@@ -2543,7 +2543,7 @@ export default function Informes() {
               <p>REPORTE DE SÍNTESIS</p>
             </div>
 
-            <img src={logo} className="img"></img>
+            <img src={logo} className="img" alt="logo"></img>
           </div>
 
         </div>
@@ -2744,7 +2744,7 @@ export default function Informes() {
               <p>REPORTE DE SÍNTESIS</p>
             </div>
 
-            <img src={logo} className="img"></img>
+            <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
 
@@ -3355,7 +3355,7 @@ export default function Informes() {
               <p>REPORTE DE SÍNTESIS</p>
             </div>
 
-            <img src={logo} className="img"></img>
+            <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
 
@@ -4098,7 +4098,7 @@ export default function Informes() {
               <p>REPORTE DE SÍNTESIS</p>
             </div>
 
-            <img src={logo} className="img"></img>
+            <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
 
@@ -4332,7 +4332,7 @@ export default function Informes() {
                 <p>REPORTE DE SÍNTESIS</p>
               </div>
 
-              <img src={logo} className="img"></img>
+              <img src={logo} className="img" alt="logo"></img>
             </div>
           </div>
 
@@ -4457,7 +4457,7 @@ export default function Informes() {
               <p>REPORTE DE SÍNTESIS</p>
             </div>
 
-            <img src={logo} className="img"></img>
+            <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
 
@@ -4781,7 +4781,7 @@ export default function Informes() {
               <p>REPORTE DE SÍNTESIS</p>
             </div>
 
-            <img src={logo} className="img"></img>
+            <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
 
@@ -4944,7 +4944,7 @@ export default function Informes() {
         <div class="page-break" data-html2pdf-pagebreak>
         {/*ULTIMA DIAPOSITIVA */}        
         <div className="final">
-        <img className="logo-final" src={logo2}/>
+        <img className="logo-final" src={logo2} alt="logo"/>
         <div className="contenedor-footer"> {/*contenedor footer */}
             <div className="contenedor-pais"> {/*contenedor pais */}
                 <div><strong>Argentina</strong></div>
