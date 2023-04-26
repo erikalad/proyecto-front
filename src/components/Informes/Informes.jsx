@@ -4517,6 +4517,82 @@ export default function Informes() {
             EMOCIONES Y ATRIBUTOS PARA INCLUIR EN EL MENSAJE*
             </div>
             <div className="contenedorTablas"> {/*Contenedor tablas */}
+            {editable.general ? 
+            <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
+
+                <>
+                  <Button type="primary" style={{marginTop:'1rem'}} onClick={()=>showModalTorta('dataMapaPercepciones')}  disabled={!editable.diapositiva7}>
+                    Editar valores
+                  </Button>
+                  <Modal
+                    title="Mapa de Percepciones"
+                    open={modals.dataMapaPercepciones}
+                    onOk={handleOk}
+                    okText="Guardar"
+                    cancelText="Cancelar"
+                    onCancel={handleCancel}
+                  >
+                  <div className="modalTorta">
+                  {cambios.mapaPercepciones && cambios.mapaPercepciones.length > 0 && cambios.mapaPercepciones.map((hashtag, index) => (
+                  <div className="modificarnube" key={index}>
+                    <Input
+                      className="input-nubepalabras"
+                      type="text"
+                      value={hashtag.text}
+                      onChange={(e) =>
+                        handleHashtagChangePercepciones(index, "text", e.target.value)
+                      }
+                    />
+                    <InputNumber
+                      value={hashtag.value}
+                      onChange={(value) =>
+                        handleHashtagChangePercepciones(index, "value", value)
+                      }
+                    />
+                   {/*  <Input
+                      className="input-nubepalabras"
+                      type="text"
+                      value={hashtag.color}
+                      onChange={(e) =>
+                        handleHashtagChangePercepciones(index, "color", e.target.value)
+                      }
+                    /> */}
+                  </div>
+                ))}
+                </div>
+                  </Modal>
+                  </>
+
+            <div> {/*tabla */}
+            <Table
+              columns={cambios.columnsEmociones}
+              dataSource={[...cambios.dataEmocionesComunicacion]}
+              pagination={false}
+              rowClassName={rowClassNameTotal("EMOCIONES")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+            </div>
+            <div className="subtitulo"> {/*subtitulo */}
+            VOCABLOS SUGERIDOS
+
+            </div>
+            <div className="nube-palabras"> {/*nube palabras */}
+            <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} />
+            </div>
+            </div>
+
+            :
+
             <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
             <div> {/*tabla */}
             <Table
@@ -4545,7 +4621,55 @@ export default function Informes() {
             <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
-            <div> {/*CONTENEDOR atributos */}
+          
+            }
+
+
+
+            {editable.general ? 
+            <div class="contenedorEmociones"> {/*CONTENEDOR atributos */}
+              <>
+                  <Button type="primary" style={{marginTop:'1rem'}} onClick={()=>showModalTorta('dataMapaPercepciones')}  disabled={!editable.diapositiva7}>
+                    Editar valores
+                  </Button>
+                  <Modal
+                    title="Mapa de Percepciones"
+                    open={modals.dataMapaPercepciones}
+                    onOk={handleOk}
+                    okText="Guardar"
+                    cancelText="Cancelar"
+                    onCancel={handleCancel}
+                  >
+                  <div className="modalTorta">
+                  {cambios.mapaPercepciones && cambios.mapaPercepciones.length > 0 && cambios.mapaPercepciones.map((hashtag, index) => (
+                  <div className="modificarnube" key={index}>
+                    <Input
+                      className="input-nubepalabras"
+                      type="text"
+                      value={hashtag.text}
+                      onChange={(e) =>
+                        handleHashtagChangePercepciones(index, "text", e.target.value)
+                      }
+                    />
+                    <InputNumber
+                      value={hashtag.value}
+                      onChange={(value) =>
+                        handleHashtagChangePercepciones(index, "value", value)
+                      }
+                    />
+                   {/*  <Input
+                      className="input-nubepalabras"
+                      type="text"
+                      value={hashtag.color}
+                      onChange={(e) =>
+                        handleHashtagChangePercepciones(index, "color", e.target.value)
+                      }
+                    /> */}
+                  </div>
+                ))}
+                </div>
+                  </Modal>
+                  </>
             <div> {/*tabla */}
             <Table
               columns={cambios.columnsAtributos}
@@ -4573,6 +4697,38 @@ export default function Informes() {
             <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} width="200" height="200" />
             </div>
             </div>
+                :
+                <div> {/*CONTENEDOR atributos */}
+                <div> {/*tabla */}
+                <Table
+                  columns={cambios.columnsAtributos}
+                  dataSource={[...cambios.dataEmocionesComunicacion]}
+                  pagination={false}
+                  rowClassName={rowClassNameTotal("EMOCIONES")}
+                  style={{ width: "100%", margin: "3px" }}
+                  components={{
+                    header: {
+                      cell: (props) => (
+                        <th
+                          {...props}
+                          style={{ backgroundColor: "white", color: "black" }}
+                        />
+                      ),
+                    },
+                  }}
+                />
+                </div>
+                <div className="subtitulo"> {/*subtitulo */}
+                VOCABLOS SUGERIDOS
+    
+                </div>
+                <div className="nube-palabras"> {/*nube palabras */}
+                <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} width="200" height="200" />
+                </div>
+                </div>
+                }
+
+
             </div>
 
           </div>
@@ -4591,9 +4747,9 @@ export default function Informes() {
           <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva8')} disabled={!editable.diapositiva8}>
             Guardar cambio
           </Button>
-          <Button onClick={()=>handleDiscardChanges('diapositiva8')} disabled={!editable.diapositiva8}>Descartar cambios</Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva8','showModal8')} disabled={!editable.diapositiva8}>Descartar cambios</Button>
           <Modal
-          /* open={modals.showModal8} */
+          open={modals.showModal8}
           title="¿Está seguro de que desea descartar los cambios?"
           okText="Sí"
           cancelText="No"
