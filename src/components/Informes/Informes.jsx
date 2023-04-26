@@ -19,7 +19,7 @@ import clave from "./../../assest/clave.jpg";
 import hashtags from "./../../assest/hashtags.jpg";
 import ReactWordcloud from "react-wordcloud";
 import WordCloud from "react-wordcloud";
-import { BiConversation } from "react-icons/bi";
+import { BiConversation , BiUserCircle } from "react-icons/bi";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { RiUserStarLine, RiFileUserLine, RiPushpinLine } from "react-icons/ri";
 import { IoAlert } from "react-icons/io5";
@@ -32,8 +32,8 @@ import pdfdescargado from './../../assest/pdf.png'
 
 
 
-
 export default function Informes() {
+
   const { Panel } = Collapse;
   const [editable,setEditable] = useState({
     general: false,
@@ -184,28 +184,7 @@ export default function Informes() {
   ];
   {/*FIN TOUR*/}
 
-  const columns = [
-    {
-      title: "N°",
-      dataIndex: "key",
-      rowScope: "row",
-      headerStyle: { backgroundColor: "#0083CA" },
-    },
-    {
-      title: "Influenciador",
-      dataIndex: "influenciador",
-      render: (text) => <div>{text}</div>,
-      headerStyle: { backgroundColor: "#0083CA" },
-    },
-    {
-      title: "Impresiones",
-      dataIndex: "impresiones",
-    },
-  ];
-
-
-
-  const rowClassName = (record, index) => {
+    const rowClassName = (record, index) => {
     if (index % 2 === 0) {
       return "odd-row";
     } else {
@@ -213,98 +192,6 @@ export default function Informes() {
     }
   };
 
-
-  const columnsPreocupacionesTotal = [
-    {
-      title: (
-        <div className="title-total icon-nombre-columnas">
-          <div className="icon-nombre-columnas">
-            <BsFillDashCircleFill />{" "}
-          </div>
-          TOTAL
-        </div>
-      ),
-      dataIndex: "total",
-      className: "hover-black",
-    },
-  ];
-
-  const columnsPreocupacionesTw = [
-    {
-      title: (
-        <div className="icon-nombre-columnas">
-          <img className="tw" src={tw} />
-          TWITTER
-        </div>
-      ),
-      dataIndex: "twitter",
-      className: "hover-black",
-    },
-  ];
-
-  const columnsPreocupacionesFb = [
-    {
-      title: (
-        <div className="icon-nombre-columnas">
-          <img className="fb" src={fb} />
-          FACEBOOK
-        </div>
-      ),
-      dataIndex: "facebook",
-      className: "hover-black",
-    },
-  ];
-
-
-  const columnsEmociones = [
-    {
-      title: (
-        <div className="title-total icon-nombre-columnas">
-          <div className="icon-nombre-columnas">
-          <TiHeartOutline/>
-          </div>
-          EMOCIONES
-        </div>
-      ),
-      dataIndex: "emociones",
-      className: "hover-black",
-    },
-  ];
-
-  const dataEmocionesComunicacion = [
-    {
-      emociones: (
-        <div className="totalizador-preocupaciones">
-          <div>DESEO </div>
-        
-        </div>
-      ),
-    },
-    {
-      emociones: (
-        <div className="totalizador-preocupaciones">
-          <div>CALMA </div>
-          
-        </div>
-      ),
-    },
-    {
-      emociones: (
-        <div className="totalizador-preocupaciones">
-          <div>AGRADO </div>
-          
-        </div>
-      ),
-    },
-    {
-      emociones: (
-        <div className="totalizador-preocupaciones">
-          <div>AMOR </div>
-          
-        </div>
-      ),
-    },
-  ];
 
   const rowClassNameTotal = (name) => {
     if (name === "TOTAL") {
@@ -434,17 +321,6 @@ export default function Informes() {
     },
   });
 
-
-
-  const palabrasRecomendadas = [
-    { text: "satisfacción", value: 30 },
-    { text: "disfrute", value: 30 },
-    { text: "bienestar", value: 30 },
-    { text: "admiración", value: 30 },
-    { text: "optimismo", value: 30 },
-    { text: "animación", value: 30 },
-  ];
-
   const opcionesRecomendadas = {
     fontFamily: "Helvetica, sans-serif",
     fontSizes: [8, 40],
@@ -453,46 +329,13 @@ export default function Informes() {
     rotate: 90,
   };
 
-  const mapaPercepciones = [
-  
-    { text: "anticipación", value: 20, color:"#53b253bd" },
-    { text: "insensibilidad", value: 50, color:"#ff4c4cd7" },
-    { text: "decisión", value: 20, color:"#53b253bd" },
-    { text: "mejora", value: 15, color:"#53b253bd" },
-    { text: "optimismo", value: 12, color:"#53b253bd" },
-    { text: "euforia", value: 25, color:"#53b253bd" },
-    { text: "consciente", value: 45, color:"#53b253bd" },
-    { text: "bienestar", value: 36, color:"#53b253bd" },
-    { text: "eficiencia", value: 20, color:"#53b253bd" },
-    { text: "frialdad", value: 60, color:"#ff4c4cd7" },
-    { text: "indiferencia", value: 57, color:"#ff4c4cd7" },
-    { text: "desatención", value:58, color:"#ff4c4cd7" },
-    { text: "experto", value: 57, color:"#53b253bd" },
-    { text: "laboriosidad", value: 57, color:"#53b253bd" },
-    { text: "conocimiento", value: 57, color:"#53b253bd" },
-    { text: "educación", value: 57, color:"#53b253bd" },
-    { text: "confianza", value: 21, color:"#53b253bd" },
-    { text: "distante", value: 60, color:"#ff4c4cd7" },
-    
-  ];
-
-
-    function obtenerColores(mapaPercepciones) {
-     
-      const colores = mapaPercepciones.map((percepcion) => percepcion.color);
-      return colores;
-    }
-
   const opcionesPercepciones = {
     fontFamily: "Helvetica, sans-serif",
     fontSizes: [10, 50],
     rotations: 0,
     rotate: 90,
-    colors: obtenerColores(mapaPercepciones)
-
+    colors: ["#ff4c4cd7","#53b253bd"]
   } 
-
- 
 
     function editar() {
       const newEditableValue = !editable.general;
@@ -512,6 +355,134 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
+      columnsPreocupacionesTotal: [
+        {
+          title: (
+            <div className="title-total icon-nombre-columnas">
+              <div className="icon-nombre-columnas">
+                <BsFillDashCircleFill />{" "}
+              </div>
+              TOTAL
+            </div>
+          ),
+          dataIndex: "total",
+          className: "hover-black",
+        },
+      ],
+    
+      columnsPreocupacionesTw: [
+        {
+          title: (
+            <div className="icon-nombre-columnas">
+              <img className="tw" src={tw} />
+              TWITTER
+            </div>
+          ),
+          dataIndex: "twitter",
+          className: "hover-black",
+        },
+      ],
+    
+     columnsPreocupacionesFb:[
+        {
+          title: (
+            <div className="icon-nombre-columnas">
+              <img className="fb" src={fb} />
+              FACEBOOK
+            </div>
+          ),
+          dataIndex: "facebook",
+          className: "hover-black",
+        },
+      ],
+      columns: [
+        {
+          title: "N°",
+          dataIndex: "key",
+          rowScope: "row",
+          headerStyle: { backgroundColor: "#0083CA" },
+        },
+        {
+          title: "Influenciador",
+          dataIndex: "influenciador",
+          render: (text) => <div>{text}</div>,
+          headerStyle: { backgroundColor: "#0083CA" },
+        },
+        {
+          title: "Impresiones",
+          dataIndex: "impresiones",
+        },
+      ],
+      palabrasRecomendadas:[
+        { text: "satisfacción", value: 30 },
+        { text: "disfrute", value: 30 },
+        { text: "bienestar", value: 30 },
+        { text: "admiración", value: 30 },
+        { text: "optimismo", value: 30 },
+        { text: "animación", value: 30 },
+      ],
+      dataEmocionesComunicacion: [
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>DESEO </div>
+            
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>CALMA </div>
+              
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>AGRADO </div>
+              
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>AMOR </div>
+              
+            </div>
+          ),
+        },
+      ],
+    columnsEmociones: [
+        {
+          title: (
+            <div className="title-total icon-nombre-columnas">
+              <div className="icon-nombre-columnas">
+              <TiHeartOutline/>
+              </div>
+              EMOCIONES
+            </div>
+          ),
+          dataIndex: "emociones",
+          className: "hover-black",
+        },
+      ],
+    columnsAtributos:[
+        {
+          title: (
+            <div className="title-total icon-nombre-columnas">
+              <div className="icon-nombre-columnas">
+              <BiUserCircle/>
+              </div>
+              ATRIBUTOS
+            </div>
+          ),
+          dataIndex: "emociones",
+          className: "hover-black",
+        },
+      ],
       mapaPercepciones: [
   
         { text: "anticipación", value: 20, color:"#53b253bd" },
@@ -1009,6 +980,135 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
+      
+      columnsPreocupacionesTotal: [
+        {
+          title: (
+            <div className="title-total icon-nombre-columnas">
+              <div className="icon-nombre-columnas">
+                <BsFillDashCircleFill />{" "}
+              </div>
+              TOTAL
+            </div>
+          ),
+          dataIndex: "total",
+          className: "hover-black",
+        },
+      ],
+    
+      columnsPreocupacionesTw: [
+        {
+          title: (
+            <div className="icon-nombre-columnas">
+              <img className="tw" src={tw} />
+              TWITTER
+            </div>
+          ),
+          dataIndex: "twitter",
+          className: "hover-black",
+        },
+      ],
+    
+     columnsPreocupacionesFb:[
+        {
+          title: (
+            <div className="icon-nombre-columnas">
+              <img className="fb" src={fb} />
+              FACEBOOK
+            </div>
+          ),
+          dataIndex: "facebook",
+          className: "hover-black",
+        },
+      ],
+      columns: [
+        {
+          title: "N°",
+          dataIndex: "key",
+          rowScope: "row",
+          headerStyle: { backgroundColor: "#0083CA" },
+        },
+        {
+          title: "Influenciador",
+          dataIndex: "influenciador",
+          render: (text) => <div>{text}</div>,
+          headerStyle: { backgroundColor: "#0083CA" },
+        },
+        {
+          title: "Impresiones",
+          dataIndex: "impresiones",
+        },
+      ],
+      palabrasRecomendadas:[
+        { text: "satisfacción", value: 30 },
+        { text: "disfrute", value: 30 },
+        { text: "bienestar", value: 30 },
+        { text: "admiración", value: 30 },
+        { text: "optimismo", value: 30 },
+        { text: "animación", value: 30 },
+      ],
+      dataEmocionesComunicacion: [
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>DESEO </div>
+            
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>CALMA </div>
+              
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>AGRADO </div>
+              
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>AMOR </div>
+              
+            </div>
+          ),
+        },
+      ],
+      columnsEmociones: [
+        {
+          title: (
+            <div className="title-total icon-nombre-columnas">
+              <div className="icon-nombre-columnas">
+              <TiHeartOutline/>
+              </div>
+              EMOCIONES
+            </div>
+          ),
+          dataIndex: "emociones",
+          className: "hover-black",
+        },
+      ],
+    columnsAtributos:[
+        {
+          title: (
+            <div className="title-total icon-nombre-columnas">
+              <div className="icon-nombre-columnas">
+              <BiUserCircle/>
+              </div>
+              ATRIBUTOS
+            </div>
+          ),
+          dataIndex: "emociones",
+          className: "hover-black",
+        },
+      ],
       mapaPercepciones: [
   
         { text: "anticipación", value: 20, color:"#53b253bd" },
@@ -2752,7 +2852,7 @@ export default function Informes() {
 
           <div className="table">
             <Table
-              columns={columns}
+              columns={cambios.columns}
               dataSource={cambios.data}
               pagination={false}
               rowClassName={rowClassName}
@@ -2775,7 +2875,7 @@ export default function Informes() {
          
          {cambios.data2ant && cambios.data2ant[0].influenciador !== "" && (
         <Table
-          columns={columns}
+          columns={cambios.columns}
           dataSource={cambios.data2ant}
           pagination={false}
           rowClassName={rowClassName}
@@ -2808,7 +2908,7 @@ export default function Informes() {
           
           <div className="table">
           <Table
-            columns={columns}
+            columns={cambios.columns}
             dataSource={cambios.data}
             pagination={false}
             rowClassName={rowClassName}
@@ -2831,7 +2931,7 @@ export default function Informes() {
        
        {cambios.data2ant && cambios.data2ant[0].influenciador !== "" && (
       <Table
-        columns={columns}
+        columns={cambios.columns}
         dataSource={cambios.data2ant}
         pagination={false}
         rowClassName={rowClassName}
@@ -3096,7 +3196,7 @@ export default function Informes() {
          
           <div className="table">
             <Table
-              columns={columnsPreocupacionesTotal}
+              columns={cambios.columnsPreocupacionesTotal}
               dataSource={cambios.dataPreocupaciones}
               pagination={false}
               rowClassName={rowClassNameTotal("TOTAL")}
@@ -3113,7 +3213,7 @@ export default function Informes() {
               }}
             />
             <Table
-              columns={columnsPreocupacionesTw}
+              columns={cambios.columnsPreocupacionesTw}
               dataSource={cambios.dataPreocupacionesTw}
               pagination={false}
               rowClassName={rowClassNameTotal("TWITTER")}
@@ -3131,7 +3231,7 @@ export default function Informes() {
             />
 
             <Table
-              columns={columnsPreocupacionesFb}
+              columns={cambios.columnsPreocupacionesFb}
               dataSource={cambios.dataPreocupacionesFb}
               pagination={false}
               rowClassName={rowClassNameTotal("FACEBOOK")}
@@ -3152,7 +3252,7 @@ export default function Informes() {
           : 
            <div className="table">
             <Table
-              columns={columnsPreocupacionesTotal}
+              columns={cambios.columnsPreocupacionesTotal}
               dataSource={cambios.dataPreocupaciones}
               pagination={false}
               rowClassName={rowClassNameTotal("TOTAL")}
@@ -3169,7 +3269,7 @@ export default function Informes() {
               }}
             />
             <Table
-              columns={columnsPreocupacionesTw}
+              columns={cambios.columnsPreocupacionesTw}
               dataSource={cambios.dataPreocupacionesTw}
               pagination={false}
               rowClassName={rowClassNameTotal("TWITTER")}
@@ -3187,7 +3287,7 @@ export default function Informes() {
             />
 
             <Table
-              columns={columnsPreocupacionesFb}
+              columns={cambios.columnsPreocupacionesFb}
               dataSource={cambios.dataPreocupacionesFb}
               pagination={false}
               rowClassName={rowClassNameTotal("FACEBOOK")}
@@ -3491,7 +3591,7 @@ export default function Informes() {
         
           <div className="table">
           <Table
-            columns={columnsPreocupacionesTotal}
+            columns={cambios.columnsPreocupacionesTotal}
             dataSource={cambios.dataEmociones}
             pagination={false}
             rowClassName={rowClassNameTotal("TOTAL")}
@@ -3508,7 +3608,7 @@ export default function Informes() {
             }}
           />
           <Table
-            columns={columnsPreocupacionesTw}
+            columns={cambios.columnsPreocupacionesTw}
             dataSource={cambios.dataEmocionesTw}
             pagination={false}
             rowClassName={rowClassNameTotal("TWITTER")}
@@ -3526,7 +3626,7 @@ export default function Informes() {
           />
 
           <Table
-            columns={columnsPreocupacionesFb}
+            columns={cambios.columnsPreocupacionesFb}
             dataSource={cambios.dataEmocionesFb}
             pagination={false}
             rowClassName={rowClassNameTotal("FACEBOOK")}
@@ -3547,7 +3647,7 @@ export default function Informes() {
 
           :  <div className="table">
           <Table
-            columns={columnsPreocupacionesTotal}
+            columns={cambios.columnsPreocupacionesTotal}
             dataSource={cambios.dataEmociones}
             pagination={false}
             rowClassName={rowClassNameTotal("TOTAL")}
@@ -3564,7 +3664,7 @@ export default function Informes() {
             }}
           />
           <Table
-            columns={columnsPreocupacionesTw}
+            columns={cambios.columnsPreocupacionesTw}
             dataSource={cambios.dataEmocionesTw}
             pagination={false}
             rowClassName={rowClassNameTotal("TWITTER")}
@@ -3582,7 +3682,7 @@ export default function Informes() {
           />
 
           <Table
-            columns={columnsPreocupacionesFb}
+            columns={cambios.columnsPreocupacionesFb}
             dataSource={cambios.dataEmocionesFb}
             pagination={false}
             rowClassName={rowClassNameTotal("FACEBOOK")}
@@ -3837,7 +3937,7 @@ export default function Informes() {
 
           <div className="table">
             <Table
-              columns={columnsPreocupacionesTotal}
+              columns={cambios.columnsPreocupacionesTotal}
               dataSource={cambios.dataImagenes}
               pagination={false}
               rowClassName={rowClassNameTotal("TOTAL")}
@@ -3854,7 +3954,7 @@ export default function Informes() {
               }}
             />
             <Table
-              columns={columnsPreocupacionesTw}
+              columns={cambios.columnsPreocupacionesTw}
               dataSource={cambios.dataImagenesTw}
               pagination={false}
               rowClassName={rowClassNameTotal("TWITTER")}
@@ -3872,7 +3972,7 @@ export default function Informes() {
             />
 
             <Table
-              columns={columnsPreocupacionesFb}
+              columns={cambios.columnsPreocupacionesFb}
               dataSource={cambios.dataImagenesFb}
               pagination={false}
               rowClassName={rowClassNameTotal("FACEBOOK")}
@@ -3894,7 +3994,7 @@ export default function Informes() {
 
           <div className="table">
             <Table
-              columns={columnsPreocupacionesTotal}
+              columns={cambios.columnsPreocupacionesTotal}
               dataSource={cambios.dataImagenes}
               pagination={false}
               rowClassName={rowClassNameTotal("TOTAL")}
@@ -3911,7 +4011,7 @@ export default function Informes() {
               }}
             />
             <Table
-              columns={columnsPreocupacionesTw}
+              columns={cambios.columnsPreocupacionesTw}
               dataSource={cambios.dataImagenesTw}
               pagination={false}
               rowClassName={rowClassNameTotal("TWITTER")}
@@ -3929,7 +4029,7 @@ export default function Informes() {
             />
 
             <Table
-              columns={columnsPreocupacionesFb}
+              columns={cambios.columnsPreocupacionesFb}
               dataSource={cambios.dataImagenesFb}
               pagination={false}
               rowClassName={rowClassNameTotal("FACEBOOK")}
@@ -4256,7 +4356,7 @@ export default function Informes() {
           {editable.general ? 
           <> 
             <>
-                  <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataMapaPercepciones')}  disabled={!editable.diapositiva2}>
+                  <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataMapaPercepciones')}  disabled={!editable.diapositiva7}>
                     Editar valores
                   </Button>
                   <Modal
@@ -4284,14 +4384,14 @@ export default function Informes() {
                         handleHashtagChangePercepciones(index, "value", value)
                       }
                     />
-                    <Input
+                   {/*  <Input
                       className="input-nubepalabras"
                       type="text"
                       value={hashtag.color}
                       onChange={(e) =>
                         handleHashtagChangePercepciones(index, "color", e.target.value)
                       }
-                    />
+                    /> */}
                   </div>
                 ))}
                 </div>
@@ -4420,8 +4520,8 @@ export default function Informes() {
             <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
             <div> {/*tabla */}
             <Table
-              columns={columnsEmociones}
-              dataSource={[...dataEmocionesComunicacion]}
+              columns={cambios.columnsEmociones}
+              dataSource={[...cambios.dataEmocionesComunicacion]}
               pagination={false}
               rowClassName={rowClassNameTotal("EMOCIONES")}
               style={{ width: "100%", margin: "3px" }}
@@ -4442,14 +4542,14 @@ export default function Informes() {
 
             </div>
             <div className="nube-palabras"> {/*nube palabras */}
-            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
+            <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
             <div> {/*CONTENEDOR atributos */}
             <div> {/*tabla */}
             <Table
-              columns={columnsEmociones}
-              dataSource={[...dataEmocionesComunicacion]}
+              columns={cambios.columnsAtributos}
+              dataSource={[...cambios.dataEmocionesComunicacion]}
               pagination={false}
               rowClassName={rowClassNameTotal("EMOCIONES")}
               style={{ width: "100%", margin: "3px" }}
@@ -4470,7 +4570,7 @@ export default function Informes() {
 
             </div>
             <div className="nube-palabras"> {/*nube palabras */}
-            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} width="200" height="200" />
+            <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} width="200" height="200" />
             </div>
             </div>
             </div>
@@ -4587,8 +4687,8 @@ export default function Informes() {
             <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
             <div> {/*tabla */}
             <Table
-              columns={columnsEmociones}
-              dataSource={[...dataEmocionesComunicacion]}
+              columns={cambios.columnsEmociones}
+              dataSource={[...cambios.dataEmocionesComunicacion]}
               pagination={false}
               rowClassName={rowClassNameTotal("EMOCIONES")}
               style={{ width: "100%", margin: "3px" }}
@@ -4609,14 +4709,14 @@ export default function Informes() {
 
             </div>
             <div className="nube-palabras"> {/*nube palabras */}
-            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
+            <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
             <div> {/*CONTENEDOR atributos */}
             <div> {/*tabla */}
             <Table
-              columns={columnsEmociones}
-              dataSource={[...dataEmocionesComunicacion]}
+              columns={cambios.columnsAtributos}
+              dataSource={[...cambios.dataEmocionesComunicacion]}
               pagination={false}
               rowClassName={rowClassNameTotal("EMOCIONES")}
               style={{ width: "100%", margin: "3px" }}
@@ -4637,7 +4737,7 @@ export default function Informes() {
 
             </div>
             <div className="nube-palabras"> {/*nube palabras */}
-            <ReactWordcloud words={palabrasRecomendadas} options={opcionesRecomendadas} />
+            <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
             </div>
@@ -4715,6 +4815,8 @@ export default function Informes() {
         {/*FIN DIAPOSITIVA 9*/}
 
       </div>
+        
+    
       </div>
     </Fragment>
   );
