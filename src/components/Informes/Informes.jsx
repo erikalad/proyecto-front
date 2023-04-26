@@ -203,33 +203,7 @@ export default function Informes() {
     },
   ];
 
-  const data2ant = [
-    {
-      key: "6",
-      influenciador: "",
-      impresiones: "",
-    },
-    {
-      key: "7",
-      influenciador: "",
-      impresiones: "",
-    },
-    {
-      key: "8",
-      influenciador: "",
-      impresiones: "",
-    },
-    {
-      key: "9",
-      influenciador: "",
-      impresiones: "",
-    },
-    {
-      key: "10",
-      influenciador: "",
-      impresiones: "",
-    },
-  ];
+
 
   const rowClassName = (record, index) => {
     if (index % 2 === 0) {
@@ -538,6 +512,28 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
+      mapaPercepciones: [
+  
+        { text: "anticipación", value: 20, color:"#53b253bd" },
+        { text: "insensibilidad", value: 50, color:"#ff4c4cd7" },
+        { text: "decisión", value: 20, color:"#53b253bd" },
+        { text: "mejora", value: 15, color:"#53b253bd" },
+        { text: "optimismo", value: 12, color:"#53b253bd" },
+        { text: "euforia", value: 25, color:"#53b253bd" },
+        { text: "consciente", value: 45, color:"#53b253bd" },
+        { text: "bienestar", value: 36, color:"#53b253bd" },
+        { text: "eficiencia", value: 20, color:"#53b253bd" },
+        { text: "frialdad", value: 60, color:"#ff4c4cd7" },
+        { text: "indiferencia", value: 57, color:"#ff4c4cd7" },
+        { text: "desatención", value:58, color:"#ff4c4cd7" },
+        { text: "experto", value: 57, color:"#53b253bd" },
+        { text: "laboriosidad", value: 57, color:"#53b253bd" },
+        { text: "conocimiento", value: 57, color:"#53b253bd" },
+        { text: "educación", value: 57, color:"#53b253bd" },
+        { text: "confianza", value: 21, color:"#53b253bd" },
+        { text: "distante", value: 60, color:"#ff4c4cd7" },
+        
+      ],
       dataPreocupaciones:[
         {
           total: (
@@ -994,6 +990,15 @@ export default function Informes() {
       });
     };
 
+    
+    const handleHashtagChangePercepciones = (index, field, value) => {
+      setCambios(prevCambios => {
+        const newHashtags = [...prevCambios.mapaPercepciones];
+        newHashtags[index][field] = value;
+        return { ...prevCambios, mapaPercepciones: newHashtags };
+      });
+    };
+
     const handleHashtagChangeClave = (index, field, value) => {
       setCambios(prevCambios => {
         const newHashtags = [...prevCambios.palabrasClaves];
@@ -1004,6 +1009,28 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
+      mapaPercepciones: [
+  
+        { text: "anticipación", value: 20, color:"#53b253bd" },
+        { text: "insensibilidad", value: 50, color:"#ff4c4cd7" },
+        { text: "decisión", value: 20, color:"#53b253bd" },
+        { text: "mejora", value: 15, color:"#53b253bd" },
+        { text: "optimismo", value: 12, color:"#53b253bd" },
+        { text: "euforia", value: 25, color:"#53b253bd" },
+        { text: "consciente", value: 45, color:"#53b253bd" },
+        { text: "bienestar", value: 36, color:"#53b253bd" },
+        { text: "eficiencia", value: 20, color:"#53b253bd" },
+        { text: "frialdad", value: 60, color:"#ff4c4cd7" },
+        { text: "indiferencia", value: 57, color:"#ff4c4cd7" },
+        { text: "desatención", value:58, color:"#ff4c4cd7" },
+        { text: "experto", value: 57, color:"#53b253bd" },
+        { text: "laboriosidad", value: 57, color:"#53b253bd" },
+        { text: "conocimiento", value: 57, color:"#53b253bd" },
+        { text: "educación", value: 57, color:"#53b253bd" },
+        { text: "confianza", value: 21, color:"#53b253bd" },
+        { text: "distante", value: 60, color:"#ff4c4cd7" },
+        
+      ],
       dataPreocupaciones:[
         {
           total: (
@@ -1446,6 +1473,7 @@ export default function Informes() {
     { dataPreocupaciones: false},
     { dataEmociones: false },
     { dataImagenes: false },
+    { dataMapaPercepciones:false },
     { showModal2: false },
     { showModal3: false },
     { showModal4: false },
@@ -4224,12 +4252,68 @@ export default function Informes() {
           <div className="titulo0 subtitulo">LO QUE SE DESTACADA DE LAS PERCEPCIONES POSITIVAS Y NEGATIVAS</div>
           </div>
 
+
+          {editable.general ? 
+          <> 
+            <>
+                  <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataMapaPercepciones')}  disabled={!editable.diapositiva2}>
+                    Editar valores
+                  </Button>
+                  <Modal
+                    title="Mapa de Percepciones"
+                    open={modals.dataMapaPercepciones}
+                    onOk={handleOk}
+                    okText="Guardar"
+                    cancelText="Cancelar"
+                    onCancel={handleCancel}
+                  >
+                  <div className="modalTorta">
+                  {cambios.mapaPercepciones && cambios.mapaPercepciones.length > 0 && cambios.mapaPercepciones.map((hashtag, index) => (
+                  <div className="modificarnube" key={index}>
+                    <Input
+                      className="input-nubepalabras"
+                      type="text"
+                      value={hashtag.text}
+                      onChange={(e) =>
+                        handleHashtagChangePercepciones(index, "text", e.target.value)
+                      }
+                    />
+                    <InputNumber
+                      value={hashtag.value}
+                      onChange={(value) =>
+                        handleHashtagChangePercepciones(index, "value", value)
+                      }
+                    />
+                    <Input
+                      className="input-nubepalabras"
+                      type="text"
+                      value={hashtag.color}
+                      onChange={(e) =>
+                        handleHashtagChangePercepciones(index, "color", e.target.value)
+                      }
+                    />
+                  </div>
+                ))}
+                </div>
+                  </Modal>
+                  </>
+          
           <div>
-        <WordCloud
-          words={mapaPercepciones}
-          options={opcionesPercepciones}
-        />
-      </div>
+          <WordCloud
+            words={cambios.mapaPercepciones}
+            options={opcionesPercepciones}
+          />
+          </div>
+          </>
+            : 
+            
+            <div>
+            <WordCloud
+              words={cambios.mapaPercepciones}
+              options={opcionesPercepciones}
+            />
+          </div>}
+         
       
       {editable.general && (
             <div className="boton-confirmar">
@@ -4240,9 +4324,9 @@ export default function Informes() {
             <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva7')} disabled={!editable.diapositiva7}>
               Guardar cambio
             </Button>
-            <Button onClick={()=>handleDiscardChanges('diapositiva7')} disabled={!editable.diapositiva7}>Descartar cambios</Button>
+            <Button onClick={()=>handleDiscardChanges('diapositiva7', 'showModal7')} disabled={!editable.diapositiva7}>Descartar cambios</Button>
             <Modal
-            /* open={modals.showModal7} */
+            open={modals.showModal7}
             title="¿Está seguro de que desea descartar los cambios?"
             okText="Sí"
             cancelText="No"
@@ -4251,7 +4335,7 @@ export default function Informes() {
                 ...prevState,
                 diapositiva7: false // Cambiar la diapositiva correspondiente a false
               }));
-              /* resetValues() */
+              resetValues('mapaPercepciones')
               setShowModal(false);
             }}
             onCancel={() => setShowModal(false)}
