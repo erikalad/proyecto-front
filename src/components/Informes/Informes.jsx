@@ -23,7 +23,9 @@ import { BiConversation , BiUserCircle } from "react-icons/bi";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { RiUserStarLine, RiFileUserLine, RiPushpinLine } from "react-icons/ri";
 import { IoAlert } from "react-icons/io5";
+import { VscCompass } from "react-icons/vsc";
 import { TiHeartOutline } from "react-icons/ti";
+import { HiOutlineChatAlt2 } from "react-icons/hi";
 import html2pdf from "html2pdf.js";
 import TextArea from "antd/es/input/TextArea";
 import editando from './../../assest/editando.png'
@@ -4427,7 +4429,7 @@ export default function Informes() {
 
         <div className="cuerpo">
             <div className="titulo2">
-              <RiPushpinLine />
+                <VscCompass /> 
             </div>
 
             <div className="titulo2">
@@ -4535,7 +4537,72 @@ export default function Informes() {
 
         </div>
         {/*FIN DIAPOSITIVA 6*/}
+
         {/*DIAPOSITIVA 7*/}
+      <div class="page-break" data-html2pdf-pagebreak>
+      {/*Nav*/}
+      <div className="contenedor-extremo">
+          <div className="nav">
+              <div className="reporte">
+                <SlNotebook />
+                <p>REPORTE DE SÍNTESIS</p>
+              </div>
+
+              <img src={logo} className="img" alt="logo"></img>
+            </div>
+          </div>
+
+          <div className="cuerpo">
+            <div className="titulo2">
+              <HiOutlineChatAlt2 />
+            </div>
+
+            <div className="titulo2">
+            FORTALEZAS Y DEBILIDADES
+            </div>
+          </div>
+
+          <div className="fortalezas-debilidades"> {/*CONTENEDOR GENERAL */}
+            <div className="fortalezas-positivo"> {/*CONTENEDOR HORIZONTAL POSITIVO */}
+              <div className="fortalezas-circulo"> {/*CONTENEDOR CIRCULO */}
+              <div>CIRCULO</div>
+              <div>
+              <div className="circulo-positivo">POSITIVIDAD</div>
+              <div>Expansión comercial</div>
+              </div>
+              </div>
+              <hr></hr>
+              <div className='fortalezas-texto'> {/*CONTENEDOR TEXTO */}
+              Trascienden las notas sobre la reapertura del Puerto de Posadas y
+              la activa gestión comercial de Misiones con Brasil, destacada por el
+              embajador Daniel Scioli: Lile agradezco su compromiso para seguir
+              vendiendo bienes y servicios de alto valor agregado”, sostuvo.
+
+            </div>
+            </div>
+            <div className="fortalezas-positivo"> {/*CONTENEDOR HORIZONTAL NEGATIVO */}
+              <div className="fortalezas-circulo"> {/*CONTENEDOR CIRCULO */}
+              <div>CIRCULO</div>
+              <div>
+              <div className="circulo-negativo">NEGATIVIDAD</div>
+              <div>Vulnerabilidad habitacional</div>
+              </div>
+              </div>
+              <hr></hr>
+              <div className='fortalezas-texto'> {/*CONTENEDOR TEXTO */}
+              Circula una petición de firmas a través de @Changeorg para que
+              una niña de siete años, con discapacidad, viva en condiciones
+              “dignas”. Se menciona a Oscar Herrera Ahuad: “Vivienda Social de
+              Iprodha para Abigail YA! @herrerayflia - ¡Firmá la petición!”.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/*FIN DIAPOSITIVA 7*/}
+
+
+        {/*DIAPOSITIVA 8*/}
         <div class="page-break" data-html2pdf-pagebreak>
     {/*Nav*/}
     <div className="contenedor-extremo">
@@ -4858,8 +4925,8 @@ export default function Informes() {
 
 
         </div>
-        {/*FIN DIAPOSITIVA 7*/}
-        {/*DIAPOSITIVA 8*/}        
+        {/*FIN DIAPOSITIVA 8*/}
+        {/*DIAPOSITIVA 9*/}        
         <div class="page-break" data-html2pdf-pagebreak>
         {/*Nav*/}
     <div className="contenedor-extremo">
@@ -5027,8 +5094,8 @@ export default function Informes() {
 
 
         </div>
-        {/*FIN DIAPOSITIVA 8*/} 
-        {/*DIAPOSITIVA 9*/}
+        {/*FIN DIAPOSITIVA 9*/} 
+        {/*DIAPOSITIVA 10*/}
         <div class="page-break" data-html2pdf-pagebreak>
         {/*ULTIMA DIAPOSITIVA */}        
         <div className="final">
@@ -5056,7 +5123,7 @@ export default function Informes() {
         </div>
         </div>  
         </div>
-        {/*FIN DIAPOSITIVA 9*/}
+        {/*FIN DIAPOSITIVA 10*/}
 
       </div>
         

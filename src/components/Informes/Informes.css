@@ -624,3 +624,46 @@ margin-bottom: 2rem;
   .boton-primary{
     margin-right: 1rem;
   }
+
+  .fortalezas-debilidades{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 2rem;
+ 
+  }
+
+  .fortalezas-positivo{
+    display: flex;
+    flex-direction: row;
+    gap:2rem;
+    
+  }
+
+  .fortalezas-circulo{
+    display: flex;
+    width: 30%;
+    padding: 1rem;
+  }
+
+  .fortalezas-texto{
+    display: flex;
+    width: 40%;
+    margin-bottom: 2rem;
+    background-color: #f7f7f77c;
+    padding: 1rem;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .circulo-positivo{
+    font-weight: 700;
+    color:#14AE5C;
+    font-size: 2rem;
+  }
+
+  .circulo-negativo{
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ff2222e4;
+  }
