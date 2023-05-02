@@ -1053,6 +1053,10 @@ export default function Informes() {
       diapositiva8: { display: "flex" },
       diapositiva9: { display: "flex" },
       diapositiva10: { display: "flex" },
+      displayTotalVolumen:'flex',
+      displayTotalFacebook:'flex',
+      displayTotalTwitter:'flex',
+      displayTotalMedios:'flex',
       fortalezasDebilidades:[{
         text:"positivo", value:"80.6%",
       },
@@ -1385,10 +1389,6 @@ export default function Informes() {
       { name: "Positivo", value: 80, fill: "#53b253bd" },
       { name: "Negativo", value: 20, fill: "#ff4c4cd7" },
     ],
-    displayTotalVolumen:'flex',
-    displayTotalFacebook:'flex',
-    displayTotalTwitter:'flex',
-    displayTotalMedios:'flex',
     fecha: 'Desde 16:27 hs del 20/03/2023 - Hasta 16:27 hs del 27/03/2023',
     valor1: 111,
     valor2:1,
@@ -1644,6 +1644,7 @@ export default function Informes() {
   };
 
   const [modals, setShowModal] = useState([
+    { dataDatos: false },
     { showModal1: false },
     { dataTorta:false },
     { dataTortaFb:false },
@@ -1785,9 +1786,38 @@ export default function Informes() {
 
         <div className="cuerpo">
           <div className="titulo0">MONITOREO Y ANÁLISIS DE:</div>
+
+          {editable.general 
+          ? 
+          <>
+          <Button type="primary" onClick={()=>showModalTorta('dataDatos')} disabled={!editable.diapositiva1}>Editar</Button>
+          <Modal
+                title="Análisis de redes sociales"
+                open={modals.dataDatos}
+                onOk={handleOk}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+              >
+              <div className="datos">
+                
+                <div className="img-red"><img className="fb" src={fb} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalFacebook')}>x</Button></div>
+                <div className="img-red"><img className="noticias" src={noticias} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalMedios')}>x</Button></div>
+                <div className="img-red"><img className="tw" src={tw} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalTwitter')}>x</Button></div>
+              </div>
+              </Modal>
+        
+                <img className="fb" src={fb} alt="logo"></img>
+                <img className="noticias" src={noticias} alt="logo"></img>
+                <img className="tw" src={tw} alt="logo"></img>
+          </> 
+          :
+          <>
           <img className="fb" src={fb} alt="logo"></img>
           <img className="noticias" src={noticias} alt="logo"></img>
-          <img className="tw" src={tw} alt="logo"></img>|
+          <img className="tw" src={tw} alt="logo"></img>
+          </>  }
+         |
           <div className="titulo1">PERíODO</div>
           <div className="cuerpo">
             <div className="titulo1">
@@ -1801,7 +1831,7 @@ export default function Informes() {
               name="fecha"
               value={cambios.fecha}
               onChange={handleChange}
-              className="subtitulo-principal"
+              className="subtitulo-editar"
               />
                         
               ) : (
