@@ -29,7 +29,7 @@ import TextArea from "antd/es/input/TextArea";
 import editando from './../../assest/editando.png'
 import editarpdf from './../../assest/editar.png'
 import pdfdescargado from './../../assest/pdf.png'
-
+import noticias from './../../assest/noticias.png'
 
 
 export default function Informes() {
@@ -255,12 +255,12 @@ export default function Informes() {
     series: [
       {
         name: "Periodo Actual",
-        data: [12],
+        data: [5],
         color: "#3b5998",
       },
       {
         name: "Periodo Anterior",
-        data: [40],
+        data: [15],
         color: "#eaeaea",
       },
     ],
@@ -299,6 +299,38 @@ export default function Informes() {
       {
         name: "Periodo Anterior",
         data: [40],
+        color: "#eaeaea",
+      },
+    ],
+    options: {
+      chart: {
+        type: "area",
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+        },
+      },
+      toolbar: {
+        show: false, // Deshabilitar la funcionalidad de filtro
+      },
+
+      xaxis: {
+        categories: ["Periodo Actual", "Periodo Anterior"],
+      },
+    },
+  });
+
+  const [dataMedios, setDataMedios] = useState({
+    series: [
+      {
+        name: "Periodo Actual",
+        data: [15],
+        color: "#0091ae",
+      },
+      {
+        name: "Periodo Anterior",
+        data: [32],
         color: "#eaeaea",
       },
     ],
@@ -1308,6 +1340,7 @@ export default function Informes() {
     displayTotalVolumen:'flex',
     displayTotalFacebook:'flex',
     displayTotalTwitter:'flex',
+    displayTotalMedios:'flex',
     fecha: 'Desde 16:27 hs del 20/03/2023 - Hasta 16:27 hs del 27/03/2023',
     valor1: 111,
     valor2:1,
@@ -1671,15 +1704,18 @@ export default function Informes() {
               <div className="titulo">{cambios.cliente}</div>
             )}
               {editable.diapositiva1 ? (
+                 <p className="subtitulo-principal">
+                 Se mide el impacto de las conversaciones sobre {cambios.cliente} durante {cambios.tiempo}.
+               </p>
                             
-              <Input
+            /*   <Input
               style={{ width: '1000px' , height:'30px', marginTop:'1rem', marginBottom:'1rem', paddingTop:'1rem'}}
                 type="text"
-                name="fecha"
+                name="tiempo"
                 value={`Se mide el impacto de las conversaciones sobre ${cambios.cliente} durante ${cambios.tiempo}.`}
                 onChange={handleChange}
                 className="subtitulo-principal"
-              />
+              /> */
           
             ) : (
             <p className="subtitulo-principal">
@@ -1693,6 +1729,7 @@ export default function Informes() {
         <div className="cuerpo">
           <div className="titulo0">MONITOREO Y ANÁLISIS DE:</div>
           <img className="fb" src={fb} alt="logo"></img>
+          <img className="noticias" src={noticias} alt="logo"></img>
           <img className="tw" src={tw} alt="logo"></img>|
           <div className="titulo1">PERíODO</div>
           <div className="cuerpo">
@@ -1746,7 +1783,7 @@ export default function Informes() {
               series={data2.series}
               type="bar"
               height={150}
-              width={400}
+              width={250}
             />
             <Button onClick={()=>eliminarGrafico('displayTotalVolumen')}>x</Button>
             </div>
@@ -1762,7 +1799,7 @@ export default function Informes() {
               series={data2.series}
               type="bar"
               height={150}
-              width={400}
+              width={300}
             />
          {(cambios.displayTotalFacebook === 'flex' || cambios.displayTotalTwitter === 'flex') && <hr/>}
 
@@ -1785,7 +1822,7 @@ export default function Informes() {
             series={datafb.series}
             type="bar"
             height={250}
-            width={200}
+            width={150}
           />
           <Button onClick={()=>eliminarGrafico('displayTotalFacebook')}>x</Button>
           </div>
@@ -1808,13 +1845,60 @@ export default function Informes() {
             series={datafb.series}
             type="bar"
             height={250}
-            width={200}
+            width={150}
           />
             </div>
           </div>
         </div>
                  
            )}
+
+
+        {editable.diapositiva1 ? ( 
+          <div className="editarfacebook twitter-grafico-bar">
+          <div style={{display:cambios.displayTotalMedios, flexDirection:'column'}}>
+          <div className="icon-nombre">
+              <img className="noticias" src={noticias} alt="logo"/>
+              MEDIOS
+            </div>
+            <div style={{display:'flex'}}>
+            <ReactApexChart
+              options={dataMedios.options}
+              series={dataMedios.series}
+              type="bar"
+              height={250}
+              width={150}
+            />
+          <Button onClick={()=>eliminarGrafico('displayTotalMedios')}>x</Button>
+          </div>
+          </div>
+            {cambios.displayTotalMedios === 'none' && editable.diapositiva1 === true 
+            ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={()=>mostrarGrafico('displayTotalMedios')}>+</Button> 
+            : <Button id="mostrarGrafico" style={{display:'none'}} onClick={()=>mostrarGrafico('displayTotalMedios')}>+</Button> 
+            }  
+          </div>
+          ) : (
+            <div className="twitter-grafico-bar" style={{display:cambios.displayTotalMedios}}>
+            <div className="icon-nombre">
+              <img className="noticias" src={noticias} alt="logo"/>
+              MEDIOS
+            </div>
+         
+            <ReactApexChart
+              options={dataMedios.options}
+              series={dataMedios.series}
+              type="bar"
+              height={250}
+              width={150}
+            />
+         
+          </div>
+                 
+           )} 
+
+
+
+
           {editable.diapositiva1 ? ( 
           <div className="editarfacebook twitter-grafico-bar">
           <div style={{display:cambios.displayTotalTwitter, flexDirection:'column'}}>
@@ -1828,7 +1912,7 @@ export default function Informes() {
               series={datatw.series}
               type="bar"
               height={250}
-              width={200}
+              width={150}
             />
           <Button onClick={()=>eliminarGrafico('displayTotalTwitter')}>x</Button>
           </div>
@@ -1850,12 +1934,15 @@ export default function Informes() {
               series={datatw.series}
               type="bar"
               height={250}
-              width={200}
+              width={150}
             />
          
           </div>
                  
            )} 
+
+
+            
       
           </div>
         </div>
@@ -1992,6 +2079,7 @@ export default function Informes() {
             resetValues('fecha')
             resetValues('displayTotalFacebook')
             resetValues('displayTotalTwitter')
+            resetValues('displayTotalMedios')
             resetValues("cliente") 
             resetValues("valor1") 
             resetValues("valor2") 
@@ -4972,7 +5060,6 @@ export default function Informes() {
 
       </div>
         
-    
       </div>
     </Fragment>
   );
