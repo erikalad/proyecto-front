@@ -389,6 +389,17 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
+      diapositivaInicial: { display: "flex" },
+      diapositiva1: { display: "flex" },
+      diapositiva2: { display: "flex" },
+      diapositiva3: { display: "flex" },
+      diapositiva4: { display: "flex" },
+      diapositiva5: { display: "flex" },
+      diapositiva6: { display: "flex" },
+      diapositiva7: { display: "flex" },
+      diapositiva8: { display: "flex" },
+      diapositiva9: { display: "flex" },
+      diapositiva10: { display: "flex" },
       fortalezasDebilidades:[{
         text:"positivo", value:"80.6%",
       },
@@ -1031,6 +1042,17 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
+      diapositivaInicial: { display: "flex" },
+      diapositiva1: { display: "flex" },
+      diapositiva2: { display: "flex" },
+      diapositiva3: { display: "flex" },
+      diapositiva4: { display: "flex" },
+      diapositiva5: { display: "flex" },
+      diapositiva6: { display: "flex" },
+      diapositiva7: { display: "flex" },
+      diapositiva8: { display: "flex" },
+      diapositiva9: { display: "flex" },
+      diapositiva10: { display: "flex" },
       fortalezasDebilidades:[{
         text:"positivo", value:"80.6%",
       },
@@ -1681,6 +1703,12 @@ export default function Informes() {
     }));
   }
 
+  const handleDisplay = (diapositiva) => {
+    setCambios(prevState => ({
+      ...prevState,
+      [diapositiva]: { display: "none" }
+    }));
+  };
 
 
   return (
@@ -1704,15 +1732,17 @@ export default function Informes() {
       <div className="contenedor-margin">
       <div className="contenedor" id="contenedor">
         {/*DIAPOSITIVA INICIO*/}
-        <div>
-        <div className="contenedor-extremo">
+        <div style={{ display: cambios.diapositivaInicial.display, flexDirection:'column'}}>
+          
+        <div className="contenedor-extremo" >
           {/*Nav*/}
          <div className="nav">
             <div className="reporte">
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
             </div>
-
+            {editable.general && <Button onClick={()=>handleDisplay('diapositivaInicial')}>X</Button>}
+        
             <img src={logo} className="img" alt="logo"></img>
           </div>
 
@@ -2130,7 +2160,7 @@ export default function Informes() {
         </div>
         {/*FIN DIAPOSITIVA INICIO*/}
         {/*DIAPOSITIVA 1*/}
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva1.display, flexDirection:'column'}}>
 
         {/*Nav*/}
         <div className="contenedor-extremo">
@@ -2139,7 +2169,7 @@ export default function Informes() {
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
             </div>
-
+            {editable.general && <Button onClick={()=>handleDisplay('diapositiva1')}>X</Button>}
             <img src={logo} className="img" alt="logo"></img>
           </div> 
         </div>
@@ -2649,7 +2679,7 @@ export default function Informes() {
         </div>
         {/*FIN DIAPOSITIVA 1*/}
         {/*DIAPOSITIVA 2*/}
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva2.display, flexDirection:'column'}}>
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -2657,7 +2687,7 @@ export default function Informes() {
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
             </div>
-
+            {editable.general && <Button onClick={()=>handleDisplay('diapositiva2')}>X</Button>}
             <img src={logo} className="img" alt="logo"></img>
           </div>
 
@@ -2850,7 +2880,7 @@ export default function Informes() {
         </div>
         {/*FIN DIAPOSITIVA 2*/}
         {/*DIAPOSITIVA 3*/}
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva3.display, flexDirection:'column'}}>
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -2858,7 +2888,7 @@ export default function Informes() {
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
             </div>
-
+            {editable.general && <Button onClick={()=>handleDisplay('diapositiva3')}>X</Button>}
             <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
@@ -3461,7 +3491,7 @@ export default function Informes() {
         </div>
         {/*FIN DIAPOSITIVA 3*/}
         {/*DIAPOSITIVA 4*/}
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva4.display, flexDirection:'column'}}>
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -3469,7 +3499,7 @@ export default function Informes() {
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
             </div>
-
+            {editable.general && <Button onClick={()=>handleDisplay('diapositiva4')}>X</Button>}
             <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
@@ -4204,7 +4234,7 @@ export default function Informes() {
         </div>
         {/*FIN DIAPOSITIVA 4*/}
         {/*DIAPOSITIVA 5*/}
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva5.display, flexDirection:'column'}}>
         {/*Nav*/}
         <div className="contenedor-extremo">
           <div className="nav">
@@ -4212,7 +4242,7 @@ export default function Informes() {
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
             </div>
-
+            {editable.general && <Button onClick={()=>handleDisplay('diapositiva5')}>X</Button>}
             <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
@@ -4438,7 +4468,7 @@ export default function Informes() {
         </div>
         {/*FIN DIAPOSITIVA 5*/}
         {/*DIAPOSITIVA 6*/}
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva6.display, flexDirection:'column'}}>
           {/*Nav*/}
           <div className="contenedor-extremo">
           <div className="nav">
@@ -4446,7 +4476,7 @@ export default function Informes() {
                 <SlNotebook />
                 <p>REPORTE DE SÍNTESIS</p>
               </div>
-
+              {editable.general && <Button onClick={()=>handleDisplay('diapositiva6')}>X</Button>}
               <img src={logo} className="img" alt="logo"></img>
             </div>
           </div>
@@ -4562,9 +4592,8 @@ export default function Informes() {
 
         </div>
         {/*FIN DIAPOSITIVA 6*/}
-
         {/*DIAPOSITIVA 7*/}
-      <div class="page-break" data-html2pdf-pagebreak>
+      <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva7.display, flexDirection:'column'}}>
       {/*Nav*/}
       <div className="contenedor-extremo">
           <div className="nav">
@@ -4572,7 +4601,7 @@ export default function Informes() {
                 <SlNotebook />
                 <p>REPORTE DE SÍNTESIS</p>
               </div>
-
+              {editable.general && <Button onClick={()=>handleDisplay('diapositiva7')}>X</Button>}
               <img src={logo} className="img" alt="logo"></img>
             </div>
           </div>
@@ -4749,12 +4778,9 @@ export default function Informes() {
           )}
 
         </div>
-
         {/*FIN DIAPOSITIVA 7*/}
-
-
         {/*DIAPOSITIVA 8*/}
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva8.display, flexDirection:'column'}}>
     {/*Nav*/}
     <div className="contenedor-extremo">
          <div className="nav">
@@ -4762,7 +4788,7 @@ export default function Informes() {
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
             </div>
-
+            {editable.general && <Button onClick={()=>handleDisplay('diapositiva8')}>X</Button>}
             <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
@@ -5078,7 +5104,7 @@ export default function Informes() {
         </div>
         {/*FIN DIAPOSITIVA 8*/}
         {/*DIAPOSITIVA 9*/}        
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak style={{ display: cambios.diapositiva9.display, flexDirection:'column'}}>
         {/*Nav*/}
     <div className="contenedor-extremo">
           <div className="nav">
@@ -5086,7 +5112,7 @@ export default function Informes() {
               <SlNotebook />
               <p>REPORTE DE SÍNTESIS</p>
             </div>
-
+            {editable.general && <Button onClick={()=>handleDisplay('diapositiva9')}>X</Button>}
             <img src={logo} className="img" alt="logo"></img>
           </div>
         </div>
@@ -5247,9 +5273,10 @@ export default function Informes() {
         </div>
         {/*FIN DIAPOSITIVA 9*/} 
         {/*DIAPOSITIVA 10*/}
-        <div class="page-break" data-html2pdf-pagebreak>
+        <div class="page-break" data-html2pdf-pagebreak >
         {/*ULTIMA DIAPOSITIVA */}        
         <div className="final">
+       
         <img className="logo-final" src={logo2} alt="logo"/>
         <div className="contenedor-footer"> {/*contenedor footer */}
             <div className="contenedor-pais"> {/*contenedor pais */}
