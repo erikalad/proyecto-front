@@ -62,7 +62,7 @@ export default function Informes() {
       // Crear una instancia de html2pdf con las opciones deseadas
       const opciones = {
         margin: [0, 0, 0, 0], // reducir los márgenes a 0
-        filename: "mi-pagina.pdf",
+        filename: "QSOCIALNOW - Reporte de síntesis.pdf",
         image: { type: "jpeg", quality: 1.0 },
         html2canvas: { scale: 2 },
         jsPDF: {
@@ -389,6 +389,15 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
+      fortalezasDebilidades:[{
+        text:"positivo", value:"80.6%",
+      },
+      {
+        text:"negativo", value:"19.4%"
+      }],
+      fortalezasDebilidadestexto1:'Trascienden las notas sobre la reapertura del Puerto de Posadas y la activa gestión comercial de Misiones con Brasil, destacada por el embajador Daniel Scioli: Lile agradezco su compromiso para seguir vendiendo bienes y servicios de alto valor agregado”, sostuvo.',
+      fortalezasDebilidadestexto2:'Circula una petición de firmas a través de @Changeorg para que una niña de siete años, con discapacidad, viva en condiciones “dignas”. Se menciona a Oscar Herrera Ahuad: “Vivienda Social de Iprodha para Abigail YA! @herrerayflia - ¡Firmá la petición!”.',
+      
       columnsPreocupacionesTotal: [
         {
           title: (
@@ -1004,6 +1013,14 @@ export default function Informes() {
       });
     };
 
+    const handleHashtagChangeFortalezas= (index, field, value) => {
+      setCambios(prevCambios => {
+        const newPorcentaje = [...prevCambios.fortalezasDebilidades];
+        newPorcentaje[index][field] = value;
+        return { ...prevCambios, fortalezasDebilidades: newPorcentaje };
+      });
+    };
+    
     const handleHashtagChangeClave = (index, field, value) => {
       setCambios(prevCambios => {
         const newHashtags = [...prevCambios.palabrasClaves];
@@ -1014,7 +1031,14 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
-      
+      fortalezasDebilidades:[{
+        text:"positivo", value:"80.6%",
+      },
+      {
+        text:"negativo", value:"19.4%"
+      }],
+      fortalezasDebilidadestexto1:'Trascienden las notas sobre la reapertura del Puerto de Posadas y la activa gestión comercial de Misiones con Brasil, destacada por el embajador Daniel Scioli: Lile agradezco su compromiso para seguir vendiendo bienes y servicios de alto valor agregado”, sostuvo.',
+      fortalezasDebilidadestexto2:'Circula una petición de firmas a través de @Changeorg para que una niña de siete años, con discapacidad, viva en condiciones “dignas”. Se menciona a Oscar Herrera Ahuad: “Vivienda Social de Iprodha para Abigail YA! @herrerayflia - ¡Firmá la petición!”.',
       columnsPreocupacionesTotal: [
         {
           title: (
@@ -1609,6 +1633,7 @@ export default function Informes() {
     { dataEmociones: false },
     { dataImagenes: false },
     { dataMapaPercepciones:false },
+    { fortalezasDebilidades: false},
     { showModal2: false },
     { showModal3: false },
     { showModal4: false },
@@ -4562,10 +4587,49 @@ export default function Informes() {
             </div>
           </div>
 
-          <div className="fortalezas-debilidades"> {/*CONTENEDOR GENERAL */}
+          {editable.general ? 
+            
+            <div>
+                <>
+                  <Button type="primary" style={{marginTop:'1rem' , marginLeft:'2rem'}} onClick={()=>showModalTorta('fortalezasDebilidades')}  disabled={!editable.diapositiva10}>
+                    Editar valores
+                  </Button>
+                  <Modal
+                    title="Fortalezas y Debilidades"
+                    open={modals.fortalezasDebilidades}
+                    onOk={handleOk}
+                    okText="Guardar"
+                    cancelText="Cancelar"
+                    onCancel={handleCancel}
+                  >
+                  <div className="modalTorta">
+                  {cambios.fortalezasDebilidades && cambios.fortalezasDebilidades.length > 0 && cambios.fortalezasDebilidades.map((porcentaje, index) => (
+                    <div className="modificarnube" key={index}>
+                      <Input
+                        className="input-nubepalabras"
+                        type="text"
+                        value={porcentaje.text}
+                        onChange={(e) =>
+                          handleHashtagChangeFortalezas(index, "text", e.target.value)
+                        }
+                      />
+                      <Input
+                        type="text"
+                        value={porcentaje.value}
+                        onChange={(e) =>
+                          handleHashtagChangeFortalezas(index, "value", e.target.value)
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
+                  </Modal>
+                  </>
+
+              <div className="fortalezas-debilidades"> {/*CONTENEDOR GENERAL */}
             <div className="fortalezas-positivo"> {/*CONTENEDOR HORIZONTAL POSITIVO */}
               <div className="fortalezas-circulo"> {/*CONTENEDOR CIRCULO */}
-              <div className="circulo-fortalezas-positivo">80.6%</div>
+              <div className="circulo-fortalezas-positivo">{cambios.fortalezasDebilidades[0].value}</div>
               <div>
               <div className="circulo-positivo">POSITIVIDAD</div>
               <div>Expansión comercial</div>
@@ -4573,16 +4637,26 @@ export default function Informes() {
               </div>
               <hr></hr>
               <div className='fortalezas-texto'> {/*CONTENEDOR TEXTO */}
-              Trascienden las notas sobre la reapertura del Puerto de Posadas y
-              la activa gestión comercial de Misiones con Brasil, destacada por el
-              embajador Daniel Scioli: Lile agradezco su compromiso para seguir
-              vendiendo bienes y servicios de alto valor agregado”, sostuvo.
+              {editable.diapositiva10  ? (  
+              <TextArea
+                style={{ height: '150px', width: '400px' }}
+                type="text"
+                name="fortalezasDebilidadestexto1"
+                value={cambios.fortalezasDebilidadestexto1}
+                onChange={handleChange}
+                maxLength={600}
+              />
+            ) : (
+              <div>
+                {cambios.fortalezasDebilidadestexto1}
+              </div>
+            )} 
 
             </div>
             </div>
             <div className="fortalezas-positivo"> {/*CONTENEDOR HORIZONTAL NEGATIVO */}
               <div className="fortalezas-circulo"> {/*CONTENEDOR CIRCULO */}
-              <div className="circulo-fortalezas-negativo">19.4%</div>
+              <div className="circulo-fortalezas-negativo">{cambios.fortalezasDebilidades[1].value}</div>
               <div>
               <div className="circulo-negativo">NEGATIVIDAD</div>
               <div>Vulnerabilidad habitacional</div>
@@ -4590,13 +4664,90 @@ export default function Informes() {
               </div>
               <hr></hr>
               <div className='fortalezas-texto'> {/*CONTENEDOR TEXTO */}
-              Circula una petición de firmas a través de @Changeorg para que
-              una niña de siete años, con discapacidad, viva en condiciones
-              “dignas”. Se menciona a Oscar Herrera Ahuad: “Vivienda Social de
-              Iprodha para Abigail YA! @herrerayflia - ¡Firmá la petición!”.
+      
+              {editable.diapositiva10  ? (  
+              <TextArea
+                style={{ height: '150px', width: '400px' }}
+                type="text"
+                name="fortalezasDebilidadestexto2"
+                value={cambios.fortalezasDebilidadestexto2}
+                onChange={handleChange}
+                maxLength={600}
+              />
+            ) : (
+              <div>
+                {cambios.fortalezasDebilidadestexto2}
+              </div>
+            )}  
               </div>
             </div>
           </div>
+          </div>
+          :
+
+          <div className="fortalezas-debilidades"> {/*CONTENEDOR GENERAL */}
+          <div className="fortalezas-positivo"> {/*CONTENEDOR HORIZONTAL POSITIVO */}
+            <div className="fortalezas-circulo"> {/*CONTENEDOR CIRCULO */}
+            <div className="circulo-fortalezas-positivo">{cambios.fortalezasDebilidades[0].value}</div>
+            <div>
+            <div className="circulo-positivo">POSITIVIDAD</div>
+            <div>Expansión comercial</div>
+            </div>
+            </div>
+            <hr></hr>
+            <div className='fortalezas-texto'> {/*CONTENEDOR TEXTO */}
+          {cambios.fortalezasDebilidadestexto1}
+
+          </div>
+          </div>
+          <div className="fortalezas-positivo"> {/*CONTENEDOR HORIZONTAL NEGATIVO */}
+            <div className="fortalezas-circulo"> {/*CONTENEDOR CIRCULO */}
+            <div className="circulo-fortalezas-negativo">{cambios.fortalezasDebilidades[1].value}</div>
+            <div>
+            <div className="circulo-negativo">NEGATIVIDAD</div>
+            <div>Vulnerabilidad habitacional</div>
+            </div>
+            </div>
+            <hr></hr>
+            <div className='fortalezas-texto'> {/*CONTENEDOR TEXTO */}
+         {cambios.fortalezasDebilidadestexto2}
+            </div>
+          </div>
+        </div>
+       }
+
+        {editable.general && (
+          <div className="boton-confirmar">
+            {contextHolder}
+          <Button type="primary" className="boton-primary" onClick={()=>openMessageEdit('diapositiva10')} disabled={editable.diapositiva10}>
+            Editar
+          </Button>
+          <Button type="primary" className="boton-primary" onClick={()=>openMessage('diapositiva10')} disabled={!editable.diapositiva10}>
+            Guardar cambio
+          </Button>
+          <Button onClick={()=>handleDiscardChanges('diapositiva10','showModal10')} disabled={!editable.diapositiva10}>Descartar cambios</Button>
+          <Modal
+          open={modals.showModal10}
+          title="¿Está seguro de que desea descartar los cambios?"
+          okText="Sí"
+          cancelText="No"
+          onOk={() => {
+            setEditable((prevState) => ({
+              ...prevState,
+              diapositiva10: false // Cambiar la diapositiva correspondiente a false
+            }));
+            resetValues('fortalezasDebilidadestexto1')
+            resetValues('fortalezasDebilidadestexto2')
+            resetValues('fortalezasDebilidades')
+            setShowModal(false);
+          }}
+          onCancel={() => setShowModal(false)}
+        >
+          <p>Los cambios realizados se perderán permanentemente.</p>
+        </Modal>
+          </div>
+          )}
+
         </div>
 
         {/*FIN DIAPOSITIVA 7*/}
