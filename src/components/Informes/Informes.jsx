@@ -4565,7 +4565,7 @@ export default function Informes() {
           <div className="fortalezas-debilidades"> {/*CONTENEDOR GENERAL */}
             <div className="fortalezas-positivo"> {/*CONTENEDOR HORIZONTAL POSITIVO */}
               <div className="fortalezas-circulo"> {/*CONTENEDOR CIRCULO */}
-              <div>CIRCULO</div>
+              <div className="circulo-fortalezas-positivo">80.6%</div>
               <div>
               <div className="circulo-positivo">POSITIVIDAD</div>
               <div>Expansión comercial</div>
@@ -4582,7 +4582,7 @@ export default function Informes() {
             </div>
             <div className="fortalezas-positivo"> {/*CONTENEDOR HORIZONTAL NEGATIVO */}
               <div className="fortalezas-circulo"> {/*CONTENEDOR CIRCULO */}
-              <div>CIRCULO</div>
+              <div className="circulo-fortalezas-negativo">19.4%</div>
               <div>
               <div className="circulo-negativo">NEGATIVIDAD</div>
               <div>Vulnerabilidad habitacional</div>

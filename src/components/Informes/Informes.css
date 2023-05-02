@@ -637,19 +637,21 @@ margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
     gap:2rem;
-    
+    margin-bottom: 2rem;
+    height: 200px;
   }
 
   .fortalezas-circulo{
     display: flex;
-    width: 30%;
+    width: 40%;
     padding: 1rem;
-  }
+    gap: 2rem;
+   
+  } 
 
   .fortalezas-texto{
     display: flex;
     width: 40%;
-    margin-bottom: 2rem;
     background-color: #f7f7f77c;
     padding: 1rem;
     font-size: 15px;
@@ -665,5 +667,35 @@ margin-bottom: 2rem;
   .circulo-negativo{
     font-weight: 700;
     font-size: 2rem;
-    color: #ff2222e4;
+    color: #fa1414e8;
+  }
+
+  .circulo-fortalezas-positivo{
+    display: flex;
+    background-color: #14AE5C;
+    color: white;
+    border-radius: 100%;
+    width: 6rem;
+    height: 6rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 25px;
+    
+  }
+
+  .circulo-fortalezas-negativo{
+    display: flex;
+    color: white;
+    border-radius: 100%;
+    width: 6rem;
+    height: 6rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 25px;
+    background-color:#fa1414e8; 
+   
   }
