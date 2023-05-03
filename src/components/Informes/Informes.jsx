@@ -389,6 +389,9 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
+      displayFacebookIcon: 'flex',
+      displayTwitterIcon: 'flex',
+      displayMediosIcon: 'flex',
       diapositivaInicial: { display: "flex" },
       diapositiva1: { display: "flex" },
       diapositiva2: { display: "flex" },
@@ -1057,6 +1060,9 @@ export default function Informes() {
       displayTotalFacebook:'flex',
       displayTotalTwitter:'flex',
       displayTotalMedios:'flex',
+      displayFacebookIcon: 'flex',
+      displayTwitterIcon: 'flex',
+      displayMediosIcon: 'flex',
       fortalezasDebilidades:[{
         text:"positivo", value:"80.6%",
       },
@@ -1590,17 +1596,20 @@ export default function Informes() {
         [name]: value
       }));
     };
- 
-  function eliminarGrafico(graficoState) {
-    const botonMostrar = document.getElementById("mostrarGrafico");
-    setCambios(prevState => ({ ...prevState, [graficoState]: 'none' }));
-  
-  }
+
 
   function mostrarGrafico(graficoState) {
     const botonMostrar = document.getElementById("mostrarGrafico");
     setCambios(prevState => ({ ...prevState, [graficoState]: 'flex' }));
     botonMostrar.style.display = "none"; 
+    if(graficoState === 'displayTotalFacebook'){
+      setCambios(prevState => ({ ...prevState, displayFacebookIcon: 'flex' }));
+    } else if(graficoState === 'displayTotalMedios') {
+      setCambios(prevState => ({ ...prevState,displayMediosIcon: 'flex' }));
+    } else if(graficoState === 'displayTotalTwitter') {
+      setCambios(prevState => ({ ...prevState, displayTwitterIcon: 'flex' }));
+    }
+       
   }
 
   
@@ -1711,6 +1720,20 @@ export default function Informes() {
     }));
   };
 
+   
+  function eliminarGrafico(graficoState) {
+    const botonMostrar = document.getElementById("mostrarGrafico");
+    setCambios(prevState => ({ ...prevState, [graficoState]: 'none' }));
+    /* || 'displayTotalMedios' || 'displayTotalTwitter'  */
+    if(graficoState === 'displayTotalFacebook'){
+      setCambios(prevState => ({ ...prevState, displayFacebookIcon: 'none' }));
+    } else if(graficoState === 'displayTotalMedios') {
+      setCambios(prevState => ({ ...prevState,displayMediosIcon: 'none' }));
+    } else if(graficoState === 'displayTotalTwitter') {
+      setCambios(prevState => ({ ...prevState, displayTwitterIcon: 'none' }));
+    }
+       
+  }
 
   return (
     <Fragment>
@@ -1766,15 +1789,7 @@ export default function Informes() {
                  Se mide el impacto de las conversaciones sobre {cambios.cliente} durante {cambios.tiempo}.
                </p>
                             
-            /*   <Input
-              style={{ width: '1000px' , height:'30px', marginTop:'1rem', marginBottom:'1rem', paddingTop:'1rem'}}
-                type="text"
-                name="tiempo"
-                value={`Se mide el impacto de las conversaciones sobre ${cambios.cliente} durante ${cambios.tiempo}.`}
-                onChange={handleChange}
-                className="subtitulo-principal"
-              /> */
-          
+                   
             ) : (
             <p className="subtitulo-principal">
               Se mide el impacto de las conversaciones sobre {cambios.cliente} durante {cambios.tiempo}.
@@ -1801,21 +1816,21 @@ export default function Informes() {
               >
               <div className="datos">
                 
-                <div className="img-red"><img className="fb" src={fb} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalFacebook')}>x</Button></div>
+                <div className="img-red"><img className="fb" src={fb} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalFacebook')} >x</Button></div>
                 <div className="img-red"><img className="noticias" src={noticias} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalMedios')}>x</Button></div>
                 <div className="img-red"><img className="tw" src={tw} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalTwitter')}>x</Button></div>
               </div>
               </Modal>
         
-                <img className="fb" src={fb} alt="logo"></img>
-                <img className="noticias" src={noticias} alt="logo"></img>
-                <img className="tw" src={tw} alt="logo"></img>
+                <img className="fb" src={fb} alt="logo" style={{display:cambios.displayFacebookIcon}}></img>
+                <img className="noticias" src={noticias} alt="logo" style={{display:cambios.displayMediosIcon}}></img>
+                <img className="tw" src={tw} alt="logo" style={{display:cambios.displayTwitterIcon}}></img>
           </> 
           :
           <>
-          <img className="fb" src={fb} alt="logo"></img>
-          <img className="noticias" src={noticias} alt="logo"></img>
-          <img className="tw" src={tw} alt="logo"></img>
+         <img className="fb" src={fb} alt="logo" style={{display:cambios.displayFacebookIcon}}></img>
+                <img className="noticias" src={noticias} alt="logo" style={{display:cambios.displayMediosIcon}}></img>
+                <img className="tw" src={tw} alt="logo" style={{display:cambios.displayTwitterIcon}}></img>
           </>  }
          |
           <div className="titulo1">PERíODO</div>
