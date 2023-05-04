@@ -1034,6 +1034,55 @@ export default function Informes() {
         return { ...prevCambios, fortalezasDebilidades: newPorcentaje };
       });
     };
+
+    const handleInputChangeEmociones = (e, indice) => {
+      const newDataEmocionesComunicacion = cambios.dataEmocionesComunicacion.map((objeto, index) => {
+        if (indice === index) {
+          return {
+            emociones: (
+              <div className="totalizador-preocupaciones">
+                <div>{e.target.value}</div>
+              </div>
+            ),
+          };
+        } else {
+          return objeto;
+        }
+      });
+      
+    
+      setCambios(prevState => {
+        return {
+          ...prevState,
+          dataEmocionesComunicacion: newDataEmocionesComunicacion,
+        };
+      });
+    };
+
+
+    const handleInputChangeAtributos = (e, indice) => {
+      const newDataAtributosComunicacion = cambios.dataAtributosComunicacion.map((objeto, index) => {
+        if (indice === index) {
+          return {
+            emociones: (
+              <div className="totalizador-preocupaciones">
+                <div>{e.target.value}</div>
+              </div>
+            ),
+          };
+        } else {
+          return objeto;
+        }
+      });
+      
+    
+      setCambios(prevState => {
+        return {
+          ...prevState,
+          dataAtributosComunicacion: newDataAtributosComunicacion,
+        };
+      });
+    };
     
     const handleHashtagChangeClave = (index, field, value) => {
       setCambios(prevCambios => {
@@ -1045,6 +1094,75 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
+     
+      dataAtributosComunicacion: [
+        {
+          atributos: (
+            <div className="totalizador-preocupaciones">
+              <div>CALIDEZ</div>
+            
+            </div>
+          ),
+        },
+        {
+          atributos: (
+            <div className="totalizador-preocupaciones">
+              <div>CONOCIMIENTO</div>
+              
+            </div>
+          ),
+        },
+        {
+          atributos: (
+            <div className="totalizador-preocupaciones">
+              <div>LABORIOSIDAD</div>
+              
+            </div>
+          ),
+        },
+        {
+          atributos: (
+            <div className="totalizador-preocupaciones">
+              <div>EFICIENCIA</div>
+              
+            </div>
+          ),
+        },
+      ],
+      dataEmocionesComunicacion: [
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>DESEO</div>
+            
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>CALMA</div>
+              
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>AGRADO</div>
+              
+            </div>
+          ),
+        },
+        {
+          emociones: (
+            <div className="totalizador-preocupaciones">
+              <div>AMOR</div>
+              
+            </div>
+          ),
+        },
+      ],
       diapositivaInicial: { display: "flex" },
       diapositiva1: { display: "flex" },
       diapositiva2: { display: "flex" },
@@ -1137,40 +1255,7 @@ export default function Informes() {
         { text: "optimismo", value: 30 },
         { text: "animación", value: 30 },
       ],
-      dataEmocionesComunicacion: [
-        {
-          emociones: (
-            <div className="totalizador-preocupaciones">
-              <div>DESEO </div>
-            
-            </div>
-          ),
-        },
-        {
-          emociones: (
-            <div className="totalizador-preocupaciones">
-              <div>CALMA </div>
-              
-            </div>
-          ),
-        },
-        {
-          emociones: (
-            <div className="totalizador-preocupaciones">
-              <div>AGRADO </div>
-              
-            </div>
-          ),
-        },
-        {
-          emociones: (
-            <div className="totalizador-preocupaciones">
-              <div>AMOR </div>
-              
-            </div>
-          ),
-        },
-      ],
+     
       columnsEmociones: [
         {
           title: (
@@ -1662,6 +1747,8 @@ export default function Informes() {
     { dataNubeClave: false },
     { dataInfluenciadores: false},
     { dataPreocupaciones: false},
+    {dataEmocionesComunicacion:false},
+    {dataAtributosComunicacion: false},
     { dataEmociones: false },
     { dataImagenes: false },
     { dataMapaPercepciones:false },
@@ -4898,47 +4985,39 @@ export default function Informes() {
             <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
 
                 <>
-                  <Button type="primary" style={{marginTop:'1rem'}} onClick={()=>showModalTorta('dataMapaPercepciones')}  disabled={!editable.diapositiva7}>
+                  <Button type="primary" style={{marginTop:'1rem'}} onClick={()=>showModalTorta('dataEmocionesComunicacion')}  disabled={!editable.diapositiva8}>
                     Editar valores
                   </Button>
                   <Modal
-                    title="Mapa de Percepciones"
-                    open={modals.dataMapaPercepciones}
+                    title="Emociones para incluir en el mensaje"
+                    open={modals.dataEmocionesComunicacion}
                     onOk={handleOk}
                     okText="Guardar"
                     cancelText="Cancelar"
                     onCancel={handleCancel}
                   >
-                  <div className="modalTorta">
-                  {cambios.mapaPercepciones && cambios.mapaPercepciones.length > 0 && cambios.mapaPercepciones.map((hashtag, index) => (
-                  <div className="modificarnube" key={index}>
+                <div className="modalTorta">
+             
+                {cambios.dataEmocionesComunicacion.map((objeto, indice) => (
+                  <div key={indice}>
                     <Input
-                      className="input-nubepalabras"
+                      className="input-influenciadores"
                       type="text"
-                      value={hashtag.text}
-                      onChange={(e) =>
-                        handleHashtagChangePercepciones(index, "text", e.target.value)
-                      }
+                      value={objeto.emociones.props.children.props.children}
+                      onChange={(e) => handleInputChangeEmociones(e, indice)}
                     />
-                    <InputNumber
-                      value={hashtag.value}
-                      onChange={(value) =>
-                        handleHashtagChangePercepciones(index, "value", value)
-                      }
-                    />
-                   {/*  <Input
-                      className="input-nubepalabras"
-                      type="text"
-                      value={hashtag.color}
-                      onChange={(e) =>
-                        handleHashtagChangePercepciones(index, "color", e.target.value)
-                      }
-                    /> */}
                   </div>
                 ))}
+
                 </div>
                   </Modal>
                   </>
+
+
+
+
+
+
 
             <div> {/*tabla */}
             <Table
@@ -5006,51 +5085,39 @@ export default function Informes() {
             {editable.general ? 
             <div class="contenedorEmociones"> {/*CONTENEDOR atributos */}
               <>
-                  <Button type="primary" style={{marginTop:'1rem'}} onClick={()=>showModalTorta('dataMapaPercepciones')}  disabled={!editable.diapositiva7}>
+                  <Button type="primary" style={{marginTop:'1rem'}} onClick={()=>showModalTorta('dataAtributosComunicacion')}  disabled={!editable.diapositiva8}>
                     Editar valores
                   </Button>
                   <Modal
-                    title="Mapa de Percepciones"
-                    open={modals.dataMapaPercepciones}
+                    title="Atributos para incluir en el mensaje"
+                    open={modals.dataAtributosComunicacion}
                     onOk={handleOk}
                     okText="Guardar"
                     cancelText="Cancelar"
                     onCancel={handleCancel}
                   >
-                  <div className="modalTorta">
-                  {cambios.mapaPercepciones && cambios.mapaPercepciones.length > 0 && cambios.mapaPercepciones.map((hashtag, index) => (
-                  <div className="modificarnube" key={index}>
+                <div className="modalTorta">
+             
+                {cambios.dataAtributosComunicacion.map((objeto, indice) => (
+                  <div key={indice}>
                     <Input
-                      className="input-nubepalabras"
+                      className="input-influenciadores"
                       type="text"
-                      value={hashtag.text}
-                      onChange={(e) =>
-                        handleHashtagChangePercepciones(index, "text", e.target.value)
-                      }
+                      value={objeto.atributos.props.children.props.children}
+                      onChange={(e) => handleInputChangeAtributos(e, indice)}
                     />
-                    <InputNumber
-                      value={hashtag.value}
-                      onChange={(value) =>
-                        handleHashtagChangePercepciones(index, "value", value)
-                      }
-                    />
-                   {/*  <Input
-                      className="input-nubepalabras"
-                      type="text"
-                      value={hashtag.color}
-                      onChange={(e) =>
-                        handleHashtagChangePercepciones(index, "color", e.target.value)
-                      }
-                    /> */}
                   </div>
                 ))}
+
                 </div>
                   </Modal>
                   </>
+
+
             <div> {/*tabla */}
             <Table
               columns={cambios.columnsAtributos}
-              dataSource={[...cambios.dataEmocionesComunicacion]}
+              dataSource={[...cambios.dataAtributosComunicacion]}
               pagination={false}
               rowClassName={rowClassNameTotal("EMOCIONES")}
               style={{ width: "100%", margin: "3px" }}
@@ -5079,7 +5146,7 @@ export default function Informes() {
                 <div> {/*tabla */}
                 <Table
                   columns={cambios.columnsAtributos}
-                  dataSource={[...cambios.dataEmocionesComunicacion]}
+                  dataSource={[...cambios.dataAtributosComunicacion]}
                   pagination={false}
                   rowClassName={rowClassNameTotal("EMOCIONES")}
                   style={{ width: "100%", margin: "3px" }}
@@ -5135,7 +5202,8 @@ export default function Informes() {
               ...prevState,
               diapositiva8: false // Cambiar la diapositiva correspondiente a false
             }));
-            /* resetValues() */
+            resetValues('dataEmocionesComunicacion')
+            resetValues('dataAtributosComunicacion')
             setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
@@ -5177,39 +5245,40 @@ export default function Informes() {
         <div className="contenedorGralEmociones"> {/*CONTENEDOR GRAL */}
           <div className="contenedorSugerencia"> {/*CONTENEDOR SEGURENCIA 1 */}
           <div className="titulo2"> {/* Titulo*/}
-          SUGERENCIA 2
+          SUGERENCIA 1
           </div>
           <div className="contenedorTextoTerminos"> {/*Contenedor textoTerminos */}
-          {editable.diapositiva9  ? (  
+          {editable.diapositiva8  ? (  
               <TextArea
                 style={{ height: '300px', width: '400px' }}
                 type="text"
-                name="sugerencia2"
-                value={cambios.sugerencia2}
+                name="sugerencia1"
+                value={cambios.sugerencia1}
                 onChange={handleChange}
                 maxLength={600}
               />
             ) : (
               <div>
-                {cambios.sugerencia2}
+                {cambios.sugerencia1}
               </div>
             )}   {/* texto*/}
 
-          {editable.diapositiva9  ? (  
+          {editable.diapositiva8  ? (  
               <TextArea
                 style={{ height: '100px', width: '400px' }}
                 type="text"
-                name="terminos2"
-                value={cambios.terminos2}
+                name="terminos1"
+                value={cambios.terminos1}
                 onChange={handleChange}
                 maxLength={300}
               />
             ) : (
               <div>
-                {cambios.terminos2}
+                {cambios.terminos1}
               </div>
             )}  {/* terminos*/}
           </div>
+
           </div>
 
           <div className="contenedorEmocionesAtributos"> {/*CONTENEDOR EMOCIONES Y ATRIBUTOS */}
@@ -5217,6 +5286,74 @@ export default function Informes() {
             EMOCIONES Y ATRIBUTOS PARA INCLUIR EN EL MENSAJE*
             </div>
             <div className="contenedorTablas"> {/*Contenedor tablas */}
+            {editable.general ? 
+            <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
+
+                <>
+                  <Button type="primary" style={{marginTop:'1rem'}} onClick={()=>showModalTorta('dataEmocionesComunicacion')}  disabled={!editable.diapositiva9}>
+                    Editar valores
+                  </Button>
+                  <Modal
+                    title="Emociones para incluir en el mensaje"
+                    open={modals.dataEmocionesComunicacion}
+                    onOk={handleOk}
+                    okText="Guardar"
+                    cancelText="Cancelar"
+                    onCancel={handleCancel}
+                  >
+                <div className="modalTorta">
+             
+                {cambios.dataEmocionesComunicacion.map((objeto, indice) => (
+                  <div key={indice}>
+                    <Input
+                      className="input-influenciadores"
+                      type="text"
+                      value={objeto.emociones.props.children.props.children}
+                      onChange={(e) => handleInputChangeEmociones(e, indice)}
+                    />
+                  </div>
+                ))}
+
+                </div>
+                  </Modal>
+                  </>
+
+
+
+
+
+
+
+            <div> {/*tabla */}
+            <Table
+              columns={cambios.columnsEmociones}
+              dataSource={[...cambios.dataEmocionesComunicacion]}
+              pagination={false}
+              rowClassName={rowClassNameTotal("EMOCIONES")}
+              style={{ width: "100%", margin: "3px" }}
+              components={{
+                header: {
+                  cell: (props) => (
+                    <th
+                      {...props}
+                      style={{ backgroundColor: "white", color: "black" }}
+                    />
+                  ),
+                },
+              }}
+            />
+            </div>
+            <div className="subtitulo"> {/*subtitulo */}
+            VOCABLOS SUGERIDOS
+
+            </div>
+            <div className="nube-palabras"> {/*nube palabras */}
+            <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} />
+            </div>
+            </div>
+
+            :
+
             <div className="contenedorEmociones"> {/*CONTENEDOR emociones */}
             <div> {/*tabla */}
             <Table
@@ -5245,11 +5382,48 @@ export default function Informes() {
             <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} />
             </div>
             </div>
-            <div> {/*CONTENEDOR atributos */}
+          
+            }
+
+
+
+            {editable.general ? 
+            <div class="contenedorEmociones"> {/*CONTENEDOR atributos */}
+              <>
+                  <Button type="primary" style={{marginTop:'1rem'}} onClick={()=>showModalTorta('dataAtributosComunicacion')}  disabled={!editable.diapositiva9}>
+                    Editar valores
+                  </Button>
+                  <Modal
+                    title="Atributos para incluir en el mensaje"
+                    open={modals.dataAtributosComunicacion}
+                    onOk={handleOk}
+                    okText="Guardar"
+                    cancelText="Cancelar"
+                    onCancel={handleCancel}
+                  >
+                <div className="modalTorta">
+             
+                {cambios.dataAtributosComunicacion.map((objeto, indice) => (
+                  <div key={indice}>
+                    {console.log(objeto)}
+                    <Input
+                      className="input-influenciadores"
+                      type="text"
+                      value={objeto.atributos.props.children.props.children}
+                      onChange={(e) => handleInputChangeEmociones(e, indice)}
+                    />
+                  </div>
+                ))}
+
+                </div>
+                  </Modal>
+                  </>
+
+
             <div> {/*tabla */}
             <Table
               columns={cambios.columnsAtributos}
-              dataSource={[...cambios.dataEmocionesComunicacion]}
+              dataSource={[...cambios.dataAtributosComunicacion]}
               pagination={false}
               rowClassName={rowClassNameTotal("EMOCIONES")}
               style={{ width: "100%", margin: "3px" }}
@@ -5270,9 +5444,41 @@ export default function Informes() {
 
             </div>
             <div className="nube-palabras"> {/*nube palabras */}
-            <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} />
+            <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} width="200" height="200" />
             </div>
             </div>
+                :
+                <div> {/*CONTENEDOR atributos */}
+                <div> {/*tabla */}
+                <Table
+                  columns={cambios.columnsAtributos}
+                  dataSource={[...cambios.dataAtributosComunicacion]}
+                  pagination={false}
+                  rowClassName={rowClassNameTotal("EMOCIONES")}
+                  style={{ width: "100%", margin: "3px" }}
+                  components={{
+                    header: {
+                      cell: (props) => (
+                        <th
+                          {...props}
+                          style={{ backgroundColor: "white", color: "black" }}
+                        />
+                      ),
+                    },
+                  }}
+                />
+                </div>
+                <div className="subtitulo"> {/*subtitulo */}
+                VOCABLOS SUGERIDOS
+    
+                </div>
+                <div className="nube-palabras"> {/*nube palabras */}
+                <ReactWordcloud words={cambios.palabrasRecomendadas} options={opcionesRecomendadas} width="200" height="200" />
+                </div>
+                </div>
+                }
+
+
             </div>
 
           </div>
