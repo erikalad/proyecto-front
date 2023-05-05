@@ -32,16 +32,18 @@ import editando from './../../assest/editando.png'
 import editarpdf from './../../assest/editar.png'
 import pdfdescargado from './../../assest/pdf.png'
 import noticias from './../../assest/noticias.png'
-import { getToken } from "../../redux/actions";
+import { getToken, getCloudWordsByRangePost } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Informes() {
 
   const token = useSelector(state => state.token);
+  const nubepalabras = useSelector(state => state.cloud_words_by_range_post)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getToken());
+    dispatch(getCloudWordsByRangePost(token))
     console.log(token)
   }, [dispatch]);
 

@@ -1,5 +1,6 @@
 const initialState = {
-    token:""
+    token:"",
+    cloud_words_by_range_post:[]
 }
 
 
@@ -12,6 +13,13 @@ const rootReducer = (state = initialState, action) => {
                 token: action.payload,
 
             }
+
+            case "GET_CLOUDWORDSBYRANGEPOST":
+                return {
+                    ...state,
+                    cloud_words_by_range_post: action.payload,
+    
+                }
             
         default: return { ...state }
     }

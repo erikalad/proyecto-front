@@ -16,3 +16,20 @@ export function getToken() {
         console.log(error)
     }
 } 
+
+
+export function getCloudWordsByRangePost(Qtoken) {
+    try {
+        return async function (dispatch) {
+            let results = await axios.get(`https://api.qsocialnow.com.ar/relational/statisticServer/getCloudWordsByRangePost`, Qtoken);
+
+            return dispatch({
+                type: "GET_CLOUDWORDSBYRANGEPOST",
+                payload: results.data
+            });
+
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
