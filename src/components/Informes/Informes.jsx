@@ -32,9 +32,54 @@ import editando from './../../assest/editando.png'
 import editarpdf from './../../assest/editar.png'
 import pdfdescargado from './../../assest/pdf.png'
 import noticias from './../../assest/noticias.png'
-
+import { getToken } from "../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Informes() {
+
+  const token = useSelector(state => state.token);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getToken());
+    console.log(token)
+  }, [dispatch]);
+
+ 
+
+
+  const sendWhatsAppMessage = async (phoneNumber, fileUrl) => {
+    const axios = require('axios');
+    const BASE_URL = 'https://api.whatsapp.com';
+    const MESSAGE_ENDPOINT = '/send';
+    const API_KEY = 'your_api_key_here'; // replace with your own API key
+  
+    const message = {
+      phone: phoneNumber,
+      message: 'Hola',
+      file: fileUrl,
+      filename: 'filename.txt',
+      type: 'file'
+    };
+  
+    const requestBody = {
+      apiKey: API_KEY,
+      message
+    };
+  
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+  
+    try {
+      const response = await axios.post(`${BASE_URL}${MESSAGE_ENDPOINT}`, requestBody, config);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const { Panel } = Collapse;
   const [editable,setEditable] = useState({
@@ -77,6 +122,7 @@ export default function Informes() {
   
       // Convertir el HTML del contenedor en un archivo PDF y descargarlo
       convertir.from(contenedor).save();
+      return convertir.from(contenedor)
     }
   }
   {/*FIN DESCARGAR PDF*/}
@@ -1833,7 +1879,7 @@ export default function Informes() {
             </Button>
             <Button style={{marginRight:'1rem'}} onClick={editar} ref={ref2}>{editable.general ? 'Dejar de Editar' : 'Editar'}  </Button>
             <Button type="primary" onClick={descargarPDF}  ref={ref1}>Descargar PDF</Button>
-            
+            <Button type="primary" onClick={()=>(console.log(token))}  ref={ref1}>Token</Button>
             <Tour open={open} onClose={() => setOpen(false)} steps={steps} 
              locale={customLocale}/>
             </div>
@@ -5557,6 +5603,8 @@ export default function Informes() {
       </div>
         
       </div>
+
+      
     </Fragment>
   );
 }
