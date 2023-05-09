@@ -13,7 +13,10 @@ import ReactWordcloud from "react-wordcloud";
 import HeatmapChart from "./MapHead";
 import Chart from "./Burbujas";
 import { RadialTreeGraph } from '@ant-design/graphs';
-import DemoColumn from "./components/Informes/Graph";
+import DemoColumn from "./components/Graficos/Graph";
+import DemoRose from "./components/Graficos/Rose";
+import DemoHeatmap from "./components/Graficos/Polar";
+import DemoRadar from "./components/Graficos/Radar";
 
 
 const data = {
@@ -687,6 +690,18 @@ const Dashboard = () => {
 
     <div>
       <DemoColumn/>
+    </div>
+
+    <div>
+      <DemoRose/>
+    </div>
+
+    <div>
+      <DemoHeatmap/>
+    </div>
+
+    <div>
+      <DemoRadar/>
     </div>
 
     </div>
