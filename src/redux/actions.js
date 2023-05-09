@@ -17,11 +17,27 @@ export function getToken() {
     }
 } 
 
+export function getReportExecution() {
+    try{
+        return async function (dispatch) {
+            let results = await axios.get(`https://api.qsocialnow.com.ar/reports-highcharts/family/1/reports`);
 
-export function getCloudWordsByRangePost(Qtoken) {
+            return dispatch({
+                type: "GET_REPORT_FAMILY",
+                payload: results.data
+            })
+        }
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+
+export function getCloudWordsByRangePost() {
     try {
         return async function (dispatch) {
-            let results = await axios.get(`https://api.qsocialnow.com.ar/relational/statisticServer/getCloudWordsByRangePost`, Qtoken);
+            let results = await axios.get(`https://api.qsocialnow.com.ar/relational/statisticServer/getCloudWordsByRangePost`);
 
             return dispatch({
                 type: "GET_CLOUDWORDSBYRANGEPOST",

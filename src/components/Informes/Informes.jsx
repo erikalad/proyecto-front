@@ -21,7 +21,7 @@ import ReactWordcloud from "react-wordcloud";
 import WordCloud from "react-wordcloud";
 import { BiConversation , BiUserCircle } from "react-icons/bi";
 import { MdOutlineContactSupport } from "react-icons/md";
-import { RiUserStarLine, RiFileUserLine, RiPushpinLine } from "react-icons/ri";
+import { RiUserStarLine, RiFileUserLine, RiPushpinLine, RiSkipForwardMiniLine } from "react-icons/ri";
 import { IoAlert } from "react-icons/io5";
 import { VscCompass } from "react-icons/vsc";
 import { TiHeartOutline } from "react-icons/ti";
@@ -32,19 +32,23 @@ import editando from './../../assest/editando.png'
 import editarpdf from './../../assest/editar.png'
 import pdfdescargado from './../../assest/pdf.png'
 import noticias from './../../assest/noticias.png'
-import { getToken, getCloudWordsByRangePost } from "../../redux/actions";
+import { getToken, getCloudWordsByRangePost, getReportExecution } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Informes() {
 
   const token = useSelector(state => state.token);
   const nubepalabras = useSelector(state => state.cloud_words_by_range_post)
+  const familyreports = useSelector(state => state.familyreports)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getToken());
-    dispatch(getCloudWordsByRangePost(token))
-    console.log(token)
+    /* dispatch(getCloudWordsByRangePost()) */
+    dispatch(getReportExecution())
+    console.log(token);
+    console.log("familys",familyreports)
+   /*  console.log("nube",nubepalabras) */
   }, [dispatch]);
 
  
@@ -1881,7 +1885,7 @@ export default function Informes() {
             </Button>
             <Button style={{marginRight:'1rem'}} onClick={editar} ref={ref2}>{editable.general ? 'Dejar de Editar' : 'Editar'}  </Button>
             <Button type="primary" onClick={descargarPDF}  ref={ref1}>Descargar PDF</Button>
-            <Button type="primary" onClick={()=>(console.log(token))}  ref={ref1}>Token</Button>
+            {/* <Button type="primary" onClick={()=>(console.log(token))}  ref={ref1}>Token</Button> */}
             <Tour open={open} onClose={() => setOpen(false)} steps={steps} 
              locale={customLocale}/>
             </div>
