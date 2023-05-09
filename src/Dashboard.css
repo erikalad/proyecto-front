@@ -23,6 +23,15 @@
 
 .diccionario{
     max-width: 85rem;
+    margin-top:2rem;
+
+}
+
+.graficos-varios{
+    padding-left: 7rem;
+    padding-right: 7rem;
+    height: 50rem;
+    
 }
 
 .palabras{
@@ -189,6 +198,8 @@
     
     .diccionario{
         width: 30rem;
+        margin-top:2rem;
+        padding-top: 2rem;
     }
     
     .palabras{

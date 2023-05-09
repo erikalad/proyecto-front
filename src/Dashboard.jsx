@@ -17,6 +17,10 @@ import DemoColumn from "./components/Graficos/Graph";
 import DemoRose from "./components/Graficos/Rose";
 import DemoHeatmap from "./components/Graficos/Polar";
 import DemoRadar from "./components/Graficos/Radar";
+import DemoTreemap from "./components/Graficos/Treemap";
+import DemoWordCloud from "./components/Graficos/NubePalabras";
+import DemoBidirectionalBar from "./components/Graficos/Polaridad";
+import DemoMix from "./components/Graficos/Mix";
 
 
 const data = {
@@ -688,8 +692,8 @@ const Dashboard = () => {
       <RadialTreeGraph {...config}  className="diccionario grapho"/>
     </div>
 
-    <div>
-      <DemoColumn/>
+    <div className="diccionario">
+      <DemoColumn className="diccionario"/>
     </div>
 
     <div>
@@ -704,6 +708,21 @@ const Dashboard = () => {
       <DemoRadar/>
     </div>
 
+    <div className="diccionario">
+      <DemoTreemap />
+    </div>
+
+    <div className="diccionario">
+      <DemoWordCloud/>
+    </div>
+
+    <div className="diccionario">
+      <DemoBidirectionalBar/>
+    </div>
+
+    <div className="diccionario graficos-varios">
+      <DemoMix/>
+    </div>
     </div>
   );
 };
