@@ -270,78 +270,6 @@ export default function Informes() {
     height: 200
   };
 
-  const [data2, setData2] = useState({
-    series: [
-      {
-        name: "Periodo Actual",
-        data: [31],
-        color: "#0083CA",
-      },
-      {
-        name: "Periodo Anterior",
-        data: [40],
-        color: "#b5b5b5",
-      },
-    ],
-    options: {
-      chart: {
-        type: "area",
-      },
-      plotOptions: {
-        bar: {
-          horizontal: true,
-        },
-      },
-      toolbar: {
-        show: false, // Deshabilitar la funcionalidad de filtro
-      },
-
-      xaxis: {
-        categories: ["Periodo Actual", "Periodo Anterior"],
-      },
-      fill: {
-        opacity: 0.6, // Opacidad del área
-      },
-    },
-  });
-
-  const [datafb, setDatafb] = useState({
-    series: [
-      {
-        name: "Periodo Actual",
-        data: [5],
-        color: "#3b5998",
-      },
-      {
-        name: "Periodo Anterior",
-        data: [15],
-        color: "#eaeaea",
-      },
-    ],
-    options: {
-      chart: {
-        type: "area",
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-        },
-      },
-      toolbar: {
-        show: false, // Deshabilitar la funcionalidad de filtro
-      },
-      xaxis: {
-        categories: ["Periodo Actual", "Periodo Anterior"],
-      },
-
-      stroke: {
-        show: false, // Deshabilitar las líneas
-        curve: "smooth", // Tipo de curva
-        colors: undefined, // Color de las líneas
-        width: 2, // Ancho de las líneas
-      },
-    },
-  });
 
   const [datatw, setDatatw] = useState({
     series: [
@@ -441,6 +369,75 @@ export default function Informes() {
     }
 
     const [defaultValues, setDefaultValues] = useState({
+      data2:{
+        series: [
+          {
+            name: "Periodo Actual",
+            data: [31],
+            color: "#0083CA",
+          },
+          {
+            name: "Periodo Anterior",
+            data: [40],
+            color: "#b5b5b5",
+          },
+        ],
+        options: {
+          chart: {
+            type: "area",
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+            },
+          },
+          toolbar: {
+            show: false, // Deshabilitar la funcionalidad de filtro
+          },
+    
+          xaxis: {
+            categories: ["Periodo Actual", "Periodo Anterior"],
+          },
+          fill: {
+            opacity: 0.6, // Opacidad del área
+          },
+        },
+      },
+      dataAtributosComunicacion: [
+        {
+          atributos: (
+            <div className="totalizador-preocupaciones">
+              <div>CALIDEZ</div>
+            
+            </div>
+          ),
+        },
+        {
+          atributos: (
+            <div className="totalizador-preocupaciones">
+              <div>CONOCIMIENTO</div>
+              
+            </div>
+          ),
+        },
+        {
+          atributos: (
+            <div className="totalizador-preocupaciones">
+              <div>LABORIOSIDAD</div>
+              
+            </div>
+          ),
+        },
+        {
+          atributos: (
+            <div className="totalizador-preocupaciones">
+              <div>EFICIENCIA</div>
+              
+            </div>
+          ),
+        },
+      ],
+     
       displayFacebookIcon: 'flex',
       displayTwitterIcon: 'flex',
       displayMediosIcon: 'flex',
@@ -1146,10 +1143,9 @@ export default function Informes() {
  
     {/*CAMBIOS*/}
     const [cambios, setCambios] = useState({
-     
       dataAtributosComunicacion: [
         {
-          atributos: (
+          emociones: (
             <div className="totalizador-preocupaciones">
               <div>CALIDEZ</div>
             
@@ -1157,7 +1153,7 @@ export default function Informes() {
           ),
         },
         {
-          atributos: (
+          emociones: (
             <div className="totalizador-preocupaciones">
               <div>CONOCIMIENTO</div>
               
@@ -1165,7 +1161,7 @@ export default function Informes() {
           ),
         },
         {
-          atributos: (
+          emociones: (
             <div className="totalizador-preocupaciones">
               <div>LABORIOSIDAD</div>
               
@@ -1173,7 +1169,7 @@ export default function Informes() {
           ),
         },
         {
-          atributos: (
+          emociones: (
             <div className="totalizador-preocupaciones">
               <div>EFICIENCIA</div>
               
@@ -1181,6 +1177,43 @@ export default function Informes() {
           ),
         },
       ],
+      indicadorImpacto:"POSITIVIDAD",
+      porcentajeImpacto:"32%",
+      data2:{
+        series: [
+          {
+            name: "Periodo Actual",
+            data: [31],
+            color: "#0083CA",
+          },
+          {
+            name: "Periodo Anterior",
+            data: [40],
+            color: "#b5b5b5",
+          },
+        ],
+        options: {
+          chart: {
+            type: "area",
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+            },
+          },
+          toolbar: {
+            show: false, // Deshabilitar la funcionalidad de filtro
+          },
+    
+          xaxis: {
+            categories: ["Periodo Actual", "Periodo Anterior"],
+          },
+          fill: {
+            opacity: 0.6, // Opacidad del área
+          },
+        },
+      },
+      
       dataEmocionesComunicacion: [
         {
           emociones: (
@@ -1508,6 +1541,42 @@ export default function Informes() {
         { text: "#buensabado", value: 50 },
         { text: "#puertorico", value: 50 },
       ],
+      datafb:{ 
+        series: [
+        {
+          name: "Periodo Actual",
+          data: [5],
+          color: "#3b5998",
+        },
+        {
+          name: "Periodo Anterior",
+          data: [15],
+          color: "#eaeaea",
+        },
+      ],
+      options: {
+        chart: {
+          type: "area",
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+          },
+        },
+        toolbar: {
+          show: false, // Deshabilitar la funcionalidad de filtro
+        },
+        xaxis: {
+          categories: ["Periodo Actual", "Periodo Anterior"],
+        },
+  
+        stroke: {
+          show: false, // Deshabilitar las líneas
+          curve: "smooth", // Tipo de curva
+          colors: undefined, // Color de las líneas
+          width: 2, // Ancho de las líneas
+        },
+      }},
    dataOuter:[
       { name: "Positivo", value: 70, fill: "#53b253bd" },
       { name: "Negativo", value: 30, fill: "#ff4c4cd7" },
@@ -1563,8 +1632,6 @@ export default function Informes() {
     desdeDiaHora: "16:27 hs del 20/03/2023",
     hastaDiaHora: "16:27 hs del 27/03/2023",
     tendencia: "predominante",
-    indicadorImpacto:"POSITIVIDAD",
-    porcentajeImpacto:"32%",
     dataEmociones:[
       {
         total: (
@@ -1790,6 +1857,8 @@ export default function Informes() {
   };
 
   const [modals, setShowModal] = useState([
+    {dataGraficoTotal:false},
+    {dataGraficoFb:false},
     { dataDatos: false },
     { showModal1: false },
     { dataTorta:false },
@@ -1873,6 +1942,35 @@ export default function Informes() {
     }
        
   }
+ 
+ function handleInputNumberChangeFb2(newValue) {
+    const newDatafb = {...cambios.datafb};  // Crear una copia del objeto 'datafb' del estado
+    newDatafb.series[1].data = [newValue]; // Actualizar el valor de la propiedad 'data' de la serie 'Periodo Anterior'
+    setCambios({ ...cambios, datafb: newDatafb }); // Actualizar el estado con el nuevo objeto 'datafb'
+  }
+
+  function handleInputNumberChangetotal1(newValue) {
+    const newDatafb = {...cambios.data2};  // Crear una copia del objeto 'datafb' del estado
+    newDatafb.series[0].data = [newValue]; // Actualizar el valor de la propiedad 'data' de la serie 'Periodo Anterior'
+    setCambios({ ...cambios, data2: newDatafb }); // Actualizar el estado con el nuevo objeto 'datafb'
+  }
+
+  function handleInputNumberChangetotal2(newValue) {
+    const newDatafb = {...cambios.data2};  // Crear una copia del objeto 'datafb' del estado
+    newDatafb.series[1].data = [newValue]; // Actualizar el valor de la propiedad 'data' de la serie 'Periodo Anterior'
+    setCambios({ ...cambios, data2: newDatafb }); // Actualizar el estado con el nuevo objeto 'datafb'
+  }
+
+  function handleInputNumberChangeFb1(newValue) {
+    const newDatafb = {...cambios.datafb};  // Crear una copia del objeto 'datafb' del estado
+    newDatafb.series[0].data = [newValue]; // Actualizar el valor de la propiedad 'data' de la serie 'Periodo Anterior'
+    setCambios({ ...cambios, datafb: newDatafb }); // Actualizar el estado con el nuevo objeto 'datafb'
+  }
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setCambios({...cambios, [name]: value});
+  }
 
   return (
     <Fragment>
@@ -1923,7 +2021,7 @@ export default function Informes() {
             ) : (
               <div className="titulo">{cambios.cliente}</div>
             )}
-              {editable.diapositiva1 ? (
+         {/*      {editable.diapositiva1 ? (
                  <p className="subtitulo-principal">
                  Se mide el impacto de las conversaciones sobre {cambios.cliente} durante {cambios.tiempo}.
                </p>
@@ -1933,7 +2031,7 @@ export default function Informes() {
             <p className="subtitulo-principal">
               Se mide el impacto de las conversaciones sobre {cambios.cliente} durante {cambios.tiempo}.
             </p>
-            )}
+            )} */}
             
           </div>
         </div>
@@ -1956,20 +2054,20 @@ export default function Informes() {
               <div className="datos">
                 
                 <div className="img-red"><img className="fb" src={fb} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalFacebook')} >x</Button></div>
-                <div className="img-red"><img className="noticias" src={noticias} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalMedios')}>x</Button></div>
-                <div className="img-red"><img className="tw" src={tw} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalTwitter')}>x</Button></div>
+               {/*  <div className="img-red"><img className="noticias" src={noticias} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalMedios')}>x</Button></div> */}
+               {/*  <div className="img-red"><img className="tw" src={tw} alt="logo"></img> <Button onClick={()=>eliminarGrafico('displayTotalTwitter')}>x</Button></div> */}
               </div>
               </Modal>
         
                 <img className="fb" src={fb} alt="logo" style={{display:cambios.displayFacebookIcon}}></img>
-                <img className="noticias" src={noticias} alt="logo" style={{display:cambios.displayMediosIcon}}></img>
-                <img className="tw" src={tw} alt="logo" style={{display:cambios.displayTwitterIcon}}></img>
+                {/* <img className="noticias" src={noticias} alt="logo" style={{display:cambios.displayMediosIcon}}></img> */}
+               {/*  <img className="tw" src={tw} alt="logo" style={{display:cambios.displayTwitterIcon}}></img> */}
           </> 
           :
           <>
          <img className="fb" src={fb} alt="logo" style={{display:cambios.displayFacebookIcon}}></img>
-                <img className="noticias" src={noticias} alt="logo" style={{display:cambios.displayMediosIcon}}></img>
-                <img className="tw" src={tw} alt="logo" style={{display:cambios.displayTwitterIcon}}></img>
+             {/*    <img className="noticias" src={noticias} alt="logo" style={{display:cambios.displayMediosIcon}}></img> */}
+               {/*  <img className="tw" src={tw} alt="logo" style={{display:cambios.displayTwitterIcon}}></img> */}
           </>  }
          |
           <div className="titulo1">PERíODO</div>
@@ -2018,10 +2116,40 @@ export default function Informes() {
         <div className="graficos-cuerpo">
         {editable.diapositiva1 ? ( 
         <div className="graficoInforme" >
+            <>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataGraficoTotal')} disabled={!editable.diapositiva1}>
+                Editar valores
+              </Button>
+              <Modal
+                title="Total - Volumen de publicaciones"
+                open={modals.dataGraficoTotal}
+                onOk={handleOk}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+              >
+              <div className="modalTorta">
+                <div className="">Período Actual</div>
+                <InputNumber 
+                value={cambios.data2.series[0].data[0]} 
+                name='datafb'  
+                onChange={(value) => handleInputNumberChangetotal1(value)}
+              ></InputNumber>
+               
+                <div>Período Anterior</div>
+                <InputNumber 
+                value={cambios.data2.series[1].data[0]} 
+                name='datafb'  
+                onChange={(value) => handleInputNumberChangetotal2(value)}
+              ></InputNumber>
+                
+              </div>
+              </Modal>
+            </>
             <div id="totalVolumenPublicaciones"style={{display:cambios.displayTotalVolumen}} >
             <ReactApexChart
-              options={data2.options}
-              series={data2.series}
+              options={cambios.data2.options}
+              series={cambios.data2.series}
               type="bar"
               height={150}
               width={250}
@@ -2036,8 +2164,8 @@ export default function Informes() {
           ) : (
           <div style={{display:cambios.displayTotalVolumen, gap:'5rem', height:'250px'}}>
             <ReactApexChart
-              options={data2.options}
-              series={data2.series}
+              options={cambios.data2.options}
+              series={cambios.data2.series}
               type="bar"
               height={150}
               width={300}
@@ -2047,11 +2175,42 @@ export default function Informes() {
          
           </div>
                  
-           )}
+           )} 
           
           <div className="periodosfbtw">
           {editable.diapositiva1 ? ( 
+            
           <div className="editarfacebook facebook-grafico-bar">
+             <>
+              <Button type="primary" style={{marginLeft:'2rem', marginTop:'1rem'}} onClick={()=>showModalTorta('dataGraficoFb')} disabled={!editable.diapositiva1}>
+                Editar valores
+              </Button>
+              <Modal
+                title="Total - Volumen de publicaciones - Facebook"
+                open={modals.dataGraficoFb}
+                onOk={handleOk}
+                okText="Guardar"
+                cancelText="Cancelar"
+                onCancel={handleCancel}
+              >
+              <div className="modalTorta">
+                <div className="">Período Actual</div>
+                <InputNumber 
+                value={cambios.datafb.series[0].data[0]} 
+                name='datafb'  
+                onChange={(value) => handleInputNumberChangeFb1(value)}
+              ></InputNumber>
+               
+                <div>Período Anterior</div>
+                <InputNumber 
+                value={cambios.datafb.series[1].data[0]} 
+                name='datafb'  
+                onChange={(value) => handleInputNumberChangeFb2(value)}
+              ></InputNumber>
+                
+              </div>
+              </Modal>
+            </>
           <div style={{display:cambios.displayTotalFacebook, flexDirection:'column'}}>
           <div className="icon-nombre" >
             <img className="fb" src={fb} alt="logo"/>
@@ -2059,8 +2218,8 @@ export default function Informes() {
           </div>
           <div style={{display:'flex'}}>
           <ReactApexChart
-            options={datafb.options}
-            series={datafb.series}
+            options={cambios.datafb.options}
+            series={cambios.datafb.series}
             type="bar"
             height={250}
             width={150}
@@ -2072,7 +2231,10 @@ export default function Informes() {
             ? <Button id="mostrarGrafico" style={{display:'flex'}} onClick={()=>mostrarGrafico('displayTotalFacebook')}>+</Button> 
             : <Button id="mostrarGrafico" style={{display:'none'}} onClick={()=>mostrarGrafico('displayTotalFacebook')}>+</Button> 
             }  
-          </div>
+        
+          
+             
+            </div>
           ) : (
           <div className="facebook-grafico-bar">
             <div style={{display:cambios.displayTotalFacebook, flexDirection:'column'}} >
@@ -2082,8 +2244,8 @@ export default function Informes() {
           </div>
           <div style={{display:'flex'}}>
           <ReactApexChart
-            options={datafb.options}
-            series={datafb.series}
+            options={cambios.datafb.options}
+            series={cambios.datafb.series}
             type="bar"
             height={250}
             width={150}
@@ -2094,7 +2256,7 @@ export default function Informes() {
                  
            )}
 
-
+{/* 
         {editable.diapositiva1 ? ( 
           <div className="editarfacebook twitter-grafico-bar">
           <div style={{display:cambios.displayTotalMedios, flexDirection:'column'}}>
@@ -2135,12 +2297,12 @@ export default function Informes() {
          
           </div>
                  
-           )} 
+           )}  */}
 
 
 
 
-          {editable.diapositiva1 ? ( 
+          {/* {editable.diapositiva1 ? ( 
           <div className="editarfacebook twitter-grafico-bar">
           <div style={{display:cambios.displayTotalTwitter, flexDirection:'column'}}>
             <div className="icon-nombre">
@@ -2180,7 +2342,7 @@ export default function Informes() {
          
           </div>
                  
-           )} 
+           )}  */}
 
 
             
@@ -2471,18 +2633,33 @@ export default function Informes() {
           <div className="texto">
             <div>Tendencia {cambios.tendencia}</div>
             <div> en relación al mismo período anterior:</div>
+            {editable.general && editable.diapositiva2 ? 
+            <div>
+            <div className={cambios.indicadorImpacto === "POSITIVIDAD" ? "positivo" : "negativo"}>
+              <Input value={cambios.indicadorImpacto} name="indicadorImpacto" onChange={handleInputChange} />
+            </div>
+            <div className={cambios.indicadorImpacto === "POSITIVIDAD" ? "positivo" : "negativo"}>
+              <Input value={cambios.porcentajeImpacto} name="porcentajeImpacto" onChange={handleInputChange} />
+            </div>
+            </div>
+            :
+            <div>
             <div
               className={
                 cambios.indicadorImpacto === "POSITIVIDAD" ? "positivo" : "negativo"
               }>
               {cambios.indicadorImpacto}
             </div>
+            <div>
             <div
               className={
                 cambios.indicadorImpacto === "POSITIVIDAD" ? "positivo" : "negativo"
               }>
               {cambios.porcentajeImpacto}
             </div>
+            </div>
+            </div>
+            }
           </div>
 
           <hr></hr>
@@ -2584,7 +2761,7 @@ export default function Informes() {
 
 
 
-
+{/* 
           <div className="pie">
             <div className="icon-nombre">
               <img className="tw" src={tw} alt="logo"/>
@@ -2678,7 +2855,7 @@ export default function Informes() {
             </Pie>
             </PieChart>
              }
-           </div>
+           </div> */}
         
         </div>
 
@@ -3318,7 +3495,7 @@ export default function Informes() {
               >
               <div className="Influenciadores-modal">
 
-              <div className="contenedor-modal-preocupaciones" >
+             {/*  <div className="contenedor-modal-preocupaciones" >
                 <div>Total</div>
               {cambios.dataPreocupaciones.map((objeto, indice) => (
                 <div key={indice} className="Influenciadores-modal">
@@ -3451,7 +3628,7 @@ export default function Informes() {
                 />
                 </div>
               ))}
-              </div>
+              </div> */}
 
               <div >
                 <div>Facebook</div>
@@ -3524,7 +3701,8 @@ export default function Informes() {
               </>
          
           <div className="table">
-            <Table
+            
+            {/* <Table
               columns={cambios.columnsPreocupacionesTotal}
               dataSource={cambios.dataPreocupaciones}
               pagination={false}
@@ -3540,8 +3718,8 @@ export default function Informes() {
                   ),
                 },
               }}
-            />
-            <Table
+            /> */}
+       {/*      <Table
               columns={cambios.columnsPreocupacionesTw}
               dataSource={cambios.dataPreocupacionesTw}
               pagination={false}
@@ -3557,7 +3735,7 @@ export default function Informes() {
                   ),
                 },
               }}
-            />
+            /> */}
 
             <Table
               columns={cambios.columnsPreocupacionesFb}
@@ -3580,7 +3758,7 @@ export default function Informes() {
           </div>
           : 
            <div className="table">
-            <Table
+            {/* <Table
               columns={cambios.columnsPreocupacionesTotal}
               dataSource={cambios.dataPreocupaciones}
               pagination={false}
@@ -3596,8 +3774,8 @@ export default function Informes() {
                   ),
                 },
               }}
-            />
-            <Table
+            /> */}
+           {/*  <Table
               columns={cambios.columnsPreocupacionesTw}
               dataSource={cambios.dataPreocupacionesTw}
               pagination={false}
@@ -3613,7 +3791,7 @@ export default function Informes() {
                   ),
                 },
               }}
-            />
+            /> */}
 
             <Table
               columns={cambios.columnsPreocupacionesFb}
@@ -3712,7 +3890,7 @@ export default function Informes() {
                 onCancel={handleCancel}
                 >
                 <div className="Influenciadores-modal">
-
+{/* 
                 <div className="contenedor-modal-preocupaciones" >
                 <div>Total</div>
                 {cambios.dataEmociones.map((objeto, indice) => (
@@ -3846,7 +4024,7 @@ export default function Informes() {
                 />
                 </div>
                 ))}
-                </div>
+                </div> */}
 
                 <div >
                 <div>Facebook</div>
@@ -3919,7 +4097,7 @@ export default function Informes() {
           
         
           <div className="table">
-          <Table
+          {/* <Table
             columns={cambios.columnsPreocupacionesTotal}
             dataSource={cambios.dataEmociones}
             pagination={false}
@@ -3935,8 +4113,8 @@ export default function Informes() {
                 ),
               },
             }}
-          />
-          <Table
+          /> */}
+         {/*  <Table
             columns={cambios.columnsPreocupacionesTw}
             dataSource={cambios.dataEmocionesTw}
             pagination={false}
@@ -3953,7 +4131,7 @@ export default function Informes() {
               },
             }}
           />
-
+ */}
           <Table
             columns={cambios.columnsPreocupacionesFb}
             dataSource={cambios.dataEmocionesFb}
@@ -3975,7 +4153,7 @@ export default function Informes() {
         </div>
 
           :  <div className="table">
-          <Table
+         {/*  <Table
             columns={cambios.columnsPreocupacionesTotal}
             dataSource={cambios.dataEmociones}
             pagination={false}
@@ -3991,8 +4169,8 @@ export default function Informes() {
                 ),
               },
             }}
-          />
-          <Table
+          /> */}
+          {/* <Table
             columns={cambios.columnsPreocupacionesTw}
             dataSource={cambios.dataEmocionesTw}
             pagination={false}
@@ -4008,7 +4186,7 @@ export default function Informes() {
                 ),
               },
             }}
-          />
+          /> */}
 
           <Table
             columns={cambios.columnsPreocupacionesFb}
@@ -4128,7 +4306,7 @@ export default function Informes() {
                 </div>
 
 
-                <div >
+                {/* <div >
                 <div>Twitter</div>
                 {cambios.dataImagenesTw.map((objeto, indice) => (
                 <div key={indice} className="Influenciadores-modal">
@@ -4193,7 +4371,7 @@ export default function Informes() {
                 />
                 </div>
                 ))}
-                </div>
+                </div> */}
 
                 <div >
                 <div>Facebook</div>
@@ -4265,7 +4443,7 @@ export default function Informes() {
                 </Modal>
 
           <div className="table">
-            <Table
+           {/*  <Table
               columns={cambios.columnsPreocupacionesTotal}
               dataSource={cambios.dataImagenes}
               pagination={false}
@@ -4281,8 +4459,8 @@ export default function Informes() {
                   ),
                 },
               }}
-            />
-            <Table
+            /> */}
+           {/*  <Table
               columns={cambios.columnsPreocupacionesTw}
               dataSource={cambios.dataImagenesTw}
               pagination={false}
@@ -4298,7 +4476,7 @@ export default function Informes() {
                   ),
                 },
               }}
-            />
+            /> */}
 
             <Table
               columns={cambios.columnsPreocupacionesFb}
@@ -4322,7 +4500,7 @@ export default function Informes() {
           :
 
           <div className="table">
-            <Table
+            {/* <Table
               columns={cambios.columnsPreocupacionesTotal}
               dataSource={cambios.dataImagenes}
               pagination={false}
@@ -4338,8 +4516,8 @@ export default function Informes() {
                   ),
                 },
               }}
-            />
-            <Table
+            /> */}
+          {/*   <Table
               columns={cambios.columnsPreocupacionesTw}
               dataSource={cambios.dataImagenesTw}
               pagination={false}
@@ -4355,7 +4533,7 @@ export default function Informes() {
                   ),
                 },
               }}
-            />
+            /> */}
 
             <Table
               columns={cambios.columnsPreocupacionesFb}
@@ -5155,7 +5333,7 @@ export default function Informes() {
                     <Input
                       className="input-influenciadores"
                       type="text"
-                      value={objeto.atributos.props.children.props.children}
+                      value={objeto.emociones.props.children.props.children}
                       onChange={(e) => handleInputChangeAtributos(e, indice)}
                     />
                   </div>
@@ -5169,7 +5347,7 @@ export default function Informes() {
             <div> {/*tabla */}
             <Table
               columns={cambios.columnsAtributos}
-              dataSource={[...cambios.dataAtributosComunicacion]}
+              dataSource={cambios.dataAtributosComunicacion}
               pagination={false}
               rowClassName={rowClassNameTotal("EMOCIONES")}
               style={{ width: "100%", margin: "3px" }}
@@ -5198,7 +5376,7 @@ export default function Informes() {
                 <div> {/*tabla */}
                 <Table
                   columns={cambios.columnsAtributos}
-                  dataSource={[...cambios.dataAtributosComunicacion]}
+                  dataSource={cambios.dataAtributosComunicacion}
                   pagination={false}
                   rowClassName={rowClassNameTotal("EMOCIONES")}
                   style={{ width: "100%", margin: "3px" }}
@@ -5297,21 +5475,21 @@ export default function Informes() {
         <div className="contenedorGralEmociones"> {/*CONTENEDOR GRAL */}
           <div className="contenedorSugerencia"> {/*CONTENEDOR SEGURENCIA 1 */}
           <div className="titulo2"> {/* Titulo*/}
-          SUGERENCIA 1
+          SUGERENCIA 2
           </div>
           <div className="contenedorTextoTerminos"> {/*Contenedor textoTerminos */}
           {editable.diapositiva8  ? (  
               <TextArea
                 style={{ height: '300px', width: '400px' }}
                 type="text"
-                name="sugerencia1"
-                value={cambios.sugerencia1}
+                name="sugerencia2"
+                value={cambios.sugerencia2}
                 onChange={handleChange}
                 maxLength={600}
               />
             ) : (
               <div>
-                {cambios.sugerencia1}
+                {cambios.sugerencia2}
               </div>
             )}   {/* texto*/}
 
@@ -5320,13 +5498,13 @@ export default function Informes() {
                 style={{ height: '100px', width: '400px' }}
                 type="text"
                 name="terminos1"
-                value={cambios.terminos1}
+                value={cambios.terminos2}
                 onChange={handleChange}
                 maxLength={300}
               />
             ) : (
               <div>
-                {cambios.terminos1}
+                {cambios.terminos2}
               </div>
             )}  {/* terminos*/}
           </div>
@@ -5461,7 +5639,7 @@ export default function Informes() {
                     <Input
                       className="input-influenciadores"
                       type="text"
-                      value={objeto.atributos.props.children.props.children}
+                      value={objeto.emociones.props.children.props.children}
                       onChange={(e) => handleInputChangeEmociones(e, indice)}
                     />
                   </div>
@@ -5475,7 +5653,7 @@ export default function Informes() {
             <div> {/*tabla */}
             <Table
               columns={cambios.columnsAtributos}
-              dataSource={[...cambios.dataAtributosComunicacion]}
+              dataSource={cambios.dataAtributosComunicacion}
               pagination={false}
               rowClassName={rowClassNameTotal("EMOCIONES")}
               style={{ width: "100%", margin: "3px" }}
@@ -5504,7 +5682,7 @@ export default function Informes() {
                 <div> {/*tabla */}
                 <Table
                   columns={cambios.columnsAtributos}
-                  dataSource={[...cambios.dataAtributosComunicacion]}
+                  dataSource={cambios.dataAtributosComunicacion}
                   pagination={false}
                   rowClassName={rowClassNameTotal("EMOCIONES")}
                   style={{ width: "100%", margin: "3px" }}
