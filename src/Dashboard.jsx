@@ -13,6 +13,7 @@ import ReactWordcloud from "react-wordcloud";
 import HeatmapChart from "./MapHead";
 import Chart from "./Burbujas";
 import { RadialTreeGraph } from '@ant-design/graphs';
+import DemoColumn from "./components/Informes/Graph";
 
 
 const data = {
@@ -683,6 +684,11 @@ const Dashboard = () => {
       >
       <RadialTreeGraph {...config}  className="diccionario grapho"/>
     </div>
+
+    <div>
+      <DemoColumn/>
+    </div>
+
     </div>
   );
 };
