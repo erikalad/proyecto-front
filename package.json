@@ -5,6 +5,7 @@
   "dependencies": {
     "@ant-design/graphs": "^1.4.0",
     "@ant-design/icons": "^5.0.1",
+    "@ant-design/plots": "^1.2.5",
     "@emailjs/browser": "^3.11.0",
     "@nivo/bar": "^0.80.0",
     "@nivo/calendar": "^0.80.0",
