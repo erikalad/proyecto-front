@@ -647,7 +647,7 @@ const Dashboard = () => {
           />
         </div>
 
-        <div className="grafico progress">
+        {/* <div className="grafico progress">
           {data.map((item, index) => (
             <div className="progress">
               <Progress
@@ -659,7 +659,7 @@ const Dashboard = () => {
               />
             </div>
           ))}
-        </div>
+        </div> */}
 
         <div className="grafico">
           <ReactApexChart
