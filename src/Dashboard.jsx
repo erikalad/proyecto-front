@@ -23,6 +23,7 @@ import DemoBidirectionalBar from "./components/Graficos/Polaridad";
 import DemoMix from "./components/Graficos/Mix";
 import Graph from "./components/Graficos/GrafoPy";
 import Graph2 from "./components/Graficos/Grafo";
+import GraphHashtags from "./components/Graficos/GrafoHashtag";
 
 
 
@@ -733,6 +734,10 @@ const Dashboard = () => {
 
     <div>
       <Graph2/>
+    </div>
+
+    <div>
+      <GraphHashtags/>
     </div>
     </div>
   );
