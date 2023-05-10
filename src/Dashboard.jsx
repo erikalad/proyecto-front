@@ -21,6 +21,7 @@ import DemoTreemap from "./components/Graficos/Treemap";
 import DemoWordCloud from "./components/Graficos/NubePalabras";
 import DemoBidirectionalBar from "./components/Graficos/Polaridad";
 import DemoMix from "./components/Graficos/Mix";
+import Graph from "./components/Graficos/GrafoPy";
 
 
 const data = {
@@ -722,6 +723,10 @@ const Dashboard = () => {
 
     <div className="diccionario graficos-varios">
       <DemoMix/>
+    </div>
+
+    <div>
+      <Graph/>
     </div>
     </div>
   );
