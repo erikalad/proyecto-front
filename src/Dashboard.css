@@ -79,6 +79,10 @@
     background-color:#f5f5f5 !important; 
 }
 
+.fondo-grafo-comunidades{
+    background-color:rgba(0, 0, 0, 0.818) !important; 
+}
+
 
 .selectores-dash{
     width: 10rem;

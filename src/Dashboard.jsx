@@ -24,6 +24,7 @@ import DemoMix from "./components/Graficos/Mix";
 import Graph from "./components/Graficos/GrafoPy";
 import Graph2 from "./components/Graficos/Grafo";
 import GraphHashtags from "./components/Graficos/GrafoHashtag";
+import GraphComunidades from "./components/Graficos/GrafoComunidades";
 
 
 
@@ -738,6 +739,10 @@ const Dashboard = () => {
 
     <div>
       <GraphHashtags/>
+    </div>
+
+    <div>
+      <GraphComunidades/>
     </div>
     </div>
   );
