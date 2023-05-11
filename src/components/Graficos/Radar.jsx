@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Radar } from '@ant-design/plots';
 
 export default function DemoRadar (){
-  const [data, setData] = useState([]);
+ /*  const [data, setData] = useState([]);
 
   useEffect(() => {
     asyncFetch();
@@ -15,7 +15,110 @@ export default function DemoRadar (){
       .catch((error) => {
         console.log('fetch data failed', error);
       });
-  };
+  }; */
+  const data=
+  [
+    {
+        "item": "Responsable",
+        "user": "a",
+        "score": 70
+    },
+    {
+        "item": "Coherencia",
+        "user": "a",
+        "score": 30
+    },
+    {
+        "item": "Experiencia",
+        "user": "a",
+        "score": 60
+    },
+    {
+        "item": "Autoridad",
+        "user": "a",
+        "score": 70
+    },
+    {
+        "item": "Eficiencia",
+        "user": "a",
+        "score": 50
+    },
+    {
+        "item": "Comunica",
+        "user": "a",
+        "score": 60
+    },
+    {
+        "item": "Popular",
+        "user": "a",
+        "score": 40
+    },
+   /*  {
+        "item": "Users",
+        "user": "b",
+        "score": 50
+    },
+    {
+        "item": "Test",
+        "user": "a",
+        "score": 60
+    },
+    {
+        "item": "Test",
+        "user": "b",
+        "score": 70
+    },
+    {
+        "item": "Language",
+        "user": "a",
+        "score": 70
+    },
+    {
+        "item": "Language",
+        "user": "b",
+        "score": 50
+    },
+    {
+        "item": "Technology",
+        "user": "a",
+        "score": 50
+    },
+    {
+        "item": "Technology",
+        "user": "b",
+        "score": 40
+    },
+    {
+        "item": "Support",
+        "user": "a",
+        "score": 30
+    },
+    {
+        "item": "Support",
+        "user": "b",
+        "score": 40
+    },
+    {
+        "item": "Sales",
+        "user": "a",
+        "score": 60
+    },
+    {
+        "item": "Sales",
+        "user": "b",
+        "score": 40
+    },
+    {
+        "item": "UX",
+        "user": "a",
+        "score": 50
+    },
+    {
+        "item": "UX",
+        "user": "b",
+        "score": 60
+    } */
+]
   const config = {
     data,
     xField: 'item',

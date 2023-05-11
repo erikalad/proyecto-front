@@ -57,6 +57,8 @@ export default function DemoBidirectionalBar () {
       shared: true,
       showMarkers: false,
     },
+    color: ['#14ae5c99','#ff00006d']
+    
   };
   return <BidirectionalBar {...config} />;
 };

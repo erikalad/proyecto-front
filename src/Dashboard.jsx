@@ -25,6 +25,7 @@ import Graph from "./components/Graficos/GrafoPy";
 import Graph2 from "./components/Graficos/Grafo";
 import GraphHashtags from "./components/Graficos/GrafoHashtag";
 import GraphComunidades from "./components/Graficos/GrafoComunidades";
+import DemoPie from "./components/Graficos/Anillo";
 
 
 
@@ -683,11 +684,11 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <div className="diccionario">
           <HeatmapChart />
         </div>
-      </div>
+      </div> */}
 
 
       <div
@@ -701,11 +702,15 @@ const Dashboard = () => {
       <DemoColumn className="diccionario"/>
     </div>
 
+    <div className="diccionario">
+      <DemoPie/>
+    </div>
+
     <div>
       <DemoRose/>
     </div>
 
-    <div>
+    <div className="diccionario">
       <DemoHeatmap/>
     </div>
 
