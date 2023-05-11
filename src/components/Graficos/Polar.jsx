@@ -148,7 +148,7 @@ export default function DemoHeatmap() {
     {
         "week": "Martes",
         "time": "1am",
-        "value": 0.076414
+        "value": 0.276414
     },
     {
         "week": "Martes",
@@ -168,7 +168,7 @@ export default function DemoHeatmap() {
     {
         "week": "Martes",
         "time": "5am",
-        "value": 0.060884
+        "value": 0.460884
     },
     {
         "week": "Martes",
@@ -183,7 +183,7 @@ export default function DemoHeatmap() {
     {
         "week": "Martes",
         "time": "8am",
-        "value": 0.07572
+        "value": 0.2572
     },
     {
         "week": "Martes",
@@ -193,7 +193,7 @@ export default function DemoHeatmap() {
     {
         "week": "Martes",
         "time": "10am",
-        "value": 0.090938
+        "value": 0.190938
     },
     {
         "week": "Martes",
@@ -208,12 +208,12 @@ export default function DemoHeatmap() {
     {
         "week": "Martes",
         "time": "1pm",
-        "value": 0.093755
+        "value": 0.93755
     },
     {
         "week": "Martes",
         "time": "2pm",
-        "value": 0.099166
+        "value": 0.99166
     },
     {
         "week": "Martes",
@@ -248,12 +248,12 @@ export default function DemoHeatmap() {
     {
         "week": "Martes",
         "time": "9pm",
-        "value": 0.103659
+        "value": 0.43659
     },
     {
         "week": "Martes",
         "time": "10pm",
-        "value": 0.0773
+        "value": 0.773
     },
     {
         "week": "Martes",
@@ -263,7 +263,7 @@ export default function DemoHeatmap() {
     {
         "week": "Miercoles",
         "time": "Medianoche",
-        "value": 0.076414
+        "value": 0.76414
     },
     {
         "week": "Miercoles",
@@ -283,7 +283,7 @@ export default function DemoHeatmap() {
     {
         "week": "Miercoles",
         "time": "4am",
-        "value": 0.060884
+        "value": 0.60884
     },
     {
         "week": "Miercoles",
@@ -298,7 +298,7 @@ export default function DemoHeatmap() {
     {
         "week": "Miercoles",
         "time": "7am",
-        "value": 0.07572
+        "value": 0.27572
     },
     {
         "week": "Miercoles",
@@ -313,7 +313,7 @@ export default function DemoHeatmap() {
     {
         "week": "Miercoles",
         "time": "10am",
-        "value": 0.094296
+        "value": 0.194296
     },
     {
         "week": "Miercoles",
@@ -323,12 +323,12 @@ export default function DemoHeatmap() {
     {
         "week": "Miercoles",
         "time": "Mediodia",
-        "value": 0.093755
+        "value": 0.293755
     },
     {
         "week": "Miercoles",
         "time": "1pm",
-        "value": 0.099166
+        "value": 0.99166
     },
     {
         "week": "Miercoles",
@@ -358,7 +358,7 @@ export default function DemoHeatmap() {
     {
         "week": "Miercoles",
         "time": "7pm",
-        "value": 0.173093
+        "value": 0.573093
     },
     {
         "week": "Miercoles",
@@ -368,7 +368,7 @@ export default function DemoHeatmap() {
     {
         "week": "Miercoles",
         "time": "9pm",
-        "value": 0.0773
+        "value": 0.4773
     },
     {
         "week": "Miercoles",
@@ -398,7 +398,7 @@ export default function DemoHeatmap() {
     {
         "week": "Jueves",
         "time": "3am",
-        "value": 0.060884
+        "value": 0.560884
     },
     {
         "week": "Jueves",
@@ -413,7 +413,7 @@ export default function DemoHeatmap() {
     {
         "week": "Jueves",
         "time": "6am",
-        "value": 0.07572
+        "value": 0.47572
     },
     {
         "week": "Jueves",
@@ -423,7 +423,7 @@ export default function DemoHeatmap() {
     {
         "week": "Jueves",
         "time": "8am",
-        "value": 0.090938
+        "value": 0.390938
     },
     {
         "week": "Jueves",
@@ -433,17 +433,17 @@ export default function DemoHeatmap() {
     {
         "week": "Jueves",
         "time": "10am",
-        "value": 0.290368
+        "value": 0.30368
     },
     {
         "week": "Jueves",
         "time": "11am",
-        "value": 0.093755
+        "value": 0.293755
     },
     {
         "week": "Jueves",
         "time": "Mediodia",
-        "value": 0.099166
+        "value": 0.499166
     },
     {
         "week": "Jueves",
@@ -458,7 +458,7 @@ export default function DemoHeatmap() {
     {
         "week": "Jueves",
         "time": "3pm",
-        "value": 0.43833
+        "value": 0.83833
     },
     {
         "week": "Jueves",
@@ -483,12 +483,12 @@ export default function DemoHeatmap() {
     {
         "week": "Jueves",
         "time": "8pm",
-        "value": 0.0773
+        "value": 0.8773
     },
     {
         "week": "Jueves",
         "time": "9pm",
-        "value": 0.265913
+        "value": 0.465913
     },
     {
         "week": "Jueves",
@@ -498,22 +498,22 @@ export default function DemoHeatmap() {
     {
         "week": "Jueves",
         "time": "11pm",
-        "value": 0.076164
+        "value": 0.676164
     },
     {
         "week": "Viernes",
         "time": "Medianoche",
-        "value": 0.132583
+        "value": 0.832583
     },
     {
         "week": "Viernes",
         "time": "1am",
-        "value": 0.135422
+        "value": 0.435422
     },
     {
         "week": "Viernes",
         "time": "2am",
-        "value": 0.060884
+        "value": 0.750884
     },
     {
         "week": "Viernes",
@@ -553,7 +553,7 @@ export default function DemoHeatmap() {
     {
         "week": "Viernes",
         "time": "10am",
-        "value": 0.093755
+        "value": 0.693755
     },
     {
         "week": "Viernes",
@@ -578,7 +578,7 @@ export default function DemoHeatmap() {
     {
         "week": "Viernes",
         "time": "3pm",
-        "value": 0.244464
+        "value": 0.944464
     },
     {
         "week": "Viernes",
@@ -588,12 +588,12 @@ export default function DemoHeatmap() {
     {
         "week": "Viernes",
         "time": "5pm",
-        "value": 0.173093
+        "value": 0.673093
     },
     {
         "week": "Viernes",
         "time": "6pm",
-        "value": 0.103659
+        "value": 0.53659
     },
     {
         "week": "Viernes",
@@ -608,17 +608,17 @@ export default function DemoHeatmap() {
     {
         "week": "Viernes",
         "time": "9pm",
-        "value": 0.099811
+        "value": 0.4575
     },
     {
         "week": "Viernes",
         "time": "10pm",
-        "value": 0.076164
+        "value": 0.976164
     },
     {
         "week": "Viernes",
         "time": "11pm",
-        "value": 0.3154
+        "value": 0.6154
     },
     {
         "week": "Sabado",
@@ -638,7 +638,7 @@ export default function DemoHeatmap() {
     {
         "week": "Sabado",
         "time": "3am",
-        "value": 0.230771
+        "value": 0.8545
     },
     {
         "week": "Sabado",
@@ -658,7 +658,7 @@ export default function DemoHeatmap() {
     {
         "week": "Sabado",
         "time": "7am",
-        "value": 0.094296
+        "value": 0.475686
     },
     {
         "week": "Sabado",
@@ -688,7 +688,7 @@ export default function DemoHeatmap() {
     {
         "week": "Sabado",
         "time": "1pm",
-        "value": 0.43833
+        "value": 0.1457
     },
     {
         "week": "Sabado",
@@ -708,7 +708,7 @@ export default function DemoHeatmap() {
     {
         "week": "Sabado",
         "time": "5pm",
-        "value": 0.103659
+        "value": 0.85464
     },
     {
         "week": "Sabado",
@@ -723,17 +723,17 @@ export default function DemoHeatmap() {
     {
         "week": "Sabado",
         "time": "8pm",
-        "value": 0.099811
+        "value": 0.95441
     },
     {
         "week": "Sabado",
         "time": "9pm",
-        "value": 0.076164
+        "value": 0.75686
     },
     {
         "week": "Sabado",
         "time": "10pm",
-        "value": 0.3154
+        "value": 0.45675
     },
     {
         "week": "Sabado",
@@ -853,24 +853,25 @@ export default function DemoHeatmap() {
     {
         "week": "Domingo",
         "time": "10pm",
-        "value": 0.146557
+        "value": 0.85554
     },
     {
         "week": "Domingo",
         "time": "11pm",
-        "value": 0.108531
+        "value": 0.95623
     }
 ]
 
 
 
   const config = {
+    color: '#fa1414e8-#acffa89f-#14ae5c88',
     data,
     xField: 'time',
     yField: 'week',
     colorField: 'value',
     legend: true,
-    color: '#BAE7FF-#1890FF-#1028ff',
+
     coordinate: {
       // 坐标轴属性配置
       type: 'polar',

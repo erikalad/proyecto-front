@@ -26,6 +26,8 @@ import Graph2 from "./components/Graficos/Grafo";
 import GraphHashtags from "./components/Graficos/GrafoHashtag";
 import GraphComunidades from "./components/Graficos/GrafoComunidades";
 import DemoPie from "./components/Graficos/Anillo";
+import DemoArea from "./components/Graficos/Area";
+import DemoColumnBarras from "./components/Graficos/GruposBarras";
 
 
 
@@ -480,7 +482,7 @@ const Dashboard = () => {
   return (
     <div className="stadisticas-dashboard-component">
       <div className="filtro-gral">
-        <Select
+       {/*  <Select
           placeholder="Serie"
           className="selectores-dash"
           onChange={handleSeriesChange}
@@ -488,7 +490,7 @@ const Dashboard = () => {
           <Select.Option value="Serie 1">Serie 1</Select.Option>
           <Select.Option value="Serie 2">Serie 2</Select.Option>
           <Select.Option value="Serie 3">Serie 3</Select.Option>
-        </Select>
+        </Select> */}
 
         {/* <Button onClick={descargarPDF}>Descargar PDF</Button>
         <Button href="/informe">Generar Informe</Button>
@@ -496,7 +498,7 @@ const Dashboard = () => {
           Enviar por email
         </Button> */}
       </div>
-      <div className="estadisticas">
+    {/*   <div className="estadisticas">
         <Row className="stadisticas" gutter={16}>
           <Col span={12}>
             <Statistic
@@ -514,10 +516,10 @@ const Dashboard = () => {
             />
           </Col>
         </Row>
-      </div>
+      </div> */}
 
-      <div className="conteiner-grafi">
-        <div className="grafico">
+      {/* <div className="conteiner-grafi"> */}
+        {/* <div className="grafico">
           <Pie
             data={chartData}
             width={500}
@@ -639,8 +641,8 @@ const Dashboard = () => {
             ]}
           />
         </div>
-
-        <div className="grafico">
+ */}
+      {/*   <div className="grafico">
           <ReactApexChart
             options={data2.options}
             series={data2.series}
@@ -648,7 +650,7 @@ const Dashboard = () => {
             height={350}
             width={500}
           />
-        </div>
+        </div> */}
 
         {/* <div className="grafico progress">
           {data.map((item, index) => (
@@ -664,7 +666,7 @@ const Dashboard = () => {
           ))}
         </div> */}
 
-        <div className="grafico">
+       {/*  <div className="grafico">
           <ReactApexChart
             options={data2.options}
             series={data2.series}
@@ -673,16 +675,16 @@ const Dashboard = () => {
             width={500}
           />
         </div>
-      </div>
+      </div> */}
 
-      <div className="conteiner-grafica">
+     {/*  <div className="conteiner-grafica">
         <div className="grafico">
           <Chart data={datosBurbuja} />
         </div>
         <div className="grafico">
           <ReactWordcloud words={words} options={options} />
         </div>
-      </div>
+      </div> */}
 
       {/* <div>
         <div className="diccionario">
@@ -691,42 +693,42 @@ const Dashboard = () => {
       </div> */}
 
 
-      <div
+      {/* <div
       id="dom"
       className="diccionario grapho"
       >
       <RadialTreeGraph {...config}  className="diccionario grapho"/>
+    </div> */}
+
+    <div className="diccionario graficos-varios">
+      <DemoColumn/>
     </div>
 
-    <div className="diccionario">
-      <DemoColumn className="diccionario"/>
-    </div>
-
-    <div className="diccionario">
+    <div className="diccionario graficos-varios">
       <DemoPie/>
     </div>
 
-    <div>
+   {/*  <div>
       <DemoRose/>
-    </div>
+    </div> */}
 
-    <div className="diccionario">
+    <div className="diccionario graficos-varios">
       <DemoHeatmap/>
     </div>
 
-    <div>
+    <div className="diccionario graficos-varios">
       <DemoRadar/>
     </div>
-
-    <div className="diccionario">
+ 
+    <div className="diccionario graficos-varios">
       <DemoTreemap />
     </div>
 
-    <div className="diccionario">
+    <div className="diccionario graficos-varios">
       <DemoWordCloud/>
     </div>
 
-    <div className="diccionario">
+    <div className="diccionario graficos-varios">
       <DemoBidirectionalBar/>
     </div>
 
@@ -734,7 +736,7 @@ const Dashboard = () => {
       <DemoMix/>
     </div>
 
-    <div>
+{/*     <div>
       <Graph/>
     </div>
 
@@ -748,6 +750,14 @@ const Dashboard = () => {
 
     <div>
       <GraphComunidades/>
+    </div> */}
+
+    <div className="diccionario graficos-varios">
+      <DemoArea/>
+    </div>
+
+    <div className="diccionario graficos-varios">
+      <DemoColumnBarras/>
     </div>
     </div>
   );
