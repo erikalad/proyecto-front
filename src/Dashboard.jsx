@@ -29,7 +29,7 @@ import DemoPie from "./components/Graficos/Anillo";
 import DemoArea from "./components/Graficos/Area";
 import DemoColumnBarras from "./components/Graficos/GruposBarras";
 import DemoPieGenero from "./components/Graficos/Género";
-
+import { HiOutlineDocumentChartBar } from 'react-icons/hi2';
 
 
 const data = {
@@ -502,6 +502,10 @@ const Dashboard = () => {
           <Select.Option value="SubSerie 3">SubSerie 3</Select.Option>
         </Select>
 
+   {/*      <Button style={{marginLeft:'2rem', marginTop:'1rem', backgroundColor:"#ff8000", color:"white"}} >
+              <HiOutlineDocumentChartBar style={{marginRight:'0.5rem'}} /> Generar informe
+              </Button> */}
+
         {/* <Button onClick={descargarPDF}>Descargar PDF</Button>
         <Button href="/informe">Generar Informe</Button>
         <Button href="/mail" disabled>
@@ -746,7 +750,7 @@ const Dashboard = () => {
       <DemoMix/>
     </div>
 
-{/*     <div>
+ <div>
       <Graph/>
     </div>
 
@@ -760,7 +764,7 @@ const Dashboard = () => {
 
     <div>
       <GraphComunidades/>
-    </div> */}
+    </div>
 
     <div className="diccionario graficos-varios">
       <DemoArea/>

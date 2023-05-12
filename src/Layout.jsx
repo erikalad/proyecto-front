@@ -4,7 +4,9 @@ import { BarChartOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { useState } from "react";
 import Dashboard from "./Dashboard";
-
+import { RxAvatar } from 'react-icons/rx';
+import { AiOutlineCluster } from 'react-icons/ai';
+import { HiOutlineDocumentChartBar } from 'react-icons/hi2';
 import "./Dashboard.css";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -17,15 +19,21 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  /*   getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
+  getItem("Dashboard", "9", <BarChartOutlined />),
+  getItem('Informes', '1', <HiOutlineDocumentChartBar />),
+  getItem('Modelos', 'sub1', <AiOutlineCluster />, [
+    getItem('Atributo empresas', '3'),
+    getItem('Atributo de personalidad', '4'),
+    getItem('Atributo de políticos', '5'),
+    getItem('Atributo de empresas', '5'),
+    getItem('Red motivacional del voto', '5'),
+    getItem('Preocupaciones', '5'),
+    getItem('Emociones básicas', '5'),
+    getItem('Preocupaciones', '5'),
+    getItem('Continuidad y cambio', '5'),
+    getItem('Voto emocional y racional', '5'),
   ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]), */
-  getItem("Métricas", "9", <BarChartOutlined />),
+  getItem('Perfil', '10', <RxAvatar />),
 ];
 const Layouts = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -36,14 +44,18 @@ const Layouts = () => {
     <div>
       <Layout
         style={{
+          
           minHeight: "500vh",
         }}
         className="layout">
         <Sider
+        width={"30vh"}
+         
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}>
           <Menu
+           
             theme="dark"
             defaultSelectedKeys={["1"]}
             mode="inline"
@@ -60,6 +72,7 @@ const Layouts = () => {
                 margin: "16px 0",
               }}>
               <Breadcrumb.Item>Métricas</Breadcrumb.Item>
+              
             </Breadcrumb>
             <div>
               <Dashboard />
