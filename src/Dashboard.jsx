@@ -28,6 +28,7 @@ import GraphComunidades from "./components/Graficos/GrafoComunidades";
 import DemoPie from "./components/Graficos/Anillo";
 import DemoArea from "./components/Graficos/Area";
 import DemoColumnBarras from "./components/Graficos/GruposBarras";
+import DemoPieGenero from "./components/Graficos/Género";
 
 
 
@@ -482,15 +483,24 @@ const Dashboard = () => {
   return (
     <div className="stadisticas-dashboard-component">
       <div className="filtro-gral">
-       {/*  <Select
+       <Select
           placeholder="Serie"
           className="selectores-dash"
           onChange={handleSeriesChange}
-          value={selectedSeries}>
+          value="Serie">
           <Select.Option value="Serie 1">Serie 1</Select.Option>
           <Select.Option value="Serie 2">Serie 2</Select.Option>
           <Select.Option value="Serie 3">Serie 3</Select.Option>
-        </Select> */}
+        </Select>
+        <Select
+          placeholder="SubSerie"
+          className="selectores-dash"
+          onChange={handleSeriesChange}
+          value="SubSerie">
+          <Select.Option value="SubSerie 1">SubSerie 1</Select.Option>
+          <Select.Option value="SubSerie 2">SubSerie 2</Select.Option>
+          <Select.Option value="SubSerie 3">SubSerie 3</Select.Option>
+        </Select>
 
         {/* <Button onClick={descargarPDF}>Descargar PDF</Button>
         <Button href="/informe">Generar Informe</Button>
@@ -759,6 +769,11 @@ const Dashboard = () => {
     <div className="diccionario graficos-varios">
       <DemoColumnBarras/>
     </div>
+
+    <div className="diccionario graficos-varios">
+      <DemoPieGenero/>
+    </div>
+
     </div>
   );
 };
